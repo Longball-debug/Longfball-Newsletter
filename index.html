@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Longball Gazette</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0b;
+    --paper: #f5f0e8;
+    --cream: #ede7d5;
+    --rule: #b8a98a;
+    --gold: #c9922a;
+    --gold-light: #f0d080;
+    --red: #b02020;
+    --blue-dark: #1a2a4a;
+    --muted: #6b5e47;
+  }
+
+  body {
+    background: #1a1a14;
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    background: var(--blue-dark);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 8px,
+      rgba(255,255,255,0.02) 8px, rgba(255,255,255,0.02) 9px
+    );
+  }
+  .masthead-top {
+    border-bottom: 1px solid rgba(201,146,42,0.35);
+    padding: 0.6rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,208,128,0.6);
+    position: relative;
+  }
+  .masthead-main {
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+  }
+  .gazette-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .masthead h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 7rem);
+    color: #fff;
+    letter-spacing: 0.06em;
+    line-height: 0.9;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+  }
+  .masthead h1 span { color: var(--gold-light); }
+  .masthead-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+  .gold-rule {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+    margin: 0;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  /* ── SECTION RULE ── */
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 2rem;
+  }
+  .section-rule span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(240,208,128,0.6);
+    white-space: nowrap;
+  }
+  .section-rule::before, .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,146,42,0.3);
+  }
+
+  /* ── EDITION CARD ── */
+  .editions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .edition-card {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(201,146,42,0.25);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  }
+  .edition-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,146,42,0.07);
+    transform: translateY(-2px);
+  }
+  .edition-card.coming-soon {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .card-banner {
+    background: var(--blue-dark);
+    padding: 1.25rem 1.25rem 1rem;
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .card-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 6px,
+      rgba(255,255,255,0.02) 6px, rgba(255,255,255,0.02) 7px
+    );
+  }
+  .card-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(255,255,255,0.08);
+    line-height: 1;
+    position: absolute;
+    bottom: -0.2rem;
+    right: 0.5rem;
+    letter-spacing: 0.04em;
+    pointer-events: none;
+  }
+  .card-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-body {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .card-desc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin-bottom: 0.9rem;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .card-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .card-cta::after { content: '→'; }
+  .card-cta.locked { color: rgba(255,255,255,0.25); }
+  .card-cta.locked::after { content: ''; }
+
+  /* ── COMING SOON PLACEHOLDER ── */
+  .coming-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    padding: 0.5rem 0 0;
+  }
+
+  /* ── LEAGUE INFO STRIP ── */
+  .info-strip {
+    border-top: 1px solid rgba(201,146,42,0.2);
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    text-align: center;
+  }
+  .info-stat { }
+  .info-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold-light);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .info-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.2rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(201,146,42,0.15);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+  footer strong { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .masthead h1 { font-size: 3rem; }
+    .main { padding: 2rem 1.25rem 3rem; }
+    .masthead-top { font-size: 0.58rem; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <span>Est. 2008</span>
+    <span>18 Seasons · 12 Franchises</span>
+    <span>2026 Season</span>
+  </div>
+  <div class="masthead-main">
+    <span class="gazette-label">Official Publication of</span>
+    <h1>The Longball <span>Gazette</span></h1>
+    <p class="masthead-sub">Your home for league history, standings, scores &amp; more</p>
+  </div>
+</header>
+<div class="gold-rule"></div>
+
+<div class="main">
+
+  <!-- PUBLICATIONS -->
+  <div class="section-rule"><span>2026 Publications</span></div>
+  <div class="editions-grid">
+
+    <!-- PRESEASON HISTORY EDITION — LIVE -->
+    <a href="longball2026_preseason.html" class="edition-card">
+      <div class="card-banner">
+        <span class="card-year">2026</span>
+        <span class="card-tag">Preseason Edition</span>
+        <div class="card-title">History &amp; Preview</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Complete franchise histories, championship roll of honor, all-time standings, and spring training photos for all 14 franchises through 2025.</p>
+        <div class="card-meta">
+          <span class="card-date">March 2026</span>
+          <span class="card-cta">Read now</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- OPENING DAY EDITION — LIVE -->
+    <a href="longball_gazette_opening_day.html" class="edition-card">
+      <div class="card-banner">
+        <span class="card-year">2026</span>
+        <span class="card-tag">Opening Day Edition</span>
+        <div class="card-title">Opening Day</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">The 2026 LONGBALL season is officially underway. Opening Day coverage, storylines, and everything you need to know heading into the new year.</p>
+        <div class="card-meta">
+          <span class="card-date">March 2026</span>
+          <span class="card-cta">Read now</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- WEEK 1 — COMING SOON -->
+    <div class="edition-card coming-soon">
+      <div class="card-banner">
+        <span class="card-year">WK1</span>
+        <span class="card-tag">Week 1 Results</span>
+        <div class="card-title">Scores &amp; Standings</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Week 1 matchup results, standings update, and early season storylines.</p>
+        <div class="card-meta">
+          <span class="card-date">Coming soon</span>
+          <span class="card-cta locked">Not yet published</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRAFT RESULTS — COMING SOON -->
+    <div class="edition-card coming-soon">
+      <div class="card-banner">
+        <span class="card-year">DFT</span>
+        <span class="card-tag">2026 Draft</span>
+        <div class="card-title">Draft Results</div>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">Full draft board, team grades, and breakdown of every pick from the 2026 LONGBALL draft.</p>
+        <div class="card-meta">
+          <span class="card-date">Coming soon</span>
+          <span class="card-cta locked">Not yet published</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LEAGUE STATS STRIP -->
+  <div class="info-strip">
+    <div class="info-stat">
+      <div class="info-number">18</div>
+      <div class="info-label">Seasons</div>
+    </div>
+    <div class="info-stat">
+      <div class="info-number">12</div>
+      <div class="info-label">Active Teams</div>
+    </div>
+    <div class="info-stat">
+      <div class="info-number">7</div>
+      <div class="info-label">Champions</div>
+    </div>
+    <div class="info-stat">
+      <div class="info-number">14</div>
+      <div class="info-label">Franchises</div>
+    </div>
+    <div class="info-stat">
+      <div class="info-number">5</div>
+      <div class="info-label">Desert Rats Titles</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>The Longball Gazette</strong> &nbsp;·&nbsp; Est. 2008 &nbsp;·&nbsp; 18 Seasons of LONGBALL Fantasy Baseball
+</footer>
+
+</body>
+</html>
