@@ -1,418 +1,1439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Longball Gazette</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow+Condensed:wght@400;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette — Week 1, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --ink: #0f0e0b;
-    --paper: #f5f0e8;
-    --cream: #ede7d5;
-    --rule: #b8a98a;
-    --gold: #c9922a;
-    --gold-light: #f0d080;
-    --red: #b02020;
-    --blue-dark: #1a2a4a;
-    --muted: #6b5e47;
-  }
+        :root {
+            --ink: #1a1008;
+            --paper: #f7f2e4;
+            --paper-dark: #ede6cf;
+            --paper-mid: #f2ecdb;
+            --red: #8b1a1a;
+            --gold: #b8860b;
+            --rule: #2a1f0e;
+            --muted: #5a4e3a;
+        }
 
-  body {
-    background: #1a1a14;
-    font-family: 'Source Serif 4', Georgia, serif;
-    color: var(--ink);
-    min-height: 100vh;
-  }
+        body {
+            background: #c8b89a;
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(0,0,0,0.03) 40px, rgba(0,0,0,0.03) 80px);
+            font-family: 'Libre Baskerville', Georgia, serif;
+            color: var(--ink);
+            padding: 24px 16px;
+            min-height: 100vh;
+        }
 
-  /* ── MASTHEAD ── */
-  .masthead {
-    background: var(--blue-dark);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  .masthead::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      45deg, transparent, transparent 8px,
-      rgba(255,255,255,0.02) 8px, rgba(255,255,255,0.02) 9px
-    );
-  }
-  .masthead-top {
-    border-bottom: 1px solid rgba(201,146,42,0.35);
-    padding: 0.6rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(240,208,128,0.6);
-    position: relative;
-  }
-  .masthead-main {
-    padding: 3rem 2rem 2.5rem;
-    position: relative;
-  }
-  .gazette-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: block;
-    margin-bottom: 0.6rem;
-  }
-  .masthead h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(3.5rem, 12vw, 7rem);
-    color: #fff;
-    letter-spacing: 0.06em;
-    line-height: 0.9;
-    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
-  }
-  .masthead h1 span { color: var(--gold-light); }
-  .masthead-sub {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.6);
-    margin-top: 0.75rem;
-    letter-spacing: 0.02em;
-  }
-  .gold-rule {
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
-    margin: 0;
-  }
+        .newspaper {
+            max-width: 1140px;
+            margin: 0 auto;
+            background: var(--paper);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.45), inset 0 0 80px rgba(184,134,11,0.04);
+            border: 2px solid var(--rule);
+            outline: 6px solid var(--paper-dark);
+            outline-offset: -10px;
+            position: relative;
+            overflow: hidden;
+        }
 
-  /* ── MAIN CONTENT ── */
-  .main {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 3rem 2rem 4rem;
-  }
+        /* Paper texture */
+        .newspaper::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
 
-  /* ── SECTION RULE ── */
-  .section-rule {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin: 0 0 2rem;
-  }
-  .section-rule span {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(240,208,128,0.6);
-    white-space: nowrap;
-  }
-  .section-rule::before, .section-rule::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(201,146,42,0.3);
-  }
+        .inner { position: relative; z-index: 1; }
 
-  /* ── EDITION CARD ── */
-  .editions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 3rem;
-  }
+        /* ═══════════════ MASTHEAD ═══════════════ */
+        .masthead {
+            padding: 20px 40px 0;
+            border-bottom: 4px double var(--rule);
+        }
 
-  .edition-card {
-    background: rgba(255,255,255,0.04);
-    border: 0.5px solid rgba(201,146,42,0.25);
-    border-radius: 8px;
-    overflow: hidden;
-    text-decoration: none;
-    display: block;
-    transition: border-color 0.2s, background 0.2s, transform 0.15s;
-  }
-  .edition-card:hover {
-    border-color: var(--gold);
-    background: rgba(201,146,42,0.07);
-    transform: translateY(-2px);
-  }
-  .edition-card.coming-soon {
-    opacity: 0.45;
-    cursor: default;
-    pointer-events: none;
-  }
+        .masthead-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.78em;
+            letter-spacing: 0.5px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 10px;
+            color: var(--muted);
+        }
 
-  .card-banner {
-    background: var(--blue-dark);
-    padding: 1.25rem 1.25rem 1rem;
-    border-bottom: 2px solid var(--gold);
-    position: relative;
-    overflow: hidden;
-  }
-  .card-banner::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      45deg, transparent, transparent 6px,
-      rgba(255,255,255,0.02) 6px, rgba(255,255,255,0.02) 7px
-    );
-  }
-  .card-year {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 3.5rem;
-    color: rgba(255,255,255,0.08);
-    line-height: 1;
-    position: absolute;
-    bottom: -0.2rem;
-    right: 0.5rem;
-    letter-spacing: 0.04em;
-    pointer-events: none;
-  }
-  .card-tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.4rem;
-    display: block;
-    position: relative;
-    z-index: 1;
-  }
-  .card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    color: #fff;
-    letter-spacing: 0.04em;
-    line-height: 1.1;
-    position: relative;
-    z-index: 1;
-  }
+        .paper-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4em, 5vw, 4.2em);
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1;
+            color: var(--ink);
+            padding: 8px 0 4px;
+        }
 
-  .card-body {
-    padding: 1rem 1.25rem 1.25rem;
-  }
-  .card-desc {
-    font-family: 'Source Serif 4', serif;
-    font-size: 0.82rem;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.6;
-    margin-bottom: 0.9rem;
-  }
-  .card-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .card-date {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-  }
-  .card-cta {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-  .card-cta::after { content: '→'; }
-  .card-cta.locked { color: rgba(255,255,255,0.25); }
-  .card-cta.locked::after { content: ''; }
+        .paper-rule-red {
+            height: 4px;
+            background: var(--red);
+            margin: 6px 0;
+        }
 
-  /* ── COMING SOON PLACEHOLDER ── */
-  .coming-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.2);
-    text-align: center;
-    padding: 0.5rem 0 0;
-  }
+        .paper-tagline {
+            text-align: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.82em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding-bottom: 12px;
+        }
 
-  /* ── LEAGUE INFO STRIP ── */
-  .info-strip {
-    border-top: 1px solid rgba(201,146,42,0.2);
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-    text-align: center;
-  }
-  .info-stat { }
-  .info-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    color: var(--gold-light);
-    letter-spacing: 0.04em;
-    line-height: 1;
-  }
-  .info-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-top: 0.2rem;
-  }
+        /* Scrolling ticker */
+        .ticker-wrap {
+            background: var(--ink);
+            color: var(--paper);
+            overflow: hidden;
+            padding: 6px 0;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.82em;
+            letter-spacing: 0.5px;
+        }
 
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid rgba(201,146,42,0.15);
-    padding: 1.5rem 2rem;
-    text-align: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.2);
-  }
-  footer strong { color: var(--gold); }
+        .ticker-inner {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 55s linear infinite;
+        }
 
-  @media (max-width: 600px) {
-    .masthead h1 { font-size: 3rem; }
-    .main { padding: 2rem 1.25rem 3rem; }
-    .masthead-top { font-size: 0.58rem; gap: 0.5rem; }
-  }
-</style>
+        .ticker-inner span { padding: 0 30px; }
+        .ticker-inner .sep { color: var(--gold); font-weight: 700; }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ═══════════════ NAVIGATION ═══════════════ */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            padding: 0 40px;
+            background: var(--paper-dark);
+            border-bottom: 3px solid var(--rule);
+        }
+
+        .nav-tab {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-right: 1px solid #c0b090;
+            transition: all 0.2s;
+            color: var(--muted);
+            position: relative;
+            user-select: none;
+        }
+
+        .nav-tab:first-child { border-left: 1px solid #c0b090; }
+
+        .nav-tab:hover { background: var(--paper); color: var(--ink); }
+
+        .nav-tab.active {
+            background: var(--paper);
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .nav-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -3px; left: 0; right: 0;
+            height: 3px;
+            background: var(--red);
+        }
+
+        /* ═══════════════ PAGE CONTENT ═══════════════ */
+        .page { display: none; padding: 30px 40px 40px; animation: fadeIn 0.4s ease; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ═══════════════ TYPOGRAPHY ═══════════════ */
+        .section-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75em;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--red);
+            border-bottom: 1px solid var(--red);
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+        }
+
+        .headline-xl {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8em, 3.5vw, 2.8em);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .headline-lg {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7em;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+
+        .headline-md {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25em;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .deck {
+            font-family: 'Libre Baskerville', serif;
+            font-style: italic;
+            font-size: 1.05em;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .byline {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.78em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .dateline {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75em;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        p.body { text-align: justify; margin-bottom: 12px; font-size: 0.95em; line-height: 1.75; }
+
+        p.body:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2em;
+            font-weight: 900;
+            float: left;
+            line-height: 0.85;
+            margin: 4px 8px 0 0;
+            color: var(--red);
+        }
+
+        p.body-sm { font-size: 0.88em; line-height: 1.7; margin-bottom: 10px; text-align: justify; }
+
+        /* ═══════════════ LAYOUT GRID ═══════════════ */
+        .col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .col-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+        .col-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        .col-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+        .col-3-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 30px; }
+
+        .rule-h { border: none; border-top: 1px solid #b0a080; margin: 20px 0; }
+        .rule-h-dbl { border: none; border-top: 3px double var(--rule); margin: 24px 0; }
+        .rule-h-thick { border: none; border-top: 2px solid var(--rule); margin: 20px 0; }
+
+        .col-rule { border-left: 1px solid #b0a080; padding-left: 30px; }
+
+        /* ═══════════════ BOXES & CARDS ═══════════════ */
+        .info-box {
+            border: 2px solid var(--rule);
+            padding: 16px 18px;
+            background: #fffef8;
+            margin-bottom: 20px;
+        }
+
+        .info-box-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+            border-bottom: 2px solid var(--rule);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .column-box {
+            border: 3px double var(--rule);
+            padding: 20px 22px;
+            background: #fffef8;
+            margin-bottom: 20px;
+        }
+
+        .column-box-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .column-box-byline {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.78em;
+            text-align: center;
+            font-style: italic;
+            color: var(--muted);
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #c0b080;
+        }
+
+        .alert-box {
+            border-left: 5px solid var(--red);
+            background: #fff8f8;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+        }
+
+        .alert-box-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 4px;
+        }
+
+        .gold-box {
+            border: 2px solid var(--gold);
+            background: #fffbef;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+        }
+
+        /* ═══════════════ TABLES ═══════════════ */
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.82em;
+        }
+
+        table.data th {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.78em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--rule);
+            border-top: 1px solid var(--rule);
+            padding: 6px 8px;
+            text-align: left;
+            background: var(--paper-dark);
+        }
+
+        table.data td {
+            padding: 5px 8px;
+            border-bottom: 1px solid #d4c89a;
+        }
+
+        table.data tr:last-child td { border-bottom: none; }
+        table.data tr.highlight { background: #fff9e0; font-weight: 700; }
+        table.data tr.danger { background: #fff0f0; }
+        table.data .num { text-align: right; font-weight: 700; }
+        table.data .rk { text-align: center; width: 30px; color: var(--muted); }
+
+        /* ═══════════════ SCORES SCOREBOARD ═══════════════ */
+        .scoreboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .score-card {
+            border: 2px solid var(--rule);
+            background: #fffef8;
+            overflow: hidden;
+        }
+
+        .score-card-header {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        .score-card-body {
+            padding: 12px 14px;
+        }
+
+        .score-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #e0d4b0;
+        }
+
+        .score-row:last-child { border-bottom: none; }
+
+        .score-team {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        .score-pts {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        .score-pts.leading { color: var(--red); }
+
+        .score-status {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.72em;
+            color: var(--muted);
+            text-align: center;
+            padding: 4px;
+            background: var(--paper-dark);
+            font-style: italic;
+        }
+
+        .score-badge {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.65em;
+            font-weight: 700;
+            padding: 2px 6px;
+            letter-spacing: 0.5px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* ═══════════════ POWER RANKINGS ═══════════════ */
+        .pr-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid #d4c89a;
+        }
+
+        .pr-item:last-child { border-bottom: none; }
+
+        .pr-rank {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            font-weight: 900;
+            color: var(--paper-dark);
+            -webkit-text-stroke: 1.5px var(--rule);
+            min-width: 44px;
+            text-align: center;
+            line-height: 1;
+            padding-top: 2px;
+        }
+
+        .pr-rank.top3 { color: var(--gold); -webkit-text-stroke: 1px var(--gold); }
+
+        .pr-team { font-family: 'Oswald', sans-serif; font-size: 1.05em; font-weight: 700; }
+        .pr-pts { font-family: 'Courier Prime', monospace; font-size: 0.85em; color: var(--muted); }
+        .pr-note { font-size: 0.83em; color: var(--muted); font-style: italic; line-height: 1.4; margin-top: 2px; }
+
+        .pr-arrow-up { color: #2a7a2a; font-weight: 700; }
+        .pr-arrow-dn { color: var(--red); font-weight: 700; }
+
+        /* ═══════════════ FA ACTIVITY ═══════════════ */
+        .fa-team-block {
+            margin-bottom: 18px;
+            break-inside: avoid;
+        }
+
+        .fa-team-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: var(--ink);
+            color: var(--paper);
+            padding: 4px 10px;
+            margin-bottom: 0;
+        }
+
+        .fa-move {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+            padding: 4px 10px;
+            border-bottom: 1px solid #e0d4b0;
+            font-size: 0.82em;
+        }
+
+        .fa-move:last-child { border-bottom: none; }
+        .fa-move .claim { color: #1a5a1a; font-weight: 700; font-family: 'Courier Prime', monospace; font-size: 0.85em; }
+        .fa-move .drop { color: var(--red); font-weight: 700; font-family: 'Courier Prime', monospace; font-size: 0.85em; }
+        .fa-move .player { font-weight: 700; }
+        .fa-move .pos { color: var(--muted); font-size: 0.85em; }
+
+        /* ═══════════════ MATCHUP RECAPS ═══════════════ */
+        .recap-card {
+            border: 2px solid var(--rule);
+            margin-bottom: 24px;
+            overflow: hidden;
+            break-inside: avoid;
+        }
+
+        .recap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .recap-team {
+            flex: 1;
+            padding: 10px 14px;
+        }
+
+        .recap-team.away { border-right: 1px solid #555; }
+
+        .recap-team-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .recap-score {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.5em;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .recap-score.leading { color: var(--gold); }
+
+        .recap-vs {
+            padding: 10px 12px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.75em;
+            text-align: center;
+            opacity: 0.6;
+            display: flex;
+            align-items: center;
+        }
+
+        .recap-status {
+            background: var(--red);
+            color: white;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.72em;
+            text-align: center;
+            padding: 4px 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .recap-body { padding: 14px 16px; }
+        .recap-body p { font-size: 0.88em; line-height: 1.65; margin-bottom: 8px; }
+
+        .recap-stat {
+            background: var(--paper-dark);
+            border-left: 4px solid var(--gold);
+            padding: 8px 12px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.8em;
+            margin-top: 8px;
+        }
+
+        .recap-stat strong { color: var(--red); }
+
+        /* ═══════════════ PLAYER TABLES ═══════════════ */
+        .player-rank-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 1.2em;
+            color: var(--gold);
+            text-align: center;
+        }
+
+        /* ═══════════════ FOOTER ═══════════════ */
+        .page-footer {
+            text-align: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.78em;
+            color: var(--muted);
+            padding-top: 20px;
+            border-top: 2px double var(--rule);
+            margin-top: 30px;
+        }
+
+        /* ═══════════════ RESPONSIVE ═══════════════ */
+        @media (max-width: 760px) {
+            .newspaper { outline: none; }
+            .page { padding: 20px; }
+            .col-2, .col-3, .col-2-1, .col-1-2, .col-3-2 { grid-template-columns: 1fr; }
+            .scoreboard { grid-template-columns: 1fr; }
+            .col-rule { border-left: none; padding-left: 0; border-top: 1px solid #b0a080; padding-top: 20px; margin-top: 4px; }
+            .paper-name { font-size: 2em; letter-spacing: 1px; }
+            .nav-tab { padding: 8px 10px; font-size: 0.72em; }
+        }
+    </style>
 </head>
 <body>
+<div class="newspaper">
+<div class="inner">
 
+<!-- ══════════════════════════════════════════════════════════ -->
 <!-- MASTHEAD -->
-<header class="masthead">
-  <div class="masthead-top">
-    <span>Est. 2008</span>
-    <span>18 Seasons · 12 Franchises</span>
-    <span>2026 Season</span>
-  </div>
-  <div class="masthead-main">
-    <span class="gazette-label">Official Publication of</span>
-    <h1>The Longball <span>Gazette</span></h1>
-    <p class="masthead-sub">Your home for league history, standings, scores &amp; more</p>
-  </div>
-</header>
-<div class="gold-rule"></div>
-
-<div class="main">
-
-  <!-- PUBLICATIONS -->
-  <div class="section-rule"><span>2026 Publications</span></div>
-  <div class="editions-grid">
-
-    <!-- PRESEASON HISTORY EDITION — LIVE -->
-    <a href="longball2026_preseason.html" class="edition-card">
-      <div class="card-banner">
-        <span class="card-year">2026</span>
-        <span class="card-tag">Preseason Edition</span>
-        <div class="card-title">History &amp; Preview</div>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">Complete franchise histories, championship roll of honor, all-time standings, and spring training photos for all 14 franchises through 2025.</p>
-        <div class="card-meta">
-          <span class="card-date">March 2026</span>
-          <span class="card-cta">Read now</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- OPENING DAY EDITION — LIVE -->
-    <a href="longball_gazette_opening_day.html" class="edition-card">
-      <div class="card-banner">
-        <span class="card-year">2026</span>
-        <span class="card-tag">Opening Day Edition</span>
-        <div class="card-title">Opening Day</div>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">The 2026 LONGBALL season is officially underway. Opening Day coverage, storylines, and everything you need to know heading into the new year.</p>
-        <div class="card-meta">
-          <span class="card-date">March 2026</span>
-          <span class="card-cta">Read now</span>
-        </div>
-      </div>
-    </a>
-
-    <!-- WEEK 1 — COMING SOON -->
-    <div class="edition-card coming-soon">
-      <div class="card-banner">
-        <span class="card-year">WK1</span>
-        <span class="card-tag">Week 1 Results</span>
-        <div class="card-title">Scores &amp; Standings</div>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">Week 1 matchup results, standings update, and early season storylines.</p>
-        <div class="card-meta">
-          <span class="card-date">Coming soon</span>
-          <span class="card-cta locked">Not yet published</span>
-        </div>
-      </div>
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Vol. 1, No. 3 &nbsp;|&nbsp; Week 1 Extended Edition</span>
+        <span>Sunday, March 29, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
     </div>
-
-    <!-- DRAFT RESULTS — COMING SOON -->
-    <div class="edition-card coming-soon">
-      <div class="card-banner">
-        <span class="card-year">DFT</span>
-        <span class="card-tag">2026 Draft</span>
-        <div class="card-title">Draft Results</div>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">Full draft board, team grades, and breakdown of every pick from the 2026 LONGBALL draft.</p>
-        <div class="card-meta">
-          <span class="card-date">Coming soon</span>
-          <span class="card-cta locked">Not yet published</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- LEAGUE STATS STRIP -->
-  <div class="info-strip">
-    <div class="info-stat">
-      <div class="info-number">18</div>
-      <div class="info-label">Seasons</div>
-    </div>
-    <div class="info-stat">
-      <div class="info-number">12</div>
-      <div class="info-label">Active Teams</div>
-    </div>
-    <div class="info-stat">
-      <div class="info-number">7</div>
-      <div class="info-label">Champions</div>
-    </div>
-    <div class="info-stat">
-      <div class="info-number">14</div>
-      <div class="info-label">Franchises</div>
-    </div>
-    <div class="info-stat">
-      <div class="info-number">5</div>
-      <div class="info-label">Desert Rats Titles</div>
-    </div>
-  </div>
-
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"Spring is Over. The Points Are Real." &nbsp;·&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
 </div>
 
-<footer>
-  <strong>The Longball Gazette</strong> &nbsp;·&nbsp; Est. 2008 &nbsp;·&nbsp; 18 Seasons of LONGBALL Fantasy Baseball
-</footer>
+<!-- TICKER -->
+<div class="ticker-wrap">
+    <div class="ticker-inner">
+        <span>🔥 SIDD FINCH leads all teams with 287.33 pts through 5 days</span>
+        <span class="sep">◆</span>
+        <span>💰 GOLDY GOLDY GONE first to 200 — sitting at 260 pts</span>
+        <span class="sep">◆</span>
+        <span>🐀 DESERT RATS make 20+ FA moves in opening week</span>
+        <span class="sep">◆</span>
+        <span>☠️ MIDLAND RED WEASEL DOGS post sub-zero day, sit at 91 pts</span>
+        <span class="sep">◆</span>
+        <span>🎯 Cristopher Sanchez leads all pitchers — 35.5 pts for BANK of Texas</span>
+        <span class="sep">◆</span>
+        <span>⚡ Sidd Finch averaging 2 Ks per inning — league record pace</span>
+        <span class="sep">◆</span>
+        <span>📊 Emerson Hancock & Randy Vasquez — top FA pitchers still unclaimed</span>
+        <span class="sep">◆</span>
+        <span>🔥 SIDD FINCH leads all teams with 287.33 pts through 5 days</span>
+        <span class="sep">◆</span>
+        <span>💰 GOLDY GOLDY GONE first to 200 — sitting at 260 pts</span>
+        <span class="sep">◆</span>
+        <span>🐀 DESERT RATS make 20+ FA moves in opening week</span>
+        <span class="sep">◆</span>
+        <span>☠️ MIDLAND RED WEASEL DOGS post sub-zero day, sit at 91 pts</span>
+        <span class="sep">◆</span>
+        <span>🎯 Cristopher Sanchez leads all pitchers — 35.5 pts for BANK of Texas</span>
+        <span class="sep">◆</span>
+        <span>⚡ Sidd Finch averaging 2 Ks per inning — league record pace</span>
+        <span class="sep">◆</span>
+        <span>📊 Emerson Hancock & Randy Vasquez — top FA pitchers still unclaimed</span>
+        <span class="sep">◆</span>
+    </div>
+</div>
 
+<!-- NAVIGATION -->
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('scores')">Scores &amp; Recaps</div>
+    <div class="nav-tab" onclick="showPage('players')">Top Players</div>
+    <div class="nav-tab" onclick="showPage('rankings')">Power Rankings</div>
+    <div class="nav-tab" onclick="showPage('fa')">FA Activity</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- PAGE 1: FRONT PAGE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="page active" id="front">
+
+    <div class="section-label">Opening Week — Midpoint Report</div>
+
+    <div class="col-2-1">
+        <div>
+            <div class="headline-xl">FINCH FLIES; RATS SCRAMBLE; MIDLAND HITS THE FLOOR</div>
+            <div class="deck">The biggest shock of Opening Week isn't who's winning — it's who's winning it. Sidd Finch, last in preseason keeper rankings, leads the entire league through five days of baseball.</div>
+
+            <div class="byline">By the Longball Gazette Wire Staff</div>
+            <div class="dateline">League Headquarters — Sunday, March 29, 2026</div>
+
+            <p class="body">Nobody picked Sidd Finch. Not in the keeper rankings, not in the preseason projections, not in the commissioner's own private predictions. The team that entered 2026 with an unranked Nolan McLean occupying a roster spot reserved for top-two picks now sits atop the entire MLBLONGBALL league through the first five days of the season with a staggering 287.33 points — the highest total in the league and a lead that has left the field in collective disbelief.</p>
+
+            <p class="body">Meanwhile, the team that was supposed to be running away with everything — the Desert Rats, armed with the Shohei Ohtani–Kyle Tucker keeper tandem that the preseason press called "the most dangerous duo in league history" — is sitting in fifth place, having executed more roster transactions in five days than some teams make in a month.</p>
+
+            <p class="body">This is Week 1 of 2026. The projections have been shredded. The spring training theories have met live baseball. And the Longball Gazette is here to tell you exactly what happened.</p>
+
+            <hr class="rule-h">
+
+            <div class="headline-md">Two Teams Cross 200 First</div>
+            <p class="body-sm">The race to 200 points is a reliable early barometer of roster strength, and this year it produced an unlikely pair of leaders. Goldy Goldy Gone cleared 200 first, riding Tarik Skubal's dominant start and a balanced attack anchored by catcher Shea Langeliers. But it was Sidd Finch who didn't just cross 200 — they blew past it and kept going, posting 287.33 while the rest of the league watched in stunned silence.</p>
+
+            <p class="body-sm">The Finch pitching staff has been the story of the week. Two strikeouts per inning pitched. Seventy strikeouts in thirty-five innings of work. In a scoring system that rewards Ks at 1.5 points each, that kind of dominance adds up with terrifying efficiency.</p>
+
+            <hr class="rule-h">
+
+            <div class="headline-md">The Rats Are Restless</div>
+            <p class="body-sm">Commissioner's own Desert Rats have been the league's most active team in the transaction wire, logging over twenty moves since the draft — cycling through relievers, dropping household names, and reshuffling their lineup at a pace that suggests panic, experimentation, or both. The good news: they're still leading the Ithaca Spartans by 43 points in their Week 1 matchup. The bad news: their pitching staff has surrendered enough strikeouts to their batters to partially cancel out the offensive production. Joey Wiemer, not Ohtani or Tucker, is their top scoring hitter this week. That was not in the brochure.</p>
+        </div>
+
+        <div>
+            <!-- SCORES SIDEBAR -->
+            <div class="info-box">
+                <div class="info-box-title">Week 1 Scores — Through Day 5</div>
+                <table class="data">
+                    <tr>
+                        <th colspan="3">Matchup Results (Partial)</th>
+                    </tr>
+                    <tr class="highlight">
+                        <td>Sidd Finch <span class="score-badge">W</span></td>
+                        <td class="num">287.33</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sons of Pitches</td>
+                        <td class="num">147.17</td>
+                        <td class="num" style="color:var(--muted); font-size:0.8em;">–140</td>
+                    </tr>
+                    <tr><td colspan="3" style="padding:2px;"></td></tr>
+                    <tr class="highlight">
+                        <td>Goldy Goldy Gone <span class="score-badge">W</span></td>
+                        <td class="num">260</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Tempe Scorpions</td>
+                        <td class="num">165.5</td>
+                        <td class="num" style="color:var(--muted); font-size:0.8em;">–94.5</td>
+                    </tr>
+                    <tr><td colspan="3" style="padding:2px;"></td></tr>
+                    <tr class="highlight">
+                        <td>BANK of Texas <span class="score-badge">W</span></td>
+                        <td class="num">206.5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Troutdale Cascades</td>
+                        <td class="num">194.17</td>
+                        <td class="num" style="color:var(--muted); font-size:0.8em;">–12.3</td>
+                    </tr>
+                    <tr><td colspan="3" style="padding:2px;"></td></tr>
+                    <tr class="highlight">
+                        <td>Desert Rats <span class="score-badge">W</span></td>
+                        <td class="num">194</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Ithaca Spartans</td>
+                        <td class="num">150.67</td>
+                        <td class="num" style="color:var(--muted); font-size:0.8em;">–43.3</td>
+                    </tr>
+                    <tr><td colspan="3" style="padding:2px;"></td></tr>
+                    <tr class="highlight">
+                        <td>Newberry Indians <span class="score-badge">W</span></td>
+                        <td class="num">192</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Troutdale Gales</td>
+                        <td class="num">169.83</td>
+                        <td class="num" style="color:var(--muted); font-size:0.8em;">–22.2</td>
+                    </tr>
+                    <tr><td colspan="3" style="padding:2px;"></td></tr>
+                    <tr class="highlight">
+                        <td>Houston Gamblers <span class="score-badge">W</span></td>
+                        <td class="num">166.17</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Midland Red Weasel Dogs</td>
+                        <td class="num">91</td>
+                        <td class="num" style="color:var(--muted); font-size:0.8em;">–75.2</td>
+                    </tr>
+                </table>
+                <p style="font-size:0.72em; font-style:italic; color:var(--muted); margin-top:8px; font-family:'Courier Prime',monospace;">* Partial scores through Day 5. 7 days remaining in extended Week 1 (through Apr 5).</p>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-box-title">⚠ Watch List</div>
+                <p style="font-size:0.83em;">Two elite FA starters — <strong>Emerson Hancock</strong> (34 pts) and <strong>Randy Vasquez</strong> (31.5 pts) — are still unclaimed. The first team to pull the trigger wins this week's waiver wire.</p>
+            </div>
+
+            <div class="gold-box">
+                <div style="font-family:'Oswald',sans-serif; font-size:0.8em; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px;">First to 200 Club</div>
+                <p style="font-size:0.85em;"><strong>Goldy Goldy Gone</strong> — crossed 200 first<br>
+                <strong>Sidd Finch</strong> — blew past 200 and never looked back<br>
+                Everyone else: still knocking.</p>
+            </div>
+
+            <div class="info-box" style="margin-top:0;">
+                <div class="info-box-title">This Week's Matchup Outlook</div>
+                <table class="data">
+                    <tr><th>Matchup</th><th>Status</th></tr>
+                    <tr class="highlight"><td>Goldy vs. Tempe</td><td>LOCK (Goldy)</td></tr>
+                    <tr class="highlight"><td>Finch vs. Sons</td><td>LOCK (Finch)</td></tr>
+                    <tr><td>Desert Rats vs. Ithaca</td><td>Rats favored</td></tr>
+                    <tr><td>Houston vs. Midland</td><td>Gamblers favored</td></tr>
+                    <tr><td style="color:var(--red);font-weight:700;">BANK vs. Cascades</td><td style="color:var(--red);">TOSS-UP</td></tr>
+                    <tr><td style="color:var(--red);font-weight:700;">Newberry vs. Gales</td><td style="color:var(--red);">TOSS-UP</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <p>Scores &amp; Recaps → &nbsp;|&nbsp; Top Players → &nbsp;|&nbsp; Power Rankings → &nbsp;|&nbsp; FA Activity → &nbsp;|&nbsp; The Columnists →</p>
+        <p style="margin-top:6px;">The Longball Gazette is the official publication of MLBLONGBALL League, Est. 2008. For entertainment purposes.</p>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- PAGE 2: SCORES & RECAPS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="page" id="scores">
+
+    <div class="section-label">Week 1 Matchup Recaps — Day 5 of 12</div>
+    <div class="headline-lg" style="margin-bottom:4px;">From the Press Box</div>
+    <div class="deck">All six matchups, inside and out. Seven days remain in this extended opening week — every score is live, every lead is vulnerable.</div>
+    <hr class="rule-h-thick">
+
+    <!-- RECAP 1: Sidd Finch -->
+    <div class="recap-card">
+        <div class="recap-header">
+            <div class="recap-team away">
+                <div class="recap-team-name">Sons of Pitches &nbsp;·&nbsp; AWAY</div>
+                <div class="recap-score">147.17</div>
+            </div>
+            <div class="recap-vs">vs.</div>
+            <div class="recap-team">
+                <div class="recap-team-name">Sidd Finch &nbsp;·&nbsp; HOME</div>
+                <div class="recap-score leading">287.33</div>
+            </div>
+        </div>
+        <div class="recap-status">Sidd Finch leads by 140.16 pts &nbsp;|&nbsp; 7 days remaining</div>
+        <div class="recap-body">
+            <p>Named after the legendary pitching prospect who allegedly threw 168 miles per hour for a Sports Illustrated prank, the Sidd Finch squad is playing like a myth come to life. They hold the highest score in the entire MLBLONGBALL league at 287.33 and have built the largest lead of any matchup — a jaw-dropping 140-point advantage over the Sons of Pitches that is, for all practical purposes, insurmountable.</p>
+            <p>The Sons of Pitches are actually playing average ball. They're not embarrassing themselves. They simply ran into a buzzsaw. Sidd Finch's pitching staff is operating at a level this league has not seen in recent memory.</p>
+            <div class="recap-stat">
+                <strong>ANOMALY ALERT:</strong> Sidd Finch has recorded 70 strikeouts in just 35 innings pitched — exactly 2.0 strikeouts per inning. At 1.5 points per K, that's 105 points from strikeouts alone. At this pace, they are on track to exceed 700 points for the full extended week.
+            </div>
+        </div>
+    </div>
+
+    <!-- RECAP 2: Goldy -->
+    <div class="recap-card">
+        <div class="recap-header">
+            <div class="recap-team away">
+                <div class="recap-team-name">Goldy Goldy Gone &nbsp;·&nbsp; AWAY</div>
+                <div class="recap-score leading">260</div>
+            </div>
+            <div class="recap-vs">vs.</div>
+            <div class="recap-team">
+                <div class="recap-team-name">Tempe Scorpions &nbsp;·&nbsp; HOME</div>
+                <div class="recap-score">165.5</div>
+            </div>
+        </div>
+        <div class="recap-status">Goldy Goldy Gone leads by 94.5 pts &nbsp;|&nbsp; 7 days remaining</div>
+        <div class="recap-body">
+            <p>In the most lopsided matchup of the week, Goldy Goldy Gone has been nothing short of demoralizing. A staggering 80-point single day sits on their ledger, balanced across a roster that is clearly translating its draft into production. Tarik Skubal is doing what Tarik Skubal does. Shea Langeliers is the week's third-highest scoring hitter. The system is working.</p>
+            <p>Tempe Scorpions need a miracle — and probably several doubleheaders worth of games — to close a 94.5-point gap in seven days. The Scorpions are not playing poorly, but Goldy's floor is too high and their ceiling is nowhere near reached.</p>
+            <div class="recap-stat">
+                <strong>STANDOUT STAT:</strong> Goldy Goldy Gone is averaging 21.6 points per day through 5 days. At that rate, they are on pace to finish the full 12-day week with over 430 points — a number that would be one of the highest extended-week totals in league history.
+            </div>
+        </div>
+    </div>
+
+    <!-- RECAP 3: BANK vs Cascades -->
+    <div class="recap-card">
+        <div class="recap-header">
+            <div class="recap-team away">
+                <div class="recap-team-name">Troutdale Cascades &nbsp;·&nbsp; AWAY</div>
+                <div class="recap-score">194.17</div>
+            </div>
+            <div class="recap-vs">vs.</div>
+            <div class="recap-team">
+                <div class="recap-team-name">The BANK of Texas &nbsp;·&nbsp; HOME</div>
+                <div class="recap-score leading">206.5</div>
+            </div>
+        </div>
+        <div class="recap-status">BANK of Texas leads by 12.33 pts &nbsp;·&nbsp; TOSS-UP &nbsp;|&nbsp; 7 days remaining</div>
+        <div class="recap-body">
+            <p>This is a blink-and-you'll-miss-it game. The BANK of Texas built a commanding early lead behind Cristopher Sanchez's dominant 35.5-point outing — the best pitching performance by any team in Week 1. But the BANK nearly went bankrupt late in the period, posting a dismal 31-point day that allowed the Cascades to breathe.</p>
+            <p>Troutdale Cascades are smelling blood. Coming off a 65-point day that brought them within striking distance, they arrive at the midpoint trailing by only 12.33 — a gap that could evaporate in a single strong afternoon. The Cascades are the boom-or-bust team in this matchup; one more 60-plus point day and they take the lead. The BANK has a lower ceiling but a more reliable floor.</p>
+            <div class="recap-stat">
+                <strong>THE PRESSURE POINT:</strong> The BANK dropped Jameson Taillon and added relievers aggressively. If their pitching depth holds, the floor stays intact. If not, the Cascades' consistency could be the difference maker. Call this one a true toss-up heading into the second half.
+            </div>
+        </div>
+    </div>
+
+    <!-- RECAP 4: Desert Rats vs Ithaca -->
+    <div class="recap-card">
+        <div class="recap-header">
+            <div class="recap-team away">
+                <div class="recap-team-name">Ithaca Spartans &nbsp;·&nbsp; AWAY</div>
+                <div class="recap-score">150.67</div>
+            </div>
+            <div class="recap-vs">vs.</div>
+            <div class="recap-team">
+                <div class="recap-team-name">Desert Rats &nbsp;·&nbsp; HOME</div>
+                <div class="recap-score leading">194</div>
+            </div>
+        </div>
+        <div class="recap-status">Desert Rats lead by 43.33 pts &nbsp;|&nbsp; 7 days remaining</div>
+        <div class="recap-body">
+            <p>The Desert Rats are in control, largely thanks to a monster 64.33-point day in the middle of the week. But "in control" is a relative term for a team that has executed over twenty transactions since the draft. The Rats are winning through volume and chaos — not the clean, keeper-powered dominance everyone anticipated.</p>
+            <p>The Ithaca Spartans, holders of the league's second-best keeper pair in Aaron Judge and Garrett Crochet, have shown burst potential — nearly 40 points in a single day — but are fighting uphill. Crochet delivered 31.5 points to rank third among all pitchers in Week 1, but the Spartans' offense hasn't provided enough consistent support.</p>
+            <div class="recap-stat">
+                <strong>KEEP AN EYE ON:</strong> The Rats' strikeout volume. They have already surrendered 68 strikeouts across just 37 innings of pitching — a pace that is generating serious negative points in this scoring system. That's the hidden wound in an otherwise winning record.
+            </div>
+        </div>
+    </div>
+
+    <!-- RECAP 5: Newberry vs Gales -->
+    <div class="recap-card">
+        <div class="recap-header">
+            <div class="recap-team away">
+                <div class="recap-team-name">Newberry Indians &nbsp;·&nbsp; AWAY</div>
+                <div class="recap-score leading">192</div>
+            </div>
+            <div class="recap-vs">vs.</div>
+            <div class="recap-team">
+                <div class="recap-team-name">Troutdale Gales &nbsp;·&nbsp; HOME</div>
+                <div class="recap-score">169.83</div>
+            </div>
+        </div>
+        <div class="recap-status">Newberry Indians lead by 22.17 pts &nbsp;·&nbsp; TOSS-UP &nbsp;|&nbsp; 7 days remaining</div>
+        <div class="recap-body">
+            <p>This is the best game on the board. The lead has swapped hands at least twice. The Troutdale Gales had a massive 67.5-point day that briefly put them in the driver's seat — a performance that was fueled, remarkably, by two of the week's top five hitters wearing Gales uniforms. Mike Trout is the week's leading hitter. Brendan Donovan is second. Both play for Troutdale.</p>
+            <p>And yet the Gales are losing. That tells you something is bleeding points elsewhere on that roster. Newberry's depth and pitching wins — eleven wins and saves compared to the Gales' six — have been the deciding factor in a game that has no margin for error heading into the second half.</p>
+            <div class="recap-stat">
+                <strong>THE DIFFERENCE MAKER:</strong> Wins and saves. Newberry Indians have banked 11 W/SVH to the Gales' 6. In a points league where each W/SVH is worth 5 points, that's a 25-point swing that accounts for the entire margin of victory. Pitching depth is quietly deciding this game.
+            </div>
+        </div>
+    </div>
+
+    <!-- RECAP 6: Houston vs Midland -->
+    <div class="recap-card">
+        <div class="recap-header">
+            <div class="recap-team away">
+                <div class="recap-team-name">Houston Gamblers &nbsp;·&nbsp; AWAY</div>
+                <div class="recap-score leading">166.17</div>
+            </div>
+            <div class="recap-vs">vs.</div>
+            <div class="recap-team">
+                <div class="recap-team-name">Midland Red Weasel Dogs &nbsp;·&nbsp; HOME</div>
+                <div class="recap-score">91</div>
+            </div>
+        </div>
+        <div class="recap-status">Houston Gamblers lead by 75.17 pts &nbsp;|&nbsp; 7 days remaining</div>
+        <div class="recap-body">
+            <p>Midland started the week as home favorites. They are currently being outscored by 75 points. The absolute floor fell out for the Red Weasel Dogs during what can only be described as a sub-zero day — they actually lost points, finishing a calendar day at negative 0.83. In a league designed around accumulation, that is a statistical catastrophe.</p>
+            <p>The Houston Gamblers haven't been explosive. Their steady 40-point daily average is quiet, consistent, and more than enough to exploit Midland's pitching meltdown. Jose Ramirez and Chris Sale form a legitimate dark-horse foundation — the Gamblers may be the most dangerous mid-table team in the league heading into Week 2.</p>
+            <div class="recap-stat">
+                <strong>THE OUCH FACTOR:</strong> Midland's pitching staff has already surrendered 9 home runs — the highest in the league for this scoring period. At –2 points per earned run and the downstream carnage of HR allowances, this is a roster that needs significant surgical repair before next week.
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <p>Week 1 runs through Sunday, April 5, 2026 — 7 days of baseball remain.</p>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- PAGE 3: TOP PLAYERS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="page" id="players">
+
+    <div class="section-label">Through Day 5 — Week 1</div>
+    <div class="headline-lg" style="margin-bottom:4px;">The Leaderboard</div>
+    <div class="deck">Top performers across all positions. Fantasy team names used throughout — no MLB team affiliations in this building.</div>
+    <hr class="rule-h-thick">
+
+    <div class="col-2">
+        <div>
+            <div class="info-box">
+                <div class="info-box-title">⚾ Top 5 Hitters — Week 1</div>
+                <table class="data">
+                    <tr>
+                        <th class="rk">Rk</th>
+                        <th>Player</th>
+                        <th>Pos</th>
+                        <th>Fantasy Team</th>
+                        <th class="num">Pts</th>
+                    </tr>
+                    <tr class="highlight">
+                        <td class="rk">1</td>
+                        <td><strong>Mike Trout</strong></td>
+                        <td>OF/UT</td>
+                        <td>Troutdale Gales</td>
+                        <td class="num">30</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">2</td>
+                        <td><strong>Brendan Donovan</strong></td>
+                        <td>2B/OF</td>
+                        <td>Troutdale Gales</td>
+                        <td class="num">29.5</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">3</td>
+                        <td><strong>Shea Langeliers</strong></td>
+                        <td>C</td>
+                        <td>Goldy Goldy Gone</td>
+                        <td class="num">28.5</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">4</td>
+                        <td><strong>Brandon Lowe</strong></td>
+                        <td>2B</td>
+                        <td>Houston Gamblers</td>
+                        <td class="num">28.5</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">5</td>
+                        <td><strong>Joey Wiemer</strong></td>
+                        <td>OF</td>
+                        <td>Desert Rats</td>
+                        <td class="num">28.5</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-box-title">🚨 The Gales Paradox</div>
+                <p style="font-size:0.85em;">The Troutdale Gales have the top TWO hitters in the entire league — Mike Trout (#1) and Brendan Donovan (#2) — and they are <em>losing</em> to the Newberry Indians. Something is quietly bleeding points elsewhere on that roster. Wins and saves are the likely culprit.</p>
+            </div>
+
+            <div class="alert-box" style="border-left-color: var(--gold); background:#fffbef;">
+                <div class="alert-box-title" style="color:var(--gold);">⭐ Wiemer Watch</div>
+                <p style="font-size:0.85em;">Joey Wiemer is the Desert Rats' top hitter through 5 days — not Shohei Ohtani, not Kyle Tucker. Wiemer is a $1 waiver claim. The Rats' two blockbuster keepers have not yet appeared on any leaderboard this week. That changes — or it doesn't, and the questions get louder.</p>
+            </div>
+        </div>
+
+        <div class="col-rule">
+            <div class="info-box">
+                <div class="info-box-title">⚡ Top 5 Pitchers — Week 1</div>
+                <table class="data">
+                    <tr>
+                        <th class="rk">Rk</th>
+                        <th>Player</th>
+                        <th>Fantasy Team</th>
+                        <th class="num">Pts</th>
+                    </tr>
+                    <tr class="highlight">
+                        <td class="rk">1</td>
+                        <td><strong>Cristopher Sanchez</strong></td>
+                        <td>BANK of Texas</td>
+                        <td class="num">35.5</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">2</td>
+                        <td><strong>Emerson Hancock</strong> ⚠️</td>
+                        <td><em>FREE AGENT</em></td>
+                        <td class="num">34</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">3</td>
+                        <td><strong>Garrett Crochet</strong></td>
+                        <td>Ithaca Spartans</td>
+                        <td class="num">31.5</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">4</td>
+                        <td><strong>Randy Vasquez</strong> ⚠️</td>
+                        <td><em>FREE AGENT</em></td>
+                        <td class="num">31.5</td>
+                    </tr>
+                    <tr>
+                        <td class="rk">5</td>
+                        <td><strong>Tarik Skubal</strong></td>
+                        <td>Goldy Goldy Gone</td>
+                        <td class="num">29.5</td>
+                    </tr>
+                </table>
+                <p style="font-size:0.72em; font-style:italic; color:var(--muted); margin-top:8px; font-family:'Courier Prime',monospace;">⚠️ = Still available as free agent as of print time.</p>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-box-title">🆓 FA Fire Sale — Act Now</div>
+                <p style="font-size:0.85em;"><strong>Emerson Hancock</strong> (34 pts, #2 overall pitcher) and <strong>Randy Vasquez</strong> (31.5 pts, #4) are both unclaimed free agents as of Sunday morning. The two best available pitchers in the league are sitting on the wire. The first team to claim them wins this week's transaction wire by default.</p>
+            </div>
+
+            <div class="info-box">
+                <div class="info-box-title">Pitching Story Lines</div>
+                <p style="font-size:0.85em; margin-bottom:8px;"><strong>Sanchez for BANK:</strong> The top pitching performance of the week powers a team that's in the tightest matchup in the league. He may be the difference between a win and a loss against the Cascades.</p>
+                <p style="font-size:0.85em; margin-bottom:8px;"><strong>Crochet for Ithaca:</strong> Delivering as expected. The problem isn't the ace — it's everyone behind him. The Spartans need offense, not more pitching analysis.</p>
+                <p style="font-size:0.85em;"><strong>Skubal for Goldy:</strong> The league's consensus top preseason starter is doing his job. Paired with Langeliers' production at catcher, Goldy's one-two punch is exactly as advertised.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <p>All statistics through Day 5 of Week 1. Next full update following Day 7.</p>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- PAGE 4: POWER RANKINGS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="page" id="rankings">
+
+    <div class="section-label">Early Power Rankings — Through Day 5</div>
+    <div class="headline-lg" style="margin-bottom:4px;">The Standings As They Stand</div>
+    <div class="deck">Based on fantasy points scored through five days of competition. All W-L records are pending Week 1 completion. These rankings reflect current production — not preseason projections.</div>
+    <hr class="rule-h-thick">
+
+    <div class="col-2">
+        <div>
+            <div class="pr-item">
+                <div class="pr-rank top3">1</div>
+                <div>
+                    <div class="pr-team">Sidd Finch <span class="pr-arrow-up">▲ SHOCK LEADER</span></div>
+                    <div class="pr-pts">287.33 pts &nbsp;|&nbsp; Highest score in the league</div>
+                    <div class="pr-note">The preseason's most ridiculed roster is the early-season leader. McLean or Witt — somebody on this team found a gear nobody knew existed. Two strikeouts per inning from the pitching staff. An absolute stunner.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank top3">2</div>
+                <div>
+                    <div class="pr-team">Goldy Goldy Gone</div>
+                    <div class="pr-pts">260 pts &nbsp;|&nbsp; First team to 200</div>
+                    <div class="pr-note">Skubal + Langeliers is a legitimate 1-2 punch. Averaging 21.6 pts/day with a 94.5-point lead. Unless something breaks, this is a Week 1 win. The question is how they sustain it over 26 more weeks.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank top3">3</div>
+                <div>
+                    <div class="pr-team">The BANK of Texas</div>
+                    <div class="pr-pts">206.5 pts &nbsp;|&nbsp; Clears 200, holds slim lead</div>
+                    <div class="pr-note">Sanchez was filthy. The Acuña-Soto lineup is starting to produce. But they went cold late and now face a hard-charging Cascades team in the tightest game of Week 1. Floor is high; ceiling needs work.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank">4</div>
+                <div>
+                    <div class="pr-team">Troutdale Cascades</div>
+                    <div class="pr-pts">194.17 pts &nbsp;|&nbsp; Surging, 12 pts back</div>
+                    <div class="pr-note">Coming off a 65-point day and smelling blood against the BANK. Their Chase Meidroth pickup shows they're thinking ahead. If they get one more big day, they're in first in their matchup and creeping toward top-3 overall.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank">5</div>
+                <div>
+                    <div class="pr-team">Desert Rats <span class="pr-arrow-dn">▼ PRESEASON #1</span></div>
+                    <div class="pr-pts">194 pts &nbsp;|&nbsp; Winning, but not dominating</div>
+                    <div class="pr-note">Fifth place with Ohtani and Tucker. Fifth. The commissioner's roster has been rebuilt piece by piece in real time, 20+ moves deep. Still leading their matchup, but the distance between preseason expectations and current reality is a canyon.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank">6</div>
+                <div>
+                    <div class="pr-team">Newberry Indians</div>
+                    <div class="pr-pts">192 pts &nbsp;|&nbsp; Leading tightest matchup</div>
+                    <div class="pr-note">Roster depth is the real story. They're winning a matchup against a Gales team with the top two hitters in the league — purely on pitching wins and saves. Shrewd as advertised. Max Meyer ($1 Vickrey win) could be a steal.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-rule">
+            <div class="pr-item">
+                <div class="pr-rank">7</div>
+                <div>
+                    <div class="pr-team">Troutdale Gales</div>
+                    <div class="pr-pts">169.83 pts &nbsp;|&nbsp; Top hitters, losing anyway</div>
+                    <div class="pr-note">Mike Trout #1. Brendan Donovan #2. Losing. The Gales are a riddle wrapped in a lineup card. Elly De La Cruz and Pete Alonso need to show up in the second half or this matchup slips away entirely.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank">8</div>
+                <div>
+                    <div class="pr-team">Houston Gamblers</div>
+                    <div class="pr-pts">166.17 pts &nbsp;|&nbsp; Quietly winning</div>
+                    <div class="pr-note">Dark horse alert. Ramirez and Sale are a legitimate foundation. Brandon Lowe (#4 hitter this week) is producing. The Gamblers are grinding out a comfortable lead against Midland and could be the sneakiest contender in the league.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank">9</div>
+                <div>
+                    <div class="pr-team">Tempe Scorpions</div>
+                    <div class="pr-pts">165.5 pts &nbsp;|&nbsp; Fine score, wrong matchup</div>
+                    <div class="pr-note">165 points is not a bad week. It's just that they're playing Goldy Goldy Gone, who is having one of the best weeks in recent league memory. Scorpions may win more matchups than their ranking suggests — this was simply bad scheduling.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank">10</div>
+                <div>
+                    <div class="pr-team">Ithaca Spartans <span class="pr-arrow-dn">▼ UNDERPERFORMING</span></div>
+                    <div class="pr-pts">150.67 pts &nbsp;|&nbsp; Judge + Crochet = 10th place?</div>
+                    <div class="pr-note">Aaron Judge and Garrett Crochet. Tenth place. Crochet is doing his job (31.5 pts). Judge is somewhere. Bassitt and Bibee were added this week in desperation SP moves. The offense — outside of Crochet's K production — is a problem.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank">11</div>
+                <div>
+                    <div class="pr-team">Sons of Pitches</div>
+                    <div class="pr-pts">147.17 pts &nbsp;|&nbsp; Outmatched, not outclassed</div>
+                    <div class="pr-note">Playing average ball and running into the hottest team in the league. Rhys Hoskins and Nathan Church were their notable additions this week. The Pitches need to find a consistent hitter — they have no one in the top-10 leaderboard.</div>
+                </div>
+            </div>
+
+            <div class="pr-item">
+                <div class="pr-rank" style="color:var(--red); -webkit-text-stroke: 1px var(--red);">12</div>
+                <div>
+                    <div class="pr-team">Midland Red Weasel Dogs <span class="pr-arrow-dn">▼ EMERGENCY</span></div>
+                    <div class="pr-pts">91 pts &nbsp;|&nbsp; Including a sub-zero day</div>
+                    <div class="pr-note">Nine home runs surrendered. A day where the team scored negative points. Ninety-one total through five days. Grayson Rodriguez and Carlos Rodon are on the roster — this is not a talent problem, it is an execution catastrophe. Week 2 cannot come fast enough.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <p>Rankings based on points scored through Day 5. Final Week 1 standings posted following April 5.</p>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- PAGE 5: FA ACTIVITY -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="page" id="fa">
+
+    <div class="section-label">Free Agent Activity — Since Draft Day</div>
+    <div class="headline-lg" style="margin-bottom:4px;">The Transaction Wire Report</div>
+    <div class="deck">Who's been busy, who's been patient, and who has been rebuilding their entire roster in real time. All moves since the draft, organized by team.</div>
+    <hr class="rule-h-thick">
+
+    <div class="col-2">
+        <div>
+            <!-- Desert Rats -->
+            <div class="fa-team-block">
+                <div class="fa-team-name">🐀 Desert Rats — League Leader in Moves (20+)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Bailey Ober</span> <span class="pos">SP</span> &nbsp;·&nbsp; dropped Alec Bohm (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Joey Wiemer</span> <span class="pos">OF</span> &nbsp;·&nbsp; dropped Wyatt Langford (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Kyle Finnegan</span> <span class="pos">RP</span> &nbsp;·&nbsp; dropped Matt Brash (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Aaron Ashby</span> <span class="pos">RP</span> &nbsp;·&nbsp; dropped Paul Sewald (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Joey Ortiz</span> <span class="pos">SS</span> &nbsp;·&nbsp; dropped CJ Abrams (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Francisco Alvarez</span> <span class="pos">C</span> &nbsp;·&nbsp; dropped Ivan Herrera (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Luke Raley</span> <span class="pos">1B/OF</span> &nbsp;·&nbsp; dropped Jared Triolo (Sat Mar 28)</div>
+                <div class="fa-move" style="color:var(--muted); font-style:italic; font-size:0.78em; padding-left:10px;">+ 13 additional moves since Mar 22 including Jared Jones, Jordan Westburg, Justin Steele, Paul Sewald, Tanner Scott, Jordan Romano, Jeffrey Springs, Luis Severino, and more.</div>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-box-title">🚨 Commissioner's Corner</div>
+                <p style="font-size:0.83em;">The Desert Rats have claimed and dropped <strong>Bailey Ober three separate times</strong>. They dropped Tanner Bibee to add Alec Bohm, then dropped Alec Bohm to add someone else. They are currently operating in a state of productive chaos. The good news: they're still winning. The concerning news: the roster they're playing with today shares almost no DNA with the one they drafted.</p>
+            </div>
+
+            <!-- Newberry Indians -->
+            <div class="fa-team-block">
+                <div class="fa-team-name">🏹 Newberry Indians — Shrewd as Advertised</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Taj Bradley</span> <span class="pos">SP</span> &nbsp;·&nbsp; dropped Brandon Sproat (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Tim Hill</span> <span class="pos">RP</span> &nbsp;·&nbsp; dropped Jack Dreyer (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Wilyer Abreu</span> <span class="pos">OF</span> &nbsp;·&nbsp; dropped Joey Ortiz (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Max Meyer</span> <span class="pos">SP</span> &nbsp;·&nbsp; <strong>Won Vickrey: $125 bid / $1 paid</strong> (Fri Mar 27)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Alec Bohm</span> <span class="pos">1B/3B</span> &nbsp;·&nbsp; <strong>Won Vickrey: $15 bid / $1 paid</strong> (Fri Mar 20)</div>
+                <div class="fa-move" style="font-size:0.8em; padding:4px 10px; font-style:italic; color:var(--muted);">Also moved through: Ryan Weathers, Jonathan India, Heliot Ramos, Masyn Winn, TJ Friedl, Brandon Sproat, Cody Ponce, Matthew Liberatore</div>
+            </div>
+
+            <div class="gold-box">
+                <div style="font-family:'Oswald',sans-serif; font-size:0.8em; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:6px;">Vickrey Auction Winners — Since Draft</div>
+                <table class="data" style="font-size:0.8em;">
+                    <tr><th>Player</th><th>Team</th><th>Bid</th><th>Paid</th></tr>
+                    <tr><td>Max Meyer SP</td><td>Newberry Indians</td><td>$125</td><td>$1</td></tr>
+                    <tr><td>Alec Bohm 3B</td><td>Newberry Indians</td><td>$15</td><td>$1</td></tr>
+                    <tr><td>Lucas Erceg RP</td><td>Goldy Goldy Gone</td><td>$51</td><td>$1</td></tr>
+                    <tr><td>Michael Busch 1B</td><td>Midland Red Weasel Dogs</td><td>$502</td><td>$2</td></tr>
+                </table>
+                <p style="font-size:0.72em; font-style:italic; color:var(--muted); margin-top:6px;">The Vickrey format continues to produce extraordinary value for prepared bidders.</p>
+            </div>
+        </div>
+
+        <div class="col-rule">
+            <!-- Sidd Finch -->
+            <div class="fa-team-block">
+                <div class="fa-team-name">🎯 Sidd Finch — Surgical Upgrades</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Brooks Raley</span> <span class="pos">RP</span> &nbsp;·&nbsp; dropped Alex Vesia (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Shane Bieber</span> <span class="pos">SP</span> (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Spencer Schwellenbach</span> <span class="pos">SP</span> (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Dominic Smith</span> <span class="pos">1B</span> &nbsp;·&nbsp; dropped Kerry Carpenter (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Yoan Moncada</span> <span class="pos">3B</span> &nbsp;·&nbsp; dropped Matt Shaw (Fri Mar 27)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Carson Benge</span> <span class="pos">OF</span> &nbsp;·&nbsp; dropped Dylan Crews (Mar 20)</div>
+                <p style="font-size:0.78em; font-style:italic; color:var(--muted); padding: 4px 10px;">The league leader is still tinkering. Bieber and Schwellenbach added Sunday — more pitching depth for the team that's already striking out two batters per inning.</p>
+            </div>
+
+            <!-- Goldy -->
+            <div class="fa-team-block">
+                <div class="fa-team-name">💛 Goldy Goldy Gone</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Lucas Erceg</span> <span class="pos">RP</span> &nbsp;·&nbsp; <strong>Vickrey: $51/$1</strong> (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Grant Taylor</span> <span class="pos">RP</span> &nbsp;·&nbsp; dropped Adolis Garcia (Sat Mar 28)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Riley O'Brien</span> <span class="pos">RP</span> &nbsp;·&nbsp; dropped Erceg, re-added via auction (Fri-Sun)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Luke Weaver / Garrett Cleavinger</span> <span class="pos">RP</span> (cycle, Mar 25-26)</div>
+            </div>
+
+            <!-- BANK of Texas -->
+            <div class="fa-team-block">
+                <div class="fa-team-name">🏦 BANK of Texas</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Eric Lauer</span> <span class="pos">SP/RP</span> &nbsp;·&nbsp; dropped Spencer Steer (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Erik Sabrowski</span> <span class="pos">RP</span> &nbsp;·&nbsp; dropped Jameson Taillon (Sat Mar 28)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Jake Burger</span> <span class="pos">1B</span> &nbsp;·&nbsp; dropped Shane Drohan (Mar 26)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Dominic Canzone</span> <span class="pos">OF</span> &nbsp;·&nbsp; dropped Luis Gil (Mar 27)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Jake Irvin / Tyler Mahle</span> <span class="pos">SP</span> (Mar 25)</div>
+            </div>
+
+            <!-- Troutdale Cascades -->
+            <div class="fa-team-block">
+                <div class="fa-team-name">🌊 Troutdale Cascades</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Chase Meidroth</span> <span class="pos">2B/SS</span> &nbsp;·&nbsp; dropped Jordan Lawlar (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Didier Fuentes</span> <span class="pos">SP</span> &nbsp;·&nbsp; dropped Carlos Estevez (Sun Mar 29)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Max Muncy</span> <span class="pos">2B/3B</span> (Mar 25, Opening Day)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Braxton Ashcraft</span> <span class="pos">SP/RP</span> (Mar 25)</div>
+                <div class="fa-move"><span class="claim">ADD</span> <span class="player">Jordan Lawlar / Connelly Early</span> <span class="pos">various</span> (pre-season)</div>
+            </div>
+
+            <!-- Quiet Teams -->
+            <div class="fa-team-block">
+                <div class="fa-team-name">😴 Other Teams — Minimal Activity</div>
+                <div class="fa-move"><span class="claim">SOP</span> <span class="player">Rhys Hoskins, Nathan Church</span> &nbsp;·&nbsp; Sons of Pitches added</div>
+                <div class="fa-move"><span class="claim">ITH</span> <span class="player">Tanner Bibee, Chris Bassitt, Jonathan Aranda</span> &nbsp;·&nbsp; Ithaca Spartans</div>
+                <div class="fa-move"><span class="claim">MRW</span> <span class="player">Mike Burrows, Grant Holmes, Will Warren, Grayson Rodriguez</span> &nbsp;·&nbsp; Midland (pre-season moves)</div>
+                <div class="fa-move" style="color:var(--muted); font-style:italic; font-size:0.78em;">Troutdale Gales, Houston Gamblers, Tempe Scorpions — essentially quiet since draft.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <p>Transaction data through Sunday, March 29, 2026 at 5:48 PM MST.</p>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- PAGE 6: COLUMNS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div class="page" id="columns">
+
+    <div class="section-label">Opinion &amp; Commentary</div>
+    <div class="headline-lg" style="margin-bottom:4px;">The Columnists</div>
+    <div class="deck">Three voices. One league. No holds barred.</div>
+    <hr class="rule-h-thick">
+
+    <!-- Joe Falls -->
+    <div class="column-box">
+        <div class="column-box-title">Five Days In</div>
+        <div class="column-box-byline">By Joe Falls &nbsp;·&nbsp; The Longball Gazette</div>
+        <div class="col-2">
+            <div>
+                <p class="body">Nobody told Sidd Finch they were supposed to lose. That's the thing about this league. The teams that were supposed to carry it — the Desert Rats with Ohtani and Tucker, the Ithaca Spartans with Judge and Crochet — they're not embarrassing themselves. But they're not running away with anything either.</p>
+                <p class="body-sm">Sidd Finch is at 287 points. Two strikeouts per inning pitched. If you watched this team during the Free Agent Frenzy, you thought it was over before it started. McLean unranked. Witt carrying the load alone. And now here they are, leading the league by twenty-seven points over Goldy Goldy Gone.</p>
+                <p class="body-sm">I've seen this before. Not in fantasy baseball — in real baseball. The team everyone wrote off finds something in the first week that nobody expected. Sometimes it holds. More often it doesn't. But for right now, Sidd Finch is playing the best baseball in this league and they deserve to be called for it.</p>
+            </div>
+            <div>
+                <p class="body-sm">What I want to know about the Desert Rats is this: twenty-plus transactions in five days. Twenty. That is a lot of decisions. Some of them have worked — Joey Wiemer is their best hitter this week and he was a waiver claim. But some of them haven't, and when you're constantly rearranging the furniture, you lose track of what the room was supposed to look like.</p>
+                <p class="body-sm">Ohtani is on that roster. Tucker is on that roster. One of them ought to be on a leaderboard somewhere. When they show up — and they will — the Rats are going to be very hard to beat. Until then, fifth place with the best keeper pair in league history is a story worth telling.</p>
+                <p class="body-sm">And Midland Red Weasel Dogs at ninety-one points. With a sub-zero day. In the first week of the season. I'll leave that one alone. Some numbers speak for themselves.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="rule-h">
+
+    <!-- Mitch Albom -->
+    <div class="column-box">
+        <div class="column-box-title">The Myth of the Perfect Roster</div>
+        <div class="column-box-byline">By Mitch Albom &nbsp;·&nbsp; The Longball Gazette</div>
+        <div class="col-2">
+            <div>
+                <p class="body">There is a moment in every season — usually early, usually quiet — when the game stops being theoretical and becomes personal. This is that moment for the MLBLONGBALL league. Five days in. Real points on the board. Real decisions already made and already regretted.</p>
+                <p class="body-sm">Consider the Troutdale Gales. They hold the top two hitters in the entire league — Mike Trout leading the way, Brendan Donovan right behind him. They had a 67.5-point day. They are losing. How does that happen? It happens because this game, like all games, is not about any single thing. You cannot win on offense alone. You cannot build something real on one category of excellence while other parts of the roster quietly surrender.</p>
+                <p class="body-sm">There is a lesson in the Gales that applies beyond fantasy baseball. We often focus on what we have that others don't — the star, the advantage, the edge. We forget to look at what we are missing. The Gales have stars. They are missing something else.</p>
+            </div>
+            <div>
+                <p class="body-sm">And then there is Sidd Finch. Named, I am told, after a mythological pitcher. Playing, right now, like one. The beauty of sports — real or fantasy — is that the story does not always follow the expected arc. The unranked team at the top. The heavily favored team in fifth. These are not accidents. They are reminders that preparation matters, but execution matters more.</p>
+                <p class="body-sm">Every manager in this league has spent weeks building something on paper. Now the paper is gone and only the field remains. Some rosters are translating. Some are not. The ones that are tend to share a common quality: they were built not just with talent in mind, but with this specific scoring system in mind.</p>
+                <p class="body-sm">Strikeouts matter here. Wins matter. Blown saves hurt. Errors compound. The managers who understood that going in are at the top of this leaderboard. The ones who are learning it now are scrambling to catch up — twenty transactions deep, still searching for the right combination. The season is long. But five days is already long enough to know something true.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="rule-h">
+
+    <!-- Big Lou -->
+    <div class="column-box">
+        <div class="column-box-title">Big Lou's Corner: I Told You So (Almost)</div>
+        <div class="column-box-byline">By Lou Palmieri, Baseball Lifer &nbsp;·&nbsp; The Longball Gazette</div>
+        <div class="col-2">
+            <div>
+                <p class="body">Alright. I was wrong about one thing. ONE thing. I said the Desert Rats were your 2026 champions before the season started. I stand by the logic. I do NOT stand by the fact that Joey Wiemer — a waiver wire pickup, a WAIVER WIRE PICKUP — is their best hitter through five games while Ohtani and Tucker are apparently taking a spa week somewhere in Scottsdale.</p>
+                <p class="body-sm">But here's what kills me more than the Rats underperforming: SIDD FINCH IS WINNING. The team I wrote off. The team with the unranked keeper. The team that came into this season with a Ferrari engine and a station wagon attached to it. Two hundred and eighty-seven points. TWO HUNDRED AND EIGHTY-SEVEN. That's not a pace. That's an accusation.</p>
+                <p class="body-sm">You know what that pitching staff is doing? Two strikeouts an inning. TWO. In five-point scoring for wins and saves and 1.5 per strikeout, that math adds up to a mugging. The Sons of Pitches didn't lose a game. They lost a debate about whether baseball is fair.</p>
+            </div>
+            <div>
+                <p class="body-sm">Meanwhile, Goldy Goldy Gone is over there averaging twenty-one points a day like they've got a spreadsheet running on autopilot. Skubal is pitching like the ace everybody said he was. Langeliers is hitting like he belongs in the top five. I'm not saying Goldy wins this league. I'm saying right now, today, they look like a real team.</p>
+                <p class="body-sm">Midland Red Weasel Dogs. NINETY-ONE POINTS. And they had a day — AN ENTIRE DAY — where they went minus. MINUS! In a fantasy baseball season! That means their players were so bad their earned runs and strikeouts and double plays cost them more points than their hits and wins produced. That's not a slump. That's a lifestyle.</p>
+                <p class="body-sm">The Cascades are twelve points back against the BANK and they're coming. The Newberry Indians are beating a team with the top two hitters in the league on pure pitching guts. The Houston Gamblers are quietly sitting at eighth in the power rankings and leading their game by seventy-five. This league is a mess and I love every single minute of it. Seven days to go. Don't touch that dial.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <p>The opinions expressed in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office, its commissioner, or anyone with functioning judgment.</p>
+        <p style="margin-top:8px;">The Longball Gazette — Est. 2008 &nbsp;·&nbsp; Week 1, 2026 Edition &nbsp;·&nbsp; Next edition following Week 1 final scores (April 6)</p>
+    </div>
+</div>
+
+</div><!-- /inner -->
+</div><!-- /newspaper -->
+
+<script>
+    function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        event.currentTarget.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
 </body>
 </html>
