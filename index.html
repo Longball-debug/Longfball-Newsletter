@@ -3,46 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Longball Gazette - League Dashboard</title>
+    <title>Longball Gazette | League Dashboard</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #f4f4f4; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 12px; padding: 10px; border: 1px solid #eee; border-radius: 4px; transition: 0.3s; }
-        li:hover { background: #f0f7ff; border-color: #3498db; }
-        a { text-decoration: none; color: #3498db; font-weight: bold; display: block; }
-        .status { font-size: 0.8em; color: #7f8c8d; }
+        :root {
+            --primary: #1a237e;
+            --accent: #3949ab;
+            --bg: #f0f2f5;
+        }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 850px; margin: 40px auto; padding: 20px; background: var(--bg); color: #333; }
+        .card { background: white; padding: 35px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 8px solid var(--primary); }
+        h1 { color: var(--primary); margin-top: 0; font-size: 2.2rem; letter-spacing: -1px; }
+        p.subtitle { color: #666; margin-bottom: 30px; font-style: italic; }
+        #file-list { display: grid; gap: 15px; }
+        .file-link { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 18px; 
+            background: #fff; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            transition: all 0.2s ease;
+        }
+        .file-link:hover { 
+            border-color: var(--accent); 
+            background: #f8f9ff; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(57, 73, 171, 0.1);
+        }
+        .file-name { color: var(--accent); font-weight: bold; font-size: 1.1rem; text-transform: capitalize; }
+        .file-meta { font-size: 0.85rem; color: #888; background: #eee; padding: 4px 10px; border-radius: 20px; }
+        .loading { text-align: center; padding: 40px; color: #999; }
+        .error { color: #d32f2f; background: #ffebee; padding: 20px; border-radius: 8px; border: 1px solid #ffcdd2; }
     </style>
 </head>
 <body>
 
 <div class="card">
-    <h1>Longball Gazette: 2026 Season</h1>
-    <p>Select a report to view league updates and stats:</p>
+    <h1>Longball Gazette</h1>
+    <p class="subtitle">Official updates, power rankings, and statistical deep-dives for the 2026 season.</p>
     
-    <ul>
-        <li>
-            <a href="longball_gazette_week3_final.html">Week 3 Final Report</a>
-            <span class="status">Latest Update: 45 minutes ago</span>
-        </li>
-        <li>
-            <a href="longball_gazette_week2_final%20(1).html">Week 2 Final Report</a>
-        </li>
-        <li>
-            <a href="longball_gazette_week1_final.html">Week 1 Final Report</a>
-        </li>
-        <li>
-            <a href="longball_gazette_week1.html">Week 1 Initial Gazette</a>
-        </li>
-        <li>
-            <a href="longball_gazette_opening_day.html">Opening Day Gazette</a>
-        </li>
-        <li>
-            <a href="longball2026_preseason.html">Preseason Outlook</a>
-        </li>
-    </ul>
+    <div id="file-list" class="loading">Scouting the latest reports...</div>
 </div>
+
+<script>
+    /**
+     * STRESS TEST CONFIGURATION
+     * Corrected for: Longball-debug / Longfball-Newsletter
+     */
+    const CONFIG = {
+        username: 'Longball-debug',
+        repo: 'Longfball-Newsletter',
+        exclude: ['index.html', 'README.md']
+    };
+
+    async function loadGazette() {
+        const container = document.getElementById('file-list');
+        const apiURL = `https://api.github.com/repos/${CONFIG.username}/${CONFIG.repo}/contents/`;
+
+        try {
+            const response = await fetch(apiURL);
+            
+            if (!response.ok) throw new Error('Could not reach GitHub API');
+            
+            const files = await response.json();
+
+            // Filter: Only HTML files, exclude index.html
+            const reports = files.filter(file => 
+                file.name.endsWith('.html') && !CONFIG.exclude.includes(file.name)
+            );
+
+            // Sort: Newest files first (Week 3 -> Week 2 -> Week 1)
+            reports.sort((a, b) => b.name.localeCompare(a.name));
+
+            if (reports.length === 0) {
+                container.innerHTML = '<p>No reports found in the bullpen yet.</p>';
+                return;
+            }
+
+            container.innerHTML = ''; // Clear loading text
+
+            reports.forEach(file => {
+                const link = document.createElement('a');
+                link.className = 'file-link';
+                link.href = file.name;
+                
+                // Clean up name for display: "longball_gazette_week3_final.html" -> "Week 3 Final"
+                const cleanName = file.name
+                    .replace('.html', '')
+                    .replace(/longball_gazette_/g, '')
+                    .replace(/_/g, ' ');
+
+                link.innerHTML = `
+                    <span class="file-name">${cleanName}</span>
+                    <span class="file-meta">HTML Report</span>
+                `;
+                container.appendChild(link);
+            });
+
+        } catch (err) {
+            container.innerHTML = `
+                <div class="error">
+                    <strong>Connection Error:</strong> Check your repository name or Internet connection.<br>
+                    <small>${err.message}</small>
+                </div>`;
+        }
+    }
+
+    loadGazette();
+</script>
 
 </body>
 </html>
