@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette - Week 3 Final, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a}
+        body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+        .newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+        .newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+        .inner{position:relative;z-index:1}
+        .masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+        .masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+        .paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+        .paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+        .paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:12px}
+        .ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+        .ticker-inner{display:flex;white-space:nowrap;animation:ticker 75s linear infinite}
+        .ticker-inner span{padding:0 30px}
+        .ticker-inner .sep{color:var(--gold);font-weight:700}
+        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+        .nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+        .nav-tab:first-child{border-left:1px solid #c0b090}
+        .nav-tab:hover{background:var(--paper);color:var(--ink)}
+        .nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+        .nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+        .page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+        .page.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        .section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+        .headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+        .headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+        .headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+        .deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+        .byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+        .dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+        p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+        p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+        p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+        .col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+        .rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+        .rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+        .col-rule{border-left:1px solid #b0a080;padding-left:30px}
+        .info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+        .info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+        .column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+        .column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+        .column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+        .alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+        .alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+        .gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+        .waste-box{border:3px solid var(--red);background:#fff0f0;padding:14px 16px;margin-bottom:16px}
+        .waste-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);text-align:center;border-bottom:2px solid var(--red);padding-bottom:6px;margin-bottom:10px}
+        table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+        table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+        table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+        table.data tr:last-child td{border-bottom:none}
+        table.data tr.highlight{background:#fff9e0;font-weight:700}
+        table.data tr.danger{background:#fff0f0}
+        table.data tr.warning{background:#fff8ee}
+        table.data .num{text-align:right;font-weight:700}
+        table.data .rk{text-align:center;width:30px;color:var(--muted)}
+        .recap-card{border:2px solid var(--rule);margin-bottom:24px;overflow:hidden}
+        .recap-header{display:flex;justify-content:space-between;align-items:stretch;background:var(--ink);color:var(--paper)}
+        .recap-team{flex:1;padding:10px 14px}
+        .recap-team.away{border-right:1px solid #555}
+        .recap-team-name{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+        .recap-score{font-family:"Courier Prime",monospace;font-size:1.5em;font-weight:700;line-height:1}
+        .recap-score.leading{color:var(--gold)}
+        .recap-vs{padding:10px 12px;font-family:"Courier Prime",monospace;font-size:.75em;text-align:center;opacity:.6;display:flex;align-items:center}
+        .recap-status{background:var(--red);color:white;font-family:"Courier Prime",monospace;font-size:.72em;text-align:center;padding:4px 10px;font-weight:700;letter-spacing:.5px}
+        .recap-body{padding:14px 16px}
+        .recap-body p{font-size:.88em;line-height:1.65;margin-bottom:8px}
+        .recap-stat{background:var(--paper-dark);border-left:4px solid var(--gold);padding:8px 12px;font-family:"Courier Prime",monospace;font-size:.8em;margin-top:8px}
+        .recap-stat strong{color:var(--red)}
+        .split-table{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.75em;margin:10px 0}
+        .split-table th{background:var(--ink);color:var(--paper);font-family:"Oswald",sans-serif;font-size:.7em;letter-spacing:1px;padding:5px 6px;text-align:center}
+        .split-table td{padding:4px 6px;border-bottom:1px solid #d4c89a;text-align:center}
+        .split-table tr:nth-child(odd){background:var(--paper-mid)}
+        .split-table .w{color:var(--red);font-weight:700}
+        .pr-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #d4c89a}
+        .pr-item:last-child{border-bottom:none}
+        .pr-rank{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--paper-dark);-webkit-text-stroke:1.5px var(--rule);min-width:44px;text-align:center;line-height:1;padding-top:2px}
+        .pr-rank.top3{color:var(--gold);-webkit-text-stroke:1px var(--gold)}
+        .pr-team{font-family:"Oswald",sans-serif;font-size:1.05em;font-weight:700}
+        .pr-pts{font-family:"Courier Prime",monospace;font-size:.85em;color:var(--muted)}
+        .pr-note{font-size:.83em;color:var(--muted);font-style:italic;line-height:1.4;margin-top:2px}
+        .up{color:#2a7a2a;font-weight:700}
+        .dn{color:var(--red);font-weight:700}
+        .same{color:var(--gold);font-weight:700}
+        .wk4-card{border:2px solid var(--rule);margin-bottom:14px;overflow:hidden}
+        .wk4-hdr{background:var(--paper-dark);padding:6px 12px;font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+        .wk4-body{display:flex;justify-content:space-between;align-items:center;padding:10px 14px}
+        .wk4-team{font-family:"Oswald",sans-serif;font-size:.95em;font-weight:700}
+        .wk4-rec{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted)}
+        .wk4-vs{font-family:"Courier Prime",monospace;font-size:.8em;color:var(--muted);padding:0 10px}
+        .wk4-look{padding:8px 14px;font-size:.82em;font-style:italic;color:var(--muted);background:#fffef8;border-top:1px solid #d4c89a;line-height:1.5}
+        .badge{display:inline-block;font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+        .badge-hot{background:var(--red);color:white}
+        .badge-toss{background:var(--gold);color:var(--ink)}
+        .badge-must{background:#1a5a1a;color:white}
+        .fa-block{margin-bottom:18px}
+        .fa-name{font-family:"Oswald",sans-serif;font-size:.9em;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 10px}
+        .fa-row{display:flex;gap:8px;align-items:baseline;padding:4px 10px;border-bottom:1px solid #e0d4b0;font-size:.82em;flex-wrap:wrap}
+        .fa-row:last-child{border-bottom:none}
+        .fa-lbl{color:var(--muted);font-weight:700;font-family:"Courier Prime",monospace;font-size:.85em;min-width:75px}
+        .page-footer{text-align:center;font-family:"Courier Prime",monospace;font-size:.78em;color:var(--muted);padding-top:20px;border-top:2px double var(--rule);margin-top:30px}
+        @media(max-width:760px){.newspaper{outline:none}.page{padding:20px}.col-2,.col-2-1{grid-template-columns:1fr}.col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}.paper-name{font-size:2em;letter-spacing:1px}.nav-tab{padding:8px 10px;font-size:.72em}}
+    </style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Vol. 1, No. 6 &nbsp;|&nbsp; Week 3 Final Edition</span>
+        <span>Sunday, April 20, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"The Numbers Are Verified. The Opinions Are Not." &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+</div>
+
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#127942; BANK OF TEXAS 473.167 &mdash; first win; Sanchez+King+Ober combine for 127.67 pts</span><span class="sep">&#9670;</span>
+    <span>&#128128; CASCADES 500.5 &mdash; 2026 season high; 126 K, 30 QS, only 15 losses allowed</span><span class="sep">&#9670;</span>
+    <span>&#127752; GOLDY 3-0 &mdash; 1,588.167 cumulative; 4.92 FP/G leads league</span><span class="sep">&#9670;</span>
+    <span>&#128165; RAMIREZ leads all hitters 60.5 pts, 8.64 FP/G &mdash; Gamblers survive by 10.5</span><span class="sep">&#9670;</span>
+    <span>&#9889; WILL WARREN 46.33 pts, 14.34 K/9 &mdash; Dogs elite arm in losing effort</span><span class="sep">&#9670;</span>
+    <span>&#128293; JEREMIAH JACKSON 47 pts +51% ownership &mdash; outscored Ohtani AND Tucker for Desert Rats</span><span class="sep">&#9670;</span>
+    <span>&#9660; SIDD FINCH 273 pts &mdash; 4 HR league low, 78 singles league high. 1-2 and falling.</span><span class="sep">&#9670;</span>
+    <span>&#128683; NEWBERRY INDIANS first loss &mdash; led league in IP, K, SVH. Still lost by 50. BANK was that good.</span><span class="sep">&#9670;</span>
+    <span>&#127942; BANK OF TEXAS 473.167 &mdash; first win; Sanchez+King+Ober combine for 127.67 pts</span><span class="sep">&#9670;</span>
+    <span>&#128128; CASCADES 500.5 &mdash; 2026 season high; 126 K, 30 QS, only 15 losses allowed</span><span class="sep">&#9670;</span>
+</div></div>
+
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('scores')">Scores &amp; Recaps</div>
+    <div class="nav-tab" onclick="showPage('players')">Top Players</div>
+    <div class="nav-tab" onclick="showPage('rankings')">Power Rankings</div>
+    <div class="nav-tab" onclick="showPage('fa')">FA Activity</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+
+<!-- FRONT PAGE -->
+<div class="page active" id="front">
+<div class="section-label">Week 3 Final &mdash; April 13&ndash;19, 2026</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">THREE STILL STANDING; CASCADES DETONATE; BANK WAKES UP AND STILL LOSES</div>
+    <div class="deck">Goldy, the Rats, and Newberry all survive &mdash; but Newberry takes their first L after the BANK posts 473 points, three top-six pitchers, and still falls short. The Cascades post the 2026 season high. Sidd Finch hits a new low with 4 home runs. And Jeremiah Jackson outscores Ohtani and Tucker on the same roster.</div>
+    <div class="byline">By the Longball Gazette Wire Staff</div>
+    <div class="dateline">League Headquarters &mdash; Sunday, April 20, 2026</div>
+    <p class="body">The verified numbers from Scoring Period 3 tell a story of extremes. The Troutdale Cascades posted 500.5 points &mdash; the 2026 season high &mdash; generating 126 strikeouts in 166 innings with only 15 losses allowed, the fewest of any top team. At the opposite end: Sidd Finch managed 273 points on 4 home runs and a league-high 78 singles. In a format that pays 4 points per home run and 1 point per single, those two facts are a complete diagnosis of what went wrong.</p>
+    <p class="body">The Newberry Indians suffered their first loss and the numbers explain exactly why. The Indians led the entire league in innings pitched (184.667), strikeouts (129), and saves-holds (50). They lost by 50 points. The BANK of Texas had Cristopher Sanchez (43 pts, 1.50 ERA), Michael King (43 pts, 0.82 ERA), and Bailey Ober (41.67 pts) &mdash; three pitchers in the top six league-wide &mdash; all in the same week. Both teams played well. The BANK played better. Newberry drops to 2-1. The BANK records their first win. The standings reflect exactly what happened on the field.</p>
+    <p class="body">The Desert Rats are 3-0. Weekly outputs: 528.167, 452.333, 325.833. The decline is 40+ points per week and accelerating. Jeremiah Jackson (seasonal rank #118, 72% ownership) produced 47 points and outscored both blockbuster keepers on his own team. The good news is they won. The bad news is the Cascades just posted 500 points and the schedule gets harder from here.</p>
+    <hr class="rule-h">
+    <div class="headline-md">The Cascades Are the League's Most Dangerous 2-1 Team</div>
+    <p class="body-sm">Five hundred points. Balanced at 710 hitting / 741 pitching &mdash; the most even construction of any top-three team. George Kirby (41.67 pts, 2.02 ERA) and Mason Miller (39 pts, 0.00 ERA) anchored a rotation that held losses to just 15. Only 137.2 points behind Goldy in cumulative standings. Their one persistent gap &mdash; the saves vacancy &mdash; showed improvement (50 SVH this week). One dedicated closer makes this roster the most frightening team not named Goldy Goldy Gone.</p>
+    <hr class="rule-h">
+    <div class="headline-md">Sidd Finch: Four Home Runs Is Not a Slump</div>
+    <p class="body-sm">Four home runs in a league where HR=4 pts. Seventy-eight singles in a league where 1B=1 pt. The three-week scoring decline (676&rarr;320&rarr;273) is the steepest in MLBLONGBALL. Framber Valdez (41.5 pts, 1.38 ERA, 2 QS) was excellent. The offense is the problem. At 1-2 the identity of this roster needs to change before Week 4 becomes a turning point toward irrelevance.</p>
+</div>
+<div>
+    <div class="info-box">
+        <div class="info-box-title">Week 3 Final Scores &mdash; Verified</div>
+        <table class="data">
+            <tr><th colspan="3">Scoring Period 3 &mdash; Final</th></tr>
+            <tr class="highlight"><td>The BANK of Texas <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">473.167</td><td class="num" style="color:var(--muted);font-size:.8em">+50.0</td></tr>
+            <tr><td>Newberry Indians</td><td class="num">423.167</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Houston Gamblers <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">386.167</td><td class="num" style="color:var(--muted);font-size:.8em">+10.5</td></tr>
+            <tr><td>Sons of Pitches</td><td class="num">375.667</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Troutdale Cascades <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">500.500</td><td class="num" style="color:var(--muted);font-size:.8em">+197.7</td></tr>
+            <tr><td>Ithaca Spartans</td><td class="num">302.833</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Goldy Goldy Gone <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">399.333</td><td class="num" style="color:var(--muted);font-size:.8em">+126.3</td></tr>
+            <tr><td>Sidd Finch</td><td class="num">273.000</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Troutdale Gales <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">415.000</td><td class="num" style="color:var(--muted);font-size:.8em">+55.5</td></tr>
+            <tr><td>Tempe Scorpions</td><td class="num">359.500</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Desert Rats <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">325.833</td><td class="num" style="color:var(--muted);font-size:.8em">+43.5</td></tr>
+            <tr><td>Midland Red Weasel Dogs</td><td class="num">282.333</td><td></td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">All scores verified from official league data. Period 3: Apr 13-19, 2026.</p>
+    </div>
+    <div class="alert-box">
+        <div class="alert-box-title">&#9888; The BANK Paradox</div>
+        <p style="font-size:.83em">BANK scored <strong>473.167</strong> &mdash; enough to win 5 of 6 matchups &mdash; and still lost to Newberry's 423.167. The Indians led in IP, K, and SVH. The BANK led in QS and wins. Both teams were excellent. The scoreboard picked one.</p>
+    </div>
+    <div class="info-box">
+        <div class="info-box-title">Cumulative Standings &mdash; 3 Weeks (Verified)</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th>W-L</th><th class="num">FPts</th><th class="num">Hit</th><th class="num">Pitch</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Goldy Goldy Gone</strong></td><td>3-0</td><td class="num">1,588.2</td><td class="num">830</td><td class="num">758.2</td></tr>
+            <tr><td class="rk">2</td><td>Newberry Indians</td><td>2-1</td><td class="num">1,455.5</td><td class="num">685.5</td><td class="num">770.0</td></tr>
+            <tr><td class="rk">3</td><td>Troutdale Cascades</td><td>2-1</td><td class="num">1,451.0</td><td class="num">710</td><td class="num">741.0</td></tr>
+            <tr class="warning"><td class="rk">4</td><td>Desert Rats</td><td>3-0</td><td class="num">1,310.2</td><td class="num">720.5</td><td class="num">589.7</td></tr>
+            <tr><td class="rk">5</td><td>Troutdale Gales</td><td>2-1</td><td class="num">1,289.8</td><td class="num">874</td><td class="num">415.8</td></tr>
+            <tr><td class="rk">6</td><td>Sidd Finch</td><td>1-2</td><td class="num">1,272.3</td><td class="num">686.5</td><td class="num">585.8</td></tr>
+            <tr><td class="rk">7</td><td>Tempe Scorpions</td><td>0-3</td><td class="num">1,271.2</td><td class="num">764</td><td class="num">507.2</td></tr>
+            <tr><td class="rk">8</td><td>Sons of Pitches</td><td>1-2</td><td class="num">1,262.7</td><td class="num">705.5</td><td class="num">557.2</td></tr>
+            <tr><td class="rk">9</td><td>Houston Gamblers</td><td>2-1</td><td class="num">1,258.0</td><td class="num">815.5</td><td class="num">442.5</td></tr>
+            <tr><td class="rk">10</td><td>The BANK of Texas</td><td>1-2</td><td class="num">1,223.3</td><td class="num">679</td><td class="num">544.3</td></tr>
+            <tr><td class="rk">11</td><td>Midland Red Weasel Dogs</td><td>1-2</td><td class="num">1,218.7</td><td class="num">673.5</td><td class="num">545.2</td></tr>
+            <tr class="danger"><td class="rk">12</td><td>Ithaca Spartans</td><td>0-3</td><td class="num">929.5</td><td class="num">639</td><td class="num">290.5</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px;font-family:'Courier Prime',monospace">Source: official league data. FP/G leaders: Goldy 4.92, Sons 4.57, Cascades 4.53.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Scores &amp; Recaps &rarr; &nbsp;|&nbsp; Top Players &rarr; &nbsp;|&nbsp; Power Rankings &rarr; &nbsp;|&nbsp; FA Activity &rarr; &nbsp;|&nbsp; The Columnists &rarr;</p><p style="margin-top:6px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Week 3 Final Edition &nbsp;&middot;&nbsp; Next edition following Week 4 (April 27, 2026)</p></div>
+</div>
+
+<!-- SCORES & RECAPS -->
+<div class="page" id="scores">
+<div class="section-label">Week 3 Final &mdash; All Six Matchups</div>
+<div class="headline-lg" style="margin-bottom:4px">Full Matchup Recaps</div>
+<div class="deck">Verified scores, team splits, and the story behind every result.</div>
+<hr class="rule-h-thick">
+
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Newberry Indians &nbsp;&middot;&nbsp; Away</div><div class="recap-score">423.167</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">The BANK of Texas &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">473.167</div></div>
+    </div>
+    <div class="recap-status">BANK of Texas wins by 50.0 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; BANK: 1-2 &nbsp;&middot;&nbsp; Newberry: 2-1 (first loss)</div>
+    <div class="recap-body">
+        <table class="split-table">
+            <tr><th>Team</th><th>FPts</th><th>Hit</th><th>Pitch</th><th>HR</th><th>IP</th><th>K</th><th>W</th><th>L</th><th>QS</th><th>SVH</th></tr>
+            <tr><td class="w">BANK of Texas</td><td class="w">473.167</td><td class="w">256.5</td><td>216.667</td><td class="w">40</td><td>168.667</td><td>126</td><td class="w">30</td><td>-25</td><td class="w">30</td><td>40</td></tr>
+            <tr><td>Newberry Indians</td><td>423.167</td><td>194.5</td><td class="w">228.667</td><td>44</td><td class="w">184.667</td><td class="w">129</td><td>25</td><td class="w">-20</td><td>25</td><td class="w">50</td></tr>
+        </table>
+        <p>The BANK of Texas came to play. Cristopher Sanchez (43 pts, 1.50 ERA, 2 QS), Michael King (43 pts, 0.82 ERA), and Bailey Ober (41.67 pts, 17 K) all finished in the top six pitchers league-wide &mdash; the finest single-team rotation week of the 2026 season. Josh Jung (43 pts, 10/28) gave the BANK the lineup support that Soto and Acu&ntilde;a have been waiting for since February. The BANK won hitting (256.5 to 194.5) and quality starts (30 to 25). This was the BANK at or near their ceiling, and it was enough.</p>
+        <p>The Newberry Indians do not need to apologize for this loss. They led the league in innings pitched (184.667), strikeouts (129), and saves-holds (50). Their pitching points (228.667) exceeded the BANK&rsquo;s. They were simply outscored by a team having its best week of the season. At 2-1, Newberry&rsquo;s construction is unchanged and their Week 4 matchup at Ithaca returns them to favorable territory immediately.</p>
+        <div class="recap-stat"><strong>BANK THREE-ACE WEEK:</strong> Sanchez 43, King 43, Ober 41.67 &mdash; combined 127.67 pitching pts &nbsp;&middot;&nbsp; <strong>NEWBERRY:</strong> Led league in IP, K, SVH. Still lost. The BANK&rsquo;s best week was simply better.</div>
+    </div>
+</div>
+
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Houston Gamblers &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">386.167</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Sons of Pitches &nbsp;&middot;&nbsp; Home</div><div class="recap-score">375.667</div></div>
+    </div>
+    <div class="recap-status">Houston Gamblers win by 10.5 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Closest game of Week 3</div>
+    <div class="recap-body">
+        <p>Jose Ramirez scored 60.5 fantasy points at 8.64 per game &mdash; the highest hitter total in the league this week. The Gamblers won by 10.5 points. Ramirez alone exceeded the margin of victory. Remove him and the Sons of Pitches win this game. That is what a singular asset looks like in a head-to-head format: the difference between winning and losing, supplied by one player, every week he performs at this level.</p>
+        <p>The Sons of Pitches (1-2) have now lost two games by a combined 20.5 points. Yordan Alvarez posted 51 points (7.29 FP/G) in the loss. Brandon Lowe added 42.5 for the Gamblers. The Sons&rsquo; 4.57 FP/G is the second-highest in the league &mdash; they are generating elite per-game value and losing by 10-point margins. Two losses by 20.5 combined points is not a rosters problem. It is variance at the margins.</p>
+        <div class="recap-stat"><strong>RAMIREZ = THE MARGIN:</strong> 60.5 pts, 8.64 FP/G &mdash; more than the winning margin alone &nbsp;&middot;&nbsp; <strong>SONS:</strong> 4.57 FP/G (2nd in league), 1-2 record. Two losses by a combined 20.5 pts.</div>
+    </div>
+</div>
+
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Ithaca Spartans &nbsp;&middot;&nbsp; Away</div><div class="recap-score">302.833</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">500.500</div></div>
+    </div>
+    <div class="recap-status">Troutdale Cascades win by 197.7 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; 2026 season high score</div>
+    <div class="recap-body">
+        <table class="split-table">
+            <tr><th>Team</th><th>FPts</th><th>Hit</th><th>Pitch</th><th>HR</th><th>IP</th><th>K</th><th>W</th><th>L</th><th>QS</th><th>SVH</th></tr>
+            <tr><td class="w">Troutdale Cascades</td><td class="w">500.5</td><td class="w">217.5</td><td class="w">283.0</td><td>32</td><td>166</td><td>126</td><td class="w">30</td><td class="w">-15</td><td class="w">30</td><td>50</td></tr>
+            <tr><td>Ithaca Spartans</td><td>302.833</td><td>191.0</td><td>111.833</td><td class="w">36</td><td>127.333</td><td>64.5</td><td>15</td><td>-15</td><td>25</td><td class="w">35</td></tr>
+        </table>
+        <p>Five hundred points. George Kirby (41.67 pts, 2.02 ERA, 13.1 IP) and Mason Miller (39 pts, 0.00 ERA, 8 K in 4 IP) anchored a staff that generated 283 pitching points while holding losses to just 15 &mdash; the lowest of any team this week. The Cascades&rsquo; balanced construction (217.5 hitting / 283 pitching) produced the most complete single-week performance of the 2026 season.</p>
+        <p>The Ithaca Spartans fall to 0-3. Aaron Judge (42 pts, 7/27) was excellent and it was completely irrelevant. The Spartans&rsquo; cumulative pitching total through three weeks is 290.5 &mdash; the lowest in the league by 254 points. That number explains everything. Judge and Crochet are performing. The ten roster spots behind them are generating 290 cumulative pitching points across three weeks of baseball.</p>
+        <div class="recap-stat"><strong>CASCADES 2026 HIGH:</strong> 500.5 pts, 283 pitching pts, 30 QS, 15 losses &nbsp;&middot;&nbsp; <strong>ITHACA:</strong> 290.5 cumulative pitching pts (254 below next-lowest). Judge 42 pts. Still 0-3.</div>
+    </div>
+</div>
+
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Goldy Goldy Gone &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">399.333</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Sidd Finch &nbsp;&middot;&nbsp; Home</div><div class="recap-score">273.000</div></div>
+    </div>
+    <div class="recap-status">Goldy Goldy Gone wins by 126.3 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Goldy moves to 3-0</div>
+    <div class="recap-body">
+        <table class="split-table">
+            <tr><th>Team</th><th>FPts</th><th>Hit</th><th>Pitch</th><th>HR</th><th>1B</th><th>IP</th><th>K</th><th>W</th><th>L</th><th>QS</th></tr>
+            <tr><td class="w">Goldy Goldy Gone</td><td class="w">399.333</td><td class="w">234.5</td><td class="w">164.833</td><td class="w">48</td><td>&mdash;</td><td>133.333</td><td>100.5</td><td class="w">25</td><td>-20</td><td class="w">30</td></tr>
+            <tr><td>Sidd Finch</td><td>273.000</td><td>167.0</td><td>106.0</td><td>4</td><td class="w">78</td><td class="w">146</td><td class="w">94.5</td><td>10</td><td class="w">-35</td><td>15</td></tr>
+        </table>
+        <p>Goldy won without a peak performance. Nico Hoerner (49.5 pts, 9/26) and Munetaka Murakami (40.5 pts) provided depth scoring while the rotation held up without a single dominant ace outing. Mick Abel delivered 36 points at 0.00 ERA. This is what a 4.92 FP/G team looks like: consistent production across the roster, no single point of failure, wins without ceiling weeks.</p>
+        <p>Sidd Finch: four home runs. League-high 78 singles. The scoring system pays 4 points for the former and 1 for the latter. Framber Valdez (41.5 pts, 1.38 ERA, 2 QS) was legitimate. The lineup produced 167 hitting points &mdash; the league low. The three-week scoring line (676&rarr;320&rarr;273) is the most alarming trend in MLBLONGBALL. At 1-2, Week 4 at the Desert Rats is a must-win game.</p>
+        <div class="recap-stat"><strong>GOLDY 3-0:</strong> Hoerner 49.5, Murakami 40.5, Abel 36 (0.00 ERA) &mdash; depth beats a non-peak week &nbsp;&middot;&nbsp; <strong>FINCH:</strong> 4 HR (league low) + 78 1B (league high) = 167 hitting pts. The formula is broken.</div>
+    </div>
+</div>
+
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Tempe Scorpions &nbsp;&middot;&nbsp; Away</div><div class="recap-score">359.500</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Troutdale Gales &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">415.000</div></div>
+    </div>
+    <div class="recap-status">Troutdale Gales win by 55.5 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Gales: 2-1 &nbsp;&middot;&nbsp; Tempe: 0-3</div>
+    <div class="recap-body">
+        <table class="split-table">
+            <tr><th>Team</th><th>FPts</th><th>Hit</th><th>HR</th><th>SB</th><th>SO(bat)</th><th>Pitch</th><th>IP</th><th>K</th><th>QS</th><th>SVH</th></tr>
+            <tr><td class="w">Troutdale Gales</td><td class="w">415.0</td><td class="w">289.5</td><td class="w">64</td><td class="w">21</td><td>-60</td><td>125.5</td><td>126</td><td>81</td><td>15</td><td class="w">40</td></tr>
+            <tr><td>Tempe Scorpions</td><td>359.5</td><td>220.0</td><td>44</td><td>15</td><td class="w">-65</td><td class="w">139.5</td><td class="w">130</td><td class="w">88.5</td><td class="w">20</td><td>15</td></tr>
+        </table>
+        <p>The Troutdale Gales&rsquo; 874 cumulative hitting points is the highest offensive total in MLBLONGBALL after three weeks. Mike Trout (55.5 pts, 7.93 FP/G, 7/24) was the week&rsquo;s second-highest scorer. Jose Caballero (41 pts) provided genuine supporting production. Sixty-four home runs in a single week is not an offense. It is a siege weapon.</p>
+        <p>The Tempe Scorpions fall to 0-3 with 1,271 cumulative points &mdash; more than seven other teams. Gavin Williams (46 pts, 2.25 ERA) was the week&rsquo;s second-best pitcher overall. The Scorpions won the pitching battle (139.5 to 125.5) and still lost by 55 points. The Gales&rsquo; 64 home runs created a hitting gap that no pitching staff can fully absorb. Tempe&rsquo;s Week 4 matchup at the Cascades continues the brutal scheduling pattern.</p>
+        <div class="recap-stat"><strong>GALES OFFENSE:</strong> 64 HR (league high), Trout 55.5, Caballero 41, 289.5 hitting pts &nbsp;&middot;&nbsp; <strong>TEMPE:</strong> Williams 46 pts, 2.25 ERA &mdash; the week&rsquo;s 2nd-best pitcher in a loss. 0-3 with 1,271 total points.</div>
+    </div>
+</div>
+
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">325.833</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Midland Red Weasel Dogs &nbsp;&middot;&nbsp; Home</div><div class="recap-score">282.333</div></div>
+    </div>
+    <div class="recap-status">Desert Rats win by 43.5 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Rats: 3-0 &nbsp;&middot;&nbsp; Dogs: 1-2</div>
+    <div class="recap-body">
+        <table class="split-table">
+            <tr><th>Team</th><th>FPts</th><th>Hit</th><th>HR</th><th>SB</th><th>Pitch</th><th>IP</th><th>K</th><th>W</th><th>L</th><th>QS</th></tr>
+            <tr><td class="w">Desert Rats</td><td class="w">325.833</td><td class="w">199.0</td><td>36</td><td>9</td><td class="w">126.833</td><td>125.333</td><td>114</td><td>15</td><td>-30</td><td>25</td></tr>
+            <tr><td>Midland Dogs</td><td>282.333</td><td>185.0</td><td class="w">48</td><td class="w">18</td><td>97.333</td><td class="w">137.333</td><td class="w">106.5</td><td class="w">20</td><td class="w">-35</td><td>20</td></tr>
+        </table>
+        <p>The Desert Rats are 3-0 and their weekly outputs read 528, 452, 325. Jeremiah Jackson (47 pts, +51% ownership, seasonal rank #118) was the week&rsquo;s standout contributor, outscoring both Shohei Ohtani and Kyle Tucker on the commissioner&rsquo;s own roster. The pitching staff generated 114 strikeouts in 125.333 innings for 126.833 pitching points, which was the structural edge. At 3-0, the Rats are winning &mdash; but not convincingly, and not on the back of the players that were supposed to be doing the winning.</p>
+        <p>The Midland Red Weasel Dogs: Will Warren (46.33 pts, 14.34 K/9, 1.69 ERA in 10.2 IP) and Paul Skenes (40 pts, 0.90 ERA) were two of the top eight pitchers in the entire league. The team scored 282 points. The hitting total (185 pts, 11th of 12) is the gap that two elite arms cannot bridge by themselves. At 1-2, Week 4 vs. the Troutdale Gales pits the Dogs&rsquo; pitching strength directly against the league&rsquo;s most explosive offense.</p>
+        <div class="recap-stat"><strong>RATS:</strong> Jackson 47 pts (+51%) outscored Ohtani &amp; Tucker combined &nbsp;&middot;&nbsp; <strong>DOGS INJUSTICE:</strong> Warren 46.33 (14.34 K/9) + Skenes 40 (0.90 ERA) = top-8 duo on a 282-pt team</div>
+    </div>
+</div>
+<div class="page-footer"><p>All statistics verified from official league source data. Scoring Period 3: April 13-19, 2026.</p></div>
+</div>
+
+<!-- TOP PLAYERS -->
+<div class="page" id="players">
+<div class="section-label">Week 3 Final &mdash; Individual Leaderboards</div>
+<div class="headline-lg" style="margin-bottom:4px">The Leaderboard</div>
+<div class="deck">Verified individual statistics from Scoring Period 3. Fantasy team names throughout.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#9918; Top 10 Hitters &mdash; Week 3 (Verified)</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">FP/G</th><th class="num">H/AB</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Jose Ramirez</strong></td><td>Houston Gamblers</td><td class="num">60.5</td><td class="num">8.64</td><td class="num">8/22</td></tr>
+            <tr><td class="rk">2</td><td><strong>Mike Trout</strong></td><td>Troutdale Gales</td><td class="num">55.5</td><td class="num">7.93</td><td class="num">7/24</td></tr>
+            <tr><td class="rk">3</td><td><strong>Yordan Alvarez</strong></td><td>Sons of Pitches</td><td class="num">51.0</td><td class="num">7.29</td><td class="num">9/28</td></tr>
+            <tr><td class="rk">4</td><td><strong>Nico Hoerner</strong></td><td>Goldy Goldy Gone</td><td class="num">49.5</td><td class="num">8.25</td><td class="num">9/26</td></tr>
+            <tr><td class="rk">5</td><td><strong>Jeremiah Jackson</strong> &#9733;</td><td>Desert Rats</td><td class="num">47.0</td><td class="num">6.71</td><td class="num">9/26</td></tr>
+            <tr><td class="rk">6</td><td><strong>Josh Jung</strong></td><td>The BANK of Texas</td><td class="num">43.0</td><td class="num">6.14</td><td class="num">10/28</td></tr>
+            <tr><td class="rk">7</td><td><strong>Brandon Lowe</strong></td><td>Houston Gamblers</td><td class="num">42.5</td><td class="num">7.08</td><td class="num">9/26</td></tr>
+            <tr><td class="rk">8</td><td><strong>Aaron Judge</strong></td><td>Ithaca Spartans</td><td class="num">42.0</td><td class="num">6.00</td><td class="num">7/27</td></tr>
+            <tr><td class="rk">9</td><td><strong>Jose Caballero</strong></td><td>Troutdale Gales</td><td class="num">41.0</td><td class="num">5.86</td><td class="num">9/25</td></tr>
+            <tr><td class="rk">10</td><td><strong>Munetaka Murakami</strong></td><td>Goldy Goldy Gone</td><td class="num">40.5</td><td class="num">6.75</td><td class="num">7/21</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">&#9733; Jackson: rank #118, ownership +51% trend. Priority claim for any team with an open OF slot.</p>
+    </div>
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; Ramirez Is the Gamblers&rsquo; Season</div>
+        <p style="font-size:.83em">Ramirez (60.5 pts) exceeded the Gamblers&rsquo; winning margin (10.5) by himself. With zero cumulative saves and the league&rsquo;s second-lowest pitching total, the day he has an off week is the day this team&rsquo;s record gets very fragile very fast.</p>
+    </div>
+    <div class="alert-box" style="border-left-color:var(--gold);background:#fffbef">
+        <div class="alert-box-title" style="color:var(--gold)">&#11088; Jackson Alert &mdash; Desert Rats</div>
+        <p style="font-size:.85em"><strong>Jeremiah Jackson</strong>: 47 pts, rank #118, <strong>+51% ownership growth</strong>. Outscored Ohtani and Tucker on the same roster. If he is on any wire in this league, that changes by Monday morning. If the Rats have any organizational sense, he is locked in before Week 4.</p>
+    </div>
+    <div class="info-box">
+        <div class="info-box-title">Week 3 Hitting Splits by Team (Verified)</div>
+        <table class="data" style="font-size:.78em">
+            <tr><th>Team</th><th class="num">Hit Pts</th><th class="num">HR</th><th class="num">1B</th><th class="num">SB</th><th class="num">SO</th></tr>
+            <tr class="highlight"><td>Troutdale Gales</td><td class="num">289.5</td><td class="num">64</td><td class="num">55.5</td><td class="num">21</td><td class="num">-60</td></tr>
+            <tr><td>Sons of Pitches</td><td class="num">264.5</td><td class="num">36</td><td class="num">61.5</td><td class="num">12</td><td class="num">-43</td></tr>
+            <tr><td>Houston Gamblers</td><td class="num">261.0</td><td class="num">48</td><td class="num">60</td><td class="num">21</td><td class="num">-78</td></tr>
+            <tr><td>BANK of Texas</td><td class="num">256.5</td><td class="num">40</td><td class="num">52.5</td><td class="num">15</td><td class="num">-47</td></tr>
+            <tr><td>Goldy Goldy Gone</td><td class="num">234.5</td><td class="num">48</td><td class="num">58.5</td><td class="num">21</td><td class="num">-76</td></tr>
+            <tr><td>Tempe Scorpions</td><td class="num">220.0</td><td class="num">44</td><td class="num">66</td><td class="num">15</td><td class="num">-65</td></tr>
+            <tr><td>Troutdale Cascades</td><td class="num">217.5</td><td class="num">32</td><td class="num">64.5</td><td class="num">21</td><td class="num">-65</td></tr>
+            <tr><td>Desert Rats</td><td class="num">199.0</td><td class="num">36</td><td class="num">60</td><td class="num">9</td><td class="num">-65</td></tr>
+            <tr><td>Newberry Indians</td><td class="num">194.5</td><td class="num">44</td><td class="num">58.5</td><td class="num">6</td><td class="num">-57</td></tr>
+            <tr><td>Ithaca Spartans</td><td class="num">191.0</td><td class="num">36</td><td class="num">48</td><td class="num">9</td><td class="num">-55</td></tr>
+            <tr><td>Midland Dogs</td><td class="num">185.0</td><td class="num">48</td><td class="num">48</td><td class="num">18</td><td class="num">-78</td></tr>
+            <tr class="danger"><td>Sidd Finch</td><td class="num">167.0</td><td class="num">4</td><td class="num">78</td><td class="num">6</td><td class="num">-64</td></tr>
+        </table>
+    </div>
+</div>
+<div class="col-rule">
+    <div class="info-box">
+        <div class="info-box-title">&#9889; Top 10 Pitchers &mdash; Week 3 (Verified)</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">IP</th><th class="num">ERA</th><th class="num">K</th><th>QS</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Will Warren</strong></td><td>Midland Dogs</td><td class="num">46.33</td><td class="num">10.2</td><td class="num">1.69</td><td class="num">17</td><td>1</td></tr>
+            <tr><td class="rk">2</td><td><strong>Gavin Williams</strong></td><td>Tempe Scorpions</td><td class="num">46.00</td><td class="num">12.0</td><td class="num">2.25</td><td class="num">15</td><td>0</td></tr>
+            <tr><td class="rk">3</td><td><strong>Cristopher Sanchez</strong></td><td>BANK of Texas</td><td class="num">43.00</td><td class="num">12.0</td><td class="num">1.50</td><td class="num">16</td><td>2</td></tr>
+            <tr><td class="rk">3</td><td><strong>Michael King</strong></td><td>BANK of Texas</td><td class="num">43.00</td><td class="num">11.0</td><td class="num">0.82</td><td class="num">11</td><td>1</td></tr>
+            <tr><td class="rk">5</td><td><strong>George Kirby</strong></td><td>Troutdale Cascades</td><td class="num">41.67</td><td class="num">13.1</td><td class="num">2.02</td><td class="num">11</td><td>1</td></tr>
+            <tr><td class="rk">5</td><td><strong>Bailey Ober</strong></td><td>BANK of Texas</td><td class="num">41.67</td><td class="num">12.1</td><td class="num">2.92</td><td class="num">17</td><td>1</td></tr>
+            <tr><td class="rk">7</td><td><strong>Framber Valdez</strong></td><td>Sidd Finch</td><td class="num">41.50</td><td class="num">13.0</td><td class="num">1.38</td><td class="num">8</td><td>2</td></tr>
+            <tr><td class="rk">8</td><td><strong>Paul Skenes</strong></td><td>Midland Dogs</td><td class="num">40.00</td><td class="num">10.0</td><td class="num">0.90</td><td class="num">11</td><td>1</td></tr>
+            <tr><td class="rk">9</td><td><strong>Mason Miller</strong></td><td>Troutdale Cascades</td><td class="num">39.00</td><td class="num">4.0</td><td class="num">0.00</td><td class="num">8</td><td>0</td></tr>
+            <tr><td class="rk">10</td><td><strong>Mick Abel</strong></td><td>Goldy Goldy Gone</td><td class="num">36.00</td><td class="num">7.0</td><td class="num">0.00</td><td class="num">10</td><td>1</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">BANK has 3 in top 6. Dogs have 2 in top 8. Cascades have 2 in top 10.</p>
+    </div>
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Will Warren: 14.34 K/9</div>
+        <p style="font-size:.85em">Will Warren (Midland Dogs, rank #73): 46.33 pts, 17 K in 10.2 IP, 1.69 ERA. His <strong>14.34 K/9</strong> is the most dominant per-inning strikeout rate of the week by a significant margin. Paul Skenes added 40 pts at 0.90 ERA on the same team. Combined: two of the top eight pitchers in the league. Team total: 282 points. The hitting (185 pts, 11th) is what separates the Dogs from contention.</p>
+    </div>
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">BANK&rsquo;s Three-Ace Week</div>
+        <p style="font-size:.85em">Sanchez (43) + King (43) + Ober (41.67) = <strong>127.67 combined pitching points</strong>. That is more than Sidd Finch&rsquo;s entire team scored (273 minus 167 hitting = 106 pitching). Three starters from one team in the top six of the weekly leaderboard is the finest rotation performance of the 2026 season to date.</p>
+    </div>
+    <div class="info-box">
+        <div class="info-box-title">Week 3 Pitching Splits by Team (Verified)</div>
+        <table class="data" style="font-size:.78em">
+            <tr><th>Team</th><th class="num">Pitch</th><th class="num">IP</th><th class="num">K</th><th class="num">W</th><th class="num">L</th><th class="num">QS</th><th class="num">SVH</th></tr>
+            <tr class="highlight"><td>Troutdale Cascades</td><td class="num">283.0</td><td class="num">166</td><td class="num">126</td><td class="num">30</td><td class="num">-15</td><td class="num">30</td><td class="num">50</td></tr>
+            <tr><td>Newberry Indians</td><td class="num">228.7</td><td class="num">184.7</td><td class="num">129</td><td class="num">25</td><td class="num">-20</td><td class="num">25</td><td class="num">50</td></tr>
+            <tr><td>BANK of Texas</td><td class="num">216.7</td><td class="num">168.7</td><td class="num">126</td><td class="num">30</td><td class="num">-25</td><td class="num">30</td><td class="num">40</td></tr>
+            <tr><td>Goldy Goldy Gone</td><td class="num">164.8</td><td class="num">133.3</td><td class="num">100.5</td><td class="num">25</td><td class="num">-20</td><td class="num">30</td><td class="num">10</td></tr>
+            <tr><td>Tempe Scorpions</td><td class="num">139.5</td><td class="num">130</td><td class="num">88.5</td><td class="num">30</td><td class="num">-10</td><td class="num">20</td><td class="num">15</td></tr>
+            <tr><td>Desert Rats</td><td class="num">126.8</td><td class="num">125.3</td><td class="num">114</td><td class="num">15</td><td class="num">-30</td><td class="num">25</td><td class="num">20</td></tr>
+            <tr><td>Troutdale Gales</td><td class="num">125.5</td><td class="num">126</td><td class="num">81</td><td class="num">20</td><td class="num">-20</td><td class="num">15</td><td class="num">40</td></tr>
+            <tr><td>Houston Gamblers</td><td class="num">125.2</td><td class="num">106.7</td><td class="num">81</td><td class="num">25</td><td class="num">-20</td><td class="num">20</td><td class="num">0</td></tr>
+            <tr><td>Ithaca Spartans</td><td class="num">111.8</td><td class="num">127.3</td><td class="num">64.5</td><td class="num">15</td><td class="num">-15</td><td class="num">25</td><td class="num">35</td></tr>
+            <tr><td>Sons of Pitches</td><td class="num">111.2</td><td class="num">118.7</td><td class="num">76.5</td><td class="num">15</td><td class="num">-20</td><td class="num">10</td><td class="num">10</td></tr>
+            <tr><td>Sidd Finch</td><td class="num">106.0</td><td class="num">146</td><td class="num">94.5</td><td class="num">10</td><td class="num">-35</td><td class="num">15</td><td class="num">20</td></tr>
+            <tr class="danger"><td>Midland Dogs</td><td class="num">97.3</td><td class="num">137.3</td><td class="num">106.5</td><td class="num">20</td><td class="num">-35</td><td class="num">20</td><td class="num">5</td></tr>
+        </table>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All individual statistics verified from official league data. Scoring Period 3, April 19, 2026.</p></div>
+</div>
+
+<!-- POWER RANKINGS -->
+<div class="page" id="rankings">
+<div class="section-label">Post-Week 3 Power Rankings</div>
+<div class="headline-lg" style="margin-bottom:4px">Where They Stand</div>
+<div class="deck">Verified cumulative records, points, splits, and Week 4 matchup previews. Six confirmed matchups from the official schedule.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="pr-item"><div class="pr-rank top3">1</div><div>
+        <div class="pr-team">Goldy Goldy Gone <span class="same">&#9654; 3-0</span></div>
+        <div class="pr-pts">3-0 &nbsp;&middot;&nbsp; 1,588.2 pts &nbsp;&middot;&nbsp; 4.92 FP/G (league high) &nbsp;&middot;&nbsp; Hit 830 / Pitch 758.2</div>
+        <div class="pr-note">The league&rsquo;s highest FP/G and highest cumulative total. Three wins without a peak performance in the last two weeks. Hoerner (49.5), Murakami (40.5), Abel (36, 0.00 ERA) providing depth scoring. When a team&rsquo;s floor beats most teams&rsquo; ceilings, that is a machine. Week 4 vs. Sons of Pitches. Goldy is the standard.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank top3">2</div><div>
+        <div class="pr-team">Newberry Indians <span class="dn">&#9660; FIRST LOSS</span></div>
+        <div class="pr-pts">2-1 &nbsp;&middot;&nbsp; 1,455.5 pts &nbsp;&middot;&nbsp; Hit 685.5 / Pitch 770.0 (only pitching-dominant elite)</div>
+        <div class="pr-note">Led league in IP (184.667), K (129), SVH (50) this week. Lost by 50 pts to the BANK&rsquo;s best performance of the season. One loss does not change who the Newberry Indians are. Their construction is unchanged and Week 4 at Ithaca (0-3, 290.5 cumulative pitching pts) is the most favorable matchup they&rsquo;ve been given.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank top3">3</div><div>
+        <div class="pr-team">Troutdale Cascades <span class="up">&#9650; SURGING &mdash; 2026 SEASON HIGH</span></div>
+        <div class="pr-pts">2-1 &nbsp;&middot;&nbsp; 1,451.0 pts &nbsp;&middot;&nbsp; Hit 710 / Pitch 741 (most balanced top team)</div>
+        <div class="pr-note">Most balanced roster in the top three. Posted 500.5 pts with 30 QS and just 15 losses. Kirby (41.67), Miller (39, 0.00 ERA), 50 SVH this week. Only 137.2 pts behind Goldy. Week 4 vs. Tempe (0-3) is their most favorable draw of the season. The closer question showed improvement &mdash; 50 SVH suggests a true arm is emerging.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank">4</div><div>
+        <div class="pr-team">Desert Rats <span class="dn">&#9660; DECLINING TREND</span></div>
+        <div class="pr-pts">3-0 &nbsp;&middot;&nbsp; 1,310.2 pts &nbsp;&middot;&nbsp; Hit 720.5 / Pitch 589.7 (4th-lowest pitching)</div>
+        <div class="pr-note">3-0 record with weekly outputs of 528, 452, 325 &mdash; declining 40+ pts/week. Jackson (47 pts) outscored Ohtani and Tucker. Pitching (589.7 cumulative) is 4th-lowest. The 3-0 reflects favorable scheduling. Week 4 vs. Sidd Finch (273 pts last week) should be winnable &mdash; but the declining trend cannot continue indefinitely.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank">5</div><div>
+        <div class="pr-team">Troutdale Gales <span class="up">&#9650; 2-1</span></div>
+        <div class="pr-pts">2-1 &nbsp;&middot;&nbsp; 1,289.8 pts &nbsp;&middot;&nbsp; Hit 874 (league high) / Pitch 415.8 (league low)</div>
+        <div class="pr-note">Most extreme roster split in the league: 874 hitting (1st), 415.8 pitching (12th). Trout (55.5), Caballero (41), 64 HR. The offense is the league&rsquo;s most dangerous. The pitching is the league&rsquo;s biggest liability. One volume starter changes this team&rsquo;s floor entirely. Week 4 at Midland Dogs: Will Warren&rsquo;s 14.34 K/9 meets Trout&rsquo;s lineup. High entertainment value.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank">6</div><div>
+        <div class="pr-team">Houston Gamblers <span class="same">&#9654; 2-1</span></div>
+        <div class="pr-pts">2-1 &nbsp;&middot;&nbsp; 1,258.0 pts &nbsp;&middot;&nbsp; Hit 815.5 (2nd) / Pitch 442.5 (2nd-lowest)</div>
+        <div class="pr-note">Ramirez (60.5 pts, 8.64 FP/G) was the entire margin of victory. Zero cumulative saves across three weeks. The pitching total (442.5) is second-lowest in the league. The offense (815.5) is second-best. Lowe (42.5, 7.08 FP/G) is a genuine co-anchor. This roster wins when offense dominates &mdash; and loses the moment it doesn&rsquo;t. Week 4 at BANK of Texas (just posted 473) is a genuine test.</div>
+    </div></div>
+</div>
+<div class="col-rule">
+    <div class="pr-item"><div class="pr-rank">7</div><div>
+        <div class="pr-team">Sidd Finch <span class="dn">&#9660;&#9660; FREE-FALLING</span></div>
+        <div class="pr-pts">1-2 &nbsp;&middot;&nbsp; 1,272.3 pts &nbsp;&middot;&nbsp; Hit 686.5 / Pitch 585.8 &nbsp;&middot;&nbsp; Trend: 676&rarr;320&rarr;273</div>
+        <div class="pr-note">Four home runs in a 4-pts-per-HR league. League-high 78 singles. 167 hitting pts (league low). Valdez (41.5, 2 QS) is the bright spot. Three-week decline is the steepest in the league. At 1-2, Week 4 at the Desert Rats is a must-win. The offense needs power, not more singles, before this slide becomes a season-defining spiral.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank">8</div><div>
+        <div class="pr-team">Tempe Scorpions <span class="dn">&#9660; 0-3 &mdash; UNLUCKIEST TEAM</span></div>
+        <div class="pr-pts">0-3 &nbsp;&middot;&nbsp; 1,271.2 pts &nbsp;&middot;&nbsp; Hit 764 / Pitch 507.2 &nbsp;&middot;&nbsp; More pts than 7 other teams</div>
+        <div class="pr-note">1,271 cumulative points. Zero wins. Williams (46 pts, 2.25 ERA) was the week&rsquo;s 2nd-best pitcher in a loss. Schedule: Goldy (738 Wk1), Rats (452 Wk2), Gales 64-HR offense (Wk3). Tempe has been handed three of the league&rsquo;s four toughest opponents. Week 4 at Cascades (just posted 500) extends the brutal pattern. The wins will come. The calendar needs to cooperate.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank">9</div><div>
+        <div class="pr-team">Sons of Pitches <span class="dn">&#9660;</span></div>
+        <div class="pr-pts">1-2 &nbsp;&middot;&nbsp; 1,262.7 pts &nbsp;&middot;&nbsp; Hit 705.5 / Pitch 557.2 &nbsp;&middot;&nbsp; 4.57 FP/G (2nd in league)</div>
+        <div class="pr-note">Two losses by a combined 20.5 points. Alvarez (51 pts, 7.29 FP/G) is elite. The 4.57 FP/G is the second-highest in the league. Converting it into wins requires an end to the 10-point-margin losses. Week 4 at Goldy Goldy Gone is the hardest draw they could get. If Alvarez has a 60-point week, they can compete. On most reasonable scenarios, Goldy wins on depth.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank">10</div><div>
+        <div class="pr-team">The BANK of Texas <span class="up">&#9650; FIRST WIN</span></div>
+        <div class="pr-pts">1-2 &nbsp;&middot;&nbsp; 1,223.3 pts &nbsp;&middot;&nbsp; Hit 679 / Pitch 544.3</div>
+        <div class="pr-note">Week 3&rsquo;s most complete team performance: 473 pts, Sanchez+King+Ober in the top six, Jung providing lineup support. The talent is real when fully deployed. Week 4 vs. Gamblers (0 saves, thin pitching floor). If the BANK repeats the deployment discipline, they win. The question is sustainability after two weeks of dysfunction.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank">11</div><div>
+        <div class="pr-team">Midland Red Weasel Dogs <span class="dn">&#9660;</span></div>
+        <div class="pr-pts">1-2 &nbsp;&middot;&nbsp; 1,218.7 pts &nbsp;&middot;&nbsp; Hit 673.5 / Pitch 545.2</div>
+        <div class="pr-note">Warren (46.33, 14.34 K/9) and Skenes (40, 0.90 ERA) are two of the week&rsquo;s top eight pitchers. The team scored 282 points because hitting (185, 11th) is not supporting them. Wood and Henderson need to recapture Week 2 form. Week 4 vs. Troutdale Gales: the Dogs&rsquo; elite arms vs. the league&rsquo;s most explosive offense. The most purely entertaining matchup on the Week 4 board.</div>
+    </div></div>
+    <div class="pr-item"><div class="pr-rank" style="color:var(--red);-webkit-text-stroke:1px var(--red)">12</div><div>
+        <div class="pr-team">Ithaca Spartans <span class="dn">&#9660; 0-3. STRUCTURAL COLLAPSE.</span></div>
+        <div class="pr-pts">0-3 &nbsp;&middot;&nbsp; 929.5 pts &nbsp;&middot;&nbsp; Hit 639 / Pitch 290.5 (254 below next-lowest)</div>
+        <div class="pr-note">290.5 cumulative pitching points in three weeks. Judge (42 pts this week) is performing at an elite level. Crochet is performing. The supporting cast is generating a pitching total that is categorically impossible to win with. At 0-3 with the season&rsquo;s lowest cumulative total by 342 points, Week 4 vs. Newberry Indians requires wholesale lineup and rotation changes, not tinkering.</div>
+    </div></div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+<div class="section-label">Week 4 Preview &mdash; April 20-26, 2026</div>
+<div class="headline-md" style="margin-bottom:8px">Six Confirmed Matchups</div>
+<div class="col-2">
+<div>
+    <div class="wk4-card">
+        <div class="wk4-hdr">Matchup 1 &mdash; Troutdale Cascades (2-1) Away @ Tempe Scorpions (0-3) Home</div>
+        <div class="wk4-body">
+            <div><div class="wk4-team">Troutdale Cascades <span class="badge badge-hot">FAV</span></div><div class="wk4-rec">2-1 &middot; 500.5 pts Wk3</div></div>
+            <div class="wk4-vs">@</div>
+            <div style="text-align:right"><div class="wk4-team">Tempe Scorpions</div><div class="wk4-rec">0-3 &middot; 359.5 pts Wk3</div></div>
+        </div>
+        <div class="wk4-look">Cascades just posted 500.5 points against the only 0-3 team in the league. Gavin Williams (46 pts) is Tempe&rsquo;s genuine ace, but the Cascades&rsquo; rotation depth (283 pitching pts, 30 QS, 15 losses) is categorically superior. The Cascades should win this comfortably. Tempe&rsquo;s 1,271 cumulative points say the talent is there &mdash; the matchup is simply wrong again.</div>
+    </div>
+    <div class="wk4-card">
+        <div class="wk4-hdr">Matchup 2 &mdash; Newberry Indians (2-1) Away @ Ithaca Spartans (0-3) Home</div>
+        <div class="wk4-body">
+            <div><div class="wk4-team">Newberry Indians <span class="badge badge-hot">FAV</span></div><div class="wk4-rec">2-1 &middot; 423.2 pts Wk3</div></div>
+            <div class="wk4-vs">@</div>
+            <div style="text-align:right"><div class="wk4-team">Ithaca Spartans <span class="badge badge-must">MUST WIN</span></div><div class="wk4-rec">0-3 &middot; 302.8 pts Wk3</div></div>
+        </div>
+        <div class="wk4-look">Newberry rebounds from their first loss against a team whose cumulative pitching total (290.5) is the lowest in the league by 254 points. The Indians&rsquo; volume innings and SVH model is the exact formula that punishes thin rotations. An 0-4 start for Ithaca with Judge and Crochet on the roster is a season-defining crisis. Judge will produce. Everyone else must show up.</div>
+    </div>
+    <div class="wk4-card">
+        <div class="wk4-hdr">&#127942; Marquee &mdash; Sons of Pitches (1-2) Away @ Goldy Goldy Gone (3-0) Home</div>
+        <div class="wk4-body">
+            <div><div class="wk4-team">Sons of Pitches</div><div class="wk4-rec">1-2 &middot; 375.7 pts Wk3</div></div>
+            <div class="wk4-vs">@</div>
+            <div style="text-align:right"><div class="wk4-team">Goldy Goldy Gone <span class="badge badge-hot">FAV</span></div><div class="wk4-rec">3-0 &middot; 399.3 pts Wk3</div></div>
+        </div>
+        <div class="wk4-look">Alvarez (51 pts, 7.29 FP/G) is a genuine force and the Sons&rsquo; 4.57 FP/G is second in the league. A Sons win requires Alvarez to post 60+ and Goldy to have an off week simultaneously. Goldy&rsquo;s depth (Hoerner, Murakami, complete rotation) wins on structure, not peaks. Competitive if Alvarez dominates. Goldy wins on most scenarios.</div>
+    </div>
+</div>
+<div class="col-rule">
+    <div class="wk4-card">
+        <div class="wk4-hdr">Matchup 4 &mdash; BANK of Texas (1-2) Away @ Houston Gamblers (2-1) Home</div>
+        <div class="wk4-body">
+            <div><div class="wk4-team">BANK of Texas <span class="badge badge-toss">TOSS-UP</span></div><div class="wk4-rec">1-2 &middot; 473.2 pts Wk3</div></div>
+            <div class="wk4-vs">@</div>
+            <div style="text-align:right"><div class="wk4-team">Houston Gamblers <span class="badge badge-toss">TOSS-UP</span></div><div class="wk4-rec">2-1 &middot; 386.2 pts Wk3</div></div>
+        </div>
+        <div class="wk4-look">The BANK&rsquo;s Sanchez-King-Ober rotation vs. the Gamblers&rsquo; Ramirez-Lowe offense. The BANK posted 473 this week. The Gamblers have zero saves. If the BANK repeats their rotation performance and the Gamblers can&rsquo;t answer with saves production, the BANK wins convincingly. The week&rsquo;s most competitive matchup in the 7-12 bracket.</div>
+    </div>
+    <div class="wk4-card">
+        <div class="wk4-hdr">&#128293; Commissioner&rsquo;s Game &mdash; Sidd Finch (1-2) Away @ Desert Rats (3-0) Home</div>
+        <div class="wk4-body">
+            <div><div class="wk4-team">Sidd Finch <span class="badge badge-must">MUST WIN</span></div><div class="wk4-rec">1-2 &middot; 273 pts Wk3</div></div>
+            <div class="wk4-vs">@</div>
+            <div style="text-align:right"><div class="wk4-team">Desert Rats <span class="badge badge-hot">FAV</span></div><div class="wk4-rec">3-0 &middot; 325.8 pts Wk3</div></div>
+        </div>
+        <div class="wk4-look">The Rats&rsquo; worst week (325.833) vs. Finch&rsquo;s worst week (273). Legitimately competitive. If Valdez and Alcantara deliver and the offense generates more than 4 home runs, Finch can win. If Jackson and the Rats&rsquo; stable lineup finally shows up together, the Rats win. The commissioner&rsquo;s 3-0 record faces its most genuine test. This is the game to watch.</div>
+    </div>
+    <div class="wk4-card">
+        <div class="wk4-hdr">Power vs. Velocity &mdash; Troutdale Gales (2-1) Away @ Midland Dogs (1-2) Home</div>
+        <div class="wk4-body">
+            <div><div class="wk4-team">Troutdale Gales <span class="badge badge-toss">OFFENSE FAV</span></div><div class="wk4-rec">2-1 &middot; 415 pts Wk3</div></div>
+            <div class="wk4-vs">@</div>
+            <div style="text-align:right"><div class="wk4-team">Midland Dogs <span class="badge badge-toss">PITCHING FAV</span></div><div class="wk4-rec">1-2 &middot; 282.3 pts Wk3</div></div>
+        </div>
+        <div class="wk4-look">The Gales&rsquo; 874 cumulative hitting pts (league high) vs. Warren&rsquo;s 14.34 K/9 and Skenes&rsquo; 0.90 ERA. Mike Trout and Jose Caballero vs. the Dogs&rsquo; two elite arms. The Gales have the power to overwhelm any pitching staff. The Dogs need Warren and Skenes to shut down the top of the lineup long enough for the offense (673.5 cumulative, 10th) to find something. Highest entertainment value of Week 4.</div>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Rankings from verified data. Week 4 matchups confirmed from official league schedule. April 20-26, 2026.</p></div>
+</div>
+
+<!-- FA ACTIVITY -->
+<div class="page" id="fa">
+<div class="section-label">Wire Intelligence &mdash; Week 3 Analysis &amp; Week 4 Priorities</div>
+<div class="headline-lg" style="margin-bottom:4px">The Transaction Wire Report</div>
+<div class="deck">What the verified Week 3 data tells every team about their gaps and what moves need to happen before Week 4.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="fa-block">
+        <div class="fa-name">&#128000; Desert Rats &mdash; The Jackson Effect</div>
+        <div class="fa-row"><span class="fa-lbl">FINDING:</span> Jackson (47 pts, +51% ownership, rank #118) outscored both keepers. With 199 hitting points (8th of 12) and 589.7 cumulative pitching (4th-lowest), the roster is underperforming its talent level across both categories.</div>
+        <div class="fa-row"><span class="fa-lbl">PRIORITY:</span> Lock in Jackson. Identify a stable 4-arm pitching rotation and leave it alone for 7 days. The 3-0 record won&rsquo;t survive a continuation of the 325-pt output trend when the schedule hardens.</div>
+    </div>
+    <div class="fa-block">
+        <div class="fa-name">&#127970; The BANK of Texas &mdash; The Blueprint</div>
+        <div class="fa-row"><span class="fa-lbl">FINDING:</span> 473 pts when Sanchez, King, and Ober all performed and Jung provided lineup support. The talent is real when deployed correctly. This is the blueprint for every week going forward.</div>
+        <div class="fa-row"><span class="fa-lbl">PRIORITY:</span> Repeat Week 3&rsquo;s deployment. Maintain bench utilization. Josh Jung deserves a permanent lineup slot at 43 pts / 6.14 FP/G. The 188-at-bat disaster was the deviation. Week 3 was the standard.</div>
+    </div>
+    <div class="fa-block">
+        <div class="fa-name">&#9917; Houston Gamblers &mdash; Zero Saves, Three Weeks</div>
+        <div class="fa-row"><span class="fa-lbl">CRISIS:</span> Zero cumulative saves across Scoring Periods 1-3. Each save = 5 pts. The Gamblers have surrendered an estimated 75-100 points over three weeks to the saves column alone. Ramirez (60.5, 8.64 FP/G) cannot compensate for structural vacancies indefinitely.</div>
+        <div class="fa-row"><span class="fa-lbl">PRIORITY:</span> Any closer on the wire. One closing arm generating 2-3 saves/week = 10-15 points. Over 23 remaining weeks that is 230-345 points of opportunity cost if unsolved. This is the highest-ROI move available to this franchise.</div>
+    </div>
+    <div class="fa-block">
+        <div class="fa-name">&#127919; Sidd Finch &mdash; Power or Bust</div>
+        <div class="fa-row"><span class="fa-lbl">CRISIS:</span> 4 HR, 78 1B, 167 hitting pts. This is a contact-first offense in a power-scoring system. Valdez (41.5 pts) is performing correctly. The lineup around him is generating singles in a format that rewards home runs four times as much.</div>
+        <div class="fa-row"><span class="fa-lbl">PRIORITY:</span> Drop at least one contact-only hitter and add any player with 30+ HR upside. The 78-singles profile needs to be replaced with power, not more singles, before Week 4 becomes the turning point.</div>
+    </div>
+</div>
+<div class="col-rule">
+    <div class="fa-block">
+        <div class="fa-name">&#128128; Troutdale Cascades &mdash; One Move From Dominance</div>
+        <div class="fa-row"><span class="fa-lbl">FINDING:</span> 500.5 pts. 710 hitting / 741 pitching. Kirby (41.67), Miller (39, 0.00 ERA), 30 QS, 50 SVH this week. The pitching is improving. The closer question may be answering itself &mdash; verify whether this week&rsquo;s 50 SVH reflects a true closing arm or circumstantial saves accumulation.</div>
+        <div class="fa-row"><span class="fa-lbl">PRIORITY:</span> If the 50 SVH was structural (a genuine closer emerging), this team is nearly complete. If circumstantial, the closer market remains the most urgent acquisition in the league. Week 4 vs. Tempe can be won on volume regardless.</div>
+    </div>
+    <div class="fa-block">
+        <div class="fa-name">&#127939; Troutdale Gales &mdash; The Pitching Deficit</div>
+        <div class="fa-row"><span class="fa-lbl">FINDING:</span> 874 hitting pts (league high) / 415.8 pitching pts (league low). The gap (458.2 pts) between these two numbers is the largest roster imbalance of any competitive team in the league.</div>
+        <div class="fa-row"><span class="fa-lbl">PRIORITY:</span> A volume starter to complement Kirby. The Gales threw 126 IP this week (7th of 12). Against Midland&rsquo;s Warren and Skenes in Week 4, they need pitching that can stay competitive. Adding a 2-QS potential arm is the week&rsquo;s highest-ROI move for this franchise.</div>
+    </div>
+    <div class="fa-block">
+        <div class="fa-name">&#129428; Ithaca Spartans &mdash; Emergency Protocol</div>
+        <div class="fa-row"><span class="fa-lbl">CRISIS:</span> 290.5 cumulative pitching pts &mdash; 254 below the next-lowest team. Judge (42 pts) is performing. The rotation is generating a pitching total that no team can win with consistently.</div>
+        <div class="fa-row"><span class="fa-lbl">PRIORITY:</span> Drop every pitcher posting a negative or near-zero weekly contribution. Add any starter with 2+ QS potential. The Newberry Indians matchup in Week 4 punishes thin rotations systematically. Wholesale changes are required, not tinkering.</div>
+    </div>
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Week 4 Priority Targets (Verified Data)</div>
+        <table class="data" style="font-size:.82em">
+            <tr><th>Player</th><th>Pos</th><th>Context</th><th>Status</th></tr>
+            <tr class="highlight"><td><strong>Jeremiah Jackson</strong></td><td>OF</td><td>47 pts, +51%, rank #118</td><td>CLAIM</td></tr>
+            <tr><td><strong>Josh Jung</strong></td><td>3B</td><td>43 pts, +13%, rank #176</td><td>CLAIM/HOLD</td></tr>
+            <tr><td><strong>Will Warren</strong></td><td>SP</td><td>46.33 pts, 14.34 K/9, rank #73</td><td>HOLD (Dogs)</td></tr>
+            <tr><td><strong>Gavin Williams</strong></td><td>SP</td><td>46 pts, 2.25 ERA, rank #19</td><td>HOLD (Tempe)</td></tr>
+            <tr><td><strong>Framber Valdez</strong></td><td>SP</td><td>41.5 pts, 1.38 ERA, 2 QS</td><td>HOLD (Finch)</td></tr>
+            <tr><td><strong>George Kirby</strong></td><td>SP</td><td>41.67 pts, 2.02 ERA, rank #57</td><td>HOLD (Cascades)</td></tr>
+            <tr><td><strong>Mick Abel</strong></td><td>SP</td><td>36 pts, 0.00 ERA, rank #289</td><td>MONITOR (Goldy)</td></tr>
+            <tr><td><strong>Jose Caballero</strong></td><td>SS</td><td>41 pts, +2%, rank #147</td><td>MONITOR (Gales)</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px">CLAIM = available on wire. HOLD = already rostered. Source: verified league data.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Wire analysis based on verified Scoring Period 3 data. Week 4 opens April 20, 2026.</p></div>
+</div>
+
+<!-- COLUMNISTS -->
+<div class="page" id="columns">
+<div class="section-label">Opinion &amp; Commentary &mdash; Week 3 Final</div>
+<div class="headline-lg" style="margin-bottom:4px">The Columnists</div>
+<div class="deck">Joe Falls. Mitch Albom. Big Lou Palmieri. The numbers are verified. The opinions are strong. No filters.</div>
+<hr class="rule-h-thick">
+
+<div class="column-box">
+    <div class="column-box-title">The Data Is Clear. Now What?</div>
+    <div class="column-box-byline">By Joe Falls &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">After three weeks I can tell you this with confidence: Goldy Goldy Gone is the best team in this league because they have no exploitable weakness. Four-point-nine-two points per game &mdash; the league&rsquo;s highest. Nico Hoerner went 9-for-26 for 49.5 points. Munetaka Murakami at 6.75 per game. Mick Abel at 0.00 ERA as a depth starter. This is what roster depth looks like. Not a star and eleven prayer requests. A machine with interchangeable parts that all work. Three wins without a peak performance in the last two weeks. That is what I mean when I say Goldy is the standard.</p>
+            <p class="body-sm">I want to talk about how the Newberry Indians lost because the manner of it matters. They led the entire league in innings pitched (184.667), strikeouts (129), and saves-holds (50) this week. They lost by fifty points to the BANK of Texas. Not because they played poorly &mdash; because Cristopher Sanchez (43 pts, 1.50 ERA), Michael King (43 pts, 0.82 ERA), and Bailey Ober (41.67 pts) all pitched in the same week and all landed in the top six pitchers in the league, combining for 127.67 points. That is not bad luck for Newberry. That is the BANK finally playing the game they were supposed to be playing since February. One of these weeks was going to happen. It happened in Week 3.</p>
+            <p class="body-sm">The Desert Rats are 3-0. Their weekly point totals: 528, 452, 325. That line has one direction. Jeremiah Jackson &mdash; rank 118, ownership 72% entering the week &mdash; outscored Ohtani and Tucker on the same roster. A waiver claim outperforming two blockbuster keepers is a story, not a strategy. The Rats are winning on favorable scheduling more than dominant execution. The matchup against Sidd Finch in Week 4 should be manageable. But the schedule hardens and the declining output cannot continue indefinitely without consequences.</p>
+        </div>
+        <div>
+            <p class="body-sm">One thing about Sidd Finch that the numbers make undeniable. Four home runs. In a league where home runs are worth four points each. While leading the league with seventy-eight singles at one point apiece. This is not a slump. It is an identity. Framber Valdez gave them 41.5 points and a 1.38 ERA &mdash; a legitimate performance. Everyone else produced 231.5 points on the back of singles and hope. At 1-2 with the steepest scoring decline in the league, the Finch offense needs to be rebuilt around power before Week 4 becomes a turning point toward irrelevance.</p>
+            <p class="body-sm">Will Warren of the Midland Red Weasel Dogs: 46.33 points, 17 strikeouts in 10.2 innings, 1.69 ERA, 14.34 K/9. That is the most dominant per-inning strikeout performance of the week. He and Paul Skenes (40 pts, 0.90 ERA) were two of the top eight pitchers in the league. Their team scored 282 points. The hitting (185 pts, 11th) is what separates the Dogs from contention. Warren and Skenes deserve better from the lineup behind them.</p>
+            <p class="body-sm">And finally: the Tempe Scorpions are 0-3 with 1,271 cumulative points. Gavin Williams (46 pts, 2.25 ERA) was the week&rsquo;s second-best pitcher in a loss. They have outscored seven other teams in cumulative totals and have zero wins. I covered Detroit sports for thirty years. I have seen bad luck. This qualifies. The wins are in there. The schedule needs to stop eating them alive.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">The Architecture of What Works</div>
+    <div class="column-box-byline">By Mitch Albom &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">There is a number in this week&rsquo;s data that deserves more attention than a percentage sign. Seventy-eight. That is how many singles Sidd Finch recorded this week. It is the league&rsquo;s highest total. Against it: four home runs, the league&rsquo;s lowest. In a scoring system that pays four points for the latter and one for the former, this is not a neutral trade. It is a systematic underperformance of the available reward structure. Framber Valdez (41.5 pts, 1.38 ERA) is performing at an elite level and has been paired with an offense that is philosophically opposed to the format it plays in. That is not Valdez&rsquo;s problem. It is a construction problem that 78 singles in a week make impossible to ignore.</p>
+            <p class="body-sm">The Troutdale Cascades&rsquo; 500.5-point week is the most instructive performance in three weeks of this season. Not because of the number alone &mdash; though it is extraordinary &mdash; but because of how it was constructed. Two hundred and seventeen hitting points. Two hundred and eighty-three pitching points. The balance between those two numbers (710 cumulative hitting / 741 cumulative pitching) is the most even of any top-three team in the league. They are not winning on a dominant category. They are winning on the absence of a weak one. That is a different kind of excellence and it is worth naming precisely.</p>
+        </div>
+        <div>
+            <p class="body-sm">The Newberry Indians lost for the first time and I find myself more interested in how they lost than in the loss itself. They led the league in innings pitched, strikeouts, and saves-holds. They assembled a pitching performance that would have won most games in most weeks of this season. They lost because the BANK of Texas had three starters finish in the top six of the weekly pitching leaderboard simultaneously &mdash; a convergence of individual excellence that the Indians&rsquo; reliable system was not built to overcome in a single week. The Indians are not a worse team for losing to the BANK in Week 3. They are the same team. Their 2-1 record is accurate.</p>
+            <p class="body-sm">I think often about the Tempe Scorpions this season. One thousand two hundred and seventy-one fantasy points in three weeks. Zero wins. Gavin Williams was the week&rsquo;s second-best pitcher in a loss. Their construction &mdash; 764 cumulative hitting, 507 pitching &mdash; is not the problem. The schedule has been the problem. In head-to-head fantasy baseball, the schedule is not an abstraction. It is an opponent, and so far this season it has been Tempe Scorpions&rsquo; most formidable one. The talent exists. The calendar must cooperate.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Big Lou&rsquo;s Corner: The Numbers Made Me Do It</div>
+    <div class="column-box-byline">By Lou Palmieri, Baseball Lifer &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">I need to start with the number that has been haunting me since Sunday night. Four. FOUR HOME RUNS. In a league where every home run is worth FOUR POINTS. Sidd Finch led the entire league with seventy-eight singles this week. SEVENTY-EIGHT. You know what the difference is between a single and a home run in this scoring system? Three points. Times seventy-four fewer singles you would need to match one home run if you had an average number of them instead of FOUR. I am not a mathematician. But I am a man who understands that leading the league in a category worth one point each while posting the league low in a category worth four points each is not a recipe for winning. Framber Valdez gave them 41.5 points and a 1.38 ERA and I want to formally apologize to Framber Valdez on behalf of his supporting cast.</p>
+            <p class="body-sm">THE CASCADES. FIVE HUNDRED POINTS. I said after Week 1 that the Cascades needed a closer and I have been saying it every week since then. This week they posted 50 SVH points. Is this the closer emerging? Is this circumstantial? I do not know. What I DO know is that a team generating 710 hitting points and 741 pitching points &mdash; the most balanced roster in the top three &mdash; with George Kirby (41.67, 2.02 ERA) and Mason Miller (39, 0.00 ERA) anchoring the staff is NOT a second-tier team. They are 137 points behind Goldy with two losses. They just posted the 2026 season high. If the closer situation is solved this team is frightening. Write that down.</p>
+        </div>
+        <div>
+            <p class="body-sm">The BANK of Texas. THREE PITCHERS IN THE TOP SIX. Cristopher Sanchez. Michael King. Bailey Ober. One hundred and twenty-seven point six-seven combined pitching points. For reference: that is more than Sidd Finch&rsquo;s entire team produced from their pitching staff (106 pts). Three starters. One team. One week. Josh Jung goes ten for twenty-eight. Soto and Acu&ntilde;a have actual lineup support for the first time all season. FOUR HUNDRED AND SEVENTY-THREE POINTS. And they STILL LOST because Newberry Indians led the league in innings pitched AND strikeouts AND saves-holds on the same day. I am not making this up. I cannot make this up. This league is a masterpiece of competitive cruelty.</p>
+            <p class="body-sm">Will Warren of the Midland Red Weasel Dogs. Forty-six and a third points. Fourteen point three-four strikeouts per nine innings. ONE-POINT-SIX-NINE ERA. He is a weapon dressed as a starter. Paul Skenes added forty points at a zero-point-nine ERA on the same roster. TWO of the top eight pitchers in the league. Two hundred and eighty-two total team points. The hitting total is one hundred and eighty-five points &mdash; eleventh out of twelve teams. James Wood and Gunnar Henderson are better than that number. They need to start producing like it.</p>
+            <p class="body-sm">Desert Rats: 3-0. Weekly outputs: 528, 452, 325. Jeremiah Jackson &mdash; seasonal rank one hundred and eighteen, ownership seventy-two percent before this week &mdash; outscored Ohtani. Outscored Tucker. On the same roster. I said in February the Rats were the 2026 champions. I still believe it. But if Ohtani and Tucker don&rsquo;t appear on a weekly top-five leaderboard before May I reserve the right to reconsider what exactly I believed about them.</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-footer">
+    <p>The opinions in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office, its commissioner, or anyone who hit four home runs in a 4-pts-per-HR league and felt good about it.</p>
+    <p style="margin-top:8px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Vol. 1, No. 6 &nbsp;&middot;&nbsp; Week 3 Final Edition &nbsp;&middot;&nbsp; Next edition following Week 4 (April 27, 2026)</p>
+</div>
+</div>
+
+</div></div>
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
