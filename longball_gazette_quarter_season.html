@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Longball Gazette — Quarter Season Special Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1208;
+    --ink-mid: #3d3020;
+    --ink-light: #6b5a3e;
+    --ink-ghost: #a89070;
+    --paper: #f5f0e8;
+    --paper-mid: #ece4d4;
+    --paper-dark: #ddd0b8;
+    --paper-darkest: #c8b898;
+    --accent: #8b1a1a;
+    --accent-light: #c0392b;
+    --accent-pale: #f0dcd8;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --rule: #1a1208;
+  }
+
+  body {
+    background: #2a2018;
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--paper);
+    box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+    position: relative;
+  }
+
+  /* HEADER */
+  .nameplate {
+    border-bottom: 3px solid var(--rule);
+    padding: 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .nameplate-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+
+  .nameplate-main {
+    padding: 1rem 1.5rem 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .league-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.2rem;
+  }
+
+  .gazette-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 9vw, 88px);
+    font-weight: 900;
+    line-height: 0.92;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .gazette-title span {
+    color: var(--accent);
+  }
+
+  .edition-flag {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--paper);
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    margin-top: 0.5rem;
+  }
+
+  .nameplate-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    border-top: 1px solid var(--rule);
+    margin-top: 0.75rem;
+  }
+
+  /* DECK / LEDE */
+  .lede-banner {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 0.7rem 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* MAIN CONTENT AREA */
+  .content-area {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  /* COLUMNS */
+  .cols-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 1.5rem;
+  }
+
+  .cols-2 {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 0;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 1.5rem;
+  }
+
+  .cols-2-eq {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: 2px solid var(--rule);
+    margin-bottom: 1.5rem;
+  }
+
+  .col {
+    padding: 0 1.25rem 1.25rem 0;
+    border-right: 1px solid var(--rule);
+  }
+
+  .col:last-child {
+    border-right: none;
+    padding-right: 0;
+    padding-left: 1.25rem;
+  }
+
+  .col:first-child {
+    padding-left: 0;
+  }
+
+  .cols-3 .col:not(:first-child):not(:last-child) {
+    padding-left: 1.25rem;
+  }
+
+  /* SECTION HEADERS */
+  .section-head {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 3px 8px;
+    display: inline-block;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-head.accent {
+    background: var(--accent);
+  }
+
+  .section-head.gold {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  /* HEADLINES */
+  h1.story-hed {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  h2.story-hed {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  h3.story-hed {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .deck {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-mid);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .byline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-ghost);
+    margin-bottom: 0.7rem;
+    border-bottom: 0.5px solid var(--paper-darkest);
+    padding-bottom: 0.4rem;
+  }
+
+  p.body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-mid);
+    margin-bottom: 0.65rem;
+  }
+
+  p.body:last-child { margin-bottom: 0; }
+
+  /* PULL QUOTE */
+  .pullquote {
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    padding: 0.75rem 0;
+    margin: 1rem 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .pullquote .attribution {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-ghost);
+    display: block;
+    margin-top: 0.4rem;
+  }
+
+  /* POWER RANKINGS TABLE */
+  .rankings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 0.5rem;
+  }
+
+  .rankings-table thead tr {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .rankings-table thead th {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 8px;
+    text-align: left;
+  }
+
+  .rankings-table thead th:last-child { text-align: center; }
+
+  .rankings-table tbody tr {
+    border-bottom: 0.5px solid var(--paper-darkest);
+  }
+
+  .rankings-table tbody tr:nth-child(even) {
+    background: var(--paper-mid);
+  }
+
+  .rankings-table td {
+    padding: 5px 8px;
+    color: var(--ink-mid);
+    font-size: 12.5px;
+    vertical-align: middle;
+  }
+
+  .rank-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--ink);
+    width: 28px;
+  }
+
+  .team-name {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .grade-badge {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+  }
+
+  .grade-a { color: #1a5c1a; }
+  .grade-am { color: #2e7d32; }
+  .grade-bp { color: #1565c0; }
+  .grade-b { color: #0277bd; }
+  .grade-bm { color: #6a1d6a; }
+  .grade-cp { color: var(--accent); }
+  .grade-c { color: #8b1a1a; }
+
+  .tier-divider td {
+    background: var(--paper-dark) !important;
+    font-family: 'Oswald', sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding: 3px 8px !important;
+    border-bottom: 0.5px solid var(--paper-darkest) !important;
+  }
+
+  .arrow-up { color: #1a7a1a; font-weight: 700; }
+  .arrow-dn { color: var(--accent); font-weight: 700; }
+  .arrow-flat { color: var(--ink-ghost); }
+
+  /* TEAM CAPSULE */
+  .team-capsule {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid var(--paper-darkest);
+  }
+
+  .team-capsule:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .capsule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+  }
+
+  .capsule-team {
+    font-family: 'Oswald', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .capsule-grade {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .capsule-style {
+    font-family: 'Source Serif 4', serif;
+    font-size: 11px;
+    font-style: italic;
+    color: var(--ink-ghost);
+    margin-bottom: 0.35rem;
+  }
+
+  .capsule-body {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-mid);
+  }
+
+  .capsule-outlook {
+    font-size: 11.5px;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-top: 0.3rem;
+  }
+
+  /* VERDICT BOX */
+  .verdict-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+  }
+
+  .verdict-box h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .verdict-box p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--paper-mid);
+    margin-bottom: 0.4rem;
+  }
+
+  .verdict-box p:last-child { margin-bottom: 0; }
+
+  /* META LIST */
+  .meta-list {
+    list-style: none;
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+
+  .meta-list li {
+    border-bottom: 0.5px solid var(--paper-darkest);
+    padding: 5px 0;
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .meta-list li:last-child { border-bottom: none; }
+
+  .meta-list li::before {
+    content: '—';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* BOLD CALL-OUT */
+  .callout-stat {
+    text-align: center;
+    padding: 0.8rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin: 0.8rem 0;
+  }
+
+  .callout-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
+  }
+
+  .callout-stat .label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  /* HORIZONTAL RULE */
+  .rule-thick {
+    border: none;
+    border-top: 2px solid var(--rule);
+    margin: 1.25rem 0;
+  }
+
+  .rule-thin {
+    border: none;
+    border-top: 0.5px solid var(--paper-darkest);
+    margin: 0.75rem 0;
+  }
+
+  /* FOLIO */
+  .folio {
+    background: var(--ink);
+    color: var(--paper-mid);
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.5rem;
+  }
+
+  /* PRINT TEXTURES / DECORATIVE */
+  .ornament {
+    text-align: center;
+    font-size: 18px;
+    color: var(--ink-ghost);
+    margin: 0.75rem 0;
+    letter-spacing: 0.3em;
+  }
+
+  .flag-accent {
+    background: var(--accent);
+    color: var(--paper);
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .flag-gold {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'Oswald', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  .initial-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    margin: 0.08em 0.05em 0 0;
+    color: var(--accent);
+  }
+
+  /* LEAGUE META BARS */
+  .meta-bar {
+    margin-bottom: 0.6rem;
+  }
+
+  .meta-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Oswald', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    margin-bottom: 3px;
+  }
+
+  .meta-bar-track {
+    height: 6px;
+    background: var(--paper-dark);
+    position: relative;
+  }
+
+  .meta-bar-fill {
+    height: 100%;
+    background: var(--ink);
+    transition: width 0.3s ease;
+  }
+
+  .meta-bar-fill.accent { background: var(--accent); }
+  .meta-bar-fill.gold { background: var(--gold); }
+
+  /* DESKTOP-FIRST RESPONSIVE */
+  @media (max-width: 680px) {
+    .cols-3, .cols-2, .cols-2-eq {
+      grid-template-columns: 1fr;
+    }
+    .col {
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 0 0 1rem 0 !important;
+    }
+    .col:last-child { border-bottom: none; }
+    .gazette-title { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- NAMEPLATE -->
+  <div class="nameplate">
+    <div class="nameplate-top">
+      <span>Season 19 · 2026</span>
+      <span>Head-to-Head Points · Fantrax</span>
+      <span>12 Teams · Quarter Season Review</span>
+    </div>
+    <div class="nameplate-main">
+      <div class="league-name">Longball Fantasy Baseball League</div>
+      <div class="gazette-title">The Long<span>ball</span><br>Gazette</div>
+      <div class="edition-flag">&#9733; Special Edition: Quarter-Season Power Report &#9733;</div>
+    </div>
+    <div class="nameplate-bottom">
+      <span>Published by the Commissioner's Office</span>
+      <span>&#9670; &nbsp; Vol. XIX &nbsp; &#9670;</span>
+      <span>May 2026 · Free to League Members</span>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="lede-banner">
+    Twenty-Five Games In — Where Every Manager Stands, What Every Team Needs, and Who's Running Out of Excuses
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content-area">
+
+    <!-- ROW 1: Lede story + rankings table -->
+    <div class="cols-2">
+      <div class="col">
+        <div class="section-head">Commissioner's Analysis</div>
+        <h1 class="story-hed">The Field Takes Shape — Two Archetypes Are Winning. Everyone Else Is Arguing With the Spreadsheet.</h1>
+        <div class="deck">After a quarter of the season, the league's pecking order has crystallized with unusual clarity. The gap between disciplined teams and hopeful ones is widening fast.</div>
+        <div class="byline">By The Commissioner · Longball Gazette</div>
+        <p class="body initial-cap">Twenty-five games into Season 19, two facts have become stubbornly undeniable: you can win this league two ways, and you are probably not doing either of them correctly. The <strong>Newberry Indians</strong> and <strong>Goldy Goldy Gone</strong> — one a volume behemoth, one a precision instrument — have separated from the field not by luck, but by executing their chosen philosophies with a consistency that exposes everyone else's improvisation.</p>
+        <p class="body">The Indians flood the zone. More plate appearances. More innings. More everything. It creates ratio volatility, but when your ceiling is the highest in the building, you can afford some noise. Goldy operates the opposite way — minimal wasted roster spots, SP decisions that reflect actual process, an efficiency that quietly accumulates points while rivals are starting a fourth spot starter in a week.</p>
+        <p class="body">What makes the current standings particularly instructive is that both approaches work. This is not a league where only one path leads to October. But you must actually commit to one. The mid-table teams — the ones oscillating between aggression and caution, collecting talent without structure — are the 2026 version of a swing hitter who also steals bases but does neither well.</p>
+        <div class="pullquote">
+          "The biggest league-wide leak isn't at the batting cage. It's in the rotation decision every Monday morning."
+          <span class="attribution">— Commissioner's Note, Week 3</span>
+        </div>
+        <p class="body">Pitching decisions remain the single most correctable edge in LONGBALL. A Quality Start is worth five points. A blown outing from a marginal SP costs the same. The managers who grasp that asymmetry — who sit a streaky arm rather than chase IP — are the ones climbing the standings with startling efficiency.</p>
+      </div>
+      <div class="col">
+        <div class="section-head accent">Power Rankings</div>
+        <table class="rankings-table">
+          <thead>
+            <tr>
+              <th style="width:28px">#</th>
+              <th>Team</th>
+              <th>Style</th>
+              <th style="text-align:center">Grade</th>
+              <th style="text-align:center; width:28px">&#9650;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tier-divider"><td colspan="5">Tier I — True Contenders</td></tr>
+            <tr>
+              <td class="rank-num">1</td>
+              <td class="team-name">Newberry Indians</td>
+              <td style="font-size:11px;color:#6b5a3e">Volume</td>
+              <td style="text-align:center"><span class="grade-badge grade-a">A</span></td>
+              <td style="text-align:center" class="arrow-up">▲</td>
+            </tr>
+            <tr>
+              <td class="rank-num">2</td>
+              <td class="team-name">Goldy Goldy Gone</td>
+              <td style="font-size:11px;color:#6b5a3e">Efficiency</td>
+              <td style="text-align:center"><span class="grade-badge grade-am">A−</span></td>
+              <td style="text-align:center" class="arrow-flat">→</td>
+            </tr>
+            <tr class="tier-divider"><td colspan="5">Tier II — Strong Contenders</td></tr>
+            <tr>
+              <td class="rank-num">3</td>
+              <td class="team-name">Sidd Finch</td>
+              <td style="font-size:11px;color:#6b5a3e">Hybrid</td>
+              <td style="text-align:center"><span class="grade-badge grade-bp">B+</span></td>
+              <td style="text-align:center" class="arrow-up">▲</td>
+            </tr>
+            <tr>
+              <td class="rank-num">4</td>
+              <td class="team-name">Troutdale Cascades</td>
+              <td style="font-size:11px;color:#6b5a3e">Pipeline</td>
+              <td style="text-align:center"><span class="grade-badge grade-am">A−</span></td>
+              <td style="text-align:center" class="arrow-up">▲</td>
+            </tr>
+            <tr class="tier-divider"><td colspan="5">Tier III — High Variance / Upside</td></tr>
+            <tr>
+              <td class="rank-num">5</td>
+              <td class="team-name">Midland Red Weasel Dogs</td>
+              <td style="font-size:11px;color:#6b5a3e">Volatile</td>
+              <td style="text-align:center"><span class="grade-badge grade-bp">B+</span></td>
+              <td style="text-align:center" class="arrow-dn">▼</td>
+            </tr>
+            <tr>
+              <td class="rank-num">6</td>
+              <td class="team-name">Houston Gamblers</td>
+              <td style="font-size:11px;color:#6b5a3e">Hi-Var Off.</td>
+              <td style="text-align:center"><span class="grade-badge grade-b">B</span></td>
+              <td style="text-align:center" class="arrow-flat">→</td>
+            </tr>
+            <tr>
+              <td class="rank-num">7</td>
+              <td class="team-name">Desert Rats</td>
+              <td style="font-size:11px;color:#6b5a3e">Active Opt.</td>
+              <td style="text-align:center"><span class="grade-badge grade-b">B</span></td>
+              <td style="text-align:center" class="arrow-dn">▼</td>
+            </tr>
+            <tr class="tier-divider"><td colspan="5">Tier IV — Competitive but Flawed</td></tr>
+            <tr>
+              <td class="rank-num">8</td>
+              <td class="team-name">Troutdale Gales</td>
+              <td style="font-size:11px;color:#6b5a3e">Offense-1st</td>
+              <td style="text-align:center"><span class="grade-badge grade-bm">B−</span></td>
+              <td style="text-align:center" class="arrow-flat">→</td>
+            </tr>
+            <tr>
+              <td class="rank-num">9</td>
+              <td class="team-name">Tempe Scorpions</td>
+              <td style="font-size:11px;color:#6b5a3e">Balanced</td>
+              <td style="text-align:center"><span class="grade-badge grade-bm">B−</span></td>
+              <td style="text-align:center" class="arrow-up">▲</td>
+            </tr>
+            <tr>
+              <td class="rank-num">10</td>
+              <td class="team-name">Sons of Pitches</td>
+              <td style="font-size:11px;color:#6b5a3e">Stability</td>
+              <td style="text-align:center"><span class="grade-badge grade-b">B</span></td>
+              <td style="text-align:center" class="arrow-dn">▼</td>
+            </tr>
+            <tr class="tier-divider"><td colspan="5">Tier V — Structural Issues</td></tr>
+            <tr>
+              <td class="rank-num">11</td>
+              <td class="team-name">The BANK of Texas</td>
+              <td style="font-size:11px;color:#6b5a3e">Talent-Heavy</td>
+              <td style="text-align:center"><span class="grade-badge grade-cp">C+</span></td>
+              <td style="text-align:center" class="arrow-dn">▼</td>
+            </tr>
+            <tr>
+              <td class="rank-num">12</td>
+              <td class="team-name">Ithaca Spartans</td>
+              <td style="font-size:11px;color:#6b5a3e">Accumulate</td>
+              <td style="text-align:center"><span class="grade-badge grade-c">C</span></td>
+              <td style="text-align:center" class="arrow-dn">▼</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:1rem;">
+          <div class="section-head gold">League-Wide Edges</div>
+          <div class="meta-bar">
+            <div class="meta-bar-label"><span>SP Discipline</span><span>Biggest Gap</span></div>
+            <div class="meta-bar-track"><div class="meta-bar-fill accent" style="width:88%"></div></div>
+          </div>
+          <div class="meta-bar">
+            <div class="meta-bar-label"><span>RP Optimization</span><span>Underutilized</span></div>
+            <div class="meta-bar-track"><div class="meta-bar-fill gold" style="width:72%"></div></div>
+          </div>
+          <div class="meta-bar">
+            <div class="meta-bar-label"><span>Lineup Density</span><span>Hidden Separator</span></div>
+            <div class="meta-bar-track"><div class="meta-bar-fill" style="width:65%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: TEAM CAPSULES (3-column) -->
+    <div class="section-head" style="margin-bottom:0.75rem">Team Capsules — All 12 Franchises</div>
+
+    <div class="cols-3">
+      <div class="col">
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Newberry Indians</div>
+            <div class="capsule-grade grade-a">A</div>
+          </div>
+          <div class="capsule-style">Volume maximization</div>
+          <div class="capsule-body">Best total output in the league. High AB and IP accumulation, aggressive roster activity, elite hitter consistency. Ratio volatility remains the lone risk — if the blow-up SPs tighten even slightly, this is the league favorite by a wide margin.</div>
+          <div class="capsule-outlook">Outlook: If volatility tightens → clear #1.</div>
+        </div>
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Goldy Goldy Gone</div>
+            <div class="capsule-grade grade-am">A−</div>
+          </div>
+          <div class="capsule-style">Efficiency model</div>
+          <div class="capsule-body">Elite lineup efficiency. Minimal wasted slots. Strong SP stability. The model of what disciplined, low-error management looks like in a points league. Slight RP underutilization and limited aggression ceiling are the only knocks.</div>
+          <div class="capsule-outlook">Outlook: Most stable contender. Championship viable.</div>
+        </div>
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Sidd Finch</div>
+            <div class="capsule-grade grade-bp">B+</div>
+          </div>
+          <div class="capsule-style">Hybrid efficiency</div>
+          <div class="capsule-body">Best RP utilization in the league alongside strong hitter efficiency and a balanced roster construction. Occasional poor SP choices remain the only thing separating this team from the top tier.</div>
+          <div class="capsule-outlook">Outlook: Near-elite. One adjustment away.</div>
+        </div>
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Troutdale Cascades</div>
+            <div class="capsule-grade grade-am">A−</div>
+          </div>
+          <div class="capsule-style">Developmental pipeline</div>
+          <div class="capsule-body">Elite RP structure. Strong prospect identification. A sustainable roster build that will likely be stronger in August than it is today. Short-term production gaps are the price of this strategy.</div>
+          <div class="capsule-outlook">Outlook: Trending up. Future strength exceeds present.</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Midland Red Weasel Dogs</div>
+            <div class="capsule-grade grade-bp">B+</div>
+          </div>
+          <div class="capsule-style">Upside volatility</div>
+          <div class="capsule-body">Excellent breakout player identification and genuine ceiling on the roster. Poor risk filtering creates inconsistency — this team is one discipline upgrade from dangerous.</div>
+          <div class="capsule-outlook">Outlook: Boom-or-bust. Small gain in filtering → major move.</div>
+        </div>
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Houston Gamblers</div>
+            <div class="capsule-grade grade-b">B</div>
+          </div>
+          <div class="capsule-style">High-variance offense</div>
+          <div class="capsule-body">Strong hitter core with access to elite SP ceilings. The problem: SP blow-ups routinely erase the offensive gains, and the RP edge is chronically underused. A winnable problem, but it requires process change, not just luck.</div>
+          <div class="capsule-outlook">Outlook: Playoff-caliber if volatility is addressed.</div>
+        </div>
+
+        <div class="callout-stat">
+          <span class="num">5</span>
+          <span class="label">Points per Quality Start — the most efficient play in LONGBALL</span>
+        </div>
+
+        <div class="team-capsule" style="border-top: 2px solid var(--accent); padding-top: 0.8rem;">
+          <div class="flag-accent">Your Team</div>
+          <div class="capsule-header">
+            <div class="capsule-team">Desert Rats</div>
+            <div class="capsule-grade grade-b">B</div>
+          </div>
+          <div class="capsule-style">High-activity optimizer</div>
+          <div class="capsule-body">Elite offensive core — Harper, Freeman, Tucker, Ohtani — and a deep pitching pool backed by genuine roster knowledge. The problems are fixable but urgent: severe lineup inefficiency, SP overexposure, and churn that has cost points the talent doesn't justify losing. The ceiling here is legitimately top-three.</div>
+          <div class="capsule-outlook">Outlook: High ceiling. Optimization → major climb imminent.</div>
+        </div>
+
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Troutdale Gales</div>
+            <div class="capsule-grade grade-bm">B−</div>
+          </div>
+          <div class="capsule-style">Offense-driven</div>
+          <div class="capsule-body">Elite offensive production with a strong core. SP instability is chronic and has produced results that underperform the offensive investment. Offense-first managers tend to discover the hard way that this scoring system punishes bad pitching efficiently.</div>
+          <div class="capsule-outlook">Outlook: Competitive but volatile. Pitching is the ceiling.</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Tempe Scorpions</div>
+            <div class="capsule-grade grade-bm">B−</div>
+          </div>
+          <div class="capsule-style">Balanced build</div>
+          <div class="capsule-body">Deep offensive lineup with solid base production. SP inconsistency limits the ceiling, and RP optimization has been left on the table. Moderate risk tolerance has produced a team that is neither volatile enough to boom nor efficient enough to grind.</div>
+          <div class="capsule-outlook">Outlook: Mid-tier with mobility if pitching sharpens.</div>
+        </div>
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Sons of Pitches</div>
+            <div class="capsule-grade grade-b">B</div>
+          </div>
+          <div class="capsule-style">Stability-first</div>
+          <div class="capsule-body">Reliable hitters and solid overall structure. The conservative decision-making avoids mistakes effectively — but also systematically avoids upside. In a points league with this much parity, the inability to make a move at the right moment compounds across a season.</div>
+          <div class="capsule-outlook">Outlook: Stable but capped without increased activity.</div>
+        </div>
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">The BANK of Texas</div>
+            <div class="capsule-grade grade-cp">C+</div>
+          </div>
+          <div class="capsule-style">Talent-heavy</div>
+          <div class="capsule-body">High-end offensive pieces that should be producing more. Poor pitching decisions and inefficient roster usage have turned a strong talent base into a middling result. The instinct to gain value without a structure to protect it is costing points weekly.</div>
+          <div class="capsule-outlook">Outlook: Fixable, but requiring process overhaul.</div>
+        </div>
+        <div class="team-capsule">
+          <div class="capsule-header">
+            <div class="capsule-team">Ithaca Spartans</div>
+            <div class="capsule-grade grade-c">C</div>
+          </div>
+          <div class="capsule-style">Talent accumulation</div>
+          <div class="capsule-body">Strong core hitters who are not being maximized by the surrounding structure. Poor depth, inefficient pitching deployment, and a reactive management style add up to a team underperforming its talent by a significant margin. This is the most recoverable bad situation in the league — but only with a strategic overhaul.</div>
+          <div class="capsule-outlook">Outlook: Needs overhaul. Talent is there. Strategy is not.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: League Meta + Verdicts -->
+    <div class="cols-2-eq">
+      <div class="col">
+        <div class="section-head">League Intelligence</div>
+        <h2 class="story-hed">Three Leaks Every Manager Should Patch — And Only a Few Have</h2>
+        <div class="byline">Analysis · Longball Gazette Staff</div>
+        <p class="body">Across all twelve teams, the gaps between the standings and the potential are almost universally traced to the same three failure modes. They are not obscure. They are not unlucky. They are choices.</p>
+
+        <h3 class="story-hed" style="margin-top:0.8rem">1. SP Decision-Making</h3>
+        <p class="body">Almost every non-elite team starts too many bad SPs and accepts avoidable blow-ups. Five points for a Quality Start. Minus-five for a disaster. The teams at the top of this league are not smarter about pitching talent — they are smarter about knowing when to sit it.</p>
+
+        <h3 class="story-hed" style="margin-top:0.8rem">2. RP Optimization</h3>
+        <p class="body">SVH is worth five points. It is the single most efficient category in LONGBALL per lineup slot deployed. Only a handful of teams are consistently extracting this value. The others are treating closers and high-leverage arms as afterthoughts when they should be among the most actively managed assets on the roster.</p>
+
+        <h3 class="story-hed" style="margin-top:0.8rem">3. Lineup Density</h3>
+        <p class="body">Dead roster spots — injured players starting, bench pieces collecting zeros — are the silent point-killers. Top teams minimize them. Mid-tier teams quietly lose matchups to this factor alone, without ever understanding why.</p>
+      </div>
+
+      <div class="col">
+        <div class="section-head accent">Commissioner's Verdicts</div>
+
+        <div class="verdict-box">
+          <h4>Most Dangerous Teams — Rest of Season</h4>
+          <p><strong style="color:#fac775">Newberry Indians</strong> — Volume ceiling is the highest in the league. Any tightening of ratios makes this team nearly unstoppable.</p>
+          <p><strong style="color:#fac775">Goldy Goldy Gone</strong> — Efficiency stability means they don't have bad weeks. They just compound good ones.</p>
+          <p><strong style="color:#fac775">Sidd Finch</strong> — Balanced execution is one SP discipline adjustment from becoming a genuine title threat.</p>
+        </div>
+
+        <div class="verdict-box" style="background:var(--accent); margin-top:0.75rem;">
+          <h4 style="color:var(--paper)">Most Likely to Rise</h4>
+          <p style="color:var(--paper-mid)"><strong style="color:#fff">Desert Rats</strong> — The talent is legitimate. Harper. Freeman. Tucker. Ohtani. The ceiling is top-three in the league. The only thing standing between this roster and contention is process, not personnel.</p>
+          <p style="color:var(--paper-mid)"><strong style="color:#fff">Midland Red Weasel Dogs</strong> — One discipline upgrade in risk filtering unlocks a boom-level season.</p>
+        </div>
+
+        <div class="verdict-box" style="background:var(--gold); margin-top:0.75rem;">
+          <h4 style="color:var(--ink)">Most Likely to Stall</h4>
+          <p style="color:var(--ink-mid)">The <strong>BANK of Texas</strong> and <strong>Ithaca Spartans</strong> both carry the same structural problem: talent that is not matched by process. Without a strategic overhaul, the standings will continue to underperform the roster.</p>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <ul class="meta-list">
+            <li>Season 19 is 25% complete — the standings are a signal, not a sentence</li>
+            <li>Injury management will separate the top tier in May and June</li>
+            <li>The trade market opens soon — buyer/seller map forthcoming</li>
+            <li>Playoff probability model publishing next edition</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSING -->
+    <hr class="rule-thick">
+    <div class="ornament">&#9670; &nbsp; &#9670; &nbsp; &#9670;</div>
+    <p class="body" style="text-align:center; font-style:italic; color:var(--ink-light); font-size:13px;">
+      The Longball Gazette is published by the Commissioner's Office of the LONGBALL Fantasy Baseball League, Season 19.<br>
+      All analysis is produced in service of the league. Accuracy, not diplomacy, is the editorial standard.
+    </p>
+
+  </div><!-- /content-area -->
+
+  <div class="folio">
+    The Longball Gazette &nbsp;·&nbsp; Season 19 Quarter-Season Special Edition &nbsp;·&nbsp; May 2026 &nbsp;·&nbsp; Longball Fantasy Baseball League
+  </div>
+</div>
+</body>
+</html>
