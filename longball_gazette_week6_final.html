@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette &mdash; Week 6 Final, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a}
+        body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+        .newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+        .newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+        .inner{position:relative;z-index:1}
+        .masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+        .masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+        .paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+        .paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+        .paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:12px}
+        .ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+        .ticker-inner{display:flex;white-space:nowrap;animation:ticker 80s linear infinite}
+        .ticker-inner span{padding:0 30px}
+        .ticker-inner .sep{color:var(--gold);font-weight:700}
+        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+        .nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+        .nav-tab:first-child{border-left:1px solid #c0b090}
+        .nav-tab:hover{background:var(--paper);color:var(--ink)}
+        .nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+        .nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+        .page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+        .page.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        .section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+        .headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+        .headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+        .headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+        .deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+        .byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+        .dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+        p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+        p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+        p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+        .col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+        .rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+        .rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+        .col-rule{border-left:1px solid #b0a080;padding-left:30px}
+        .info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+        .info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+        .column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+        .column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+        .column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+        .alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+        .alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+        .gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+        .waste-box{border:3px solid var(--red);background:#fff0f0;padding:14px 16px;margin-bottom:16px}
+        .waste-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);text-align:center;border-bottom:2px solid var(--red);padding-bottom:6px;margin-bottom:10px}
+        table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+        table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+        table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+        table.data tr:last-child td{border-bottom:none}
+        table.data tr.highlight{background:#fff9e0;font-weight:700}
+        table.data tr.danger{background:#fff0f0}
+        table.data tr.warning{background:#fff8ee}
+        table.data .num{text-align:right;font-weight:700}
+        table.data .rk{text-align:center;width:30px;color:var(--muted)}
+        .recap-card{border:2px solid var(--rule);margin-bottom:24px;overflow:hidden}
+        .recap-header{display:flex;justify-content:space-between;align-items:stretch;background:var(--ink);color:var(--paper)}
+        .recap-team{flex:1;padding:10px 14px}
+        .recap-team.away{border-right:1px solid #555}
+        .recap-team-name{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+        .recap-score{font-family:"Courier Prime",monospace;font-size:1.5em;font-weight:700;line-height:1}
+        .recap-score.leading{color:var(--gold)}
+        .recap-vs{padding:10px 12px;font-family:"Courier Prime",monospace;font-size:.75em;text-align:center;opacity:.6;display:flex;align-items:center}
+        .recap-status{background:var(--red);color:white;font-family:"Courier Prime",monospace;font-size:.72em;text-align:center;padding:4px 10px;font-weight:700;letter-spacing:.5px}
+        .recap-body{padding:14px 16px}
+        .recap-body p{font-size:.88em;line-height:1.65;margin-bottom:8px}
+        .recap-stat{background:var(--paper-dark);border-left:4px solid var(--gold);padding:8px 12px;font-family:"Courier Prime",monospace;font-size:.8em;margin-top:8px}
+        .recap-stat strong{color:var(--red)}
+        .pr-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #d4c89a}
+        .pr-item:last-child{border-bottom:none}
+        .pr-rank{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--paper-dark);-webkit-text-stroke:1.5px var(--rule);min-width:44px;text-align:center;line-height:1;padding-top:2px}
+        .pr-rank.top3{color:var(--gold);-webkit-text-stroke:1px var(--gold)}
+        .pr-team{font-family:"Oswald",sans-serif;font-size:1.05em;font-weight:700}
+        .pr-pts{font-family:"Courier Prime",monospace;font-size:.85em;color:var(--muted)}
+        .pr-note{font-size:.83em;color:var(--muted);font-style:italic;line-height:1.4;margin-top:2px}
+        .up{color:#2a7a2a;font-weight:700}
+        .dn{color:var(--red);font-weight:700}
+        .same{color:var(--gold);font-weight:700}
+        .wk7-card{border:2px solid var(--rule);margin-bottom:14px;overflow:hidden}
+        .wk7-hdr{background:var(--paper-dark);padding:6px 12px;font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+        .wk7-body{display:flex;justify-content:space-between;align-items:center;padding:10px 14px}
+        .wk7-team{font-family:"Oswald",sans-serif;font-size:.95em;font-weight:700}
+        .wk7-rec{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted)}
+        .wk7-vs{font-family:"Courier Prime",monospace;font-size:.8em;color:var(--muted);padding:0 10px}
+        .wk7-look{padding:8px 14px;font-size:.82em;font-style:italic;color:var(--muted);background:#fffef8;border-top:1px solid #d4c89a;line-height:1.5}
+        .badge{display:inline-block;font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+        .badge-hot{background:var(--red);color:white}
+        .badge-toss{background:var(--gold);color:var(--ink)}
+        .badge-must{background:#1a5a1a;color:white}
+        .fa-block{margin-bottom:18px}
+        .fa-name{font-family:"Oswald",sans-serif;font-size:.9em;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 10px}
+        .fa-row{display:flex;gap:8px;align-items:baseline;padding:4px 10px;border-bottom:1px solid #e0d4b0;font-size:.82em;flex-wrap:wrap}
+        .fa-row:last-child{border-bottom:none}
+        .fa-lbl{color:var(--muted);font-weight:700;font-family:"Courier Prime",monospace;font-size:.85em;min-width:75px}
+        .vickrey-lbl{color:var(--gold);font-weight:700;font-family:"Courier Prime",monospace;font-size:.85em;min-width:75px}
+        .page-footer{text-align:center;font-family:"Courier Prime",monospace;font-size:.78em;color:var(--muted);padding-top:20px;border-top:2px double var(--rule);margin-top:30px}
+        @media(max-width:760px){.newspaper{outline:none}.page{padding:20px}.col-2,.col-2-1{grid-template-columns:1fr}.col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}.paper-name{font-size:2em;letter-spacing:1px}.nav-tab{padding:8px 10px;font-size:.72em}}
+    </style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<!-- MASTHEAD -->
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Vol. 1, No. 9 &nbsp;|&nbsp; Week 6 Final Edition</span>
+        <span>Sunday, May 10, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"No Rest for the Relentless." &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#127752; CASCADES 504.167 &mdash; 5-1 and posting another 500-pt week. Is anyone coming for them?</span>
+    <span class="sep">&#9670;</span>
+    <span>&#128165; ANDY PAGES leads all hitters &mdash; 48 pts for the Troutdale Gales</span>
+    <span class="sep">&#9670;</span>
+    <span>&#127942; BANK UPSETS GOLDY 365-340 &mdash; Sanchez 69.5 + Davis Martin 61.5 = 131 pts from two arms</span>
+    <span class="sep">&#9670;</span>
+    <span>&#128683; SIDD FINCH 260 pts &mdash; Cascades drop the hammer again. 1-2 era feels distant now.</span>
+    <span class="sep">&#9670;</span>
+    <span>&#9889; CRISTOPHER SANCHEZ 69.5 pts &mdash; Week 6&rsquo;s top pitcher for BANK of Texas</span>
+    <span class="sep">&#9670;</span>
+    <span>&#128000; DESERT RATS 5-1 &mdash; 445 pts, Harper 43.5, Brooks Lee +10% ownership surge</span>
+    <span class="sep">&#9670;</span>
+    <span>&#129380; SCORPIONS beat Ithaca 330-274 &mdash; first win in the 1-vs-4 battle that nobody expected</span>
+    <span class="sep">&#9670;</span>
+    <span>&#127381; NEWBERRY 451 beats Midland in battle of Metz &mdash; Indians grind another one out</span>
+    <span class="sep">&#9670;</span>
+    <span>&#127939; SONS OF PITCHES 188.5 &mdash; worst week of the season. Gales make it look easy.</span>
+    <span class="sep">&#9670;</span>
+    <span>&#127752; CASCADES 504.167 &mdash; 5-1 and posting another 500-pt week. Is anyone coming for them?</span>
+    <span class="sep">&#9670;</span>
+    <span>&#128165; ANDY PAGES leads all hitters &mdash; 48 pts for the Troutdale Gales</span>
+    <span class="sep">&#9670;</span>
+</div></div>
+
+<!-- NAV -->
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('scores')">Scores &amp; Recaps</div>
+    <div class="nav-tab" onclick="showPage('players')">Top Players</div>
+    <div class="nav-tab" onclick="showPage('rankings')">Power Rankings</div>
+    <div class="nav-tab" onclick="showPage('fa')">FA Activity</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FRONT PAGE -->
+<!-- ============================================================ -->
+<div class="page active" id="front">
+<div class="section-label">Week 6 Final &mdash; May 4&ndash;10, 2026</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">CASCADES UNSTOPPABLE; BANK STUNS GOLDY; SCORPIONS PULL THE UPSET NOBODY SAW COMING</div>
+    <div class="deck">Six weeks in, the Troutdale Cascades are a runaway freight train with no brakes and no apologies. The BANK of Texas fires their two best arms in the same week and finally topple Goldy Goldy Gone. The Tempe Scorpions win the ugliest, most satisfying game of the week. And the Sons of Pitches post 188 points, which isn&rsquo;t a score &mdash; it&rsquo;s a distress signal.</div>
+    <div class="byline">By the Longball Gazette Wire Staff</div>
+    <div class="dateline">League Headquarters &mdash; Sunday, May 10, 2026</div>
+
+    <p class="body">The Troutdale Cascades posted 504.167 points in Week 6. They are now 5-1. They have posted 500-plus points twice this season. They have the highest cumulative point total in MLBLONGBALL at 2,835.5 &mdash; three hundred and fourteen points clear of second-place Goldy Goldy Gone. At some point this stops being a hot streak and starts being a statement about who this team is. We are at that point. Jacob Misiorowski (36.5 pts, 0.00 ERA) anchored yet another dominant pitching performance as the Cascades dispatched Sidd Finch &mdash; who managed 260 points for the second time in three weeks &mdash; by a margin of 244 points. When a team your size loses by 244, the problem is structural, not circumstantial.</p>
+
+    <p class="body">The upset of the week &mdash; and arguably the upset of the young season &mdash; did not come from an obvious source. The BANK of Texas, a franchise that has spent six weeks searching for consistency, walked into Goldy Goldy Gone&rsquo;s house and walked out with a 365-340 victory. Cristopher Sanchez was extraordinary: 69.5 points, 15 innings, 1.80 ERA. Davis Martin matched him pitch for pitch at 61.5 points over 13.2 innings at a 0.75 ERA. Two starters, one team, one week: 131 combined pitching points. Goldy had answers &mdash; Cody Bellinger went 9-for-24 for 46.5 points, the week&rsquo;s second-highest hitter total &mdash; but not enough of them. The BANK wins 3-3 and suddenly looks like a team that figured something out.</p>
+
+    <p class="body">In the most unexpected result of the week, the Tempe Scorpions &mdash; sitting at 2-4 entering play, their season a quiet accumulation of close losses and bad draws &mdash; took down the Ithaca Spartans 330 to 274. Eduardo Rodriguez (59.17 pts) and Michael Wacha (50 pts) gave the Scorpions their best two-ace outing of the season. Miguel Vargas hit his way to 40 points and a 6.67 FP/G pace that nobody in this building predicted when the season started. The Spartans, meanwhile, fall to 1-5 &mdash; a record that, given the talent on that roster, defies easy explanation and demands a harder conversation before Week 7.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">The Cascades Are Who We Thought They Were &mdash; Better</div>
+    <p class="body-sm">Five wins, one loss, 2,835.5 cumulative points. The Troutdale Cascades have not just won &mdash; they have won consistently, deeply, and without an obvious ceiling in sight. Their Week 6 output against Sidd Finch was a demolition job: 504 points against 260, a margin that would be embarrassing if the Cascades weren&rsquo;t simply the most complete roster in this league right now. The question heading into Week 7 against the Sons of Pitches is not whether they win. It is by how much, and whether the Sons survive it with their season still technically alive.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">The BANK Finally Fires on All Cylinders</div>
+    <p class="body-sm">Let the record show that when the BANK of Texas deploys Cristopher Sanchez and Davis Martin in the same week, they are capable of beating anyone in this league. One hundred and thirty-one pitching points from two starters is not a rotation &mdash; it is a weapon. The problem the BANK has faced all season is the inconsistency of the arms around those two, and the quiet failure to maximize their position player depth. Week 6 was proof of concept. Now comes the hard part: doing it again in Week 7 against the Tempe Scorpions, who just showed they can score too.</p>
+</div>
+
+<div>
+    <div class="info-box">
+        <div class="info-box-title">Week 6 Final Scores</div>
+        <table class="data">
+            <tr><th colspan="3">Scoring Period 6 &mdash; Final</th></tr>
+            <tr class="highlight"><td>The BANK of Texas <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">365.167</td><td class="num" style="color:var(--muted);font-size:.8em">+25.2</td></tr>
+            <tr><td>Goldy Goldy Gone</td><td class="num">340.000</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Tempe Scorpions <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">330.333</td><td class="num" style="color:var(--muted);font-size:.8em">+55.5</td></tr>
+            <tr><td>Ithaca Spartans</td><td class="num">274.833</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Desert Rats <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">445.000</td><td class="num" style="color:var(--muted);font-size:.8em">+107.2</td></tr>
+            <tr><td>Houston Gamblers</td><td class="num">337.833</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Newberry Indians <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">451.667</td><td class="num" style="color:var(--muted);font-size:.8em">+102.7</td></tr>
+            <tr><td>Midland Red Weasel Dogs</td><td class="num">349.000</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Troutdale Gales <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">398.500</td><td class="num" style="color:var(--muted);font-size:.8em">+210.0</td></tr>
+            <tr><td>Sons of Pitches</td><td class="num">188.500</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Troutdale Cascades <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">504.167</td><td class="num" style="color:var(--muted);font-size:.8em">+244.0</td></tr>
+            <tr><td>Sidd Finch</td><td class="num">260.167</td><td></td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Final. Scoring Period 6: May 4&ndash;10, 2026.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#9888; UPSET OF THE WEEK</div>
+        <p style="font-size:.83em">The BANK of Texas defeats Goldy Goldy Gone <strong>365&ndash;340</strong> behind a combined <strong>131 pitching points</strong> from Sanchez and Davis Martin. Goldy falls to 4-2. The BANK climbs to 3-3 and suddenly looks dangerous.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Week 6 by the Numbers</div>
+        <p style="font-size:.85em">
+        <strong>High Score:</strong> Troutdale Cascades &mdash; 504.167<br>
+        <strong>Low Score:</strong> Sons of Pitches &mdash; 188.5<br>
+        <strong>Closest Game:</strong> BANK over Goldy (+25.2)<br>
+        <strong>Biggest Margin:</strong> Cascades over Finch (+244.0)<br>
+        <strong>Top Hitter:</strong> Andy Pages (Gales) &mdash; 48 pts<br>
+        <strong>Top Pitcher:</strong> Cristopher Sanchez (BANK) &mdash; 69.5 pts
+        </p>
+    </div>
+
+    <div class="info-box" style="margin-top:0">
+        <div class="info-box-title">Cumulative Standings &mdash; 6 Weeks</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th>W-L</th><th class="num">FPts</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Troutdale Cascades</strong></td><td>5-1</td><td class="num">2,835.5</td></tr>
+            <tr><td class="rk">2</td><td>Desert Rats</td><td>5-1</td><td class="num">2,474.2</td></tr>
+            <tr><td class="rk">3</td><td>Goldy Goldy Gone</td><td>4-2</td><td class="num">2,721.0</td></tr>
+            <tr><td class="rk">4</td><td>Newberry Indians</td><td>3-3</td><td class="num">2,603.5</td></tr>
+            <tr><td class="rk">5</td><td>Houston Gamblers</td><td>3-3</td><td class="num">2,393.5</td></tr>
+            <tr><td class="rk">6</td><td>Sidd Finch</td><td>3-3</td><td class="num">2,375.5</td></tr>
+            <tr><td class="rk">7</td><td>The BANK of Texas</td><td>3-3</td><td class="num">2,359.0</td></tr>
+            <tr><td class="rk">8</td><td>Troutdale Gales</td><td>3-3</td><td class="num">2,321.7</td></tr>
+            <tr><td class="rk">9</td><td>Midland Red Weasel Dogs</td><td>2-4</td><td class="num">2,430.7</td></tr>
+            <tr><td class="rk">10</td><td>Tempe Scorpions</td><td>2-4</td><td class="num">2,285.5</td></tr>
+            <tr><td class="rk">11</td><td>Sons of Pitches</td><td>2-4</td><td class="num">2,079.3</td></tr>
+            <tr class="danger"><td class="rk">12</td><td>Ithaca Spartans</td><td>1-5</td><td class="num">1,860.8</td></tr>
+        </table>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Scores &amp; Recaps &rarr; &nbsp;|&nbsp; Top Players &rarr; &nbsp;|&nbsp; Power Rankings &rarr; &nbsp;|&nbsp; FA Activity &rarr; &nbsp;|&nbsp; The Columnists &rarr;</p>
+<p style="margin-top:6px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Week 6 Final Edition &nbsp;&middot;&nbsp; Next edition following Week 7 (May 17, 2026)</p></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SCORES & RECAPS -->
+<!-- ============================================================ -->
+<div class="page" id="scores">
+<div class="section-label">Week 6 Final &mdash; All Six Matchups</div>
+<div class="headline-lg" style="margin-bottom:4px">Full Matchup Recaps</div>
+<div class="deck">Six games, six verdicts. The upset. The demolition. The quiet grind. All of it, right here.</div>
+<hr class="rule-h-thick">
+
+<!-- RECAP 1: BANK over Goldy -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">The BANK of Texas &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">365.167</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Goldy Goldy Gone &nbsp;&middot;&nbsp; Home</div><div class="recap-score">340.000</div></div>
+    </div>
+    <div class="recap-status">&#127942; UPSET OF THE WEEK &nbsp;&middot;&nbsp; BANK of Texas wins by 25.2 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; BANK: 3-3 &nbsp;&middot;&nbsp; Goldy: 4-2</div>
+    <div class="recap-body">
+        <p>This is what the BANK of Texas looks like when it works. Cristopher Sanchez took the mound and delivered 69.5 points &mdash; the finest individual pitching performance of Week 6, full stop. Fifteen innings. A 1.80 ERA. The kind of outing that wins matchups by itself. Then Davis Martin stepped in and did it again: 61.5 points, 13.2 innings, a 0.75 ERA that borders on fiction. Two starters. One hundred and thirty-one combined pitching points. In a week where Goldy Goldy Gone needed something extraordinary to survive, their arms gave them ordinary, and ordinary was not enough.</p>
+        <p>Goldy was not embarrassed offensively. Cody Bellinger went 9-for-24 for 46.5 points &mdash; the week&rsquo;s second-highest hitter total in the entire league &mdash; and Bryce Elder (47.83 pts) gave the Newberry Indians their best pitching performance of the week while Goldy&rsquo;s own rotation held up respectably. But the BANK&rsquo;s 131-point pitching block was simply too large a structural advantage to overcome. This is the BANK&rsquo;s best win of the season. It is also the most important: it proves the roster is capable of beating the best team in the league when fully deployed.</p>
+        <div class="recap-stat"><strong>BANK TWO-ACE WEEK:</strong> Sanchez 69.5 (15 IP, 1.80 ERA) + Davis Martin 61.5 (13.2 IP, 0.75 ERA) = 131 combined pts &nbsp;&middot;&nbsp; <strong>GOLDY BRIGHT SPOT:</strong> Bellinger 46.5 pts, 9/24 &mdash; week&rsquo;s #2 hitter in the loss</div>
+    </div>
+</div>
+
+<!-- RECAP 2: Tempe over Ithaca -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Ithaca Spartans &nbsp;&middot;&nbsp; Away</div><div class="recap-score">274.833</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Tempe Scorpions &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">330.333</div></div>
+    </div>
+    <div class="recap-status">Tempe Scorpions win by 55.5 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Scorpions: 2-4 &nbsp;&middot;&nbsp; Spartans: 1-5</div>
+    <div class="recap-body">
+        <p>The Tempe Scorpions have spent six weeks accumulating losses and assembling a very specific kind of frustration &mdash; the kind that comes from scoring enough to win most weeks and losing anyway. In Week 6, something clicked. Eduardo Rodriguez delivered 59.17 points at a 0.59 ERA over 15.1 innings, the week&rsquo;s second-best pitching performance. Michael Wacha followed with 50 points. Miguel Vargas hit 40 points at a 6.67 FP/G pace that has now earned him a legitimate spot in the conversation about the league&rsquo;s best first basemen. The Scorpions won the pitching category, won the hitting category, and beat the Ithaca Spartans by 55 points in a game that was never particularly close after the first couple of days.</p>
+        <p>The Ithaca Spartans fall to 1-5. This is not a temporary rough patch. At 1,860.8 cumulative points &mdash; the lowest in the league by 218 points &mdash; the Spartans are a team in genuine structural distress. Aaron Judge is on this roster. Bobby Witt Jr. is not there this week but the Ithaca lineup has capable pieces. The pitching is the diagnosis: 290 cumulative pitching points through three weeks was the warning, and the trend has not improved. Week 7 against Midland Red Weasel Dogs is a game the Spartans must win to avoid falling to 1-6 with the season&rsquo;s first third already gone.</p>
+        <div class="recap-stat"><strong>SCORPIONS ROTATION:</strong> E. Rodriguez 59.17 pts (0.59 ERA) + Wacha 50 pts &mdash; best two-pitcher week since the BANK&rsquo;s three-ace Week 3 &nbsp;&middot;&nbsp; <strong>SPARTANS ALARM:</strong> 1-5, 1,860.8 cumulative pts &mdash; lowest in league</div>
+    </div>
+</div>
+
+<!-- RECAP 3: Desert Rats over Gamblers -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Houston Gamblers &nbsp;&middot;&nbsp; Away</div><div class="recap-score">337.833</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">445.000</div></div>
+    </div>
+    <div class="recap-status">Desert Rats win by 107.2 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Rats: 5-1 &nbsp;&middot;&nbsp; Gamblers: 3-3</div>
+    <div class="recap-body">
+        <p>The Desert Rats are 5-1 and Bryce Harper is reminding the league why the commissioner drafted him. Harper&rsquo;s 43.5-point week was the third-best hitter output in MLBLONGBALL this scoring period, and Brooks Lee (37 pts, +10% ownership trend) continued the quiet emergence that has been one of the week&rsquo;s best under-the-radar stories. Dylan Cease (36.5 pts, 0.00 ERA in 7 innings) gave the commissioner&rsquo;s pitching staff its best start of the week. The Rats won by 107 points against a Gamblers team that is playing competent baseball &mdash; 337 points is a real score &mdash; but ran into a Rats lineup that is producing with both the keepers and the waiver wire pieces operating correctly for the first time this season.</p>
+        <p>The Houston Gamblers sit at 3-3, and the cumulative point total of 2,393.5 tells a story of a team capable of scoring but not quite capable of doing it when the schedule demands it most. Week 7 at Troutdale Gales will test them against one of the league&rsquo;s most explosive offenses.</p>
+        <div class="recap-stat"><strong>RATS THREE-HEADER:</strong> Harper 43.5, Lee 37 (+10% trend), Cease 36.5 (0.00 ERA) &nbsp;&middot;&nbsp; <strong>GAMBLERS:</strong> 337 pts not enough &mdash; this Rats roster is clicking on schedule</div>
+    </div>
+</div>
+
+<!-- RECAP 4: Newberry over Midland -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Newberry Indians &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">451.667</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Midland Red Weasel Dogs &nbsp;&middot;&nbsp; Home</div><div class="recap-score">349.000</div></div>
+    </div>
+    <div class="recap-status">Newberry Indians win by 102.7 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Indians: 3-3 &nbsp;&middot;&nbsp; Dogs: 2-4</div>
+    <div class="recap-body">
+        <p>The Newberry Indians call themselves shrewd. They call themselves disciplined. They call themselves builders. After six weeks of evidence, it is becoming difficult to argue. The Indians posted 451.667 points, the second-highest total in the league this week, by doing exactly what they always do: throw innings, maximize at-bats, collect saves, grind. Bryce Elder (47.83 pts) and Andrew Abbott (40.83 pts) gave the rotation its backbone. The Midland Red Weasel Dogs, meanwhile, cannot find consistency. Byron Buxton (37.5 pts) and James Wood (37 pts) generated legitimate hitter value &mdash; the Dogs have real offensive weapons &mdash; but Cam Schlittler (40.33 pts) aside, the rest of the pitching staff has not matched the standard set by Will Warren in better weeks. The Dogs fall to 2-4 and face a genuine reckoning about whether their season has turned the corner or simply found a new low.</p>
+        <div class="recap-stat"><strong>INDIANS FORMULA:</strong> Elder 47.83 + Abbott 40.83 &mdash; depth beats power again &nbsp;&middot;&nbsp; <strong>DOGS OFFENSE:</strong> Buxton 37.5, Wood 37 &mdash; real producers, wrong week to face Newberry</div>
+    </div>
+</div>
+
+<!-- RECAP 5: Gales over Sons -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Sons of Pitches &nbsp;&middot;&nbsp; Away</div><div class="recap-score">188.500</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Troutdale Gales &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">398.500</div></div>
+    </div>
+    <div class="recap-status">Troutdale Gales win by 210.0 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Gales: 3-3 &nbsp;&middot;&nbsp; Sons: 2-4</div>
+    <div class="recap-body">
+        <p>Andy Pages scored 48 points. Josh Naylor added 39 points. The Troutdale Gales turned the second-largest margin of the week &mdash; 210 points &mdash; into a box score that looked more like a statement than a result. Their offense has been the most electric in MLBLONGBALL all season, and this week it found exactly the right opponent at exactly the right time. The Sons of Pitches posted 188.5 points, the lowest total in the league this scoring period, and the arithmetic is uncomfortable: with 2,079.3 cumulative points through six weeks, the Sons are 354 points behind the league average. Two wins on the record, but a cumulative profile that describes a team running out of time to make this season a real story.</p>
+        <p>For the Gales, the more interesting subtext is the pitching gap that continues to define their ceiling. Three and three on the season with 2,321.7 cumulative points, they are a team scoring at a top-five pace offensively but spending two points out of every three worrying about whether the arms can hold it together. Week 7 against the Houston Gamblers is a battle between two rosters with mirror-image problems: the Gales can hit but struggle to pitch; the Gamblers can grind but lack an explosive ceiling. Somebody&rsquo;s identity wins.</p>
+        <div class="recap-stat"><strong>GALES OFFENSE:</strong> Pages 48 (week&rsquo;s top hitter), Naylor 39 &mdash; elite production at the right time &nbsp;&middot;&nbsp; <strong>SONS 188.5:</strong> Lowest score of the week. Season average dropping. Urgency required.</div>
+    </div>
+</div>
+
+<!-- RECAP 6: Cascades over Sidd Finch -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">504.167</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Sidd Finch &nbsp;&middot;&nbsp; Home</div><div class="recap-score">260.167</div></div>
+    </div>
+    <div class="recap-status">Troutdale Cascades win by 244.0 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Cascades: 5-1 &nbsp;&middot;&nbsp; Finch: 3-3</div>
+    <div class="recap-body">
+        <p>The Troutdale Cascades posted 504 points for the second time this season. Jacob Misiorowski delivered 36.5 points at a 0.00 ERA in 6 innings &mdash; the kind of performance that, on most other teams, is the story of the week. For the Cascades, it was Tuesday. Bobby Witt Jr. (42 pts) was Sidd Finch&rsquo;s best answer, and Pete Crow-Armstrong (37 pts) produced legitimate value. But at 260 total points against a team that generated 504, the numbers tell the story with complete clarity. The Cascades&rsquo; 2,835.5 cumulative total is 314 points clear of Goldy Goldy Gone and 361 points clear of the Desert Rats. They are not simply ahead. They are operating in a different register than the rest of this league.</p>
+        <p>Sidd Finch sits at 3-3 &mdash; an even record that obscures a concerning reality. Their 2,375.5 cumulative points rank sixth in the league but their last two scores (260 this week, 273 in Week 3) suggest a team that produces in clusters and struggles in between. Jacob deGrom (35.67 pts) keeps the pitching upright on most weeks, but the offense needs to find another gear before Week 7 at Newberry Indians &mdash; where the formula of grinding singles against a disciplined staff has historically ended the same way.</p>
+        <div class="recap-stat"><strong>CASCADES DEPTH:</strong> Misiorowski 36.5 (0.00 ERA) among multiple contributors &mdash; no single peak, just relentless production &nbsp;&middot;&nbsp; <strong>FINCH:</strong> Witt 42, Crow-Armstrong 37. The talent is there. The consistency is the question.</div>
+    </div>
+</div>
+
+<div class="page-footer"><p>All statistics from official league data. Scoring Period 6: May 4&ndash;10, 2026.</p></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- TOP PLAYERS -->
+<!-- ============================================================ -->
+<div class="page" id="players">
+<div class="section-label">Week 6 Final &mdash; Individual Leaderboards</div>
+<div class="headline-lg" style="margin-bottom:4px">The Leaderboard</div>
+<div class="deck">Top individual performances from Scoring Period 6. Fantasy team names throughout &mdash; this is MLBLONGBALL.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#9918; Top 10 Hitters &mdash; Week 6</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Pos</th><th>Fantasy Team</th><th class="num">Pts</th><th class="num">FP/G</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Andy Pages</strong></td><td>OF</td><td>Troutdale Gales</td><td class="num">48.0</td><td class="num">8.00</td></tr>
+            <tr><td class="rk">2</td><td><strong>Cody Bellinger</strong></td><td>OF</td><td>Newberry Indians</td><td class="num">46.5</td><td class="num">6.64</td></tr>
+            <tr><td class="rk">3</td><td><strong>Bryce Harper</strong></td><td>1B</td><td>Desert Rats</td><td class="num">43.5</td><td class="num">6.14</td></tr>
+            <tr><td class="rk">4</td><td><strong>Bobby Witt Jr.</strong></td><td>SS</td><td>Sidd Finch</td><td class="num">42.0</td><td class="num">6.00</td></tr>
+            <tr><td class="rk">5</td><td><strong>Miguel Vargas</strong></td><td>1B/3B</td><td>Tempe Scorpions</td><td class="num">40.0</td><td class="num">6.67</td></tr>
+            <tr><td class="rk">6</td><td><strong>Josh Naylor</strong></td><td>1B</td><td>Troutdale Gales</td><td class="num">39.0</td><td class="num">6.50</td></tr>
+            <tr><td class="rk">7</td><td><strong>Byron Buxton</strong></td><td>OF</td><td>Midland Red Weasel Dogs</td><td class="num">37.5</td><td class="num">6.25</td></tr>
+            <tr><td class="rk">8</td><td><strong>James Wood</strong></td><td>OF</td><td>Midland Red Weasel Dogs</td><td class="num">37.0</td><td class="num">6.17</td></tr>
+            <tr><td class="rk">9</td><td><strong>Pete Crow-Armstrong</strong></td><td>OF</td><td>Sidd Finch</td><td class="num">37.0</td><td class="num">5.29</td></tr>
+            <tr><td class="rk">10</td><td><strong>Brooks Lee</strong> &#9733;</td><td>2B/3B/SS</td><td>Desert Rats</td><td class="num">37.0</td><td class="num">6.17</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">&#9733; Lee: rank #108, +10% ownership surge. The Commissioner&rsquo;s best waiver move of the month.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; Gales Put Two in the Top Six</div>
+        <p style="font-size:.83em">Andy Pages (#1, 48 pts) and Josh Naylor (#6, 39 pts) give the Troutdale Gales the week&rsquo;s best hitting duo. Both scoring 39-plus in the same week while the pitching holds together is exactly the formula the Gales need to run consistently. The offense is elite. The question is always the arms.</p>
+    </div>
+
+    <div class="alert-box" style="border-left-color:var(--gold);background:#fffbef">
+        <div class="alert-box-title" style="color:var(--gold)">&#11088; Brooks Lee &mdash; The Commissioner&rsquo;s Find</div>
+        <p style="font-size:.85em"><strong>Brooks Lee</strong> (Desert Rats, rank #108, +10% ownership growth): 37 points, 9-for-24. He has now posted back-to-back productive weeks and is trending at a pace that puts him in top-60 territory. In a league where the commissioner makes more transactions than anyone, this one looks like it might actually stick.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128165; Dogs Have Two in the Top Eight</div>
+        <p style="font-size:.83em">Byron Buxton (#7, 37.5 pts) and James Wood (#8, 37 pts) continue to produce elite individual value for the Midland Red Weasel Dogs. The team is 2-4. Two top-eight hitters in the same week and a loss by 102 points tells you everything about what the pitching situation looks like in Midland right now.</p>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="info-box">
+        <div class="info-box-title">&#9889; Top 10 Pitchers &mdash; Week 6</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Fantasy Team</th><th class="num">Pts</th><th class="num">IP</th><th class="num">ERA</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Cristopher Sanchez</strong></td><td>The BANK of Texas</td><td class="num">69.5</td><td class="num">15.0</td><td class="num">1.80</td></tr>
+            <tr><td class="rk">2</td><td><strong>Davis Martin</strong></td><td>The BANK of Texas</td><td class="num">61.5</td><td class="num">13.2</td><td class="num">0.75</td></tr>
+            <tr><td class="rk">3</td><td><strong>Eduardo Rodriguez</strong></td><td>Tempe Scorpions</td><td class="num">59.17</td><td class="num">15.1</td><td class="num">0.59</td></tr>
+            <tr><td class="rk">4</td><td><strong>Michael Wacha</strong></td><td>Tempe Scorpions</td><td class="num">50.0</td><td class="num">14.1</td><td class="num">2.29</td></tr>
+            <tr><td class="rk">5</td><td><strong>Bryce Elder</strong></td><td>Newberry Indians</td><td class="num">47.83</td><td class="num">11.2</td><td class="num">1.54</td></tr>
+            <tr><td class="rk">6</td><td><strong>Andrew Abbott</strong></td><td>Newberry Indians</td><td class="num">40.83</td><td class="num">11.2</td><td class="num">0.00</td></tr>
+            <tr><td class="rk">7</td><td><strong>Cam Schlittler</strong></td><td>Midland Red Weasel Dogs</td><td class="num">40.33</td><td class="num">11.2</td><td class="num">0.77</td></tr>
+            <tr><td class="rk">8</td><td><strong>Dylan Cease</strong></td><td>Desert Rats</td><td class="num">36.5</td><td class="num">7.0</td><td class="num">0.00</td></tr>
+            <tr><td class="rk">9</td><td><strong>Jacob Misiorowski</strong></td><td>Troutdale Cascades</td><td class="num">36.5</td><td class="num">6.0</td><td class="num">0.00</td></tr>
+            <tr><td class="rk">10</td><td><strong>Jacob deGrom</strong></td><td>Sidd Finch</td><td class="num">35.67</td><td class="num">13.1</td><td class="num">4.05</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">BANK has #1 and #2. Scorpions have #3 and #4. Newberry has #5 and #6. Three teams own the top six.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">The BANK&rsquo;s 131-Point Pitching Block</div>
+        <p style="font-size:.85em">Sanchez (69.5) + Davis Martin (61.5) = <strong>131.0 combined pitching points</strong>. The BANK&rsquo;s entire winning margin over Goldy was 25.2 points. Those two arms generated more than five times the margin of victory. Without either one, the BANK loses. With both, they beat the best team in the league. That is what peak deployment looks like &mdash; and why the BANK&rsquo;s inconsistency is so maddening. They have the weapons. They just don&rsquo;t fire them every week.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Scorpions Surprise: Two Aces in One Week</div>
+        <p style="font-size:.85em">Eduardo Rodriguez (59.17, 0.59 ERA) and Michael Wacha (50.0, 2.29 ERA) combined for <strong>109.17 pitching points</strong> for Tempe &mdash; enough to win the game by 55 points and remind the league that the Scorpions have real arms when they both show up on the same week. Their combined performance is the third-best two-pitcher output of the season behind only the BANK&rsquo;s three-ace Week 3 performance.</p>
+    </div>
+
+    <div class="waste-box">
+        <div class="waste-title">&#128683; The Wire Audit</div>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Sons of Pitches &mdash; 188.5 pts:</strong> The season&rsquo;s worst weekly score in six weeks. The transaction log for this week shows multiple teams actively working the wire while the Sons made minimal moves. At 2-4 with the league&rsquo;s second-lowest cumulative total, standing pat is no longer a strategy. It is surrender.</p>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Ithaca Spartans &mdash; 1-5:</strong> Fell to the Tempe Scorpions despite having Bobby Witt Jr. on the roster. At some point the talent on this team demands a harder look at the supporting cast construction. Week 7 vs. Midland Dogs is the most winnable game remaining on the early schedule.</p>
+        <p style="font-size:.85em"><strong>Sidd Finch &mdash; 260 pts (again):</strong> Two scores of 260-or-under in three weeks. The pitching (deGrom 35.67) is providing floor. The offense &mdash; which hit 78 singles and 4 home runs in Week 3 &mdash; needs a power infusion before this roster&rsquo;s identity gets permanently defined by singles-and-hope baseball.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All player data from official league source. Scoring Period 6, May 10, 2026.</p></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- POWER RANKINGS + WEEK 7 PREVIEW -->
+<!-- ============================================================ -->
+<div class="page" id="rankings">
+<div class="section-label">Post-Week 6 Power Rankings</div>
+<div class="headline-lg" style="margin-bottom:4px">Where They Stand</div>
+<div class="deck">Six weeks of evidence, no more excuses. The hierarchy is forming. Here is what the numbers say about every team in MLBLONGBALL heading into Week 7.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="pr-item"><div class="pr-rank top3">1</div><div>
+        <div class="pr-team">Troutdale Cascades <span class="same">&#9654; 5-1 &mdash; THE STANDARD</span></div>
+        <div class="pr-pts">5-1 &nbsp;&middot;&nbsp; 2,835.5 cumulative pts &nbsp;&middot;&nbsp; League-leading by 314 pts over Goldy</div>
+        <div class="pr-note">Two 500-point weeks. Five wins. A cumulative total 314 points clear of the next-best. The Cascades are not running a hot streak anymore &mdash; they are establishing a standard. Misiorowski, Kirby, Miller, Burns: the rotation is deep and rotating correctly. Week 7 at Sons of Pitches is a gift from the schedule gods. They will not waste it.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">2</div><div>
+        <div class="pr-team">Goldy Goldy Gone <span class="dn">&#9660; FIRST LOSS IN WEEKS</span></div>
+        <div class="pr-pts">4-2 &nbsp;&middot;&nbsp; 2,721.0 cumulative pts &nbsp;&middot;&nbsp; Still the league&rsquo;s most reliable floor</div>
+        <div class="pr-note">Goldy takes their first loss in weeks and falls to second in the power rankings, but the 2,721 cumulative total remains the league&rsquo;s second-highest and their floor is still higher than anyone else&rsquo;s ceiling most weeks. Bellinger at 46.5 reminded everyone the offense is real. Week 7 hosts Desert Rats in what is shaping up as the game of the week. Goldy at home, motivated, is a dangerous opponent.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">3</div><div>
+        <div class="pr-team">Desert Rats <span class="up">&#9650; 5-1, HARPER ARRIVES</span></div>
+        <div class="pr-pts">5-1 &nbsp;&middot;&nbsp; 2,474.2 cumulative pts &nbsp;&middot;&nbsp; Best point differential allowed in league</div>
+        <div class="pr-note">The commissioner is 5-1 and Bryce Harper finally looks like Bryce Harper. Brooks Lee (37 pts, +10%) has quietly become one of the week&rsquo;s most efficient hitters. Dylan Cease at 0.00 ERA is what the pitching staff looks like when it cooperates. The cumulative total (2,474) trails both Goldy and the Cascades significantly &mdash; but the win-loss record is tied for the league lead. Week 7 at Goldy is the season-defining game so far. The entire first third of the season comes down to this matchup.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">4</div><div>
+        <div class="pr-team">Newberry Indians <span class="same">&#9654; 3-3, QUIETLY DANGEROUS</span></div>
+        <div class="pr-pts">3-3 &nbsp;&middot;&nbsp; 2,603.5 cumulative pts &nbsp;&middot;&nbsp; Third-highest cumulative total despite .500 record</div>
+        <div class="pr-note">The most interesting roster in the middle of the standings. Third-highest cumulative total in the league at 2,603.5, but only 3-3. That discrepancy means they&rsquo;ve either drawn hard matchups or left points on the floor at the worst times. Elder and Abbott both in the top six pitchers this week is the model working correctly. Week 7 hosts Sidd Finch &mdash; a matchup the Indians should win, but Finch is not the pushover their record suggests.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">5</div><div>
+        <div class="pr-team">Midland Red Weasel Dogs <span class="dn">&#9660; 2-4, TALENT WASTE</span></div>
+        <div class="pr-pts">2-4 &nbsp;&middot;&nbsp; 2,430.7 cumulative pts &nbsp;&middot;&nbsp; 9th in W-L, 5th in cumulative points</div>
+        <div class="pr-note">Byron Buxton and James Wood are two of the week&rsquo;s top eight hitters. The Dogs are 2-4. The math of that combination tells a specific story: this roster generates points but surrenders them too, and the pitching inconsistency is the gap. Schlittler (40.33) is real. The rotation around him is not. Week 7 vs. Ithaca Spartans is the most winnable game on the board for a team that needs wins badly.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">6</div><div>
+        <div class="pr-team">Houston Gamblers <span class="same">&#9654; 3-3</span></div>
+        <div class="pr-pts">3-3 &nbsp;&middot;&nbsp; 2,393.5 cumulative pts &nbsp;&middot;&nbsp; .500 record, genuine mid-table contender</div>
+        <div class="pr-note">Jose Ramirez is the most consistent elite hitter in MLBLONGBALL and the Gamblers are riding him every week. Brandon Lowe provides legitimate co-anchor production. The problem has always been the depth behind those two, and the saves category that has been a persistent vacancy all season. Week 7 at Troutdale Gales pits the Gamblers&rsquo; steady offense against a Gales team that scored 398 this week. The Gamblers&rsquo; pitching staff must show up.</div>
+    </div></div>
+</div>
+
+<div class="col-rule">
+    <div class="pr-item"><div class="pr-rank">7</div><div>
+        <div class="pr-team">Sidd Finch <span class="dn">&#9660; 3-3, DECLINING TREND</span></div>
+        <div class="pr-pts">3-3 &nbsp;&middot;&nbsp; 2,375.5 cumulative pts &nbsp;&middot;&nbsp; Two sub-275 weeks in the last four</div>
+        <div class="pr-note">Bobby Witt Jr. at 42 points is doing his job. Pete Crow-Armstrong at 37 shows real secondary value. deGrom holds the pitching together. But two weeks of 260-or-under in the last four scoring periods is a pattern, not a coincidence. Week 7 at Newberry Indians is the exact type of game that exposes the offense&rsquo;s singles-heavy profile against a team that punishes inefficiency.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">8</div><div>
+        <div class="pr-team">The BANK of Texas <span class="up">&#9650; 3-3, BELIEVE IT OR NOT</span></div>
+        <div class="pr-pts">3-3 &nbsp;&middot;&nbsp; 2,359.0 cumulative pts &nbsp;&middot;&nbsp; Beat the best team in the league this week</div>
+        <div class="pr-note">One hundred and thirty-one pitching points in a single week. A win over Goldy Goldy Gone. The BANK of Texas is exactly as good as their best week suggests and exactly as frustrating as their worst weeks confirm. Three and three. Could be four and two with a different approach in Weeks 1 and 2. Could still be a real playoff team. Week 7 vs. Tempe Scorpions features a team that just showed their own dual-ace capability. This is the most interesting game on the Week 7 board after the marquee matchup.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">9</div><div>
+        <div class="pr-team">Troutdale Gales <span class="up">&#9650; 3-3, POWER SURGE</span></div>
+        <div class="pr-pts">3-3 &nbsp;&middot;&nbsp; 2,321.7 cumulative pts &nbsp;&middot;&nbsp; Pages 48 + Naylor 39 = best hitting duo of Week 6</div>
+        <div class="pr-note">Andy Pages and Josh Naylor in the top six hitters league-wide in the same week. The Gales&rsquo; offense is elite. Their 3-3 record reflects a pitching staff that still can&rsquo;t sustain the momentum. The formula for the Gales is simple and stubborn: their offense is top-three. Their pitching is bottom-three. Until those two numbers get closer together, the record stays right around .500. Week 7 hosts Houston Gamblers &mdash; a genuinely competitive matchup.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">10</div><div>
+        <div class="pr-team">Tempe Scorpions <span class="up">&#9650; 2-4, ALIVE</span></div>
+        <div class="pr-pts">2-4 &nbsp;&middot;&nbsp; 2,285.5 cumulative pts &nbsp;&middot;&nbsp; E. Rodriguez + Wacha: 109 combined pts this week</div>
+        <div class="pr-note">Eduardo Rodriguez and Michael Wacha combined for 109 pitching points and the Scorpions finally got the win their season needed. Miguel Vargas at 40 points proves the offense has depth beyond the obvious names. Two and four is not a good record. But the Scorpions have scored 2,285 points in six weeks &mdash; more than the BANK, more than the Gales, more than Finch &mdash; and have beaten a team with real pitching this week. Week 7 at BANK of Texas will tell us if this is a turning point or a one-week spark.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">11</div><div>
+        <div class="pr-team">Sons of Pitches <span class="dn">&#9660; 2-4, 188 IS A CRISIS</span></div>
+        <div class="pr-pts">2-4 &nbsp;&middot;&nbsp; 2,079.3 cumulative pts &nbsp;&middot;&nbsp; Second-lowest cumulative total</div>
+        <div class="pr-note">One hundred and eighty-eight points. That is the lowest team total of the entire season and the Sons posted it in Week 6. The transaction wire in this league is active and the FA pool has real options. The Sons have not attacked it with the urgency their record demands. Week 7 at Troutdale Cascades is, charitably speaking, a very difficult draw at a very difficult time. The season is not over. But 188 points in Week 6 is the loudest alarm the standings have sounded.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank" style="color:var(--red);-webkit-text-stroke:1px var(--red)">12</div><div>
+        <div class="pr-team">Ithaca Spartans <span class="dn">&#9660; 1-5. THE BUILDING IS ON FIRE.</span></div>
+        <div class="pr-pts">1-5 &nbsp;&middot;&nbsp; 1,860.8 cumulative pts &nbsp;&middot;&nbsp; 218 pts below 11th place</div>
+        <div class="pr-note">Bobby Witt Jr. is on this roster. He scored 42 points this week. The Spartans lost by 55. Aaron Judge is on this roster. The Spartans are 1-5 with the league&rsquo;s lowest cumulative total by 218 points. This is not a talent deficit &mdash; it is a construction and deployment failure. At some point the names at the top of the lineup card cannot be expected to carry every other roster decision. Week 7 vs. Midland Dogs is the most important game of the Ithaca season. Losing it puts them at 1-6 with the first third of the season gone.</div>
+    </div></div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+<div class="section-label">Week 7 Preview &mdash; May 11&ndash;17, 2026</div>
+<div class="headline-md" style="margin-bottom:16px">Six Games. The First Third Comes to a Close.</div>
+<div class="col-2">
+<div>
+    <div class="wk7-card">
+        <div class="wk7-hdr">&#127942; GAME OF THE WEEK &mdash; Desert Rats (5-1) Away @ Goldy Goldy Gone (4-2) Home</div>
+        <div class="wk7-body">
+            <div><div class="wk7-team">Desert Rats <span class="badge badge-toss">TOSS-UP</span></div><div class="wk7-rec">5-1 &middot; 445 pts Wk6</div></div>
+            <div class="wk7-vs">@</div>
+            <div style="text-align:right"><div class="wk7-team">Goldy Goldy Gone <span class="badge badge-hot">HOME FAV</span></div><div class="wk7-rec">4-2 &middot; 340 pts Wk6</div></div>
+        </div>
+        <div class="wk7-look">The season&rsquo;s defining matchup. Both teams are 5-1 / 4-2 and sitting at the top of the standings. Goldy had a down week (340 pts) and lost to the BANK. The Rats posted 445 and are peaking at the right time. Goldy at home, with their floor and pitching depth, is still the slight favorite. But Harper, Lee, and a Rats lineup finally clicking all at once makes this genuinely competitive. The loser falls to the back of the top-tier pack. The winner owns the early-season narrative.</div>
+    </div>
+
+    <div class="wk7-card">
+        <div class="wk7-hdr">Matchup 2 &mdash; Tempe Scorpions (2-4) Away @ BANK of Texas (3-3) Home</div>
+        <div class="wk7-body">
+            <div><div class="wk7-team">Tempe Scorpions <span class="badge badge-toss">TOSS-UP</span></div><div class="wk7-rec">2-4 &middot; 330.3 pts Wk6</div></div>
+            <div class="wk7-vs">@</div>
+            <div style="text-align:right"><div class="wk7-team">The BANK of Texas <span class="badge badge-hot">FAV</span></div><div class="wk7-rec">3-3 &middot; 365.2 pts Wk6</div></div>
+        </div>
+        <div class="wk7-look">The week&rsquo;s most interesting undercard. Both teams just showed their best pitching performances of the season. The BANK with 131 pts from two arms. The Scorpions with 109 from two arms. Whoever deploys their starters better wins. The BANK&rsquo;s advantage: Sanchez and Martin are proven commodities at this level. The Scorpions&rsquo; advantage: momentum, Vargas in form, and nothing to lose at 2-4.</div>
+    </div>
+
+    <div class="wk7-card">
+        <div class="wk7-hdr">Matchup 3 &mdash; Troutdale Cascades (5-1) Away @ Sons of Pitches (2-4) Home</div>
+        <div class="wk7-body">
+            <div><div class="wk7-team">Troutdale Cascades <span class="badge badge-hot">HEAVY FAV</span></div><div class="wk7-rec">5-1 &middot; 504.2 pts Wk6</div></div>
+            <div class="wk7-vs">@</div>
+            <div style="text-align:right"><div class="wk7-team">Sons of Pitches</div><div class="wk7-rec">2-4 &middot; 188.5 pts Wk6</div></div>
+        </div>
+        <div class="wk7-look">The Cascades are a 500-point team facing a team that scored 188 points last week. The Sons have to find 300 additional points from somewhere &mdash; a rotation overhaul, a wire raid, a miracle from Yordan Alvarez. The Cascades have no obligation to slow down. The only interesting question here is whether the Sons post enough to show some self-respect entering June.</div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="wk7-card">
+        <div class="wk7-hdr">Matchup 4 &mdash; Sidd Finch (3-3) Away @ Newberry Indians (3-3) Home</div>
+        <div class="wk7-body">
+            <div><div class="wk7-team">Sidd Finch <span class="badge badge-toss">TOSS-UP</span></div><div class="wk7-rec">3-3 &middot; 260.2 pts Wk6</div></div>
+            <div class="wk7-vs">@</div>
+            <div style="text-align:right"><div class="wk7-team">Newberry Indians <span class="badge badge-hot">FAV</span></div><div class="wk7-rec">3-3 &middot; 451.7 pts Wk6</div></div>
+        </div>
+        <div class="wk7-look">Finch needs to win this to stay competitive in the .500 bracket. Newberry posted 451 last week and has the rotation depth to grind this out regardless of what Finch brings. The key variable is the Finch offense: if Witt and Crow-Armstrong both perform and deGrom delivers, this is competitive. If the singles-heavy lineup shows up against Elder and Abbott, it is not. Newberry is the favorite at home with real pitching depth.</div>
+    </div>
+
+    <div class="wk7-card">
+        <div class="wk7-hdr">Matchup 5 &mdash; Troutdale Gales (3-3) Away @ Houston Gamblers (3-3) Home</div>
+        <div class="wk7-body">
+            <div><div class="wk7-team">Troutdale Gales <span class="badge badge-toss">TOSS-UP</span></div><div class="wk7-rec">3-3 &middot; 398.5 pts Wk6</div></div>
+            <div class="wk7-vs">@</div>
+            <div style="text-align:right"><div class="wk7-team">Houston Gamblers <span class="badge badge-toss">TOSS-UP</span></div><div class="wk7-rec">3-3 &middot; 337.8 pts Wk6</div></div>
+        </div>
+        <div class="wk7-look">Both teams are .500, both teams can score, and both teams have structural weaknesses that the other can exploit. The Gales&rsquo; pitching is thin; the Gamblers&rsquo; saves column is a consistent vacancy. Pages and Naylor vs. Ramirez and Lowe in the hitting battle is a legitimate headliner. Whoever gets more innings from their rotation wins this game. A genuine coin flip with playoff seeding implications for both franchises.</div>
+    </div>
+
+    <div class="wk7-card">
+        <div class="wk7-hdr">&#128683; MUST-WIN &mdash; Midland Red Weasel Dogs (2-4) Away @ Ithaca Spartans (1-5) Home</div>
+        <div class="wk7-body">
+            <div><div class="wk7-team">Midland Dogs <span class="badge badge-hot">FAV</span></div><div class="wk7-rec">2-4 &middot; 349 pts Wk6</div></div>
+            <div class="wk7-vs">@</div>
+            <div style="text-align:right"><div class="wk7-team">Ithaca Spartans <span class="badge badge-must">MUST WIN</span></div><div class="wk7-rec">1-5 &middot; 274.8 pts Wk6</div></div>
+        </div>
+        <div class="wk7-look">The bottom of the barrel, and it matters enormously. Ithaca at 1-6 entering May is a season-defining disaster. The Spartans have Bobby Witt Jr. (42 pts this week) and real hitters. They need the rotation to provide enough support for the offense to win the week. The Dogs have Buxton, Wood, Schlittler, and enough to win this. For Ithaca, losing this is the moment the 2026 season officially becomes a question about 2027.</div>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Rankings from verified data. Week 7 matchups confirmed from official league schedule. May 11&ndash;17, 2026.</p></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FA ACTIVITY -->
+<!-- ============================================================ -->
+<div class="page" id="fa">
+<div class="section-label">Free Agent &amp; Waiver Wire Activity &mdash; Periods 41&ndash;48</div>
+<div class="headline-lg" style="margin-bottom:4px">The Transaction Wire Report</div>
+<div class="deck">Six weeks in, the wire tells you which teams are managing actively and which are watching the season happen to them. The gap is widening.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="fa-block">
+        <div class="fa-name">&#128000; Desert Rats &mdash; Still the Wire&rsquo;s Most Active Franchise</div>
+        <div class="fa-row"><span class="vickrey-lbl">VICKREY</span> Multiple contested bids including Roman Anthony (OF-BOS), Jasson Dominguez (OF-NYY), and Nathaniel Lowe (1B-CIN) across Periods 42&ndash;47</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Brooks Lee (2B/3B/SS) &mdash; the +10% ownership surge this week validates the pickup. Rank #108 and trending up sharply.</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Dylan Cease (SP) &mdash; 36.5 pts, 0.00 ERA this week. The rotation piece the Rats needed.</div>
+        <div class="fa-row"><span class="fa-lbl">NOTE</span> The Rats continue to be the league&rsquo;s most active team on the wire across all six weeks. The volume has decreased from the 50-transaction Week 1 pace, but the engagement remains the highest in MLBLONGBALL. It is working: they are 5-1.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">&#127381; Newberry Indians &mdash; Precision, Period After Period</div>
+        <div class="fa-row"><span class="vickrey-lbl">VICKREY</span> Two Vickrey wins at midnight Period 46 (75/1 and 110/1 format &mdash; bids of $75 and $110, paid $1 each). The Indians continue to dominate the auction format.</div>
+        <div class="fa-row"><span class="vickrey-lbl">VICKREY</span> Period 44: 87/1 and 112/1 &mdash; two more Vickrey acquisitions at maximum value efficiency.</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Bryce Elder (SP) &mdash; 47.83 pts, 1.54 ERA this week. The return on this wire pickup has been significant.</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Andrew Abbott (SP) &mdash; 40.83 pts, 0.00 ERA. Both starters in the top six pitchers league-wide. The Indians&rsquo; system is working.</div>
+        <div class="fa-row"><span class="fa-lbl">NOTE</span> Newberry has now won multiple Vickrey auctions at $1 in six consecutive periods. Their pattern: bid aggressively enough to win, pay almost nothing. It is the most consistent FA strategy in MLBLONGBALL.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">&#127970; The BANK of Texas &mdash; Targeted and Rewarded</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Cristopher Sanchez &mdash; already on roster; dominant again at 69.5 pts. The BANK&rsquo;s best asset continues to deliver at an elite level.</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Davis Martin (SP) &mdash; the week&rsquo;s second-best pitcher at 61.5 pts. Multiple BANK transactions in Periods 44&ndash;47 targeted rotation depth and it produced the season&rsquo;s most impressive two-arm week.</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Josh Jung (3B) &mdash; continued production from the lineup piece the BANK needed to activate Soto and Acu&ntilde;a properly.</div>
+        <div class="fa-row"><span class="fa-lbl">NOTE</span> The BANK&rsquo;s activity in Period 47 (Sunday morning, multiple moves) suggests a team making final-day adjustments that paid off. Their transaction log from May 7&ndash;10 shows the most concentrated weekend activity of any team this week.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">&#9917; Houston Gamblers &mdash; Active but Still Searching for Saves</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Multiple rotation and relief additions in Periods 41&ndash;47, including weekend moves on May 4 and May 10</div>
+        <div class="fa-row"><span class="fa-lbl">PATTERN</span> The Gamblers have been active on the wire all season but continue to add starters rather than addressing the saves vacancy. Zero cumulative saves through multiple weeks is a structural problem that no amount of starter acquisitions corrects. The wire has closers. The Gamblers have not pursued them.</div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="fa-block">
+        <div class="fa-name">&#127752; Troutdale Cascades &mdash; Efficient When They Move</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Jacob Misiorowski (SP) &mdash; 36.5 pts, 0.00 ERA this week. A wire acquisition delivering at the level the Cascades needed to sustain their rotation depth.</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Multiple Cascade moves in Periods 43&ndash;46 focused on rotation depth and bullpen management.</div>
+        <div class="fa-row"><span class="fa-lbl">NOTE</span> The Cascades&rsquo; wire activity has been notably selective compared to their record. They are 5-1 and making fewer moves than the Rats or the BANK. That efficiency &mdash; adding only what they need, when they need it &mdash; is one of the underreported stories of their season.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">&#127939; Troutdale Gales &mdash; Addressing the Pitching Gap</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Multiple moves in Period 45 targeting pitching depth. The Gales understand the problem.</div>
+        <div class="fa-row"><span class="fa-lbl">PATTERN</span> The Gales posted 398 points this week but their IP total remains in the bottom quarter of the league. Their wire activity suggests awareness of the problem but not yet a structural solution. A legitimate SP add before Week 7 would change their ceiling meaningfully.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">&#129380; Tempe Scorpions &mdash; The Week That Changes the Conversation</div>
+        <div class="fa-row"><span class="fa-lbl">ADD</span> Eduardo Rodriguez and Michael Wacha delivering 109 combined points is the direct result of rotation management that paid off.</div>
+        <div class="fa-row"><span class="fa-lbl">NOTE</span> Tempe&rsquo;s transaction activity in Period 44 (Thursday, May 7) aligned with a week that produced the Scorpions&rsquo; best pitching performance of the season. The correlation between active wire management and winning weeks in this league is not coincidental.</div>
+    </div>
+
+    <div class="waste-box">
+        <div class="waste-title">&#128683; Teams Underutilizing the FA Pool</div>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Sons of Pitches &mdash; 188.5 pts:</strong> The transaction log shows minimal Sons activity during the week that produced the season&rsquo;s lowest score. The wire is not a suggestion. At 2-4 with the second-lowest cumulative total, inactivity on the FA pool is equivalent to choosing to lose. The Cascades are coming in Week 7. This is the week to over-trade, not stand pat.</p>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Ithaca Spartans &mdash; 1-5:</strong> The Spartans&rsquo; limited wire engagement in a week where they fell to 1-5 is the most puzzling pattern in MLBLONGBALL. Multiple players with 30+ point upside are available on the wire this week. A team with Bobby Witt Jr. on the roster should not be losing by 55 points to the Tempe Scorpions. The roster construction gap must be addressed before Week 7 or the 1-6 outcome becomes the season&rsquo;s central fact.</p>
+        <p style="font-size:.85em"><strong>Sidd Finch &mdash; Two sub-275 weeks in four:</strong> deGrom and Witt are performing. The secondary pieces are not being refreshed aggressively enough to prevent the offensive floor from dropping back to the singles-heavy profile that cost them in Week 3. The wire has power hitters available. Finch needs them before Week 7 at Newberry.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Vickrey Auction Pattern &mdash; Periods 41&ndash;48</div>
+        <p style="font-size:.85em;margin-bottom:8px">The Newberry Indians continue to win Vickrey auctions at extraordinary efficiency &mdash; multiple $1 wins across Periods 44 and 46 with bids in the $75&ndash;$112 range. The format rewards preparation and reading the market, and nobody in this league reads it better than METZ.</p>
+        <p style="font-size:.85em">The Desert Rats remain the league&rsquo;s most aggressive Vickrey participants by volume. The difference between the Rats&rsquo; approach and Newberry&rsquo;s: the Indians target fewer players with maximum discipline. Both teams are winning. The methodologies are instructive studies in contrasting philosophies.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Transaction data through Sunday, May 10, 2026. Period 48 moves included.</p></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- COLUMNISTS -->
+<!-- ============================================================ -->
+<div class="page" id="columns">
+<div class="section-label">Opinion &amp; Commentary &mdash; Week 6 Final</div>
+<div class="headline-lg" style="margin-bottom:4px">The Columnists</div>
+<div class="deck">Joe Falls. Mitch Albom. Big Lou Palmieri. Six weeks in. No more warm-up acts.</div>
+<hr class="rule-h-thick">
+
+<div class="column-box">
+    <div class="column-box-title">The Cascades Are Who They Say They Are</div>
+    <div class="column-box-byline">By Joe Falls &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+    <div>
+        <p class="body">I covered the Detroit Tigers for thirty years. I watched Sparky Anderson manage games with the kind of quiet certainty that made everything look inevitable after the fact. You didn&rsquo;t know it was coming. You just knew, watching him, that he knew something the other dugout didn&rsquo;t. That is what the Troutdale Cascades look like right now. Five and one. Two five-hundred-point weeks. Two thousand eight hundred and thirty-five cumulative points. Three hundred and fourteen points clear of Goldy Goldy Gone, who is not a bad team. Not even a little bad. The Cascades are just better right now, and watching them operate gives you the feeling that they know it and nobody else does yet.</p>
+        <p class="body-sm">The number that matters this week is 504. Again. The Cascades have posted 504 points twice this season. The second time was this week, against Sidd Finch, who is a real team that had a terrible week. They won by 244 points. On a team where Jacob Misiorowski going 0.00 ERA for six innings is not the headline. That is depth. That is roster construction working at the system level, not the individual level.</p>
+        <p class="body-sm">Now let me talk about the BANK of Texas for a moment, because what they did this week deserves honest acknowledgment. One hundred and thirty-one pitching points from two starters. Cristopher Sanchez at 69.5 and Davis Martin at 61.5. Against Goldy Goldy Gone, who is the best-floor team in this league and still has the second-highest cumulative total. The BANK beat them. By 25 points. On the road. That is not a fluke. That is a team capable of beating anyone when the arms are all in on the same week.</p>
+    </div>
+    <div>
+        <p class="body-sm">The problem is the phrase &ldquo;when.&rdquo; When the BANK deploys correctly, they beat Goldy. When they don&rsquo;t, they lose to the Sons of Pitches. Three and three is the exact record you&rsquo;d expect from a team that alternates between excellent and incoherent. Week 7 against Tempe is the test. The Scorpions just posted 109 combined pitching points from two arms. If both teams bring their best rotation weeks simultaneously, this is the most interesting game on the board outside of Rats-Goldy.</p>
+        <p class="body-sm">Two more notes before I sit down. First: Tempe Scorpions, two and four, posted the week&rsquo;s second and fourth-best pitching performances. Eduardo Rodriguez at a 0.59 ERA is not a fluke, it is a performance. They beat the Ithaca Spartans by 55 points and it was not that close. Second: the Ithaca Spartans have Bobby Witt Jr. on the roster. He scored 42 points. They are one and five. Those two sentences, sitting next to each other like that, are the most damning statistical indictment I can offer. Fix the supporting cast. Everything else takes care of itself.</p>
+    </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">What Consistency Costs</div>
+    <div class="column-box-byline">By Mitch Albom &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+    <div>
+        <p class="body">There is a moment in competitive sport when a team stops being a contender and starts being something more specific: an inevitability. The Troutdale Cascades reached that moment somewhere around the third week of this season, and nothing in Week 6 suggested they have any interest in vacating it. Five wins and one loss is a record. Two thousand eight hundred and thirty-five points is a posture. It says: we are not winning close games. We are not grinding out margins. We are posting 504 points and letting the opponent figure out what to do about it.</p>
+        <p class="body-sm">I want to write about Andy Pages this week, because in a league full of big names and keeper investments, he is the Troutdale Gales player who led all hitters with 48 points and did it while playing on a team that is three and three. Pages at 48 points is not the story of the Gales&rsquo; week. He is the headline on a story that does not yet have a satisfying conclusion. The Gales have the league&rsquo;s most explosive offense. They are also the team whose pitching staff has the lowest cumulative innings total in the league. That imbalance &mdash; offense elite, pitching thin &mdash; is not a new observation. It is now a documented pattern across six scoring periods. Something has to change or the pattern becomes the season.</p>
+        <p class="body-sm">The BANK of Texas fascinates me this week. Not just because they won, but because of what the win revealed. One hundred and thirty-one pitching points from two starters. A franchise that has spent six weeks looking for its identity produced its clearest self-portrait in a single week. The BANK, at their best, is a team with elite pitching and elite position players and the ability to beat anyone in this league. At their average, they are a team that loses to teams they should beat. The distance between those two versions of the BANK is the most interesting gap in MLBLONGBALL. Whether they can narrow it in Week 7 against a Tempe team that just showed their own pitching ceiling will tell us more about this franchise than the first six weeks combined.</p>
+    </div>
+    <div>
+        <p class="body-sm">Brooks Lee&rsquo;s 37-point week for the Desert Rats and his ten-percent ownership surge tell a specific story about how this commissioner operates. Most teams in this league identify wire targets by reputation. The Rats identify them by output. Lee at rank 108 and trending sharply upward is the wire working the way it&rsquo;s supposed to &mdash; rewarding the manager who looked past the name and focused on the number.</p>
+        <p class="body-sm">I keep coming back to the Sons of Pitches. One hundred and eighty-eight points. The lowest team score of the season. In a week where multiple starters on other rosters produced 40-plus points individually, the Sons&rsquo; total suggests a roster that is not failing occasionally &mdash; it is failing structurally. At two and four with the second-lowest cumulative total, the season is not technically over. It feels like a team that has given itself permission to be disappointed and is living comfortably inside that permission. The wire is open. It is not that hard to make a move. Sometimes the hardest thing in competition is admitting that what you have is not enough and doing something about it before it becomes too late to do anything at all.</p>
+        <p class="body-sm">The Ithaca Spartans have one win and five losses. Bobby Witt Jr. gave them 42 points and they lost. Aaron Judge is on this roster and this team has not found a way to make the players around him contribute at the level required. In the end, that is the saddest story in six weeks of MLBLONGBALL &mdash; not because the talent is absent, but because the talent is present and the opportunity is being wasted.</p>
+    </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Big Lou&rsquo;s Corner: Five-One, 504 Points, and the BANK Finally Woke Up</div>
+    <div class="column-box-byline">By Lou Palmieri, Baseball Lifer &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+    <div>
+        <p class="body">Okay. I need everybody to STOP what they&rsquo;re doing because the Troutdale Cascades just posted FIVE HUNDRED AND FOUR POINTS for the SECOND TIME THIS SEASON and I want to know what they are putting in the water in Troutdale because whatever it is, it is working and I want some. Five and one. Two thousand eight hundred and thirty-five cumulative points. THREE HUNDRED AND FOURTEEN AHEAD OF GOLDY. And when I say Goldy, I mean the team that was the consensus best team in the league for the first three weeks and still has 2,721 points on the board. The Cascades are not running away from a bad field. They are running away from a legitimately excellent field. That is a different thing entirely and it demands to be said out loud.</p>
+        <p class="body-sm">Now. THE BANK OF TEXAS. Cristopher Sanchez sixty-nine and a half points. Davis Martin sixty-one and a half. COMBINED: one hundred and thirty-one pitching points. IN ONE WEEK. FROM TWO STARTERS. ON THE SAME TEAM. They beat GOLDY GOLDY GONE. By twenty-five points. On the ROAD. I have been watching this franchise all season and here is what I know about the BANK: when they fire on all cylinders, they are absolutely capable of beating anyone in this league. The problem &mdash; and I say this with respect &mdash; is that &ldquo;all cylinders&rdquo; has happened approximately once in six weeks. The other five weeks they left points and opportunities sitting on the bench like they were saving them for a special occasion. Well, Week 7 is a special occasion. Tempe Scorpions just posted a hundred and nine combined pitching points. The BANK better bring both arms again or they&rsquo;re getting surprised for the second week in a row.</p>
+    </div>
+    <div>
+        <p class="body-sm">TEMPE SCORPIONS. I said it last week and I&rsquo;ll say it again: this team has been the most unlucky roster in the first six weeks of MLBLONGBALL. Two thousand two hundred and eighty-five cumulative points. That is more than the BANK, more than the Gales, more than Sidd Finch. Eduardo Rodriguez at a zero-point-five-nine ERA is not a bad pitcher having a good day, that is a legitimate arm earning his roster spot. Michael Wacha at fifty points is vintage Wacha in a contract year. Miguel Vargas at forty points and six-sixty-seven per game is a guy who is quietly becoming one of the league&rsquo;s most efficient hitters. Two and four does NOT reflect this team&rsquo;s quality. The schedule has been their enemy. Week 7 at the BANK will tell us if they&rsquo;re building something or just having a good week.</p>
+        <p class="body-sm">ITHACA SPARTANS. One and five. Bobby Witt Jr. scored forty-two points. Let me repeat: FORTY-TWO POINTS. FROM ONE PLAYER. And the team STILL lost by fifty-five. Aaron Judge is on this roster. I have been generous about the Ithaca situation for six weeks because talent like Judge and Witt deserves patience. My patience has officially run out. When a team with two top-ten caliber players is one-and-five and posting two hundred and seventy-four points in a week, the problem is not the stars. The problem is EVERYTHING ELSE. The wire is OPEN. There are players ON IT. Make some moves before Week 7 turns into the official burial of whatever this season was supposed to be.</p>
+        <p class="body-sm">And the SONS OF PITCHES at one hundred and eighty-eight points. That is not a score. That is a cry for help. The Cascades are coming to town in Week 7. I genuinely feel bad about what is going to happen. Not bad enough to look away. But bad.</p>
+    </div>
+    </div>
+</div>
+
+<div class="page-footer">
+    <p>The opinions expressed in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office, its commissioner, or anyone currently holding a 1-5 record with two former MVP-caliber players on their roster.</p>
+    <p style="margin-top:8px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Vol. 1, No. 9 &nbsp;&middot;&nbsp; Week 6 Final Edition &nbsp;&middot;&nbsp; Next edition following Week 7 (May 17, 2026)</p>
+</div>
+</div>
+
+</div></div>
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
