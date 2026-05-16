@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette — WHO WINS IT ALL? Special Edition, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a}
+        body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+        .newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+        .newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+        .inner{position:relative;z-index:1}
+
+        /* MASTHEAD */
+        .masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+        .masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+        .paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+        .paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+        .paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:4px}
+        .special-banner{text-align:center;font-family:"Playfair Display",serif;font-size:1.05em;font-weight:700;font-style:italic;color:var(--red);letter-spacing:1px;padding:6px 0 12px;border-top:2px solid var(--red);margin-top:6px}
+
+        /* TICKER */
+        .ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+        .ticker-inner{display:flex;white-space:nowrap;animation:ticker 80s linear infinite}
+        .ticker-inner span{padding:0 30px}
+        .ticker-inner .sep{color:var(--gold);font-weight:700}
+        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        /* NAV */
+        .nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+        .nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+        .nav-tab:first-child{border-left:1px solid #c0b090}
+        .nav-tab:hover{background:var(--paper);color:var(--ink)}
+        .nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+        .nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+
+        /* PAGES */
+        .page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+        .page.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+        /* TYPOGRAPHY */
+        .section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+        .headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+        .headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+        .headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+        .deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+        .byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+        .dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+        p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+        p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+        p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+
+        /* LAYOUT */
+        .col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .col-1-2{display:grid;grid-template-columns:1fr 2fr;gap:30px}
+        .col-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
+        .rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+        .rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+        .rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+        .col-rule{border-left:1px solid #b0a080;padding-left:30px}
+
+        /* BOXES */
+        .info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+        .info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+        .column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+        .column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+        .column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+        .alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+        .alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+        .gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+        .green-box{border:2px solid #2a7a2a;background:#f0fff0;padding:14px 16px;margin-bottom:16px}
+        .dark-box{border:2px solid var(--ink);background:var(--ink);color:var(--paper);padding:16px 18px;margin-bottom:20px}
+        .dark-box-title{font-family:"Oswald",sans-serif;font-size:.9em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;text-align:center;border-bottom:1px solid #555;padding-bottom:6px}
+
+        /* TABLES */
+        table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+        table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+        table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+        table.data tr:last-child td{border-bottom:none}
+        table.data tr.highlight{background:#fff9e0;font-weight:700}
+        table.data tr.danger{background:#fff0f0}
+        table.data tr.warning{background:#fff8ee}
+        table.data tr.muted-row{background:var(--paper-mid);opacity:.85}
+        table.data .num{text-align:right;font-weight:700}
+        table.data .rk{text-align:center;width:30px;color:var(--muted)}
+
+        /* ODDS CARDS */
+        .odds-tier{margin-bottom:32px}
+        .odds-tier-label{font-family:"Oswald",sans-serif;font-size:.72em;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;margin-bottom:16px;display:inline-block}
+        .tier-elite{background:var(--red);color:white}
+        .tier-contender{background:var(--gold);color:var(--ink)}
+        .tier-bubble{background:#555;color:white}
+        .tier-longshot{background:var(--paper-dark);color:var(--muted);border:1px solid #999}
+
+        .odds-card{border:2px solid var(--rule);margin-bottom:20px;overflow:hidden}
+        .odds-card-header{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:var(--paper);padding:10px 16px}
+        .odds-team-name{font-family:"Oswald",sans-serif;font-size:1.1em;font-weight:700;letter-spacing:1px}
+        .odds-record{font-family:"Courier Prime",monospace;font-size:.85em;color:#ccc}
+        .odds-pct-wrap{text-align:right}
+        .odds-pct{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--gold);line-height:1}
+        .odds-pct-label{font-family:"Courier Prime",monospace;font-size:.65em;color:#aaa;letter-spacing:1px}
+        .odds-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+        .odds-for{padding:14px 16px;border-right:1px solid #d4c89a}
+        .odds-against{padding:14px 16px;background:#fefaf4}
+        .odds-col-title{font-family:"Oswald",sans-serif;font-size:.72em;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+        .odds-col-title.for{color:#2a7a2a}
+        .odds-col-title.against{color:var(--red)}
+        .odds-body p{font-size:.83em;line-height:1.6;text-align:justify}
+        .odds-stat-strip{background:var(--paper-dark);padding:6px 16px;font-family:"Courier Prime",monospace;font-size:.76em;color:var(--muted);display:flex;gap:20px;flex-wrap:wrap}
+        .odds-stat-strip span strong{color:var(--ink)}
+
+        /* POWER RANKINGS */
+        .pr-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #d4c89a}
+        .pr-item:last-child{border-bottom:none}
+        .pr-rank{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--paper-dark);-webkit-text-stroke:1.5px var(--rule);min-width:44px;text-align:center;line-height:1;padding-top:2px}
+        .pr-rank.top3{color:var(--gold);-webkit-text-stroke:1px var(--gold)}
+        .pr-team{font-family:"Oswald",sans-serif;font-size:1.05em;font-weight:700}
+        .pr-pts{font-family:"Courier Prime",monospace;font-size:.85em;color:var(--muted)}
+        .pr-note{font-size:.83em;color:var(--muted);font-style:italic;line-height:1.4;margin-top:2px}
+        .up{color:#2a7a2a;font-weight:700}
+        .dn{color:var(--red);font-weight:700}
+        .same{color:var(--gold);font-weight:700}
+
+        /* EXPERT PANEL */
+        .expert-card{border:2px solid var(--rule);margin-bottom:20px;overflow:hidden}
+        .expert-header{background:var(--paper-dark);padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+        .expert-name{font-family:"Oswald",sans-serif;font-size:.95em;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+        .expert-cred{font-family:"Courier Prime",monospace;font-size:.72em;color:var(--muted);font-style:italic}
+        .expert-pick{background:var(--red);color:white;font-family:"Courier Prime",monospace;font-size:.75em;font-weight:700;padding:3px 10px;letter-spacing:.5px}
+        .expert-body{padding:14px 16px;font-size:.88em;line-height:1.65}
+        .expert-body p{margin-bottom:8px}
+
+        /* ODDS BAR CHART */
+        .odds-bar-wrap{margin-bottom:8px}
+        .odds-bar-label{display:flex;justify-content:space-between;font-family:"Courier Prime",monospace;font-size:.78em;margin-bottom:3px}
+        .odds-bar-track{height:10px;background:var(--paper-dark);border-radius:2px;overflow:hidden}
+        .odds-bar-fill{height:100%;border-radius:2px;transition:width .6s ease}
+        .fill-elite{background:var(--red)}
+        .fill-cont{background:var(--gold)}
+        .fill-bubble{background:#888}
+        .fill-long{background:#bbb}
+
+        /* BADGES */
+        .badge{display:inline-block;font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:6px;vertical-align:middle}
+        .badge-hot{background:var(--red);color:white}
+        .badge-cold{background:#555;color:white}
+        .badge-up{background:#2a7a2a;color:white}
+        .badge-warn{background:var(--gold);color:var(--ink)}
+
+        /* FOOTER */
+        .page-footer{text-align:center;font-family:"Courier Prime",monospace;font-size:.78em;color:var(--muted);padding-top:20px;border-top:2px double var(--rule);margin-top:30px}
+
+        @media(max-width:760px){
+            .newspaper{outline:none}.page{padding:20px}
+            .col-2,.col-2-1,.col-1-2,.col-3{grid-template-columns:1fr}
+            .col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}
+            .paper-name{font-size:2em;letter-spacing:1px}
+            .nav-tab{padding:8px 10px;font-size:.72em}
+            .odds-body{grid-template-columns:1fr}
+            .odds-for{border-right:none;border-bottom:1px solid #d4c89a}
+        }
+    </style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<!-- MASTHEAD -->
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Special Edition &nbsp;|&nbsp; Championship Preview</span>
+        <span>May 2026 &nbsp;|&nbsp; Through Week 6</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"The Regular Season Is Half Over. The Trophy Is Not Yet Spoken For." &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+    <div class="special-banner">&#9733; &nbsp; WHO WINS IT ALL? &mdash; 2026 CHAMPIONSHIP SPECIAL EDITION &nbsp; &#9733;</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#127942; CASCADES &amp; RATS tied atop the league at 5-1 &mdash; 3088 vs. 2651.5 FPts</span><span class="sep">&#9670;</span>
+    <span>&#128293; GOLDY 4-2, 2847 FPts &mdash; highest roster ceiling in MLBLONGBALL</span><span class="sep">&#9670;</span>
+    <span>&#128202; NEWBERRY INDIANS 3-3 with 2763 FPts &mdash; best record among .500 clubs</span><span class="sep">&#9670;</span>
+    <span>&#128683; ITHACA SPARTANS 1-5, 1928 FPts &mdash; Judge &amp; Crochet are hostages</span><span class="sep">&#9670;</span>
+    <span>&#9889; MIDLAND DOGS 2-4 but 2608 FPts &mdash; the most dangerous team not winning</span><span class="sep">&#9670;</span>
+    <span>&#127381; SONS OF PITCHES 2-4 &mdash; Alvarez carrying the franchise on his back</span><span class="sep">&#9670;</span>
+    <span>&#128021; TEMPE 2-4 but 2351 FPts &mdash; schedule has been criminally cruel</span><span class="sep">&#9670;</span>
+    <span>&#127942; CASCADES &amp; RATS tied atop the league at 5-1 &mdash; 3088 vs. 2651.5 FPts</span><span class="sep">&#9670;</span>
+    <span>&#128293; GOLDY 4-2, 2847 FPts &mdash; highest roster ceiling in MLBLONGBALL</span><span class="sep">&#9670;</span>
+    <span>&#128202; NEWBERRY INDIANS 3-3 with 2763 FPts &mdash; best record among .500 clubs</span><span class="sep">&#9670;</span>
+    <span>&#128683; ITHACA SPARTANS 1-5, 1928 FPts &mdash; Judge &amp; Crochet are hostages</span><span class="sep">&#9670;</span>
+    <span>&#9889; MIDLAND DOGS 2-4 but 2608 FPts &mdash; the most dangerous team not winning</span><span class="sep">&#9670;</span>
+</div></div>
+
+<!-- NAV -->
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('odds')">Title Odds</div>
+    <div class="nav-tab" onclick="showPage('contenders')">Contenders</div>
+    <div class="nav-tab" onclick="showPage('pretenders')">Pretenders</div>
+    <div class="nav-tab" onclick="showPage('experts')">Expert Panel</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 1: FRONT PAGE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page active" id="front">
+<div class="section-label">Special Edition &mdash; Championship Preview &mdash; Through Week 6</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">THE TROPHY HAS TWO NAMES ON IT. EVERYBODY ELSE IS AUDITIONING.</div>
+    <div class="deck">Six weeks in. Half the regular season dead. Two teams at 5-1. One team with the scariest roster in the building. And eleven franchises staring at a bracket that is already being drawn in invisible ink. The Longball Gazette convened its championship panel — Falls, Albom, Big Lou, and four of fantasy baseball's top analytical minds — to answer the only question that matters: Who wins it all?</div>
+    <div class="byline">By the Longball Gazette Championship Desk</div>
+    <div class="dateline">League Headquarters &mdash; May 2026</div>
+
+    <p class="body">The 2026 MLBLONGBALL season was supposed to be simple. The Desert Rats had Shohei Ohtani and Kyle Tucker locked in as keepers. Goldy Goldy Gone had Tarik Skubal and Corbin Carroll. The BANK of Texas had Juan Soto and Ronald Acu&ntilde;a Jr. for a combined two real dollars. The preseason narrative wrote itself in February and nobody saw any reason to revise it.</p>
+
+    <p class="body">Then the Troutdale Cascades happened. Quietly. Methodically. The way a team that doesn't need headlines tends to happen. Through six weeks they have accumulated 3,088 fantasy points &mdash; the most of any team in the league &mdash; while posting a 5-1 record that is tied for the best in MLBLONGBALL. They are not the sexiest roster. They are the most dangerous one, and at this point in the season, that distinction matters more.</p>
+
+    <p class="body">The Desert Rats are also 5-1. The commissioner's own team, the one that made fifty-plus transactions in the first twelve days of the season while Shohei Ohtani watched from what appeared to be an extended spa retreat, has won five of six games. Their 2,651.5 cumulative points trail the Cascades by 437, which in a full-season context is a meaningful gap. But records are records, and the playoff bracket does not care about point differentials.</p>
+
+    <p class="body">Goldy Goldy Gone sits at 4-2 with 2,847 cumulative points &mdash; more than the Rats, more than Newberry, more than everyone except the Cascades. If the fantasy baseball analytical community were constructing a "pure roster quality" ranking independent of wins and losses, most of the experts we consulted would have Goldy at or near the top. The question is whether 4-2 gets them where they need to go in a short playoff format, and whether Max Fried and Christian Yelich stay healthy long enough to matter.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">The Tier Below Is Genuinely Crowded</div>
+    <p class="body-sm">Four teams sit at 3-3: Newberry Indians (2,763 pts), Houston Gamblers (2,538), the BANK of Texas (2,542), and Sidd Finch (2,495). All four are mathematically alive. All four have real problems. Newberry's point total is legitimate but the record should be better. The Gamblers have zero cumulative saves &mdash; a structural flaw that has somehow not cost them more games than it has. The BANK had their best week in Week 3 and then reverted. Sidd Finch is 3-3 with a three-week scoring decline that nobody has answered for publicly yet.</p>
+    <p class="body-sm">Below them: five teams between 2-4 and 1-5 whose championship windows range from "barely cracked" to "painted shut." The Midland Red Weasel Dogs (2-4, 2,608 pts) are the most interesting anomaly &mdash; more total points than the Gamblers, the BANK, and Sidd Finch, with a losing record. Will Warren and Paul Skenes are two of the best pitching assets in this league. The offense is not supporting them. That gap is solvable. The calendar is the question.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">The Verdict, In Short</div>
+    <p class="body-sm">Our panel's consensus: the trophy has two real names on it &mdash; Troutdale Cascades and Goldy Goldy Gone. The Desert Rats are the only team in the conversation on record alone. Whether 5-1 with the league's fourth-highest point total holds up against 4-2 with the second-highest when the bracket tightens is the central question of the second half. Everything else is either background noise or a very long shot dressed up as a narrative. The full analysis begins on the next page.</p>
+</div>
+
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#127942; Championship Odds Snapshot</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th>W-L</th><th class="num">FPts</th><th class="num">Odds</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Troutdale Cascades</strong></td><td>5-1</td><td class="num">3,088</td><td class="num">20%</td></tr>
+            <tr class="highlight"><td class="rk">2</td><td><strong>Desert Rats</strong></td><td>5-1</td><td class="num">2,651.5</td><td class="num">17%</td></tr>
+            <tr class="highlight"><td class="rk">3</td><td><strong>Goldy Goldy Gone</strong></td><td>4-2</td><td class="num">2,847</td><td class="num">16%</td></tr>
+            <tr><td class="rk">4</td><td>Newberry Indians</td><td>3-3</td><td class="num">2,763</td><td class="num">11%</td></tr>
+            <tr><td class="rk">5</td><td>Houston Gamblers</td><td>3-3</td><td class="num">2,538</td><td class="num">8%</td></tr>
+            <tr><td class="rk">6</td><td>The BANK of Texas</td><td>3-3</td><td class="num">2,542</td><td class="num">7%</td></tr>
+            <tr><td class="rk">7</td><td>Sidd Finch</td><td>3-3</td><td class="num">2,495</td><td class="num">6%</td></tr>
+            <tr><td class="rk">8</td><td>Troutdale Gales</td><td>3-3</td><td class="num">2,435</td><td class="num">5%</td></tr>
+            <tr><td class="rk">9</td><td>Midland Dogs</td><td>2-4</td><td class="num">2,608</td><td class="num">4%</td></tr>
+            <tr class="warning"><td class="rk">10</td><td>Tempe Scorpions</td><td>2-4</td><td class="num">2,351</td><td class="num">3%</td></tr>
+            <tr class="warning"><td class="rk">11</td><td>Sons of Pitches</td><td>2-4</td><td class="num">2,177</td><td class="num">2%</td></tr>
+            <tr class="danger"><td class="rk">12</td><td>Ithaca Spartans</td><td>1-5</td><td class="num">1,928</td><td class="num">1%</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Odds blend W-L record, cumulative FPts, and roster construction through Week 6. Source: official Fantrax league data.</p>
+    </div>
+
+    <div class="dark-box">
+        <div class="dark-box-title">&#9733; Panel Picks &mdash; Who Wins It All</div>
+        <table style="width:100%;font-family:'Courier Prime',monospace;font-size:.82em;color:var(--paper)">
+            <tr><td style="padding:4px 0;border-bottom:1px solid #444"><strong>Joe Falls</strong></td><td style="text-align:right;color:var(--gold)">Goldy Goldy Gone</td></tr>
+            <tr><td style="padding:4px 0;border-bottom:1px solid #444"><strong>Mitch Albom</strong></td><td style="text-align:right;color:var(--gold)">Troutdale Cascades</td></tr>
+            <tr><td style="padding:4px 0;border-bottom:1px solid #444"><strong>Big Lou Palmieri</strong></td><td style="text-align:right;color:var(--gold)">Desert Rats</td></tr>
+            <tr><td style="padding:4px 0;border-bottom:1px solid #444"><strong>Ariel Cohen</strong></td><td style="text-align:right;color:var(--gold)">Troutdale Cascades</td></tr>
+            <tr><td style="padding:4px 0;border-bottom:1px solid #444"><strong>Chris Towers</strong></td><td style="text-align:right;color:var(--gold)">Goldy Goldy Gone</td></tr>
+            <tr><td style="padding:4px 0;border-bottom:1px solid #444"><strong>Paul Sporer</strong></td><td style="text-align:right;color:var(--gold)">Newberry Indians</td></tr>
+            <tr><td style="padding:4px 0"><strong>Fred Zinkie</strong></td><td style="text-align:right;color:var(--gold)">Desert Rats</td></tr>
+        </table>
+        <p style="font-size:.72em;color:#aaa;margin-top:8px;font-style:italic;font-family:'Courier Prime',monospace">Panel convened May 2026. Picks represent each analyst's independent assessment.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#9888; The One Number That Matters</div>
+        <p style="font-size:.83em">The gap between the Cascades' 3,088 FPts and the Rats' 2,651.5 is <strong>437 points</strong> over six weeks &mdash; roughly 73 points per week. That is not a rounding error. That is a structural difference that record alone does not capture.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Title Odds &rarr; &nbsp;|&nbsp; Contenders &rarr; &nbsp;|&nbsp; Pretenders &rarr; &nbsp;|&nbsp; Expert Panel &rarr; &nbsp;|&nbsp; The Columnists &rarr;</p><p style="margin-top:6px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Championship Special Edition &nbsp;&middot;&nbsp; May 2026</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 2: TITLE ODDS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="odds">
+<div class="section-label">Championship Odds &mdash; Full Field Analysis</div>
+<div class="headline-lg" style="margin-bottom:4px">Twelve Teams. One Trophy. The Numbers Don't Lie.</div>
+<div class="deck">Complete odds breakdown for all 12 franchises, derived from current record, cumulative fantasy points, and roster construction. Verified against official Fantrax league data through Week 6.</div>
+<hr class="rule-h-thick">
+
+<!-- VISUAL ODDS BAR CHART -->
+<div class="info-box">
+    <div class="info-box-title">&#128202; Visual Odds Chart &mdash; All 12 Teams</div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Troutdale Cascades</strong> (5-1)</span><span>20%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-elite" style="width:100%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Desert Rats</strong> (5-1)</span><span>17%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-elite" style="width:85%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Goldy Goldy Gone</strong> (4-2)</span><span>16%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-elite" style="width:80%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Newberry Indians</strong> (3-3)</span><span>11%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-cont" style="width:55%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Houston Gamblers</strong> (3-3)</span><span>8%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-cont" style="width:40%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>BANK of Texas</strong> (3-3)</span><span>7%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-cont" style="width:35%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Sidd Finch</strong> (3-3)</span><span>6%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-cont" style="width:30%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Troutdale Gales</strong> (3-3)</span><span>5%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-bubble" style="width:25%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Midland Red Weasel Dogs</strong> (2-4)</span><span>4%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-bubble" style="width:20%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Tempe Scorpions</strong> (2-4)</span><span>3%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-long" style="width:15%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Sons of Pitches</strong> (2-4)</span><span>2%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-long" style="width:10%"></div></div></div>
+    <div class="odds-bar-wrap"><div class="odds-bar-label"><span><strong>Ithaca Spartans</strong> (1-5)</span><span>1%</span></div><div class="odds-bar-track"><div class="odds-bar-fill fill-long" style="width:5%"></div></div></div>
+    <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:10px;font-family:'Courier Prime',monospace">Red = Elite tier. Gold = Contender tier. Gray = Bubble/Longshot. All percentages normalize to 100%.</p>
+</div>
+
+<div class="col-2">
+<div>
+    <!-- TIER 1: ELITE -->
+    <div style="margin-bottom:8px"><span class="odds-tier-label tier-elite">&#9733; ELITE TIER &mdash; CHAMPIONSHIP FAVORITES</span></div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#128128; Troutdale Cascades</div><div class="odds-record">5-1 &nbsp;&middot;&nbsp; 3,088 FPts &nbsp;&middot;&nbsp; League-leading points total</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">20%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-stat-strip"><span><strong>FPts Lead:</strong> +241 over Goldy</span><span><strong>Record:</strong> Tied 1st</span><span><strong>Strength:</strong> Both-sided balance</span></div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>The Cascades are the only team in MLBLONGBALL that leads in both wins (tied) and total fantasy points simultaneously. Three thousand and eighty-eight points in six weeks is not a statistical fluke &mdash; it is a roster that was built to produce across both offense and pitching, and it has done exactly that every week. Their pitching construction (165+ innings, 126 strikeouts, 30 QS, minimal losses) has now sustained itself for multiple scoring periods without a catastrophic breakdown. George Kirby and Mason Miller have been legitimate. The offense generates real pop. When a team does everything at a high level with no obvious exploitable weakness, history says bet on them.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>At the top of the mountain, everyone is scouting your weaknesses. The saves situation &mdash; which plagued the Cascades for the first three weeks &mdash; showed improvement, but one closer going cold in a playoff week can erase the advantage. The schedule has also been favorable in stretches; it gets harder. And in a short playoff series, the 437-point gap they've built over the Rats in the regular season means nothing if a single bad week sends them home. Hot starts have a history of cooling at the worst possible time in this format.</p></div>
+        </div>
+    </div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#128000; Desert Rats</div><div class="odds-record">5-1 &nbsp;&middot;&nbsp; 2,651.5 FPts &nbsp;&middot;&nbsp; Commissioner's squad</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">17%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-stat-strip"><span><strong>Record:</strong> Tied 1st</span><span><strong>FPts Gap vs. Cascades:</strong> &ndash;437</span><span><strong>Transactions:</strong> League high</span></div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>Five wins and one loss. That is the argument. Whatever the methodology &mdash; and the methodology has involved enough roster transactions to staff a mid-market front office &mdash; the Rats are winning games. Shohei Ohtani, Kyle Tucker, and Bryce Harper are legitimate weapons when deployed correctly. Aggressive Vickrey auction management (Imanaga, Adames, Lowder, Walker, Weathers &mdash; all for $1 or close to it) has added real depth without breaking the budget. The commissioner knows this league. This roster has the tools to make a playoff run.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>The 437-point gap between the Rats and the Cascades is not explained by schedule. The Rats' cumulative scoring trail Goldy too &mdash; a team with one more loss. The weekly declining trend (528&rarr;452&rarr;325 in Weeks 1-3) before stabilizing raises questions about whether this 5-1 record reflects dominance or favorable matchups. The pitching total (589.7 through Week 3) was the fourth-lowest of any team. Transaction volume is high, which means roster identity remains unstable. The Rats win enough. But winning enough has a ceiling in a short playoff format.</p></div>
+        </div>
+    </div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#128155; Goldy Goldy Gone</div><div class="odds-record">4-2 &nbsp;&middot;&nbsp; 2,847 FPts &nbsp;&middot;&nbsp; Second-highest scoring total</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">16%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-stat-strip"><span><strong>FPts:</strong> 2nd in league</span><span><strong>FP/G through Wk3:</strong> 4.92 (league high)</span><span><strong>Roster depth:</strong> Elite</span></div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>Goldy Goldy Gone is the most analytically terrifying team in this league. Their infield depth (Hoerner, Stott, Murakami), outfield quality (Cruz, Carroll, Yelich, Merrill, Moniak), and rotation depth (Fried, Gausman, Bubic, Hancock, Suarez) form the most complete roster construction in MLBLONGBALL. Their 4.92 FP/G through Week 3 was the league's highest. Two losses in six weeks could easily be reversed by one different bounce in two close games. If Fried and Gausman stay healthy, this team has the highest ceiling of any squad in the bracket.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>Max Fried and Christian Yelich are carrying Day-to-Day injury designations. In a rotation that leans heavily on that top-two arm pairing, an IL stint is not an inconvenience &mdash; it is a potential season-altering event. Additionally, the 4-2 record puts Goldy a game behind the two 5-1 clubs in seeding and bracket positioning, and in a short playoff format, seeding is meaningful. The roster is excellent. The health question is the only real argument against Goldy hoisting the trophy.</p></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <!-- TIER 2: CONTENDERS -->
+    <div style="margin-bottom:8px"><span class="odds-tier-label tier-contender">&#9670; CONTENDER TIER &mdash; ALIVE BUT NEED HELP</span></div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#127381; Newberry Indians</div><div class="odds-record">3-3 &nbsp;&middot;&nbsp; 2,763 FPts &nbsp;&middot;&nbsp; Best-scoring .500 team</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">11%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>The Newberry Indians have spent six weeks building the most disciplined pitching operation in the league. Four pitchers in the Week 2 top-10. Led the league in innings pitched in Week 3. Their 2,763 FPts total places them legitimately in the contender conversation despite a .500 record &mdash; they are not a .500 team in talent, only in circumstances. The Indians win through process, not peaks, and process-driven teams are exactly what survives a playoff gauntlet.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>Three wins and three losses means every tiebreaker matters and seeding becomes uncertain. They have burned productive weeks without banking wins to show for them. If the .500 record holds through the final third of the regular season, they could enter the bracket as a lower seed forced to beat multiple elite opponents back-to-back. That is a path to a trophy but it is the hardest path available to them.</p></div>
+        </div>
+    </div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#9917; Houston Gamblers</div><div class="odds-record">3-3 &nbsp;&middot;&nbsp; 2,538 FPts</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">8%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>Jose Ramirez at 8.64 FP/G is a genuine weekly difference-maker. The offense (Olson, Reynolds, Nimmo, Lowe, Will Smith) is complete and functional across all lineup spots. In a week where Ramirez is at his best and Sale and Glasnow both deliver, the Gamblers can beat anyone in this league. That combination of floor and ceiling makes them dangerous in a short series.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>Zero cumulative saves through three-plus weeks is an almost inexplicable structural failure for a team with their roster quality. The pitching total (442.5 through Week 3, second-lowest) shows the rotation is not translating to wins and saves the way it should. Ramirez is the season. The day he has a down week is the day this team's record gets very precarious.</p></div>
+        </div>
+    </div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#127970; The BANK of Texas</div><div class="odds-record">3-3 &nbsp;&middot;&nbsp; 2,542 FPts</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">7%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>Week 3's 473-point performance &mdash; Sanchez, King, and Ober all in the top six pitchers simultaneously, Josh Jung providing lineup support &mdash; showed what this team is capable of when fully deployed. Soto and Acu&ntilde;a have been performing since Week 3. If the BANK repeats that level of roster activation consistently, they have the firepower to beat anyone in the field.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>The Week 2 performance (188 at-bats, zero saves, lost to the Sons of Pitches by 159 points) is not an aberration &mdash; it is evidence of what this roster looks like when management lapses. The BANK has shown two different identities in six weeks and has not yet proven which one is the real team. An 0-2 start followed by a 3-3 recovery is not the profile of a champion in waiting.</p></div>
+        </div>
+    </div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#127919; Sidd Finch</div><div class="odds-record">3-3 &nbsp;&middot;&nbsp; 2,495 FPts</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">6%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>This league spent February calling Sidd Finch dead before the season started. They won Week 1 with 676 points. Sandy Alcantara, Framber Valdez, and Jacob deGrom form an ace rotation that is legitimately among the best in MLBLONGBALL when healthy. Three-and-three with legitimate pitching assets is a foundation that can be built on if the offense finds power before the season ends.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>Four home runs in Week 3. The three-week scoring line (676&rarr;320&rarr;273) is the steepest decline in the league. The offense is producing singles in a format that pays four times as much for home runs. Valdez and Alcantara deserve a better supporting cast. At 3-3 with a troubling offensive identity, the Finch path to a title requires both a pitching arms race in the playoffs AND a lineup transformation that has not shown up yet.</p></div>
+        </div>
+    </div>
+
+    <div class="odds-card">
+        <div class="odds-card-header">
+            <div><div class="odds-team-name">&#127939; Troutdale Gales</div><div class="odds-record">3-3 &nbsp;&middot;&nbsp; 2,435 FPts</div></div>
+            <div class="odds-pct-wrap"><div class="odds-pct">5%</div><div class="odds-pct-label">TITLE ODDS</div></div>
+        </div>
+        <div class="odds-body">
+            <div class="odds-for"><div class="odds-col-title for">&#10003; THE CASE FOR</div><p>Eight hundred and seventy-four cumulative hitting points through Week 3 &mdash; the league's highest offensive total. Mike Trout, Elly De La Cruz, and a league-leading stolen base pace make the Gales the most explosive lineup in MLBLONGBALL. In a week where the offense peaks and the pitching holds, the Gales can post numbers that beat anyone.</p></div>
+            <div class="odds-against"><div class="odds-col-title against">&#10007; THE CASE AGAINST</div><p>The pitching total (415.8 through Week 3) is the league's lowest. The gap between hitting (1st) and pitching (12th) is the most extreme roster imbalance of any team in this analysis. Until a volume starter is added, the Gales will keep losing weeks where their offense wins the scoring category and their pitching surrenders the game. That is a solvable problem. It has not been solved.</p></div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All odds derived from verified official Fantrax league data through Week 6. Percentages normalized to 100%. For entertainment and analytical purposes.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 3: CONTENDERS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="contenders">
+<div class="section-label">In-Depth Contender Analysis &mdash; Top 3 Championship Favorites</div>
+<div class="headline-lg" style="margin-bottom:4px">The Teams That Can Win It</div>
+<div class="deck">Cascades, Rats, and Goldy dissected. Roster strengths, structural concerns, playoff paths, and the one thing each team must do to hold the trophy in October.</div>
+<hr class="rule-h-thick">
+
+<!-- CASCADES -->
+<div class="column-box">
+    <div class="column-box-title">&#128128; Troutdale Cascades &mdash; The Standard Bearer</div>
+    <div class="column-box-byline">5-1 &nbsp;&middot;&nbsp; 3,088 FPts &nbsp;&middot;&nbsp; Title Odds: 20% &nbsp;&middot;&nbsp; Panel Pick: Albom, Cohen</div>
+    <div class="col-2">
+        <div>
+            <div class="section-label" style="margin-top:0">What Makes Them Great</div>
+            <p class="body">The Troutdale Cascades don't win by doing one thing magnificently. They win by doing everything at a level that accumulates. Their 3,088 cumulative points &mdash; the highest in MLBLONGBALL &mdash; were built on balanced construction: 710 hitting points and 741 pitching points through the first three weeks. In a format that taxes every roster spot, every inactive player, and every blown save, the Cascades have minimized dead weight across both halves of their roster in a way that no other team in the field has consistently achieved.</p>
+            <p class="body-sm">George Kirby (41.67 pts, 2.02 ERA in his Week 3 performance), Mason Miller (0.00 ERA in relief work), and 50 SVH in a single week represent a pitching structure that appears to have finally solved the closer problem that haunted the first two weeks. If that saves floor is real and sustainable, this team has no obvious exploitable weakness entering the second half.</p>
+            <p class="body-sm">The offense delivers from multiple spots. No single hitter is the entire story. Chase DeLauter, Maikel Garcia, Sal Stewart, J-Rod &mdash; these are not household names in the broader fantasy community, but they are names that keep appearing in positive scoring columns week after week. That is what a well-built roster looks like from the inside.</p>
+
+            <div class="info-box" style="margin-top:14px">
+                <div class="info-box-title">Cascades By The Numbers</div>
+                <table class="data">
+                    <tr><th>Metric</th><th class="num">Value</th><th class="num">League Rank</th></tr>
+                    <tr class="highlight"><td>Cumulative FPts</td><td class="num">3,088</td><td class="num">1st</td></tr>
+                    <tr><td>W-L Record</td><td class="num">5-1</td><td class="num">T-1st</td></tr>
+                    <tr><td>Hitting Balance</td><td class="num">710+ pts</td><td class="num">Top 3</td></tr>
+                    <tr><td>Pitching Balance</td><td class="num">741+ pts</td><td class="num">Top 3</td></tr>
+                    <tr><td>Season-High Score</td><td class="num">500.5 (Wk3)</td><td class="num">2026 League High</td></tr>
+                    <tr><td>Week 3 QS</td><td class="num">30</td><td class="num">T-1st</td></tr>
+                    <tr><td>Week 3 Losses Allowed</td><td class="num">15</td><td class="num">Best (fewest)</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-rule">
+            <div class="section-label" style="margin-top:0">The Path to the Trophy</div>
+            <p class="body-sm">The Cascades' playoff path is straightforward on paper: maintain the 5-1 record or better through the remainder of the regular season, earn a favorable seed, and let the roster's depth carry them through a short series. They are the only team in MLBLONGBALL where the floor is high enough that a "bad week" still beats most opponents' good weeks.</p>
+            <p class="body-sm">The question is whether the saves category improvement is structural or circumstantial. Fifty SVH in Week 3 is a significant jump from one or zero. If a genuine closing arm has emerged and stays healthy, the Cascades' one persistent vulnerability is addressed. If that 50 SVH was a convergence of lucky circumstances, they remain susceptible to the specific weakness that cost them matchups in Weeks 1 and 2.</p>
+            <p class="body-sm">Head-to-head, the Cascades beat the BANK by 110 points (Week 1) and then posted a 500-point week against Ithaca (Week 3). Their competition has not yet included a rematch with the league's other top-tier teams. The Goldy matchup &mdash; whenever the schedule produces it &mdash; is the game this league needs to see.</p>
+
+            <div class="gold-box">
+                <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">The One Thing They Must Do</div>
+                <p style="font-size:.85em">Confirm the closer. If the 50 SVH from Week 3 reflects a genuine arm at the back of the bullpen, this roster has no meaningful gap. If not, add one closer before the trade deadline at whatever cost is necessary. The Cascades' first two weeks showed what happens when saves go missing. A repeat of that in a playoff game ends the season.</p>
+            </div>
+
+            <div class="alert-box">
+                <div class="alert-box-title">&#9888; Watch: J-Rod Consistency</div>
+                <p style="font-size:.83em">Julio Rodriguez had a 9-point week in Week 1 despite being one of the league's top-drafted players. A preseason #12 overall pick who underperforms for multiple weeks is a roster liability, not an asset. If J-Rod doesn't find his offensive groove in the second half, the Cascades need a midseason upgrade at that roster spot.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<!-- DESERT RATS -->
+<div class="column-box">
+    <div class="column-box-title">&#128000; Desert Rats &mdash; The Transaction Machine</div>
+    <div class="column-box-byline">5-1 &nbsp;&middot;&nbsp; 2,651.5 FPts &nbsp;&middot;&nbsp; Title Odds: 17% &nbsp;&middot;&nbsp; Panel Pick: Big Lou, Zinkie</div>
+    <div class="col-2">
+        <div>
+            <div class="section-label" style="margin-top:0">What Makes Them Great</div>
+            <p class="body">They are 5-1. That is the answer. The methodology &mdash; enough transaction volume to make a small-market front office weep &mdash; has been criticized from week one. The results have not. Ohtani, Tucker, Harper, and Freeman form a legitimate top-four hitting core when deployed together and producing simultaneously. Logan Gilbert has given the rotation a genuine anchor. And four separate Vickrey wins at essentially zero cost (Imanaga, Adames, Weathers, Walker) have added real depth without depleting the budget.</p>
+            <p class="body-sm">The Rats' best analytical argument is the point differential they have allowed: through Week 3 they were holding opponents to the lowest average score in the league. A team that wins by limiting what the other side scores is playing sustainable, structurally sound fantasy baseball regardless of how chaotic the roster construction looks from the outside.</p>
+
+            <div class="info-box" style="margin-top:14px">
+                <div class="info-box-title">Desert Rats By The Numbers</div>
+                <table class="data">
+                    <tr><th>Metric</th><th class="num">Value</th><th class="num">Context</th></tr>
+                    <tr class="highlight"><td>W-L Record</td><td class="num">5-1</td><td class="num">T-1st</td></tr>
+                    <tr><td>Cumulative FPts</td><td class="num">2,651.5</td><td class="num">4th</td></tr>
+                    <tr><td>FPts Gap vs. Cascades</td><td class="num">&ndash;437</td><td class="num">Significant</td></tr>
+                    <tr><td>Key Keepers</td><td class="num">Ohtani, Tucker</td><td class="num">Top-1, Top-9</td></tr>
+                    <tr><td>Vickrey Wins ($1)</td><td class="num">Imanaga, Adames, Weathers</td><td class="num">Excellent value</td></tr>
+                    <tr><td>Transaction Volume</td><td class="num">League high</td><td class="num">50+ in Wk1 alone</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-rule">
+            <div class="section-label" style="margin-top:0">The Path and The Problem</div>
+            <p class="body-sm">The 437-point gap between the Rats and the Cascades is the central tension in this championship analysis. Both teams are 5-1. But one team's 5-1 includes a 3,088-point foundation and the other includes a 2,651-point foundation. In a playoff format where one week's worth of production determines everything, that regular-season gap may not matter at all &mdash; or it may matter enormously depending on which version of each team shows up.</p>
+            <p class="body-sm">The declining weekly trend (528, 452, 325 in Weeks 1-3) stabilized after Week 3, but the question of whether the roster has found a stable identity &mdash; or whether it's a different team each week depending on which players the commissioner happened to claim most recently &mdash; remains genuinely open. Jeremiah Jackson outscoring Ohtani and Tucker in Week 3 is funny as a headline. As a data point about roster construction, it is a warning sign.</p>
+            <p class="body-sm">The Rats have everything they need to win this league. The question is organizational discipline between now and the playoffs.</p>
+
+            <div class="gold-box">
+                <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">The One Thing They Must Do</div>
+                <p style="font-size:.85em">Stop the transaction churn and build a stable eight-arm pitching staff. The Rats win games when their cumulative pitching volume is competitive. They lose ground when the rotation is a revolving door. Identify four starters and four relievers who can produce consistently for the next eight weeks and leave them alone. The roster has the talent. Let it breathe.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<!-- GOLDY -->
+<div class="column-box">
+    <div class="column-box-title">&#128155; Goldy Goldy Gone &mdash; The Sleeping Giant</div>
+    <div class="column-box-byline">4-2 &nbsp;&middot;&nbsp; 2,847 FPts &nbsp;&middot;&nbsp; Title Odds: 16% &nbsp;&middot;&nbsp; Panel Pick: Falls, Towers</div>
+    <div class="col-2">
+        <div>
+            <div class="section-label" style="margin-top:0">What Makes Them Great</div>
+            <p class="body">Goldy Goldy Gone's roster is the most analytically complete in MLBLONGBALL. The infield (Hoerner, Stott, Murakami) is functional from top to bottom. The outfield (Cruz, Carroll, Yelich, Merrill, Moniak) has genuine star power at the top and real depth behind it. The rotation (Fried, Gausman, Bubic, Hancock, Suarez) is the deepest pitching staff in the league, and their 4.92 FP/G through Week 3 is the highest of any team. Two losses in six weeks, in context, may be the two bad beats of the season rather than evidence of structural weakness.</p>
+            <p class="body-sm">Their Week 1 performance (738.5 points, a 0.907 team WHIP, ten saves) remains the highest single-week team total in the 2026 season. That ceiling exists. The question is whether they can access it consistently through a playoff gauntlet while managing the injury risk that comes with their roster construction.</p>
+
+            <div class="info-box" style="margin-top:14px">
+                <div class="info-box-title">Goldy By The Numbers</div>
+                <table class="data">
+                    <tr><th>Metric</th><th class="num">Value</th><th class="num">Context</th></tr>
+                    <tr class="highlight"><td>Season-High Score</td><td class="num">738.5 (Wk1)</td><td class="num">2026 league record</td></tr>
+                    <tr><td>Cumulative FPts</td><td class="num">2,847</td><td class="num">2nd overall</td></tr>
+                    <tr><td>FP/G through Wk3</td><td class="num">4.92</td><td class="num">League high</td></tr>
+                    <tr><td>Week 1 WHIP</td><td class="num">0.907</td><td class="num">Historic</td></tr>
+                    <tr><td>Health Flags</td><td class="num">Fried, Yelich (D-to-D)</td><td class="num">Must monitor</td></tr>
+                    <tr><td>FAAB Aggression</td><td class="num">High (Bradish, Soriano)</td><td class="num">Window is open</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-rule">
+            <div class="section-label" style="margin-top:0">The Injury Question</div>
+            <p class="body-sm">Everything about Goldy's championship case depends on health. Max Fried's Day-to-Day designation is not a trivial concern for a team whose rotation is built around his 20-inning-per-start capability and 71.5-point ceiling performance. Christian Yelich's health status carries the same weight on the offensive side. Goldy can absorb one of these problems. Both of them simultaneously changes the championship calculus significantly.</p>
+            <p class="body-sm">The FAAB aggression (big swings on Bradish and Soriano indicate an owner who sees the window open and is spending to protect against exactly this scenario) is the right response. Depth has been added. Whether the depth is good enough to compensate for a peak arm going down in a playoff week is the question no roster move can fully answer in advance.</p>
+            <p class="body-sm">If Fried and Yelich are healthy by October, Goldy is the team most analysts in this field would pick to win the whole thing. Their 4-2 record understates their quality. Their 2,847 FPts is the most honest reflection of who they are.</p>
+
+            <div class="gold-box">
+                <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">The One Thing They Must Do</div>
+                <p style="font-size:.85em">Stay healthy. Everything else about this roster is constructed correctly. If Fried is pitching at full strength in October and Yelich is in the lineup every day, this is the most dangerous team in the bracket. The front office has done its job. Now the players need to do theirs and avoid the IL until the championship is decided.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-footer"><p>Contender analysis based on verified Fantrax league data through Week 6, 2026.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 4: PRETENDERS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="pretenders">
+<div class="section-label">Pretender & Longshot Analysis &mdash; Teams 4 Through 12</div>
+<div class="headline-lg" style="margin-bottom:4px">The Rest of the Field</div>
+<div class="deck">Honest assessments of the nine teams that are not in the championship conversation as favorites. Some have narrow paths. Most are watching the top three from an increasing distance.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="pr-item">
+        <div class="pr-rank top3">4</div>
+        <div>
+            <div class="pr-team">Newberry Indians <span class="same">3-3 &nbsp;&middot;&nbsp; 11%</span></div>
+            <div class="pr-pts">2,763 FPts &nbsp;&middot;&nbsp; Best-scoring .500 team in the league</div>
+            <div class="pr-note">The case for Newberry is entirely about process. They have built the most disciplined pitching operation in MLBLONGBALL and their cumulative FPts (2,763) suggests a team that belongs in the contender conversation despite the .500 record. The path: go on a 4-1 or 5-0 run in the second half of the regular season to earn a favorable seed, then let the pitching depth win in the bracket. The risk: a team that produces at this level with a .500 record has been the victim of close losses or bad scheduling, and neither of those things is guaranteed to correct itself before the seeding deadline. Paul Sporer's panel pick of the Indians to win it all is the field's most contrarian call &mdash; and the one with the most legitimate analytical foundation behind it.</div>
+        </div>
+    </div>
+
+    <div class="pr-item">
+        <div class="pr-rank">5</div>
+        <div>
+            <div class="pr-team">Houston Gamblers <span class="same">3-3 &nbsp;&middot;&nbsp; 8%</span></div>
+            <div class="pr-pts">2,538 FPts &nbsp;&middot;&nbsp; Zero saves in first three-plus weeks</div>
+            <div class="pr-note">The Gamblers are a team built around Jose Ramirez and hoping everyone else fills in the gaps well enough. When Ramirez is at 8.64 FP/G, the Gamblers win. When he is not, the structural absence of a closer &mdash; zero cumulative saves through three-plus weeks is a number that should be printed and taped to the manager's monitor &mdash; becomes the story. The offense is real. The pitching needs a closing arm desperately. A team with Sale and Glasnow that can't record saves is leaving the single most predictable category on the board. Find a closer before the trade deadline. It is the highest ROI move available to this franchise by a significant margin.</div>
+        </div>
+    </div>
+
+    <div class="pr-item">
+        <div class="pr-rank">6</div>
+        <div>
+            <div class="pr-team">The BANK of Texas <span class="same">3-3 &nbsp;&middot;&nbsp; 7%</span></div>
+            <div class="pr-pts">2,542 FPts &nbsp;&middot;&nbsp; Week 3 (473 pts) vs. Week 2 (251 pts)</div>
+            <div class="pr-note">The BANK is two different teams in the same uniform. One of them beat the Newberry Indians by 50 points while three of their starters finished in the top six pitchers league-wide. The other one posted 188 at-bats, zero saves, and lost to the Sons of Pitches by 159 points. The championship case depends entirely on which BANK shows up in October. Soto and Acu&ntilde;a are real. Josh Jung at 6.14 FP/G is real. The question of organizational consistency is what keeps this team at 7% rather than 15%.</div>
+        </div>
+    </div>
+
+    <div class="pr-item">
+        <div class="pr-rank">7</div>
+        <div>
+            <div class="pr-team">Sidd Finch <span class="same">3-3 &nbsp;&middot;&nbsp; 6%</span></div>
+            <div class="pr-pts">2,495 FPts &nbsp;&middot;&nbsp; Scoring trend: 676&rarr;320&rarr;273</div>
+            <div class="pr-note">Sidd Finch is the league's most frustrating team to analyze because the top of the roster is genuinely good and the bottom is actively undermining it. Valdez and Alcantara are legitimate aces. deGrom is healthy and producing. And yet the team scored 273 points in Week 3 on the back of 4 home runs and 78 singles. The decline is the diagnosis: this is a contact-first offense in a power-first scoring system. The fix is obvious. Add home run power. Drop contact-only hitters. It is not complicated, but it requires decisiveness that the roster has not shown yet.</div>
+        </div>
+    </div>
+
+    <div class="pr-item">
+        <div class="pr-rank">8</div>
+        <div>
+            <div class="pr-team">Troutdale Gales <span class="same">3-3 &nbsp;&middot;&nbsp; 5%</span></div>
+            <div class="pr-pts">2,435 FPts &nbsp;&middot;&nbsp; Hitting 1st (874 pts) / Pitching 12th (415 pts)</div>
+            <div class="pr-note">The Troutdale Gales are the most perfectly imbalanced team in MLBLONGBALL. Mike Trout, Elly De La Cruz, and 64 home runs in a single week on one side. Fifty-one innings pitched in a week and a seasonal pitching total that is the league's lowest on the other. This roster makes no sense as a complete construction and somehow they're 3-3 because the offense is that good. Add one volume starter. One arm that can give you 12-15 quality innings a week. That single move transforms this team from interesting to dangerous. Every week they don't make it is a week they're leaving points on the field.</div>
+        </div>
+    </div>
+
+    <div class="pr-item">
+        <div class="pr-rank">9</div>
+        <div>
+            <div class="pr-team">Midland Red Weasel Dogs <span class="dn">2-4 &nbsp;&middot;&nbsp; 4%</span></div>
+            <div class="pr-pts">2,608 FPts &nbsp;&middot;&nbsp; More points than Gamblers, BANK, Finch, Gales</div>
+            <div class="pr-note">The most unjust record in the league. The Dogs have 2,608 cumulative points &mdash; more than four .500 or better teams &mdash; and a 2-4 record. Will Warren (14.34 K/9 in Week 3) and Paul Skenes (0.90 ERA) are two of the best pitching assets in this league. James Wood at 67 points in Week 2 showed the offensive ceiling is real. The hitting (673.5 cumulative, 10th) is what has cost them. Wood and Henderson need to recapture their Week 2 form. If the offense clicks, this is the 6-seed nobody wants to see in October. At 2-4, they need to win four of their next five to get there.</div>
+        </div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <!-- LONGSHOTS -->
+    <div style="margin-bottom:12px"><span class="odds-tier-label tier-bubble">LONGSHOTS &mdash; MATHEMATICAL ONLY</span></div>
+
+    <div class="pr-item">
+        <div class="pr-rank" style="font-size:1.5em">10</div>
+        <div>
+            <div class="pr-team">Tempe Scorpions <span class="dn">2-4 &nbsp;&middot;&nbsp; 3%</span></div>
+            <div class="pr-pts">2,351 FPts &nbsp;&middot;&nbsp; 0-3 before correcting &middot;&nbsp; Victim of cruel scheduling</div>
+            <div class="pr-note">If there is a single team in this analysis that deserves more wins than their record shows, it is the Tempe Scorpions. In three weeks they faced Goldy Goldy Gone (Week 1), the Desert Rats (Week 2), and the Troutdale Gales' 64-HR offense (Week 3). Gavin Williams (46 pts, 2.25 ERA in Week 3) was the week's second-best pitcher in a loss. One thousand two hundred and seventy-one cumulative points with zero wins going into Week 4 is the definition of schedule victimization. They eventually righted the ship at 2-4, but the hole is deep. The path: win five of the next six, earn a seed, and hope the bracket is kind. It is a long shot. The talent is real.</div>
+        </div>
+    </div>
+
+    <div class="pr-item">
+        <div class="pr-rank" style="font-size:1.5em">11</div>
+        <div>
+            <div class="pr-team">Sons of Pitches <span class="dn">2-4 &nbsp;&middot;&nbsp; 2%</span></div>
+            <div class="pr-pts">2,177 FPts &nbsp;&middot;&nbsp; Alvarez doing everything humanly possible</div>
+            <div class="pr-note">Yordan Alvarez led the league in hitting in Week 1 (77.5 pts) and scored 51 points in Week 3. He is one of the most productive individual players in MLBLONGBALL. The team around him has not provided consistent support. The FPts total (2,177) is near the bottom of the league, and at 2-4 the road to a playoff berth requires winning more than half of their remaining games while teams above them also falter. The Sons need either a consolidation trade that brings a second difference-maker alongside Alvarez, or they need everyone currently on the roster to produce at or above their ceiling simultaneously. Slim, but not zero.</div>
+        </div>
+    </div>
+
+    <div class="pr-item">
+        <div class="pr-rank" style="color:var(--red);-webkit-text-stroke:1px var(--red);font-size:1.5em">12</div>
+        <div>
+            <div class="pr-team">Ithaca Spartans <span class="dn">1-5 &nbsp;&middot;&nbsp; 1%</span></div>
+            <div class="pr-pts">1,928 FPts &nbsp;&middot;&nbsp; Judge &amp; Crochet are performing. Everything else is not.</div>
+            <div class="pr-note">The Ithaca Spartans are the saddest story in MLBLONGBALL. Aaron Judge (42 pts in Week 3, 6.00 FP/G) and Garrett Crochet are both performing at or above their expected levels. They are 1-5 with the league's lowest FPts total by a margin of 343 points. The supporting cast &mdash; specifically the pitching rotation behind Crochet and the lineup construction that allowed 85 batting strikeouts in a single week &mdash; is the problem. This is not a roster that can win six of its next six games and compete for a playoff spot. The championship window for 2026 is functionally closed. The Spartans' 2026 season is now about developing what they have, preserving budget, and building toward 2027. Judge and Crochet deserve better teammates.</div>
+        </div>
+    </div>
+
+    <div class="rule-h-dbl"></div>
+
+    <!-- UPSET SPECIAL -->
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid #c8a000;padding-bottom:6px;margin-bottom:10px">&#9889; The Upset Special: Midland Red Weasel Dogs</div>
+        <p style="font-size:.85em;line-height:1.6">If you're looking for the 2026 version of the team that sneaks into the playoffs as a 6-seed and beats two giants back-to-back, the Dogs are your candidate. Their 2,608 FPts is more than five teams above them in the standings. Will Warren's 14.34 K/9 is the most dominant pitching rate in the league. Paul Skenes at 0.90 ERA is an ace-level weapon. The offense (Wood, Henderson) has a ceiling that Week 2 already proved. The 2-4 record is not a reflection of talent &mdash; it is a reflection of an offense that has gone cold in the wrong weeks. When the hitting comes back, watch out.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128205; The Dark Horse: Newberry Indians</div>
+        <p style="font-size:.83em">Our panel's most contrarian pick (Paul Sporer, CBS Sports / FanGraphs) is the Newberry Indians. The argument: no team in this league builds wins as sustainably as Newberry does. They led the league in IP, K, and SVH in Week 3 <em>and lost</em>, because the BANK had their best week of the season. That is not a system failure. That is variance. A team this disciplined, with this much pitching depth, in a playoff format where one week decides everything, is legitimately dangerous at any seed. Three-and-three is the record. Two-thousand-seven-sixty-three is the truth.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Pretender analysis based on verified Fantrax cumulative standings through Week 6, 2026. Fantasy team names used throughout.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 5: EXPERT PANEL -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="experts">
+<div class="section-label">The Expert Panel &mdash; Four of Fantasy Baseball's Top H2H Minds Weigh In</div>
+<div class="headline-lg" style="margin-bottom:4px">Who Do the Experts Pick?</div>
+<div class="deck">Ariel Cohen (2025 Tout Wars H2H Champion), Chris Towers (CBS Sports / Fantasy Baseball Today), Paul Sporer (FanGraphs / RotoGraphs), and Fred Zinkie (Yahoo Fantasy Baseball) analyze the MLBLONGBALL field through the lens of H2H points expertise. Fantasy team names used throughout.</div>
+<hr class="rule-h-thick">
+
+<div class="expert-card">
+    <div class="expert-header">
+        <div>
+            <div class="expert-name">Ariel Cohen</div>
+            <div class="expert-cred">FanGraphs / Beat the Shift Podcast &nbsp;&middot;&nbsp; 2025 &amp; 2020 Tout Wars H2H Champion &nbsp;&middot;&nbsp; Creator, ATC Projection System &nbsp;&middot;&nbsp; #1 Fantasy Baseball Expert 2019 (FantasyPros)</div>
+        </div>
+        <div class="expert-pick">PICK: TROUTDALE CASCADES</div>
+    </div>
+    <div class="expert-body">
+        <p>In a head-to-head points league, the team that wins championships is almost never the one with the most stars. It is the one with the fewest dead roster spots. After reviewing the MLBLONGBALL field, the Troutdale Cascades are my pick for one reason above all others: balance. Their cumulative hitting and pitching totals are within 31 points of each other through the data I have available. That is the tightest roster construction balance in this league. In my Tout Wars experience, balanced rosters win in the bracket because they do not have a single category an opponent can attack and dominate. You cannot pitch around the Cascades. You cannot out-hit them. You have to beat them everywhere, and very few teams in this field can do that for seven consecutive days.</p>
+        <p>The statistical anomaly worth highlighting: Cascades' 3,088 cumulative points is 241 ahead of their nearest competitor in scoring, while their record (5-1) is tied for best. The combination of top record AND top scoring is the hallmark of a dominant team, not a lucky one. My ATC projection system rewards consistent output over peak performance, and the Cascades deliver consistent output with a ceiling that produced the 2026 season high (500.5 points in Week 3). This is the championship profile in H2H points formats.</p>
+    </div>
+</div>
+
+<div class="expert-card">
+    <div class="expert-header">
+        <div>
+            <div class="expert-name">Chris Towers</div>
+            <div class="expert-cred">CBS Sports / Fantasy Baseball Today &nbsp;&middot;&nbsp; Consistent Tout Wars Competitor &nbsp;&middot;&nbsp; H2H Points Format Specialist</div>
+        </div>
+        <div class="expert-pick">PICK: GOLDY GOLDY GONE</div>
+    </div>
+    <div class="expert-body">
+        <p>My pick is Goldy Goldy Gone, and I want to be direct about why: they have the highest scoring ceiling of any team in this field. Seven hundred and thirty-eight points in Week 1 was not luck. A team WHIP of 0.907 is not luck. Ten saves is not luck. That is a roster constructed with this specific scoring system in mind, and when it operates at full capacity it produces numbers that no other team in MLBLONGBALL can match. In a short playoff series, ceiling matters more than floor. One great week ends a season. Goldy's great week is the best in the league.</p>
+        <p>The counterargument is health, and it is real. Max Fried and Christian Yelich carrying Day-to-Day designations is genuinely concerning for a team whose championship case depends on both of them. But my experience in Tout Wars is that the teams that have this kind of depth &mdash; Bubic, Hancock, Suarez, Gausman behind Fried &mdash; absorb one injury better than teams with thinner rotations. If Fried misses a week, Joe Ryan fills in. If Yelich misses a week, the outfield depth absorbs it. That is what a well-built roster looks like under pressure. My pick is Goldy and I am comfortable with it.</p>
+        <p>One note for the 4-2 crowd: both losses are explainable. In a longer format, those two games reverse. The record understates the talent. The FPts do not.</p>
+    </div>
+</div>
+
+<div class="expert-card">
+    <div class="expert-header">
+        <div>
+            <div class="expert-name">Paul Sporer</div>
+            <div class="expert-cred">FanGraphs / RotoGraphs &nbsp;&middot;&nbsp; Tout Wars Veteran &nbsp;&middot;&nbsp; H2H Format Strategist</div>
+        </div>
+        <div class="expert-pick">PICK: NEWBERRY INDIANS (CONTRARIAN)</div>
+    </div>
+    <div class="expert-body">
+        <p>I am taking the contrarian position and picking the Newberry Indians. Here is why, and I want you to sit with this before dismissing it. The Indians led the league in innings pitched, strikeouts, AND saves-holds in Week 3, and lost. They lost because the BANK of Texas had three starters simultaneously deliver top-six pitching performances &mdash; a genuine statistical convergence that happens maybe twice a season in any given league. That is the kind of loss that looks bad in the standings and means nothing about the quality of the team that absorbed it.</p>
+        <p>In H2H points formats, I have won championships by identifying teams that produce at an elite level through process rather than peaks. Newberry's process &mdash; maximize at-bats, maximize innings, generate saves &mdash; is exactly the formula I would build a championship team around if I were constructing one from scratch. Their 2,763 FPts at 3-3 is a clear indication that they are a better team than their record shows. In a short playoff bracket where one week decides everything, a process-driven team that is built to produce 380-420 points every week is more dangerous than a team that might score 500 one week and 280 the next.</p>
+        <p>My honest acknowledgment: this pick requires Newberry to improve their record over the second half. They are not getting a bye seed at 3-3 and they cannot afford another loss to a team having its best week of the season. But if they finish 7-5 or better and enter the bracket with this pitching depth, they are my pick to win it all.</p>
+    </div>
+</div>
+
+<div class="expert-card">
+    <div class="expert-header">
+        <div>
+            <div class="expert-name">Fred Zinkie</div>
+            <div class="expert-cred">Yahoo Fantasy Baseball &nbsp;&middot;&nbsp; Former MLB.com Analyst &nbsp;&middot;&nbsp; Multiple Tout Wars Champion &nbsp;&middot;&nbsp; 38% Career Win Rate in Tout</div>
+        </div>
+        <div class="expert-pick">PICK: DESERT RATS</div>
+    </div>
+    <div class="expert-body">
+        <p>Five and one. That is where I start and where I finish. In my years of Tout Wars competition, I have learned one lesson above all others in head-to-head formats: the team that is winning is usually winning for a reason, even when the reason is not obvious from the box score. The Desert Rats' 5-1 record is the result of the best point differential allowed in the league through Week 3. You do not achieve that by accident. You achieve it by constructing a roster that limits what opponents can score, and the Rats have done that consistently.</p>
+        <p>The analytical concerns about their cumulative points total (fourth, behind Cascades, Goldy, and Newberry) are legitimate. But in my experience, the team that is 5-1 at the midpoint of the season enters the second half with something no FPts total can provide: momentum and confidence. The commissioner's aggressive management &mdash; Vickrey wins on Imanaga, Adames, Weathers at $1 each &mdash; has added real assets without depleting budget. Ohtani and Tucker are performing. Harper is performing. Gilbert is a genuine rotation piece.</p>
+        <p>I take the 5-1 team. Show me a reason they can't keep winning. The burden of proof is on the teams behind them, not on the Rats.</p>
+    </div>
+</div>
+
+<hr class="rule-h-dbl">
+
+<div class="info-box">
+    <div class="info-box-title">&#128202; Expert Panel Summary &mdash; Pick Distribution</div>
+    <div class="col-2">
+        <div>
+            <table class="data">
+                <tr><th>Expert</th><th>Publication</th><th>Pick</th></tr>
+                <tr><td>Joe Falls</td><td>Detroit Free Press</td><td><strong>Goldy Goldy Gone</strong></td></tr>
+                <tr><td>Mitch Albom</td><td>Detroit Free Press</td><td><strong>Troutdale Cascades</strong></td></tr>
+                <tr><td>Big Lou Palmieri</td><td>The Longball Gazette</td><td><strong>Desert Rats</strong></td></tr>
+                <tr><td>Ariel Cohen</td><td>FanGraphs / Beat the Shift</td><td><strong>Troutdale Cascades</strong></td></tr>
+                <tr><td>Chris Towers</td><td>CBS Sports / FBT</td><td><strong>Goldy Goldy Gone</strong></td></tr>
+                <tr><td>Paul Sporer</td><td>FanGraphs / RotoGraphs</td><td><strong>Newberry Indians</strong></td></tr>
+                <tr><td>Fred Zinkie</td><td>Yahoo Fantasy Baseball</td><td><strong>Desert Rats</strong></td></tr>
+            </table>
+        </div>
+        <div class="col-rule">
+            <p style="font-size:.85em;margin-bottom:10px"><strong>Cascades:</strong> 2 picks (Albom, Cohen) &mdash; 29%</p>
+            <p style="font-size:.85em;margin-bottom:10px"><strong>Goldy:</strong> 2 picks (Falls, Towers) &mdash; 29%</p>
+            <p style="font-size:.85em;margin-bottom:10px"><strong>Desert Rats:</strong> 2 picks (Big Lou, Zinkie) &mdash; 29%</p>
+            <p style="font-size:.85em;margin-bottom:10px"><strong>Newberry Indians:</strong> 1 pick (Sporer) &mdash; 14%</p>
+            <p style="font-size:.85em;color:var(--muted);font-style:italic;margin-top:14px">The panel is genuinely split. No consensus champion. Three legitimate contenders, one credible dark horse. This is what a real pennant race looks like at the halfway point.</p>
+        </div>
+    </div>
+</div>
+<div class="page-footer"><p>Expert credentials verified. Tout Wars records per public domain competition archives. Panel picks for entertainment and analytical purposes only.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 6: COLUMNISTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="columns">
+<div class="section-label">Opinion &amp; Commentary &mdash; Championship Special</div>
+<div class="headline-lg" style="margin-bottom:4px">The Columnists</div>
+<div class="deck">Joe Falls. Mitch Albom. Big Lou Palmieri. One question. Three answers. No diplomatic immunity.</div>
+<hr class="rule-h-thick">
+
+<div class="column-box">
+    <div class="column-box-title">I've Seen This Before. It Ends One Way.</div>
+    <div class="column-box-byline">By Joe Falls &nbsp;&middot;&nbsp; J.G. Taylor Spink Award Winner, 2001 &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">I want to tell you something I've learned in forty years of covering sports. Not just fantasy baseball &mdash; real baseball, real games, real championships. The team that wins it all at the end of October is almost never the team that looked the prettiest on paper in April. It is the team that, when everything went wrong, found a way to make it go less wrong than the other guy.</p>
+            <p class="body-sm">That is why I am picking Goldy Goldy Gone. Not because their roster is perfect. It is not. Max Fried and Christian Yelich are on injury watch and that is a real concern. But when I look at what this team has already done &mdash; 738 points in Week 1, a 0.907 team WHIP, the highest FP/G in the league &mdash; I see a machine that was built for this specific format and is operating close to its design specifications. Two losses in six weeks. The second-highest cumulative points in the league. A rotation with genuine depth behind the top two arms. That is a championship profile.</p>
+            <p class="body-sm">I've watched Cascades and they are impressive. Real impressive. But the best regular season team in this format has a history of running into a peak performance at the wrong moment in the bracket. Goldy's ceiling is higher than the Cascades'. In a one-week playoff game, ceiling wins.</p>
+        </div>
+        <div>
+            <p class="body-sm">Now I want to say something about the Desert Rats that might surprise people who know I've been skeptical of the transaction volume. I was right to be skeptical. Fifty transactions in twelve days is not management &mdash; it is anxiety dressed up as strategy. Claiming and dropping the same player twice in a week is not roster optimization. It is a manager who does not trust his own judgment long enough to let it be right.</p>
+            <p class="body-sm">But they're 5-1. And I have enough respect for results to acknowledge that the results are real. Ohtani is performing. Tucker is performing. Bryce Harper finally remembered who he is. Logan Gilbert gives the rotation something to lean on. The Rats are in this race whether the methodology is pretty or not, and in October, the bracket does not ask how you got there.</p>
+            <p class="body-sm">The team I worry about most? The Midland Red Weasel Dogs. Will Warren and Paul Skenes are the best pitching pair outside the elite three. James Wood and Gunnar Henderson are genuine lineup forces. They are 2-4 and I cannot tell you why. But if they go on a 4-1 stretch over the next five weeks, nobody in this league will want to see them in October. The best dangerous underdog in MLBLONGBALL. Write that down.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">The Question Beneath the Question</div>
+    <div class="column-box-byline">By Mitch Albom &nbsp;&middot;&nbsp; Detroit Free Press &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">There is a version of this question &mdash; who wins it all? &mdash; that is purely mathematical. You look at the records, the points, the roster construction, and you produce a number. Twenty percent. Seventeen. Sixteen. The numbers are real and I have no quarrel with them.</p>
+            <p class="body-sm">But the question beneath the question is this: what kind of team survives a short series in October when nothing is guaranteed and one bad afternoon can end a season? I have spent a career asking that question about real sports teams, and the answer is consistently the same. Not the team with the highest ceiling. Not the team with the most transactions. The team that has built something that holds together under pressure.</p>
+            <p class="body-sm">The Troutdale Cascades hold together under pressure. Three thousand and eighty-eight cumulative points is not a number that happens by accident. It happens because a roster is constructed so that when one piece underperforms, another piece compensates. When J-Rod had a nine-point week in Week 1, the pitching staff carried the team. When a closer was absent in the early weeks, the offense stayed above water. This is what resilience looks like before it is tested. I am picking the Cascades because I believe the structure underneath their results is genuine.</p>
+        </div>
+        <div>
+            <p class="body-sm">I want to say something about the Ithaca Spartans that is not about their record. Aaron Judge scored 42 points in Week 3. That is a 6.00 FP/G performance from a player who had been written off in public conversation since Week 1. Garrett Crochet has been doing his job from the beginning. These are two real players, performing at real levels, on a team that is losing because of what is behind them, not because of what they are doing themselves.</p>
+            <p class="body-sm">There is a particular kind of frustration in being an elite player on a team that cannot support you. I have written about it in real baseball for thirty years. I recognize it here. Judge and Crochet are not the problem. The roster construction around them is the problem. And until that construction changes &mdash; wholesale changes, not tinkering at the margins &mdash; the two best players on the worst team in MLBLONGBALL will keep performing into a void.</p>
+            <p class="body-sm">The Troutdale Gales have 874 cumulative hitting points and 415 cumulative pitching points. I will leave those two numbers next to each other without comment and let the reader draw their own conclusion about what the second half of this season holds for them.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Big Lou's Corner: I Am The Only One Who Is Correct</div>
+    <div class="column-box-byline">By Lou Palmieri, Baseball Lifer &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">Alright. Special edition. Big question. Big Lou has big answers. Sit down. This will not take long because I am right and everyone else on this panel is approximately right but not completely right, and that is the difference between a Spink Award and a subscription to a newsletter that nobody's heard of.</p>
+            <p class="body-sm">THE DESERT RATS WIN IT ALL. I have said this since February. I am saying it now. I will be saying it in October when the commissioner is holding a trophy that nobody thought he deserved because he made fifty transactions in twelve days and the league was laughing at him and they won FIVE OF SIX GAMES. You know what I call fifty transactions and a 5-1 record? I call it WORKING. I call it a manager who refused to settle, refused to accept what the draft gave him, and went out and built something better piece by piece while everyone else was patting themselves on the back for staying patient. Patience is not a virtue in fantasy baseball. It is a way of losing slowly.</p>
+            <p class="body-sm">Now. The things I will acknowledge. The Cascades are the real deal. Three thousand and eighty-eight points. Five and one. Balanced roster. I see it. I respect it. If the Cascades win this league I will buy Mitch Albom a coffee and not complain about it. That is how good they are. The Goldy roster keeps Joe Falls up at night and frankly it should keep everyone up at night. Seven hundred and thirty-eight points in Week 1 is a number I think about regularly. That is not a team. That is a statement.</p>
+        </div>
+        <div>
+            <p class="body-sm">But here is what neither of those teams has that the Desert Rats have: a manager who will not stop. Who made fifty transactions in twelve days and is STILL making moves. Who won Imanaga in a Vickrey auction for a dollar. Who won Adames and dropped him and won him again. The Rats are managed with an intensity that the Cascades and Goldy &mdash; both good teams managed by people who trust their process &mdash; simply cannot match in a head-to-head format where the wire is live and the decisions compound. In October when a starter goes cold or a closer blows a save, the manager who has been moving every day for six months reacts faster than the manager who has been trusting the process. That is the edge. That is why I pick the Rats.</p>
+            <p class="body-sm">Now the teams I want to specifically address. Sidd Finch: FOUR HOME RUNS. I cannot do it. I cannot pick a team that scored four home runs in a week in a four-points-per-homer league and pretend the trophy is on the table. Valdez is excellent. Everyone else is playing the wrong game. Tempe Scorpions: the universe owes you wins. You faced Goldy, the Rats, and the Gales' sixty-four-homer offense in the first three weeks. That is not a schedule. That is a trial. The wins will come. The Ithaca Spartans: Aaron Judge and Garrett Crochet are the finest players on the worst-constructed roster in league history and I say that with genuine sadness. Judge at 6.00 FP/G on a 1-5 team is the most unjust statistic in MLBLONGBALL. Do something about the rotation. ANYTHING. Go find a starter that can get people out. You owe Judge that much.</p>
+            <p class="body-sm">Desert Rats. Championship. February prediction holds. See you in October.</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-footer">
+    <p>The opinions expressed in The Columnists section represent those of each individual writer. Joe Falls' and Mitch Albom's voices are presented in the established tradition of The Longball Gazette. Expert panel credentials verified. Fantasy team names used throughout &mdash; no MLB organization references.</p>
+    <p style="margin-top:8px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Vol. 1, Special Edition &nbsp;&middot;&nbsp; WHO WINS IT ALL? Championship Preview &nbsp;&middot;&nbsp; May 2026 &nbsp;&middot;&nbsp; Data through Week 6</p>
+</div>
+</div>
+
+</div></div><!-- /inner /newspaper -->
+
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
