@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Longball Gazette — Week 10 Special Edition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #3d3d38;
+    --ink-light: #6b6b63;
+    --ink-faint: #a8a89e;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d9;
+    --paper-mid: #f0ead8;
+    --rule: #c8c0ae;
+    --rule-heavy: #8a8070;
+    --red: #b5291c;
+    --gold: #c8860a;
+    --green: #2a6b3c;
+    --blue: #1a4a7a;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    line-height: 1.65;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* MASTHEAD */
+  .masthead { text-align: center; border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); padding: 1rem 0 0.75rem; }
+  .flag { font-family: 'UnifrakturMaguntia', cursive; font-size: 3.4rem; color: var(--ink); line-height: 1; letter-spacing: -1px; }
+  .flag-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mid); margin-top: 0.3rem; }
+  .flag-rule { border: none; border-top: 1px solid var(--rule-heavy); margin: 0.5rem 2rem 0; }
+  .edition-strip { background: var(--ink); color: var(--paper); text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.35rem 1rem; margin-bottom: 1.75rem; }
+
+  /* HEADLINE */
+  .hed-block { border-bottom: 2px solid var(--ink); padding-bottom: 1.2rem; margin-bottom: 1.5rem; text-align: center; }
+  .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 0.4rem; }
+  .hed { font-family: 'Playfair Display', Georgia, serif; font-size: 2.8rem; font-weight: 900; line-height: 1.08; letter-spacing: -0.5px; color: var(--ink); margin-bottom: 0.5rem; }
+  .dek { font-size: 1.05rem; font-style: italic; color: var(--ink-mid); max-width: 580px; margin: 0 auto; line-height: 1.5; }
+
+  /* SECTION HEADER */
+  .sec { display: flex; align-items: center; gap: 0.75rem; margin: 2.2rem 0 1rem; }
+  .sec-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; background: var(--ink); color: var(--paper); padding: 0.18rem 0.5rem; white-space: nowrap; }
+  .sec-rule { flex: 1; border: none; border-top: 1px solid var(--rule-heavy); }
+
+  /* PROSE */
+  .lede { font-size: 1.07rem; font-weight: 600; line-height: 1.6; border-left: 3px solid var(--red); padding-left: 1rem; margin-bottom: 1rem; }
+  p { margin-bottom: 0.9rem; }
+  p:last-child { margin-bottom: 0; }
+
+  /* PULL QUOTE */
+  .pull { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); margin: 2rem 0; padding: 1.1rem 2rem; text-align: center; }
+  .pull-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.42rem; font-weight: 700; font-style: italic; line-height: 1.3; color: var(--ink); }
+  .pull-attr { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-top: 0.45rem; }
+
+  /* MASTER TABLE */
+  .tbl-wrap { margin: 1.5rem 0; overflow-x: auto; }
+  table.mt { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  .mt thead tr { background: var(--ink); color: var(--paper); }
+  .mt thead th { font-family: 'IBM Plex Mono', monospace; font-size: 0.57rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 0.45rem 0.6rem; text-align: left; font-weight: 500; white-space: nowrap; }
+  .mt tbody tr { border-bottom: 1px solid var(--rule); }
+  .mt tbody tr:hover { background: var(--paper-dark); }
+  .mt tbody td { padding: 0.5rem 0.6rem; vertical-align: middle; }
+  .rk { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ink-faint); width: 24px; }
+  .tn { font-weight: 600; color: var(--ink); }
+  .tr { font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; color: var(--ink-light); }
+  .nm { font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; text-align: right; }
+  .bar-cell { width: 100px; }
+  .bar-bg { background: var(--paper-dark); border: 1px solid var(--rule); height: 8px; border-radius: 1px; overflow: hidden; }
+  .bar-fill { height: 100%; }
+  .badge { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; text-transform: uppercase; padding: 0.12rem 0.4rem; border-radius: 2px; white-space: nowrap; display: inline-block; }
+  .b-crit    { background: #f7d0cc; color: #7a1a15; }
+  .b-high    { background: #fce4cc; color: #7a4208; }
+  .b-med     { background: #fdf5d0; color: #6b5510; }
+  .b-low     { background: #d5eddb; color: #1e5530; }
+  .b-fine    { background: #d0e4f4; color: #0d3860; }
+  .inj-pill { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; background: var(--paper-dark); border: 1px solid var(--rule); padding: 0.08rem 0.35rem; border-radius: 2px; white-space: nowrap; color: var(--ink-mid); display: inline-block; margin: 1px; }
+  .inj-pill.star { background: #fce4cc; border-color: #e8a070; color: #7a3a10; }
+  .th-right { text-align: right !important; }
+
+  /* TEAM CARDS - 2 col grid */
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  @media (max-width: 580px) { .cards { grid-template-columns: 1fr; } }
+  .card { border: 1px solid var(--rule); background: var(--paper-mid); padding: 0.85rem 1rem; }
+  .card.danger-card { border-color: var(--red); border-width: 2px; }
+  .card.watch-card { border-color: var(--gold); border-width: 2px; }
+  .card.safe-card { border-color: var(--green); border-left-width: 4px; border-radius: 0; }
+  .card-hd { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 0.4rem; }
+  .card-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; line-height: 1.2; }
+  .card-rec { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--ink-light); margin-top: 1px; }
+  .card-meta { text-align: right; flex-shrink: 0; }
+  .card-comp { font-family: 'IBM Plex Mono', monospace; font-size: 1.05rem; font-weight: 500; }
+  .card-comp-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .card-body { font-size: 0.83rem; line-height: 1.5; color: var(--ink-mid); margin-bottom: 0.55rem; }
+  .card-injuries { margin-top: 0.5rem; }
+  .inj-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.2rem; }
+  .sched-mini { margin-top: 0.5rem; border-top: 1px solid var(--rule); padding-top: 0.4rem; }
+  .sched-row { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 0.63rem; color: var(--ink-light); padding: 0.12rem 0; border-top: 1px dotted var(--rule); }
+  .sched-row:first-child { border-top: none; }
+  .sched-opp { color: var(--ink-mid); }
+  .sched-rec { }
+  .dot-h { color: var(--red); }
+  .dot-m { color: var(--gold); }
+  .dot-s { color: var(--green); }
+
+  /* VERDICT BOXES */
+  .verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  @media (max-width: 520px) { .verdict-grid { grid-template-columns: 1fr; } }
+  .vbox { padding: 0.8rem 1rem; border-left: 4px solid var(--rule-heavy); background: var(--paper-mid); }
+  .vbox.v-green  { border-color: var(--green); }
+  .vbox.v-red    { border-color: var(--red); }
+  .vbox.v-gold   { border-color: var(--gold); }
+  .vbox.v-gray   { border-color: var(--ink-light); }
+  .vbox-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .vbox.v-green .vbox-title { color: var(--green); }
+  .vbox.v-red   .vbox-title { color: var(--red); }
+  .vbox.v-gold  .vbox-title { color: var(--gold); }
+  .vbox.v-gray  .vbox-title { color: var(--ink-light); }
+  .vbox-teams { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 700; line-height: 1.3; color: var(--ink); }
+  .vbox-note { font-size: 0.8rem; color: var(--ink-mid); margin-top: 0.3rem; line-height: 1.45; }
+
+  /* SCHEDULE GRID */
+  .period-block { margin-bottom: 1.1rem; }
+  .period-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.63rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--paper); background: var(--ink-mid); display: inline-block; padding: 0.14rem 0.5rem; }
+  .period-dates { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; color: var(--ink-faint); margin-left: 0.4rem; }
+  .matchup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.35rem; margin-top: 0.35rem; }
+  @media (max-width: 520px) { .matchup-grid { grid-template-columns: 1fr 1fr; } }
+  .mu { border: 1px solid var(--rule); padding: 0.28rem 0.5rem; font-size: 0.7rem; background: #faf6ee; }
+  .mu-a { color: var(--ink-mid); }
+  .mu-v { color: var(--ink-faint); font-size: 0.6rem; margin: 0 0.18rem; }
+  .mu-h { color: var(--ink); font-weight: 600; }
+
+  /* FINAL WORD */
+  .final { background: var(--ink); color: var(--paper); margin: 2.5rem 0 1rem; padding: 1.5rem 2rem; text-align: center; }
+  .final-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #a8a89e; margin-bottom: 0.55rem; }
+  .final-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; line-height: 1.5; }
+
+  /* FOOTER */
+  .footer { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 2.5rem; border-top: 1px solid var(--rule); padding-top: 0.7rem; }
+
+  /* DIVIDER */
+  .rule-dbl { border: none; border-top: 3px double var(--rule-heavy); margin: 2rem 0; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="flag">The Longball Gazette</div>
+  <div class="flag-sub">All The News That's Fit To Draft &nbsp;·&nbsp; Season 19 &nbsp;·&nbsp; Week 10 Special Edition</div>
+  <hr class="flag-rule">
+</div>
+<div class="edition-strip">Special Report &nbsp;·&nbsp; Injuries + Schedule &nbsp;·&nbsp; The Road to the Playoffs &nbsp;·&nbsp; June 10, 2026</div>
+
+<!-- HEADLINE -->
+<div class="hed-block">
+  <div class="kicker">Composite Analysis — Injury Load × Remaining Schedule</div>
+  <h1 class="hed">The Two-Headed Monster:<br>Injuries and the Road Ahead</h1>
+  <p class="dek">Nine periods left. Twelve rosters bleeding. The question isn't just who's hurt — it's whether the teams that are hurt can survive the schedule they still have to play.</p>
+</div>
+
+<p class="lede">Newberry Indians are carrying the heaviest injury load in the league and still lead their division. BANK of Texas has the most dangerous combination of injuries and schedule difficulty among playoff contenders. Troutdale Cascades have the easiest path and the least to worry about. The rest of the league falls somewhere in between — and the gap between where they are and where they need to be is closing fast.</p>
+
+<p>We built a composite pressure score for every team by combining three factors: current record (where you stand relative to the playoff cutline), remaining schedule difficulty (opponent win percentages across SP 11–19), and injury impact (weighted by each player's fantasy value in LONGBALL scoring). The result is a single number that tells you who's in real trouble and who has room to breathe.</p>
+
+<!-- MASTER TABLE -->
+<div class="sec"><span class="sec-label">Composite Pressure Rankings</span><hr class="sec-rule"></div>
+
+<p style="font-size:0.83rem;color:var(--ink-light);margin-bottom:0.75rem;">Composite score weights: Record pressure 40% · Schedule difficulty 30% · Injury impact 30%. Higher score = more trouble. Playoff line is top 6.</p>
+
+<div class="tbl-wrap">
+<table class="mt" aria-label="Composite playoff pressure rankings combining record, schedule difficulty, and injury load">
+  <thead>
+    <tr>
+      <th>Rk</th>
+      <th>Team</th>
+      <th>Record</th>
+      <th class="th-right">SOS</th>
+      <th class="th-right">Inj</th>
+      <th class="th-right">Composite</th>
+      <th class="bar-cell">Pressure</th>
+      <th>Verdict</th>
+      <th>Injuries</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="rk">1</td>
+      <td class="tn">BANK of Texas</td>
+      <td class="tr">5–5</td>
+      <td class="nm">.522</td>
+      <td class="nm" style="color:var(--red)">12/15</td>
+      <td class="nm" style="color:var(--red);font-weight:600">7.80</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:100%;background:#b5291c"></div></div></td>
+      <td><span class="badge b-crit">Critical</span></td>
+      <td><span class="inj-pill star">Acuña Jr.</span> <span class="inj-pill star">Adames</span> <span class="inj-pill">H. Brown</span> <span class="inj-pill">Sabrowski</span></td>
+    </tr>
+    <tr>
+      <td class="rk">2</td>
+      <td class="tn">Troutdale Gales</td>
+      <td class="tr">4–6</td>
+      <td class="nm">.489</td>
+      <td class="nm" style="color:var(--red)">13/15</td>
+      <td class="nm" style="color:var(--red);font-weight:600">7.70</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:98%;background:#c03020"></div></div></td>
+      <td><span class="badge b-crit">Critical</span></td>
+      <td><span class="inj-pill star">De La Cruz</span> <span class="inj-pill star">H. Greene</span> <span class="inj-pill">Woodruff</span> <span class="inj-pill">Montgomery</span></td>
+    </tr>
+    <tr>
+      <td class="rk">3</td>
+      <td class="tn">Newberry Indians</td>
+      <td class="tr">6–4</td>
+      <td class="nm">.478</td>
+      <td class="nm" style="color:var(--red)">15/15</td>
+      <td class="nm" style="color:var(--red)">7.24</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:88%;background:#c04020"></div></div></td>
+      <td><span class="badge b-high">High Risk</span></td>
+      <td><span class="inj-pill star">Judge</span> <span class="inj-pill star">Rutschman</span> <span class="inj-pill star">Crochet</span> <span class="inj-pill">Bogaerts</span> <span class="inj-pill">Mize</span></td>
+    </tr>
+    <tr>
+      <td class="rk">4</td>
+      <td class="tn">Sidd Finch</td>
+      <td class="tr">5–5</td>
+      <td class="nm">.522</td>
+      <td class="nm" style="color:var(--gold)">10/15</td>
+      <td class="nm" style="color:var(--gold)">7.20</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:85%;background:#c8860a"></div></div></td>
+      <td><span class="badge b-high">High Risk</span></td>
+      <td><span class="inj-pill star">E. Díaz</span> <span class="inj-pill star">Bieber</span> <span class="inj-pill">Baldwin</span> <span class="inj-pill">Megill</span></td>
+    </tr>
+    <tr>
+      <td class="rk">5</td>
+      <td class="tn">Tempe Scorpions</td>
+      <td class="tr">4–6</td>
+      <td class="nm">.533</td>
+      <td class="nm">6/15</td>
+      <td class="nm" style="color:var(--gold)">6.66</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:73%;background:#c8a010"></div></div></td>
+      <td><span class="badge b-high">High Risk</span></td>
+      <td><span class="inj-pill">Varsho</span> <span class="inj-pill">Dollander</span> <span class="inj-pill">Kinley</span></td>
+    </tr>
+    <tr>
+      <td class="rk">6</td>
+      <td class="tn">Midland Red Weasel Dogs</td>
+      <td class="tr">4–6</td>
+      <td class="nm">.511</td>
+      <td class="nm">7/15</td>
+      <td class="nm" style="color:var(--gold)">6.43</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:68%;background:#c8b020"></div></div></td>
+      <td><span class="badge b-med">Elevated</span></td>
+      <td><span class="inj-pill star">Helsley</span> <span class="inj-pill">Pivetta</span></td>
+    </tr>
+    <tr>
+      <td class="rk">7</td>
+      <td class="tn">Houston Gamblers</td>
+      <td class="tr">5–5</td>
+      <td class="nm">.511</td>
+      <td class="nm">7/15</td>
+      <td class="nm" style="color:var(--gold)">6.03</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:60%;background:#b8a830"></div></div></td>
+      <td><span class="badge b-med">Elevated</span></td>
+      <td><span class="inj-pill star">Glasnow</span> <span class="inj-pill">W. Smith</span></td>
+    </tr>
+    <tr>
+      <td class="rk">8</td>
+      <td class="tn">Goldy Goldy Gone</td>
+      <td class="tr">6–4</td>
+      <td class="nm">.444</td>
+      <td class="nm" style="color:var(--red)">13/15</td>
+      <td class="nm">5.84</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:55%;background:#909850"></div></div></td>
+      <td><span class="badge b-med">Elevated</span></td>
+      <td><span class="inj-pill star">Skubal</span> <span class="inj-pill star">M. Fried</span> <span class="inj-pill star">Cruz</span> <span class="inj-pill">Murakami</span></td>
+    </tr>
+    <tr>
+      <td class="rk">9</td>
+      <td class="tn">Sons of Pitches</td>
+      <td class="tr">3–7</td>
+      <td class="nm">.556</td>
+      <td class="nm">—</td>
+      <td class="nm">5.79</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:52%;background:#889060"></div></div></td>
+      <td><span class="badge b-med">Elevated</span></td>
+      <td><span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--ink-faint)">No reported injuries</span></td>
+    </tr>
+    <tr>
+      <td class="rk">10</td>
+      <td class="tn">Ithaca Spartans</td>
+      <td class="tr">3–7</td>
+      <td class="nm">.544</td>
+      <td class="nm">—</td>
+      <td class="nm">5.52</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:47%;background:#788870"></div></div></td>
+      <td><span class="badge b-med">Elevated</span></td>
+      <td><span style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--ink-faint)">No reported injuries</span></td>
+    </tr>
+    <tr>
+      <td class="rk">11</td>
+      <td class="tn">Desert Rats</td>
+      <td class="tr">7–3</td>
+      <td class="nm">.456</td>
+      <td class="nm">5/15</td>
+      <td class="nm" style="color:var(--green)">3.31</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:20%;background:#2a7040"></div></div></td>
+      <td><span class="badge b-low">Manageable</span></td>
+      <td><span class="inj-pill">Moniak</span> <span class="inj-pill">Henderson</span> <span class="inj-pill">R. Anthony</span></td>
+    </tr>
+    <tr>
+      <td class="rk">12</td>
+      <td class="tn">Troutdale Cascades</td>
+      <td class="tr">8–2</td>
+      <td class="nm">.433</td>
+      <td class="nm">4/15</td>
+      <td class="nm" style="color:var(--green)">2.08</td>
+      <td class="bar-cell"><div class="bar-bg"><div class="bar-fill" style="width:5%;background:#1a6050"></div></div></td>
+      <td><span class="badge b-fine">Controlled</span></td>
+      <td><span class="inj-pill">Raleigh</span> <span class="inj-pill">Griffin</span> <span class="inj-pill">J. Wilson</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;color:var(--ink-faint);margin-top:0.35rem;font-style:italic;">★ Orange pills = impact players whose absence meaningfully changes weekly scoring ceiling. Injury scores reflect LONGBALL-specific value (HR+4, SB+3, K+1.5, SVH+5, IP+2 scoring weights).</p>
+
+<!-- PULL QUOTE -->
+<div class="pull">
+  <div class="pull-text">"Newberry Indians have the worst injury report in LONGBALL — and they're still in first place. That's either depth or borrowed time."</div>
+  <div class="pull-attr">— The Longball Gazette, Week 10</div>
+</div>
+
+<!-- THE STORY BY GROUP -->
+<div class="sec"><span class="sec-label">The Stories That Matter</span><hr class="sec-rule"></div>
+
+<p>The composite scores split naturally into four conversations. The contenders who are bleeding but still standing. The bubble teams where a single return or absence decides everything. The chaserteams who need to run the table against tough schedules. And the two teams whose injuries, paradoxically, don't explain their record at all.</p>
+
+<hr class="rule-dbl">
+
+<!-- CONTENDERS SECTION -->
+<div class="sec"><span class="sec-label">The Contenders</span><hr class="sec-rule"></div>
+
+<div class="cards">
+
+  <!-- Cascades -->
+  <div class="card safe-card">
+    <div class="card-hd">
+      <div><div class="card-name">Troutdale Cascades</div><div class="card-rec">8–2 · 1st Blue · Composite: 2.08</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--green)">2.08</div><div class="card-comp-label">Lowest Pressure</div></div>
+    </div>
+    <div class="card-body">The league's best record. The easiest remaining schedule. The lightest injury burden among playoff teams. If there is a team that gets to play the rest of the season on cruise control, this is it. Cal Raleigh is a real loss at catcher, but Griffin and Wilson are depth pieces — not stars. Their pitching identity is intact. Their path to a first-round bye is as clear as anyone's in LONGBALL history this late in the season.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report</div>
+      <span class="inj-pill">Cal Raleigh</span> <span class="inj-pill">Konnor Griffin</span> <span class="inj-pill">Jacob Wilson</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11</span><span class="sched-opp">Troutdale Gales</span><span class="sched-rec dot-s">4–6</span></div>
+      <div class="sched-row"><span>SP12</span><span class="sched-opp">BANK of Texas</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP13</span><span class="sched-opp">Newberry Indians</span><span class="sched-rec dot-m">6–4</span></div>
+      <div class="sched-row"><span>SP14–19</span><span class="sched-opp">Ithaca, Tempe, Midland, Sidd, Sons, Houston</span><span class="sched-rec dot-s">All ≤5–5</span></div>
+    </div>
+  </div>
+
+  <!-- Desert Rats -->
+  <div class="card safe-card" style="border-color:var(--blue)">
+    <div class="card-hd">
+      <div><div class="card-name">Desert Rats</div><div class="card-rec">7–3 · 2nd Blue · Composite: 3.31</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--blue)">3.31</div><div class="card-comp-label">Low Pressure</div></div>
+    </div>
+    <div class="card-body">Second-best record. Second-softest schedule. Second-lightest injury pressure. The three injured players — Moniak, Henderson, Anthony — are real but not franchise-altering losses. None are the kind of star whose absence flips the scoring profile upside down. The bigger concern remains ceiling: this roster wins through pitching efficiency and consistency, not explosiveness. The calendar gives back what it owes — only one above-.500 opponent (Newberry, SP11) in the first five periods. Protect the arms. Take the weeks you're supposed to take.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report</div>
+      <span class="inj-pill">Mickey Moniak</span> <span class="inj-pill">Logan Henderson</span> <span class="inj-pill">Roman Anthony</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11</span><span class="sched-opp">Newberry Indians</span><span class="sched-rec dot-m">6–4 ⚑</span></div>
+      <div class="sched-row"><span>SP12</span><span class="sched-opp">Ithaca Spartans</span><span class="sched-rec dot-s">3–7</span></div>
+      <div class="sched-row"><span>SP13</span><span class="sched-opp">Tempe Scorpions</span><span class="sched-rec dot-s">4–6</span></div>
+      <div class="sched-row"><span>SP14</span><span class="sched-opp">Midland Red Weasels</span><span class="sched-rec dot-s">4–6</span></div>
+      <div class="sched-row"><span>SP15</span><span class="sched-opp">Sidd Finch</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP16–19</span><span class="sched-opp">Sons, Houston, Goldy, BANK</span><span class="sched-rec dot-m">Mix</span></div>
+    </div>
+  </div>
+
+  <!-- Goldy -->
+  <div class="card watch-card">
+    <div class="card-hd">
+      <div><div class="card-name">Goldy Goldy Gone</div><div class="card-rec">6–4 · 3rd Blue · Composite: 5.84</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--gold)">5.84</div><div class="card-comp-label">Elevated</div></div>
+    </div>
+    <div class="card-body">The highest injury impact score among teams still in good position — Cruz, Murakami, Fried, and Skubal is a four-star casualty list. Losing two elite starters in Fried and Skubal is brutal in LONGBALL's IP+2/K+1.5 scoring environment. But the schedule rescue is real: five of nine remaining opponents are below .500, and they don't face Cascades or Desert Rats until SP18. If even two of those four players return to action by SP13, Goldy is back to being a top-three roster. The window is there. It requires returns.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report — Heavy</div>
+      <span class="inj-pill star">Oneil Cruz</span> <span class="inj-pill star">Max Fried</span> <span class="inj-pill star">Tarik Skubal</span> <span class="inj-pill">Munetaka Murakami</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11–15</span><span class="sched-opp">Ithaca, Tempe, Midland, Sidd, Sons</span><span class="sched-rec dot-s">All ≤5–5</span></div>
+      <div class="sched-row"><span>SP16</span><span class="sched-opp">Houston Gamblers</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP17</span><span class="sched-opp">BANK of Texas</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP18</span><span class="sched-opp">Desert Rats</span><span class="sched-rec dot-h">7–3 ⚑</span></div>
+      <div class="sched-row"><span>SP19</span><span class="sched-opp">Troutdale Gales</span><span class="sched-rec dot-s">4–6</span></div>
+    </div>
+  </div>
+
+  <!-- Newberry -->
+  <div class="card danger-card">
+    <div class="card-hd">
+      <div><div class="card-name">Newberry Indians</div><div class="card-rec">6–4 · 1st Red · Composite: 7.24</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--red)">7.24</div><div class="card-comp-label">High Risk</div></div>
+    </div>
+    <div class="card-body">The sneaky story of the entire season. Five players on the injury report, including Aaron Judge, Adley Rutschman, and Garrett Crochet — arguably three of the highest-impact fantasy names in the game. Judge alone is a 4-HR/week ceiling swing. Crochet's K production and IP in LONGBALL scoring is irreplaceable. And yet Newberry keeps winning. That is an extraordinary depth statement. But depth has limits, and the schedule doesn't go easy on them early — Desert Rats in SP11, Cascades in SP13. The question is simple: how long can borrowed time last?</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report — Heaviest Load in League</div>
+      <span class="inj-pill star">Aaron Judge</span> <span class="inj-pill star">Adley Rutschman</span> <span class="inj-pill star">Garrett Crochet</span> <span class="inj-pill">Xander Bogaerts</span> <span class="inj-pill">Casey Mize</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11</span><span class="sched-opp">Desert Rats</span><span class="sched-rec dot-h">7–3 ⚑</span></div>
+      <div class="sched-row"><span>SP12</span><span class="sched-opp">Troutdale Gales</span><span class="sched-rec dot-s">4–6</span></div>
+      <div class="sched-row"><span>SP13</span><span class="sched-opp">Troutdale Cascades</span><span class="sched-rec dot-h">8–2 ⚑</span></div>
+      <div class="sched-row"><span>SP14</span><span class="sched-opp">BANK of Texas</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP15–19</span><span class="sched-opp">Ithaca, Tempe, Midland, Sidd, Sons</span><span class="sched-rec dot-s">All ≤5–5</span></div>
+    </div>
+  </div>
+
+</div>
+
+<hr class="rule-dbl">
+
+<!-- BUBBLE SECTION -->
+<div class="sec"><span class="sec-label">The Bubble — Where the Season Gets Decided</span><hr class="sec-rule"></div>
+
+<div class="cards">
+
+  <!-- Houston -->
+  <div class="card watch-card">
+    <div class="card-hd">
+      <div><div class="card-name">Houston Gamblers</div><div class="card-rec">5–5 · 1st White · Composite: 6.03</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--gold)">6.03</div><div class="card-comp-label">Elevated</div></div>
+    </div>
+    <div class="card-body">The quiet contender's two injuries are specifically problematic for LONGBALL scoring. Glasnow's absence removes one of the league's premier K and IP producers — in a scoring system that pays +1.5 per K and +2 per IP, you feel that every single period. Will Smith out means SVH points are gone, and SVH is worth +5. The schedule turns ugly late: Goldy in SP16, Desert Rats in SP17, Cascades in SP19. Houston needs to be completely healthy before that gauntlet arrives. Right now they're not.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report</div>
+      <span class="inj-pill star">Tyler Glasnow</span> <span class="inj-pill star">Will Smith (CL)</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11–14</span><span class="sched-opp">Tempe, Midland, Sidd, Sons</span><span class="sched-rec dot-s">Soft window</span></div>
+      <div class="sched-row"><span>SP16</span><span class="sched-opp">Goldy Goldy Gone</span><span class="sched-rec dot-m">6–4 ⚑</span></div>
+      <div class="sched-row"><span>SP17</span><span class="sched-opp">Desert Rats</span><span class="sched-rec dot-h">7–3 ⚑</span></div>
+      <div class="sched-row"><span>SP19</span><span class="sched-opp">Troutdale Cascades</span><span class="sched-rec dot-h">8–2 ⚑</span></div>
+    </div>
+  </div>
+
+  <!-- BANK -->
+  <div class="card danger-card">
+    <div class="card-hd">
+      <div><div class="card-name">BANK of Texas</div><div class="card-rec">5–5 · 2nd Red · Composite: 7.80</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--red)">7.80</div><div class="card-comp-label">Highest Pressure</div></div>
+    </div>
+    <div class="card-body">The number-one composite pressure score in LONGBALL. Every bad thing converging at once: the most dangerous injury (Acuña Jr. is a top-3 fantasy asset — HR, SB, R all elite), the fourth-hardest remaining schedule, and a record sitting exactly on the playoff bubble at .500. Adames out compounds the middle-infield scoring hole. The SP12 draw at Troutdale Cascades (8–2) with Acuña potentially still sidelined is a defining matchup. If the BANK roster shows up healthy by SP13, they're a playoff team. If Acuña misses another month, they're watching from home.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report — Most Dangerous</div>
+      <span class="inj-pill star">Ronald Acuña Jr.</span> <span class="inj-pill">Willy Adames</span> <span class="inj-pill">Hunter Brown</span> <span class="inj-pill">Erik Sabrowski</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11</span><span class="sched-opp">Sidd Finch</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP12</span><span class="sched-opp">Troutdale Cascades</span><span class="sched-rec dot-h">8–2 ⚑ Key matchup</span></div>
+      <div class="sched-row"><span>SP13</span><span class="sched-opp">Sons of Pitches</span><span class="sched-rec dot-s">3–7</span></div>
+      <div class="sched-row"><span>SP14</span><span class="sched-opp">Newberry Indians</span><span class="sched-rec dot-m">6–4</span></div>
+      <div class="sched-row"><span>SP17</span><span class="sched-opp">Goldy Goldy Gone</span><span class="sched-rec dot-m">6–4</span></div>
+      <div class="sched-row"><span>SP19</span><span class="sched-opp">Desert Rats</span><span class="sched-rec dot-h">7–3 ⚑</span></div>
+    </div>
+  </div>
+
+  <!-- Sidd Finch -->
+  <div class="card danger-card">
+    <div class="card-hd">
+      <div><div class="card-name">Sidd Finch</div><div class="card-rec">5–5 · 3rd Red · Composite: 7.20</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--red)">7.20</div><div class="card-comp-label">High Risk</div></div>
+    </div>
+    <div class="card-body">Pitching is where LONGBALL fortune is made, and Sidd Finch's pitching is broken. Edwin Díaz out means the SVH pipeline is shut off — that's +5 per save with hold, one of the highest single-stat values in the scoring system. Bieber down means quality starts and K production are gone. You're left with a bullpen relying on Trevor Megill as a key piece, which is not a recipe for staying at .500 against a hard schedule. They face BANK in SP11, Houston in SP13, then Desert Rats in SP15 and Cascades in SP17. The back half is unforgiving.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report — Pitching Wrecked</div>
+      <span class="inj-pill star">Edwin Díaz (CL)</span> <span class="inj-pill star">Shane Bieber</span> <span class="inj-pill">Drake Baldwin</span> <span class="inj-pill">Trevor Megill</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11</span><span class="sched-opp">BANK of Texas</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP13</span><span class="sched-opp">Houston Gamblers</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP15</span><span class="sched-opp">Desert Rats</span><span class="sched-rec dot-h">7–3 ⚑</span></div>
+      <div class="sched-row"><span>SP17</span><span class="sched-opp">Troutdale Cascades</span><span class="sched-rec dot-h">8–2 ⚑</span></div>
+      <div class="sched-row"><span>SP18</span><span class="sched-opp">Newberry Indians</span><span class="sched-rec dot-m">6–4</span></div>
+    </div>
+  </div>
+
+  <!-- Troutdale Gales -->
+  <div class="card danger-card">
+    <div class="card-hd">
+      <div><div class="card-name">Troutdale Gales</div><div class="card-rec">4–6 · Last Red · Composite: 7.70</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--red)">7.70</div><div class="card-comp-label">Critical</div></div>
+    </div>
+    <div class="card-body">Elly De La Cruz missing is not a depth problem — it's an identity crisis. De La Cruz is a cheat code in LONGBALL scoring: his SB production alone (SB+3) can swing a period by 15–20 points, and his HR pop adds another layer. Hunter Greene is a top-tier K arm. With both gone, this roster has lost two of its three most distinctive scoring weapons, and it's already at 4–6. The schedule softens in SP13–SP17 (Ithaca, Midland, Tempe, Sons) but it opens with Troutdale Cascades (8–2) in SP11. Anything less than a near-perfect run from there is elimination.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report — Franchise Players Down</div>
+      <span class="inj-pill star">Elly De La Cruz</span> <span class="inj-pill star">Hunter Greene</span> <span class="inj-pill">Brandon Woodruff</span> <span class="inj-pill">Colson Montgomery</span>
+    </div>
+    <div class="sched-mini">
+      <div class="sched-row"><span>SP11</span><span class="sched-opp">Troutdale Cascades</span><span class="sched-rec dot-h">8–2 ⚑ Must fight</span></div>
+      <div class="sched-row"><span>SP12</span><span class="sched-opp">Newberry Indians</span><span class="sched-rec dot-m">6–4</span></div>
+      <div class="sched-row"><span>SP13–17</span><span class="sched-opp">Ithaca, Midland, Tempe, Sons</span><span class="sched-rec dot-s">Soft window</span></div>
+      <div class="sched-row"><span>SP18</span><span class="sched-opp">Houston Gamblers</span><span class="sched-rec dot-m">5–5</span></div>
+      <div class="sched-row"><span>SP19</span><span class="sched-opp">Goldy Goldy Gone</span><span class="sched-rec dot-m">6–4</span></div>
+    </div>
+  </div>
+
+</div>
+
+<hr class="rule-dbl">
+
+<!-- CHASERS -->
+<div class="sec"><span class="sec-label">The Chasers — Already Climbing a Wall</span><hr class="sec-rule"></div>
+
+<div class="cards">
+
+  <!-- Tempe -->
+  <div class="card">
+    <div class="card-hd">
+      <div><div class="card-name">Tempe Scorpions</div><div class="card-rec">4–6 · 2nd White · Composite: 6.66</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--gold)">6.66</div><div class="card-comp-label">High Risk</div></div>
+    </div>
+    <div class="card-body">The third-hardest schedule in the league, a record two games below .500, and injuries to a catcher (Varsho) and a promising young arm (Dollander). The path to the playoffs requires winning games they have no business winning — against Desert Rats in SP13, Cascades in SP15, Newberry in SP16. Any injury scenario that doesn't resolve fast makes this a mathematical impossibility.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report</div>
+      <span class="inj-pill">Daulton Varsho</span> <span class="inj-pill">Chase Dollander</span> <span class="inj-pill">Tyler Kinley</span>
+    </div>
+  </div>
+
+  <!-- Midland -->
+  <div class="card">
+    <div class="card-hd">
+      <div><div class="card-name">Midland Red Weasel Dogs</div><div class="card-rec">4–6 · 4th Blue · Composite: 6.43</div></div>
+      <div class="card-meta"><div class="card-comp" style="color:var(--gold)">6.43</div><div class="card-comp-label">Elevated</div></div>
+    </div>
+    <div class="card-body">Ryan Helsley out is painful in a scoring system that values SVH at +5. Pivetta was a reliable SP innings-eater. But the bigger issue has always been roster depth, not the injury list. At 4–6 with a medium-difficulty remaining schedule, they need six straight wins in a league where they haven't shown that kind of consistency. The window is narrow and closing.</div>
+    <div class="card-injuries">
+      <div class="inj-label">Injury Report</div>
+      <span class="inj-pill star">Ryan Helsley (CL)</span> <span class="inj-pill">Nick Pivetta</span>
+    </div>
+  </div>
+
+</div>
+
+<hr class="rule-dbl">
+
+<!-- NO EXCUSES -->
+<div class="sec"><span class="sec-label">No Injuries, No Excuses</span><hr class="sec-rule"></div>
+
+<p>Two teams sit at 3–7 with no reported injuries on their board. That makes them the most analytically simple cases in LONGBALL right now — and the most brutal.</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-hd">
+      <div><div class="card-name">Sons of Pitches</div><div class="card-rec">3–7 · Composite: 5.79</div></div>
+    </div>
+    <div class="card-body">The offense produces. The pitching erases it. No injury cover for why the rotation hasn't held leads. Now they face the hardest remaining schedule in the league (.556 SOS) with no structural excuse and no time left. They need a pitching solution from within — a waiver wire arm, a tactical shift, something — because the schedule will not give them weak opponents to hide against.</div>
+    <div class="card-injuries"><div class="inj-label">Injury Report</div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-faint)">None reported</span></div>
+  </div>
+  <div class="card">
+    <div class="card-hd">
+      <div><div class="card-name">Ithaca Spartans</div><div class="card-rec">3–7 · Composite: 5.52</div></div>
+    </div>
+    <div class="card-body">3,243 total points through ten periods is the lowest output in the league. No injury report to explain it. The production simply hasn't been there across the board. The second-hardest remaining schedule (.544 SOS) means they'll need a near-miraculous run to reach the top six. At some point the standings are just the standings.</div>
+    <div class="card-injuries"><div class="inj-label">Injury Report</div><span style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--ink-faint)">None reported</span></div>
+  </div>
+</div>
+
+<!-- VERDICTS -->
+<div class="sec"><span class="sec-label">The Bottom Line</span><hr class="sec-rule"></div>
+
+<div class="verdict-grid">
+  <div class="vbox v-green">
+    <div class="vbox-title">In the Clear</div>
+    <div class="vbox-teams">Troutdale Cascades · Desert Rats</div>
+    <div class="vbox-note">Best records. Softest schedules. Lightest injury loads. Barring collapse, both are in the playoffs. Both could earn byes. The only question is seeding.</div>
+  </div>
+  <div class="vbox v-red">
+    <div class="vbox-title">The Dangerous Combination</div>
+    <div class="vbox-teams">BANK of Texas · Sidd Finch</div>
+    <div class="vbox-note">Both at .500. Both with significant injury losses to pitching and offense. Both facing hard schedules. One of them — probably both — will not make the playoffs unless key players return this week.</div>
+  </div>
+  <div class="vbox v-gold">
+    <div class="vbox-title">Injuries That Can Be Survived</div>
+    <div class="vbox-teams">Goldy Goldy Gone · Newberry Indians</div>
+    <div class="vbox-note">Both carry heavy injury loads. Both have enough depth and schedule cushion to absorb it — for now. Goldy's calendar is the easiest of any contender. Newberry's depth has already defied expectations twice.</div>
+  </div>
+  <div class="vbox v-gray">
+    <div class="vbox-title">Already Eliminated by the Math</div>
+    <div class="vbox-teams">Ithaca · Sons of Pitches · Tempe · Gales</div>
+    <div class="vbox-note">Not impossible, but requiring near-perfection against tough schedules while multiple contenders need to simultaneously collapse. Plan for 2027.</div>
+  </div>
+</div>
+
+<!-- FULL SCHEDULE -->
+<div class="sec"><span class="sec-label">Complete Remaining Schedule — SP 11–19</span><hr class="sec-rule"></div>
+
+<div class="period-block">
+  <div><span class="period-tag">SP 11</span><span class="period-dates">Jun 8 – Jun 14</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Ithaca</span><span class="mu-v">vs</span><span class="mu-h">Goldy</span></div>
+    <div class="mu"><span class="mu-a">Houston</span><span class="mu-v">vs</span><span class="mu-h">Tempe</span></div>
+    <div class="mu"><span class="mu-a">Cascades</span><span class="mu-v">vs</span><span class="mu-h">Gales</span></div>
+    <div class="mu"><span class="mu-a">Newberry</span><span class="mu-v">vs</span><span class="mu-h">Desert Rats</span></div>
+    <div class="mu"><span class="mu-a">Sons</span><span class="mu-v">vs</span><span class="mu-h">Midland</span></div>
+    <div class="mu"><span class="mu-a">Sidd Finch</span><span class="mu-v">vs</span><span class="mu-h">BANK</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 12</span><span class="period-dates">Jun 15 – Jun 21</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Tempe</span><span class="mu-v">vs</span><span class="mu-h">Goldy</span></div>
+    <div class="mu"><span class="mu-a">Midland</span><span class="mu-v">vs</span><span class="mu-h">Houston</span></div>
+    <div class="mu"><span class="mu-a">Desert Rats</span><span class="mu-v">vs</span><span class="mu-h">Ithaca</span></div>
+    <div class="mu"><span class="mu-a">BANK</span><span class="mu-v">vs</span><span class="mu-h">Cascades</span></div>
+    <div class="mu"><span class="mu-a">Sidd Finch</span><span class="mu-v">vs</span><span class="mu-h">Sons</span></div>
+    <div class="mu"><span class="mu-a">Gales</span><span class="mu-v">vs</span><span class="mu-h">Newberry</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 13</span><span class="period-dates">Jun 22 – Jun 28</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Tempe</span><span class="mu-v">vs</span><span class="mu-h">Desert Rats</span></div>
+    <div class="mu"><span class="mu-a">Ithaca</span><span class="mu-v">vs</span><span class="mu-h">Gales</span></div>
+    <div class="mu"><span class="mu-a">Goldy</span><span class="mu-v">vs</span><span class="mu-h">Midland</span></div>
+    <div class="mu"><span class="mu-a">Houston</span><span class="mu-v">vs</span><span class="mu-h">Sidd Finch</span></div>
+    <div class="mu"><span class="mu-a">Newberry</span><span class="mu-v">vs</span><span class="mu-h">Cascades</span></div>
+    <div class="mu"><span class="mu-a">Sons</span><span class="mu-v">vs</span><span class="mu-h">BANK</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 14</span><span class="period-dates">Jun 29 – Jul 5</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Midland</span><span class="mu-v">vs</span><span class="mu-h">Desert Rats</span></div>
+    <div class="mu"><span class="mu-a">Cascades</span><span class="mu-v">vs</span><span class="mu-h">Ithaca</span></div>
+    <div class="mu"><span class="mu-a">Sons</span><span class="mu-v">vs</span><span class="mu-h">Houston</span></div>
+    <div class="mu"><span class="mu-a">BANK</span><span class="mu-v">vs</span><span class="mu-h">Newberry</span></div>
+    <div class="mu"><span class="mu-a">Sidd Finch</span><span class="mu-v">vs</span><span class="mu-h">Goldy</span></div>
+    <div class="mu"><span class="mu-a">Gales</span><span class="mu-v">vs</span><span class="mu-h">Tempe</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 15</span><span class="period-dates">Jul 6 – Jul 12</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Tempe</span><span class="mu-v">vs</span><span class="mu-h">Cascades</span></div>
+    <div class="mu"><span class="mu-a">Ithaca</span><span class="mu-v">vs</span><span class="mu-h">Newberry</span></div>
+    <div class="mu"><span class="mu-a">Goldy</span><span class="mu-v">vs</span><span class="mu-h">Sons</span></div>
+    <div class="mu"><span class="mu-a">Midland</span><span class="mu-v">vs</span><span class="mu-h">Gales</span></div>
+    <div class="mu"><span class="mu-a">Houston</span><span class="mu-v">vs</span><span class="mu-h">BANK</span></div>
+    <div class="mu"><span class="mu-a">Desert Rats</span><span class="mu-v">vs</span><span class="mu-h">Sidd Finch</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 16</span><span class="period-dates">Jul 13 – Jul 26</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Houston</span><span class="mu-v">vs</span><span class="mu-h">Goldy</span></div>
+    <div class="mu"><span class="mu-a">Cascades</span><span class="mu-v">vs</span><span class="mu-h">Midland</span></div>
+    <div class="mu"><span class="mu-a">Newberry</span><span class="mu-v">vs</span><span class="mu-h">Tempe</span></div>
+    <div class="mu"><span class="mu-a">Sons</span><span class="mu-v">vs</span><span class="mu-h">Desert Rats</span></div>
+    <div class="mu"><span class="mu-a">BANK</span><span class="mu-v">vs</span><span class="mu-h">Ithaca</span></div>
+    <div class="mu"><span class="mu-a">Sidd Finch</span><span class="mu-v">vs</span><span class="mu-h">Gales</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 17</span><span class="period-dates">Jul 27 – Aug 2</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Tempe</span><span class="mu-v">vs</span><span class="mu-h">Ithaca</span></div>
+    <div class="mu"><span class="mu-a">Goldy</span><span class="mu-v">vs</span><span class="mu-h">BANK</span></div>
+    <div class="mu"><span class="mu-a">Midland</span><span class="mu-v">vs</span><span class="mu-h">Newberry</span></div>
+    <div class="mu"><span class="mu-a">Desert Rats</span><span class="mu-v">vs</span><span class="mu-h">Houston</span></div>
+    <div class="mu"><span class="mu-a">Sidd Finch</span><span class="mu-v">vs</span><span class="mu-h">Cascades</span></div>
+    <div class="mu"><span class="mu-a">Gales</span><span class="mu-v">vs</span><span class="mu-h">Sons</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 18</span><span class="period-dates">Aug 3 – Aug 9</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Ithaca</span><span class="mu-v">vs</span><span class="mu-h">Midland</span></div>
+    <div class="mu"><span class="mu-a">Goldy</span><span class="mu-v">vs</span><span class="mu-h">Desert Rats</span></div>
+    <div class="mu"><span class="mu-a">Houston</span><span class="mu-v">vs</span><span class="mu-h">Gales</span></div>
+    <div class="mu"><span class="mu-a">Newberry</span><span class="mu-v">vs</span><span class="mu-h">Sidd Finch</span></div>
+    <div class="mu"><span class="mu-a">Sons</span><span class="mu-v">vs</span><span class="mu-h">Cascades</span></div>
+    <div class="mu"><span class="mu-a">BANK</span><span class="mu-v">vs</span><span class="mu-h">Tempe</span></div>
+  </div>
+</div>
+<div class="period-block">
+  <div><span class="period-tag">SP 19</span><span class="period-dates">Aug 10 – Aug 16</span></div>
+  <div class="matchup-grid">
+    <div class="mu"><span class="mu-a">Midland</span><span class="mu-v">vs</span><span class="mu-h">Tempe</span></div>
+    <div class="mu"><span class="mu-a">Cascades</span><span class="mu-v">vs</span><span class="mu-h">Houston</span></div>
+    <div class="mu"><span class="mu-a">Desert Rats</span><span class="mu-v">vs</span><span class="mu-h">BANK</span></div>
+    <div class="mu"><span class="mu-a">Sons</span><span class="mu-v">vs</span><span class="mu-h">Newberry</span></div>
+    <div class="mu"><span class="mu-a">Sidd Finch</span><span class="mu-v">vs</span><span class="mu-h">Ithaca</span></div>
+    <div class="mu"><span class="mu-a">Gales</span><span class="mu-v">vs</span><span class="mu-h">Goldy</span></div>
+  </div>
+</div>
+
+<!-- FINAL WORD -->
+<div class="final">
+  <div class="final-label">Final Word</div>
+  <div class="final-text">The standings are becoming permanent. The schedule just told us who has to fight for it. The injury report told us who's fighting with one hand tied behind their back. For BANK of Texas, those two things landed on the same roster at the same time. That's not bad luck. That's a crisis.</div>
+</div>
+
+<div class="footer">The Longball Gazette &nbsp;·&nbsp; Season 19 &nbsp;·&nbsp; Week 10 Special Edition &nbsp;·&nbsp; All The News That's Fit To Draft</div>
+
+</body>
+</html>
