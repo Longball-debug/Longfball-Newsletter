@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette — Week 12 Final, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a}
+        body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+        .newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 0 80px rgba(184,134,11,.04);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+        .newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+        .inner{position:relative;z-index:1}
+        .masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+        .masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+        .paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+        .paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+        .paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:12px}
+        .ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+        .ticker-inner{display:flex;white-space:nowrap;animation:ticker 70s linear infinite}
+        .ticker-inner span{padding:0 30px}
+        .ticker-inner .sep{color:var(--gold);font-weight:700}
+        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+        .nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+        .nav-tab:first-child{border-left:1px solid #c0b090}
+        .nav-tab:hover{background:var(--paper);color:var(--ink)}
+        .nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+        .nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+        .page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+        .page.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        .section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+        .headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+        .headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+        .headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+        .deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+        .byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+        .dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+        p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+        p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+        p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+        .col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+        .rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+        .rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+        .col-rule{border-left:1px solid #b0a080;padding-left:30px}
+        .info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+        .info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+        .column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+        .column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+        .column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+        .alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+        .alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+        .gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+        .waste-box{border:3px solid var(--red);background:#fff0f0;padding:14px 16px;margin-bottom:16px}
+        .waste-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);text-align:center;border-bottom:2px solid var(--red);padding-bottom:6px;margin-bottom:10px}
+        table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+        table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+        table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+        table.data tr:last-child td{border-bottom:none}
+        table.data tr.highlight{background:#fff9e0;font-weight:700}
+        table.data tr.danger{background:#fff0f0}
+        table.data tr.warning{background:#fff8ee}
+        table.data .num{text-align:right;font-weight:700}
+        table.data .rk{text-align:center;width:30px;color:var(--muted)}
+        .recap-card{border:2px solid var(--rule);margin-bottom:24px;overflow:hidden}
+        .recap-header{display:flex;justify-content:space-between;align-items:stretch;background:var(--ink);color:var(--paper)}
+        .recap-team{flex:1;padding:10px 14px}
+        .recap-team.away{border-right:1px solid #555}
+        .recap-team-name{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+        .recap-score{font-family:"Courier Prime",monospace;font-size:1.5em;font-weight:700;line-height:1}
+        .recap-score.leading{color:var(--gold)}
+        .recap-vs{padding:10px 12px;font-family:"Courier Prime",monospace;font-size:.75em;text-align:center;opacity:.6;display:flex;align-items:center}
+        .recap-status{background:var(--red);color:white;font-family:"Courier Prime",monospace;font-size:.72em;text-align:center;padding:4px 10px;font-weight:700;letter-spacing:.5px}
+        .recap-body{padding:14px 16px}
+        .recap-body p{font-size:.88em;line-height:1.65;margin-bottom:8px}
+        .recap-stat{background:var(--paper-dark);border-left:4px solid var(--gold);padding:8px 12px;font-family:"Courier Prime",monospace;font-size:.8em;margin-top:8px}
+        .recap-stat strong{color:var(--red)}
+        .pr-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #d4c89a}
+        .pr-item:last-child{border-bottom:none}
+        .pr-rank{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--paper-dark);-webkit-text-stroke:1.5px var(--rule);min-width:44px;text-align:center;line-height:1;padding-top:2px}
+        .pr-rank.top3{color:var(--gold);-webkit-text-stroke:1px var(--gold)}
+        .pr-team{font-family:"Oswald",sans-serif;font-size:1.05em;font-weight:700}
+        .pr-pts{font-family:"Courier Prime",monospace;font-size:.85em;color:var(--muted)}
+        .pr-note{font-size:.83em;color:var(--muted);font-style:italic;line-height:1.4;margin-top:2px}
+        .up{color:#2a7a2a;font-weight:700}
+        .dn{color:var(--red);font-weight:700}
+        .same{color:var(--gold);font-weight:700}
+        .wk-card{border:2px solid var(--rule);margin-bottom:14px;overflow:hidden}
+        .wk-hdr{background:var(--paper-dark);padding:6px 12px;font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+        .wk-body{display:flex;justify-content:space-between;align-items:center;padding:10px 14px}
+        .wk-team{font-family:"Oswald",sans-serif;font-size:.95em;font-weight:700}
+        .wk-rec{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted)}
+        .wk-vs{font-family:"Courier Prime",monospace;font-size:.8em;color:var(--muted);padding:0 10px}
+        .wk-look{padding:8px 14px;font-size:.82em;font-style:italic;color:var(--muted);background:#fffef8;border-top:1px solid #d4c89a;line-height:1.5}
+        .badge{display:inline-block;font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+        .badge-hot{background:var(--red);color:white}
+        .badge-toss{background:var(--gold);color:var(--ink)}
+        .badge-must{background:#1a5a1a;color:white}
+        .fa-block{margin-bottom:18px}
+        .fa-name{font-family:"Oswald",sans-serif;font-size:.9em;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 10px}
+        .fa-row{display:flex;gap:8px;align-items:baseline;padding:4px 10px;border-bottom:1px solid #e0d4b0;font-size:.82em;flex-wrap:wrap}
+        .fa-row:last-child{border-bottom:none}
+        .fa-add{color:#1a5a1a;font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:44px}
+        .fa-drop{color:var(--red);font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:44px}
+        .fa-vic{color:var(--gold);font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:72px}
+        .page-footer{text-align:center;font-family:"Courier Prime",monospace;font-size:.78em;color:var(--muted);padding-top:20px;border-top:2px double var(--rule);margin-top:30px}
+        @media(max-width:760px){.newspaper{outline:none}.page{padding:20px}.col-2,.col-2-1{grid-template-columns:1fr}.col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}.paper-name{font-size:2em;letter-spacing:1px}.nav-tab{padding:8px 10px;font-size:.72em}}
+    </style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<!-- ═══════════════ MASTHEAD ═══════════════ -->
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Vol. 1, No. 15 &nbsp;|&nbsp; Week 12 Final Edition</span>
+        <span>Sunday, June 21, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"Gilbert Dominates. The Rats Keep Rolling. Two Points Decide a Season." &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+</div>
+
+<!-- ═══════════════ TICKER ═══════════════ -->
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#128000; DESERT RATS 504.33 &mdash; Week&apos;s high score; Logan Gilbert 63.67 pts leads all pitchers</span><span class="sep">&#9670;</span>
+    <span>&#128128; TROUTDALE CASCADES 490.50 &mdash; Beat BANK of Texas; hold 1-game lead over Rats</span><span class="sep">&#9670;</span>
+    <span>&#9889; SONS OF PITCHES edge Sidd Finch by 2 POINTS &mdash; 441.50&ndash;439.50; closest game of 2026</span><span class="sep">&#9670;</span>
+    <span>&#127381; NEWBERRY INDIANS survive Troutdale Gales 422.83&ndash;361.50 &mdash; stay 3 GB of Cascades</span><span class="sep">&#9670;</span>
+    <span>&#127942; GOLDY GOLDY GONE tops Tempe Scorpions 332.83&ndash;218 &mdash; Scorpions hit season low</span><span class="sep">&#9670;</span>
+    <span>&#128021; MIDLAND RED WEASEL DOGS def. Houston Gamblers 330.17&ndash;254.83</span><span class="sep">&#9670;</span>
+    <span>&#9918; PETE CROW-ARMSTRONG 58.5 pts &mdash; week&apos;s top hitter for Sidd Finch</span><span class="sep">&#9670;</span>
+    <span>&#9889; LOGAN GILBERT 63.67 pts &mdash; 13.1 IP, 1.35 ERA, 18 K for Desert Rats</span><span class="sep">&#9670;</span>
+    <span>&#128000; DESERT RATS 504.33 &mdash; Week&apos;s high score; Logan Gilbert 63.67 pts leads all pitchers</span><span class="sep">&#9670;</span>
+    <span>&#128128; TROUTDALE CASCADES 490.50 &mdash; Beat BANK of Texas; hold 1-game lead over Rats</span><span class="sep">&#9670;</span>
+</div></div>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('scores')">Scores &amp; Recaps</div>
+    <div class="nav-tab" onclick="showPage('players')">Top Players</div>
+    <div class="nav-tab" onclick="showPage('rankings')">Power Rankings</div>
+    <div class="nav-tab" onclick="showPage('fa')">FA &amp; Wire</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 1: FRONT PAGE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page active" id="front">
+<div class="section-label">Week 12 Final &mdash; June 15&ndash;21, 2026</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">RATS POST 504; CASCADES HOLD ON; SONS STEAL ONE BY A WHISKER</div>
+    <div class="deck">The Desert Rats put up the week's highest score by a wide margin, Logan Gilbert was untouchable, and the gap between first and second place remains exactly one game. Meanwhile the most dramatic finish of the 2026 season played out between Sidd Finch and the Sons of Pitches, separated at the final buzzer by two points.</div>
+    <div class="byline">By the Longball Gazette Wire Staff</div>
+    <div class="dateline">League Headquarters &mdash; Sunday, June 21, 2026</div>
+
+    <p class="body">The Desert Rats are not going away. Sitting one game behind the Troutdale Cascades entering Week 12, the commissioner's squad responded by posting 504.33 points &mdash; the week's highest total by a comfortable margin &mdash; to dispose of the Ithaca Spartans 504.33 to 250.17. Logan Gilbert led the charge with 63.67 fantasy points: 13.1 innings pitched, a 1.35 ERA, and 18 strikeouts. That is not a good week from a starting pitcher. That is a dominant one. The Rats move to 9-3. The Cascades also won. The gap is still one game. And that is exactly how this league's best rivalry is supposed to feel.</p>
+
+    <p class="body">The Troutdale Cascades, for their part, did what first-place teams are supposed to do: they won. A 490.50-point effort against The BANK of Texas (405.83) keeps them at 10-2 and one game ahead of a Rats team that keeps refusing to fall back. The race at the top has been a one-game affair for what feels like a month. Cascades. Rats. One game. Every week it resets and every week it holds.</p>
+
+    <p class="body">If those were the headliners, the Sons of Pitches provided the story of the week. In what may be the closest game in MLBLONGBALL 2026, the Sons edged Sidd Finch 441.50 to 439.50 &mdash; a two-point margin that will be discussed long after this season ends. Sidd entered the week's final day needing just three points to win. They did not get them. Pete Crow-Armstrong (58.5 pts) put up the week's best individual hitting performance for Finch, and it wasn't enough. The Sons survive. Sidd Finch stares at a loss that came down to two fantasy points.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">Scorpions Hit Season Low; Goldy Picks Up a Needed Win</div>
+    <p class="body-sm">The Tempe Scorpions posted 218 points &mdash; the week's lowest score and almost certainly the lowest output by any team in a single week this season. The Goldy Goldy Gone squad needed only 332.83 to win, and they did. For the Scorpions, at 5-7 and sinking, the 218-point week is the kind of result that ends playoff conversations. Goldy moves to 7-5 and stays in the hunt in the Blue Division.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">Dogs Finally Get One; Gamblers Come Up Short Again</div>
+    <p class="body-sm">The Midland Red Weasel Dogs defeated the Houston Gamblers 330.17 to 254.83, a result that gives the Dogs a 6-6 record and some breathing room in the standings. The Gamblers fall to 5-7 and are now three games below .500 with limited weeks to recover. Cam Schlittler (38.5 pts, Midland) and Louis Varland (34.67 pts, Midland) gave the Dogs a pitching edge that the Gamblers' offense couldn't overcome.</p>
+</div>
+
+<div>
+    <div class="info-box">
+        <div class="info-box-title">Week 12 Final Scores</div>
+        <table class="data">
+            <tr><th colspan="3">Scoring Period 12 &mdash; Final</th></tr>
+            <tr class="highlight"><td>Desert Rats <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">504.33</td><td class="num" style="color:var(--muted);font-size:.8em">+254.2</td></tr>
+            <tr><td>Ithaca Spartans</td><td class="num">250.17</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Midland Red Weasel Dogs <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">330.17</td><td class="num" style="color:var(--muted);font-size:.8em">+75.3</td></tr>
+            <tr><td>Houston Gamblers</td><td class="num">254.83</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Sons of Pitches <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">441.50</td><td class="num" style="color:var(--muted);font-size:.8em">+2.0</td></tr>
+            <tr><td>Sidd Finch</td><td class="num">439.50</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Goldy Goldy Gone <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">332.83</td><td class="num" style="color:var(--muted);font-size:.8em">+114.8</td></tr>
+            <tr><td>Tempe Scorpions</td><td class="num">218.00</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Troutdale Cascades <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">490.50</td><td class="num" style="color:var(--muted);font-size:.8em">+84.7</td></tr>
+            <tr><td>The BANK of Texas</td><td class="num">405.83</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Newberry Indians <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">422.83</td><td class="num" style="color:var(--muted);font-size:.8em">+61.3</td></tr>
+            <tr><td>Troutdale Gales</td><td class="num">361.50</td><td></td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Final. Scoring Period 12: Jun 15 &ndash; Jun 21, 2026.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">&#9889; Gilbert Delivers the Ace Performance of the Season</div>
+        <p style="font-size:.85em">Logan Gilbert (Desert Rats): 63.67 fantasy points. 13.1 IP, 1.35 ERA, 18 strikeouts. The week's top pitcher by a significant margin. Gilbert's outing was the pitching anchor of a 504-point Desert Rats week and the most dominant individual starting performance of Scoring Period 12. When the Rats need a big week, their ace shows up.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#9203; GAME OF THE YEAR: Sons 441.50, Sidd Finch 439.50</div>
+        <p style="font-size:.83em">Two points. That is the entire margin between a Sons of Pitches win and a Sidd Finch win. Pete Crow-Armstrong put up 58.5 points for Finch &mdash; the week's best hitting performance &mdash; and it still wasn't enough. The Sons survive on a razor's edge. This is the closest matchup of the 2026 MLBLONGBALL season.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">&#128202; Overall Standings &mdash; After Week 12</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">GB</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td>Troutdale Cascades</td><td class="num">10</td><td class="num">2</td><td class="num">&mdash;</td></tr>
+            <tr class="highlight"><td class="rk">2</td><td>Desert Rats</td><td class="num">9</td><td class="num">3</td><td class="num">1</td></tr>
+            <tr><td class="rk">3</td><td>Newberry Indians</td><td class="num">7</td><td class="num">5</td><td class="num">3</td></tr>
+            <tr><td class="rk">4</td><td>Goldy Goldy Gone</td><td class="num">7</td><td class="num">5</td><td class="num">3</td></tr>
+            <tr><td class="rk">5</td><td>Sidd Finch</td><td class="num">6</td><td class="num">6</td><td class="num">4</td></tr>
+            <tr><td class="rk">6</td><td>Midland Red Weasel Dogs</td><td class="num">6</td><td class="num">6</td><td class="num">4</td></tr>
+            <tr><td class="rk">7</td><td>The BANK of Texas</td><td class="num">5</td><td class="num">7</td><td class="num">5</td></tr>
+            <tr><td class="rk">8</td><td>Houston Gamblers</td><td class="num">5</td><td class="num">7</td><td class="num">5</td></tr>
+            <tr><td class="rk">9</td><td>Tempe Scorpions</td><td class="num">5</td><td class="num">7</td><td class="num">5</td></tr>
+            <tr><td class="rk">10</td><td>Troutdale Gales</td><td class="num">4</td><td class="num">8</td><td class="num">6</td></tr>
+            <tr><td class="rk">11</td><td>Ithaca Spartans</td><td class="num">4</td><td class="num">8</td><td class="num">6</td></tr>
+            <tr><td class="rk">12</td><td>Sons of Pitches</td><td class="num">4</td><td class="num">8</td><td class="num">6</td></tr>
+        </table>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All statistics from official Fantrax league data. Scoring Period 12: June 15 &ndash; June 21, 2026.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 2: SCORES & RECAPS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="scores">
+<div class="section-label">Week 12 Final &mdash; Matchup Recaps</div>
+<div class="headline-lg" style="margin-bottom:4px">Six Games. Six Stories.</div>
+<div class="deck">From a 254-point blowout to a two-point thriller, Scoring Period 12 had the full range. Here is how each matchup played out.</div>
+<hr class="rule-h-thick">
+
+<!-- RECAP 1: Desert Rats vs Ithaca -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">504.33</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Ithaca Spartans &nbsp;&middot;&nbsp; Home</div><div class="recap-score">250.17</div></div>
+    </div>
+    <div class="recap-status">Desert Rats win by 254.2 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Rats: 9-3 &nbsp;&middot;&nbsp; Ithaca: 4-8</div>
+    <div class="recap-body">
+        <p>The Desert Rats needed a statement week. Logan Gilbert provided it. The Seattle Mariners ace logged 13.1 innings, a 1.35 ERA, and 18 strikeouts for 63.67 fantasy points &mdash; the top pitching performance of Scoring Period 12 and the kind of outing that reminds you why the Rats have been a first-place contender all season. The final score, 504.33 to 250.17, was never in doubt. The Ithaca Spartans, at 4-8, have struggled to put competitive weeks together and this was no exception.</p>
+        <p>For the Rats, this was the week they needed to stay within striking distance of the Cascades, who also won. Mission accomplished. The gap remains one game, and the Rats enter Week 13 with a 9-3 record and momentum heading into the back half of the season.</p>
+        <div class="recap-stat"><strong>RATS ANCHOR:</strong> Logan Gilbert 63.67 pts (13.1 IP, 1.35 ERA, 18 K) &nbsp;&middot;&nbsp; <strong>ITHACA:</strong> Travis Bazzana 43 pts (top hitter, Ithaca/MSU) &nbsp;&middot;&nbsp; <strong>MARGIN:</strong> 254.2 pts &mdash; week&apos;s largest</div>
+    </div>
+</div>
+
+<!-- RECAP 2: Midland Red Weasel Dogs vs Houston Gamblers -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Midland Red Weasel Dogs &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">330.17</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Houston Gamblers &nbsp;&middot;&nbsp; Home</div><div class="recap-score">254.83</div></div>
+    </div>
+    <div class="recap-status">Midland Red Weasel Dogs win by 75.3 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Dogs: 6-6 &nbsp;&middot;&nbsp; Gamblers: 5-7</div>
+    <div class="recap-body">
+        <p>The Midland Red Weasel Dogs got their pitching and their win, which is all they ask for most weeks. Cam Schlittler (38.5 pts, NYY) and Louis Varland (34.67 pts, TOR) led the Dogs' rotation while the Gamblers' offense posted 254 points on a week where Bryan Reynolds (47 pts, PIT), their top hitter, was wearing Houston Gamblers colors and it still wasn't enough. The Dogs improve to 6-6, a record that belies how competitive they have been all season. The Gamblers fall to 5-7.</p>
+        <div class="recap-stat"><strong>DOGS KEY:</strong> Schlittler 38.5 pts, Varland 34.67 pts &nbsp;&middot;&nbsp; <strong>GAMBLERS BEST:</strong> Bryan Reynolds 47 pts (PIT) &nbsp;&middot;&nbsp; <strong>DOGS RECORD:</strong> 6-6, streak: 2W</div>
+    </div>
+</div>
+
+<!-- RECAP 3: Sidd Finch vs Sons of Pitches -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Sidd Finch &nbsp;&middot;&nbsp; Away</div><div class="recap-score">439.50</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Sons of Pitches &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">441.50</div></div>
+    </div>
+    <div class="recap-status">Sons of Pitches win by 2.0 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Sons: 4-8 &nbsp;&middot;&nbsp; Sidd Finch: 6-6 &nbsp;&middot;&nbsp; CLOSEST GAME OF 2026</div>
+    <div class="recap-body">
+        <p>Two points. The entire Week 12 season turning on two fantasy points. Pete Crow-Armstrong (Chicago Cubs) posted 58.5 points for Sidd Finch &mdash; the week's best individual hitting performance in the league &mdash; and a 439.50 team total that would win most weeks in MLBLONGBALL. This was not most weeks. The Sons of Pitches scratched together 441.50 points across a seven-day grind and walked away with a win that will be part of this league's lore for some time. Zack Wheeler (50.33 pts, PHI) and Joey Cantillo (35 pts, CLE) carried the Sons' pitching, while Carter Jensen (42.5 pts, KC) and Nolan McLean (34.5 pts, NYM) &mdash; wait, McLean plays for Sidd &mdash; contributed on both sides of this razor-thin contest.</p>
+        <p>Sidd Finch falls to 6-6 on what may be the toughest loss of their season. They had the week's best hitter. They had 439 points. They lost. The Sons move to 4-8 but take a win that carries outsized emotional weight regardless of what the record says.</p>
+        <div class="recap-stat"><strong>FINCH BEST:</strong> Pete Crow-Armstrong 58.5 pts (CHC) &nbsp;&middot;&nbsp; <strong>SONS KEY:</strong> Zack Wheeler 50.33 pts (PHI), Carter Jensen 42.5 pts (KC) &nbsp;&middot;&nbsp; <strong>MARGIN:</strong> 2.0 pts &mdash; 2026 season low</div>
+    </div>
+</div>
+
+<!-- RECAP 4: Tempe Scorpions vs Goldy Goldy Gone -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Tempe Scorpions &nbsp;&middot;&nbsp; Away</div><div class="recap-score">218.00</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Goldy Goldy Gone &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">332.83</div></div>
+    </div>
+    <div class="recap-status">Goldy Goldy Gone win by 114.8 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Goldy: 7-5 &nbsp;&middot;&nbsp; Scorpions: 5-7</div>
+    <div class="recap-body">
+        <p>The Tempe Scorpions scored 218 points. That number requires no additional editorial commentary, but it will receive some anyway: it is the week's lowest total, almost certainly the season's lowest total by any team, and it happened to a 5-7 squad that genuinely cannot afford weeks like this. Josh Bell (45 pts, MIN) gave Goldy a reliable contributor at first base, and Kyle Bradish (37.83 pts, BAL) anchored a rotation that didn't need to do much heavy lifting when the opponent posted 218.</p>
+        <p>Goldy improves to 7-5 and stays in contention in the Blue Division. The Scorpions at 5-7 have lost the thread of whatever playoff ambitions they carried into June.</p>
+        <div class="recap-stat"><strong>GOLDY BEST:</strong> Josh Bell 45 pts (MIN), Kyle Bradish 37.83 pts (BAL) &nbsp;&middot;&nbsp; <strong>SCORPIONS:</strong> 218 pts &mdash; week&apos;s and likely season&apos;s lowest output &nbsp;&middot;&nbsp; <strong>GOLDY:</strong> 7-5, streak: 1W</div>
+    </div>
+</div>
+
+<!-- RECAP 5: The BANK of Texas vs Troutdale Cascades -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">The BANK of Texas &nbsp;&middot;&nbsp; Away</div><div class="recap-score">405.83</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">490.50</div></div>
+    </div>
+    <div class="recap-status">Troutdale Cascades win by 84.7 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Cascades: 10-2 &nbsp;&middot;&nbsp; BANK: 5-7</div>
+    <div class="recap-body">
+        <p>The Troutdale Cascades are ten and two. They hold the best record in MLBLONGBALL, a two-game winning streak, and a one-game lead over the Desert Rats that has been exactly one game for what seems like half the season. The BANK of Texas put up 405 points &mdash; a legitimate score that would have beaten most opponents this week &mdash; and it still wasn't enough. Trevor Larnach (46 pts, MIN) and Wyatt Langford (45.5 pts, TEX) gave the BANK two hitters in the weekly top five, and they still lost by 85 points. That tells you something about what the Cascades brought to this game.</p>
+        <p>The BANK falls to 5-7 on a two-game losing streak. At five games under .500, their playoff window is closing fast.</p>
+        <div class="recap-stat"><strong>CASCADES:</strong> 490.50 pts &mdash; 2nd highest score of the week &nbsp;&middot;&nbsp; <strong>BANK BRIGHT:</strong> Larnach 46 pts (MIN), Langford 45.5 pts (TEX) &nbsp;&middot;&nbsp; <strong>BANK RECORD:</strong> 5-7, streak: 2L</div>
+    </div>
+</div>
+
+<!-- RECAP 6: Troutdale Gales vs Newberry Indians -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Troutdale Gales &nbsp;&middot;&nbsp; Away</div><div class="recap-score">361.50</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Newberry Indians &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">422.83</div></div>
+    </div>
+    <div class="recap-status">Newberry Indians win by 61.3 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Indians: 7-5 &nbsp;&middot;&nbsp; Gales: 4-8</div>
+    <div class="recap-body">
+        <p>The Newberry Indians keep winning. Seven and five, Red Division leaders, and a consistent presence in the weekly standings conversation that has never quite gotten the recognition it deserves. Kyle Schwarber (48.5 pts, PHI) played for the Troutdale Gales and gave them their best week offensively, but the Indians' pitching held firm and the Gales' 361 points wasn't enough to overcome a Newberry squad posting 422. The Indians improve to 7-5 and remain the steadiest team in the middle of the league.</p>
+        <p>The Troutdale Gales fall to 4-8 on a three-game losing streak and a season that has underperformed relative to the offensive talent on their roster. With eight losses, the math toward a playoff position is getting genuinely difficult.</p>
+        <div class="recap-stat"><strong>GALES BEST:</strong> Kyle Schwarber 48.5 pts (PHI) &nbsp;&middot;&nbsp; <strong>INDIANS:</strong> 422.83 pts, 7-5, streak: 1W &nbsp;&middot;&nbsp; <strong>GALES:</strong> 4-8, streak: 3L</div>
+    </div>
+</div>
+
+<div class="page-footer"><p>All statistics from official Fantrax league data. Scoring Period 12: June 15 &ndash; June 21, 2026.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 3: TOP PLAYERS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="players">
+<div class="section-label">Week 12 Final &mdash; Individual Leaderboards</div>
+<div class="headline-lg" style="margin-bottom:4px">The Leaderboard</div>
+<div class="deck">Top performers from Scoring Period 12. Fantasy team designations used throughout &mdash; this is MLBLONGBALL, not SportsCenter.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#9918; Top 10 Hitters &mdash; Week 12</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>MLB</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">FP/G</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Pete Crow-Armstrong</strong></td><td>CHC</td><td>Sidd Finch</td><td class="num">58.5</td><td class="num">11.70</td></tr>
+            <tr><td class="rk">2</td><td><strong>Kyle Schwarber</strong></td><td>PHI</td><td>Troutdale Gales</td><td class="num">48.5</td><td class="num">8.08</td></tr>
+            <tr><td class="rk">3</td><td><strong>Bryan Reynolds</strong></td><td>PIT</td><td>Houston Gamblers</td><td class="num">47.0</td><td class="num">7.83</td></tr>
+            <tr><td class="rk">4</td><td><strong>Trevor Larnach</strong></td><td>MIN</td><td>The BANK of Texas</td><td class="num">46.0</td><td class="num">9.20</td></tr>
+            <tr><td class="rk">5</td><td><strong>Wyatt Langford</strong></td><td>TEX</td><td>The BANK of Texas</td><td class="num">45.5</td><td class="num">7.58</td></tr>
+            <tr><td class="rk">6</td><td><strong>Josh Bell</strong></td><td>MIN</td><td>Goldy Goldy Gone</td><td class="num">45.0</td><td class="num">7.50</td></tr>
+            <tr><td class="rk">7</td><td><strong>Sal Stewart</strong></td><td>CIN</td><td>Troutdale Cascades</td><td class="num">43.5</td><td class="num">7.25</td></tr>
+            <tr><td class="rk">8</td><td><strong>Travis Bazzana</strong></td><td>CLE</td><td>Ithaca Spartans</td><td class="num">43.0</td><td class="num">7.17</td></tr>
+            <tr><td class="rk">9</td><td><strong>Carter Jensen</strong></td><td>KC</td><td>Sons of Pitches</td><td class="num">42.5</td><td class="num">8.50</td></tr>
+            <tr><td class="rk">10</td><td><strong>Nick Kurtz</strong></td><td>SAC</td><td>Troutdale Cascades</td><td class="num">42.0</td><td class="num">6.00</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">SAC = Sacramento Athletics. BANK has two hitters in top 5 (Larnach, Langford) on a losing team.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; BANK GETS TWO IN THE TOP FIVE &mdash; AND STILL LOSES</div>
+        <p style="font-size:.85em">Trevor Larnach (46 pts, #4) and Wyatt Langford (45.5 pts, #5) both cracked the week's top-five hitters for The BANK of Texas. They still lost to the Troutdale Cascades by 85 points. That tells you more about how good the Cascades were this week than it does about the BANK's offense.</p>
+    </div>
+
+    <div class="alert-box" style="border-left-color:var(--gold);background:#fffbef">
+        <div class="alert-box-title" style="color:var(--gold)">&#11088; CASCADES OWN TWO IN THE TOP TEN BATTING</div>
+        <p style="font-size:.85em">Sal Stewart (43.5 pts, #7) and Nick Kurtz (42 pts, #10) both appear in the hitter top-10 for the Troutdale Cascades. A team that also posted 490 points on the week. That is the full picture of a dominant squad firing on all cylinders.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">&#128202; Verified Stat Lines &mdash; Week 12 Hitters</div>
+        <table class="data">
+            <tr><th>Player</th><th>Team</th><th>H/AB</th><th>R</th><th>2B</th><th>HR</th><th>RBI</th><th class="num">FPts</th></tr>
+            <tr class="highlight"><td><strong>Pete Crow-Armstrong</strong></td><td>SIDD</td><td>11/20</td><td>5</td><td>1</td><td>4</td><td>7</td><td class="num">58.5</td></tr>
+            <tr><td>Kyle Schwarber</td><td>GALES</td><td>8/23</td><td>9</td><td>0</td><td>5</td><td>10</td><td class="num">48.5</td></tr>
+            <tr><td>Bryan Reynolds</td><td>GMBLRS</td><td>11/23</td><td>6</td><td>2</td><td>3</td><td>9</td><td class="num">47.0</td></tr>
+            <tr><td>Trevor Larnach</td><td>BANK</td><td>12/23</td><td>6</td><td>2</td><td>2</td><td>7</td><td class="num">46.0</td></tr>
+            <tr><td>Wyatt Langford</td><td>BANK</td><td>10/24</td><td>4</td><td>2</td><td>3</td><td>8</td><td class="num">45.5</td></tr>
+            <tr><td>Josh Bell</td><td>Triple G</td><td>10/22</td><td>7</td><td>2</td><td>2</td><td>8</td><td class="num">45.0</td></tr>
+            <tr><td>Sal Stewart</td><td>TING</td><td>7/23</td><td>4</td><td>3</td><td>1</td><td>11</td><td class="num">43.5</td></tr>
+            <tr><td>Travis Bazzana</td><td>MSU</td><td>9/21</td><td>6</td><td>2</td><td>3</td><td>7</td><td class="num">43.0</td></tr>
+            <tr><td>Carter Jensen</td><td>A-ARON</td><td>10/20</td><td>6</td><td>3</td><td>2</td><td>4</td><td class="num">42.5</td></tr>
+            <tr><td>Nick Kurtz</td><td>TING</td><td>9/27</td><td>7</td><td>2</td><td>3</td><td>9</td><td class="num">42.0</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px">All H/AB, HR, RBI, R, 2B from Fantrax screenshot. TING=Troutdale Cascades, Triple G=Goldy Goldy Gone, A-ARON=Sons of Pitches, MSU=Ithaca Spartans.</p>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="info-box">
+        <div class="info-box-title">&#9889; Top 10 Pitchers &mdash; Week 12</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>MLB</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">IP</th><th class="num">ERA</th><th class="num">K</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Logan Gilbert</strong></td><td>SEA</td><td>Desert Rats</td><td class="num">63.67</td><td class="num">13.1</td><td class="num">1.35</td><td class="num">18</td></tr>
+            <tr><td class="rk">2</td><td><strong>Zack Wheeler</strong></td><td>PHI</td><td>Sons of Pitches</td><td class="num">50.33</td><td class="num">11.2</td><td class="num">1.54</td><td class="num">16</td></tr>
+            <tr><td class="rk">3</td><td><strong>Robert Gasser</strong></td><td>MIL</td><td><em>Free Agent</em></td><td class="num">42.83</td><td class="num">11.2</td><td class="num">1.54</td><td class="num">12</td></tr>
+            <tr><td class="rk">4</td><td><strong>Chase Burns</strong></td><td>CIN</td><td>Troutdale Cascades</td><td class="num">40.5</td><td class="num">10.0</td><td class="num">0.90</td><td class="num">14</td></tr>
+            <tr><td class="rk">5</td><td><strong>Cam Schlittler</strong></td><td>NYY</td><td>Midland Red Weasel Dogs</td><td class="num">38.5</td><td class="num">6.0</td><td class="num">0.00</td><td class="num">13</td></tr>
+            <tr><td class="rk">6</td><td><strong>Kyle Bradish</strong></td><td>BAL</td><td>Goldy Goldy Gone</td><td class="num">37.83</td><td class="num">7.2</td><td class="num">1.17</td><td class="num">12</td></tr>
+            <tr><td class="rk">7</td><td><strong>Bryan Woo</strong></td><td>SEA</td><td>Troutdale Cascades</td><td class="num">35.5</td><td class="num">7.0</td><td class="num">0.00</td><td class="num">9</td></tr>
+            <tr><td class="rk">8</td><td><strong>Joey Cantillo</strong></td><td>CLE</td><td>Sons of Pitches</td><td class="num">35.0</td><td class="num">8.0</td><td class="num">1.13</td><td class="num">9</td></tr>
+            <tr><td class="rk">9</td><td><strong>Louis Varland</strong></td><td>TOR</td><td>Midland Red Weasel Dogs</td><td class="num">34.67</td><td class="num">4.1</td><td class="num">0.00</td><td class="num">8</td></tr>
+            <tr><td class="rk">10</td><td><strong>Nolan McLean</strong></td><td>NYM</td><td>Sidd Finch</td><td class="num">34.5</td><td class="num">7.0</td><td class="num">0.00</td><td class="num">9</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Robert Gasser (MIL) listed as Free Agent &mdash; unowned in MLBLONGBALL this week. Troutdale Cascades place two pitchers in the top 7 (Burns, Woo).</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Gilbert: The Ace When It Counted</div>
+        <p style="font-size:.85em">Logan Gilbert (Desert Rats): 63.67 pts, 13.1 IP, 1.35 ERA, 18 strikeouts. The week's top pitching performance and the anchor of a 504-point Desert Rats total. Gilbert leads all MLBLONGBALL pitchers this week by over 13 points. This is what a front-line starter looks like when the Rats need a signature week.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Cascades Double Up in the Rotation</div>
+        <p style="font-size:.85em">Chase Burns (40.5 pts, 10 IP, 0.90 ERA, 14 K) and Bryan Woo (35.5 pts, 7 IP, 0.00 ERA, 9 K) both landed in the pitcher top-7 for Troutdale this week. Combined: 76 points from two starters on a 490-point team. The Cascades are not riding one ace. They have depth, and it is showing.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; FREE AGENT ALERT: Robert Gasser</div>
+        <p style="font-size:.83em">Robert Gasser (MIL) posted 42.83 points &mdash; the week's 3rd-best pitching performance &mdash; while listed as a Free Agent in MLBLONGBALL. 11.2 IP, 1.54 ERA, 12 K. If he is still available on your wire, that is a conversation worth having before Week 13 begins.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">&#9889; Verified Pitching Lines &mdash; Week 12</div>
+        <table class="data">
+            <tr><th>Player</th><th>Team</th><th class="num">IP</th><th class="num">ERA</th><th class="num">K</th><th class="num">FPts</th></tr>
+            <tr class="highlight"><td><strong>Logan Gilbert</strong></td><td>RATS</td><td class="num">13.1</td><td class="num">1.35</td><td class="num">18</td><td class="num">63.67</td></tr>
+            <tr><td>Zack Wheeler</td><td>A-ARON</td><td class="num">11.2</td><td class="num">1.54</td><td class="num">16</td><td class="num">50.33</td></tr>
+            <tr><td>Robert Gasser</td><td><em>FA</em></td><td class="num">11.2</td><td class="num">1.54</td><td class="num">12</td><td class="num">42.83</td></tr>
+            <tr><td>Chase Burns</td><td>TING</td><td class="num">10.0</td><td class="num">0.90</td><td class="num">14</td><td class="num">40.5</td></tr>
+            <tr><td>Cam Schlittler</td><td>DOGS</td><td class="num">6.0</td><td class="num">0.00</td><td class="num">13</td><td class="num">38.5</td></tr>
+            <tr><td>Kyle Bradish</td><td>Triple G</td><td class="num">7.2</td><td class="num">1.17</td><td class="num">12</td><td class="num">37.83</td></tr>
+            <tr><td>Bryan Woo</td><td>TING</td><td class="num">7.0</td><td class="num">0.00</td><td class="num">9</td><td class="num">35.5</td></tr>
+            <tr><td>Joey Cantillo</td><td>A-ARON</td><td class="num">8.0</td><td class="num">1.13</td><td class="num">9</td><td class="num">35.0</td></tr>
+            <tr><td>Louis Varland</td><td>DOGS</td><td class="num">4.1</td><td class="num">0.00</td><td class="num">8</td><td class="num">34.67</td></tr>
+            <tr><td>Nolan McLean</td><td>SIDD</td><td class="num">7.0</td><td class="num">0.00</td><td class="num">9</td><td class="num">34.5</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px">All IP, ERA, K from Fantrax screenshot. TING=Troutdale Cascades, A-ARON=Sons of Pitches, Triple G=Goldy Goldy Gone.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All player statistics from Fantrax official data. Scoring Period 12, June 21, 2026.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 4: POWER RANKINGS + WEEK 13 PREVIEW -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="rankings">
+<div class="section-label">Post-Week 12 Power Rankings</div>
+<div class="headline-lg" style="margin-bottom:4px">Where They Stand</div>
+<div class="deck">Full standings context, momentum, and Week 13 matchup previews. The top of this league is locked in a one-game war. The middle is getting desperate. The bottom has two weeks to prove otherwise.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="pr-item"><div class="pr-rank top3">1</div><div>
+        <div class="pr-team">Troutdale Cascades <span class="same">&#9654; STILL FIRST</span></div>
+        <div class="pr-pts">10-2 &nbsp;&middot;&nbsp; 5,567.333 FPtsF &nbsp;&middot;&nbsp; Div: 2-1-0 (Blue) &nbsp;&middot;&nbsp; Streak: 2W</div>
+        <div class="pr-note">Ten wins. The Cascades are the class of MLBLONGBALL and their season-long production confirms it: most cumulative FPts, best record, best FP/G (5.03). Burns and Woo combined for 76 pitching points. Sal Stewart and Nick Kurtz both cracked the top-10 batting leaderboard. They won a game where the opponent posted 405 points. That is what dominant teams do.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">2</div><div>
+        <div class="pr-team">Desert Rats <span class="up">&#9650; 504-POINT STATEMENT</span></div>
+        <div class="pr-pts">9-3 &nbsp;&middot;&nbsp; 5,071.167 FPtsF &nbsp;&middot;&nbsp; Div: 2-1-0 (Blue) &nbsp;&middot;&nbsp; Streak: 3W</div>
+        <div class="pr-note">The week's high score. A 254-point margin. Logan Gilbert at 63.67 points. Three consecutive wins. The Rats are playing their best baseball of the season entering Week 13. They are one game back of the Cascades and the projections show this race going down to the wire. Week 13 opponent (Tempe Scorpions) is projected as a Rats win at 458.54&ndash;427.23. No games to give away from here out.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">3</div><div>
+        <div class="pr-team">Newberry Indians <span class="same">&#9654; STEADY AS EVER</span></div>
+        <div class="pr-pts">7-5 &nbsp;&middot;&nbsp; 4,940.834 FPtsF &nbsp;&middot;&nbsp; Div: 2-2-0 (Red) &nbsp;&middot;&nbsp; Streak: 1W</div>
+        <div class="pr-note">Seven and five, Red Division leaders, 422 points this week. The Indians don't make headlines but they keep winning. Their season cumulative FPts (4,940) are the fourth-highest in the league. Week 13 opponent is the Troutdale Cascades in what projects as a razor-thin game (Cascades 436&ndash;Indians 431). The Indians are about to get their biggest test of the second half.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">4</div><div>
+        <div class="pr-team">Goldy Goldy Gone <span class="up">&#9650; BACK TO .583</span></div>
+        <div class="pr-pts">7-5 &nbsp;&middot;&nbsp; 5,036.833 FPtsF &nbsp;&middot;&nbsp; Div: 2-1-0 (Blue) &nbsp;&middot;&nbsp; Streak: 1W</div>
+        <div class="pr-note">Third-highest cumulative FPts in the league (5,036) and they beat the Scorpions to get back to 7-5. Bell and Bradish delivered. The Blue Division is a gauntlet &mdash; Goldy shares it with the Cascades and Rats &mdash; but seven wins keeps them in the playoff conversation. Week 13 they face the Midland Dogs, projected as a Goldy win.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">5</div><div>
+        <div class="pr-team">Sidd Finch <span class="dn">&#9660; LOST BY TWO</span></div>
+        <div class="pr-pts">6-6 &nbsp;&middot;&nbsp; 4,593.167 FPtsF &nbsp;&middot;&nbsp; Div: 3-0-0 (Red) &nbsp;&middot;&nbsp; Streak: 1L</div>
+        <div class="pr-note">Crow-Armstrong posted 58.5 points. McLean went 7 IP, 0.00 ERA. The team scored 439.50 points. And they lost by two. That is a Sidd Finch week in its purest, most agonizing form. At 6-6 they are exactly .500 with a dominant Red Division record (3-0-0). If they can stay healthy and stop losing two-point games, they're dangerous. Week 13 they face Houston Gamblers, projected as a Sidd win.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">6</div><div>
+        <div class="pr-team">Midland Red Weasel Dogs <span class="up">&#9650; 2-GAME WIN STREAK</span></div>
+        <div class="pr-pts">6-6 &nbsp;&middot;&nbsp; 4,759.501 FPtsF &nbsp;&middot;&nbsp; Div: 0-3-0 (Blue) &nbsp;&middot;&nbsp; Streak: 2W</div>
+        <div class="pr-note">The Dogs are 6-6 and on a two-game winning streak with the fourth-highest cumulative FPts in the league (4,759). Their pitching has been good all season; Schlittler and Varland both made the top-10 this week. The division record (0-3-0) is a problem for seeding. Week 13 matchup vs Goldy is projected as a Dogs loss. They need to steal that one.</div>
+    </div></div>
+</div>
+
+<div class="col-rule">
+    <div class="pr-item"><div class="pr-rank">7</div><div>
+        <div class="pr-team">The BANK of Texas <span class="dn">&#9660; 2-GAME SKID</span></div>
+        <div class="pr-pts">5-7 &nbsp;&middot;&nbsp; 4,763.334 FPtsF &nbsp;&middot;&nbsp; Div: 2-1-0 (Red) &nbsp;&middot;&nbsp; Streak: 2L</div>
+        <div class="pr-note">Two hitters in the top five of the weekly batting leaderboard and they still lost to the Cascades by 85 points. At 5-7 with a two-game losing streak, the BANK's playoff path is narrowing. Their cumulative FPts (4,763) are actually higher than Sidd Finch and the Dogs &mdash; this is a roster that has not converted production into wins. Week 13 they face the Sons of Pitches, projected as a narrow BANK win.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">8</div><div>
+        <div class="pr-team">Houston Gamblers <span class="dn">&#9660; 2-GAME SKID</span></div>
+        <div class="pr-pts">5-7 &nbsp;&middot;&nbsp; 4,403.667 FPtsF &nbsp;&middot;&nbsp; Div: 2-1-0 (White) &nbsp;&middot;&nbsp; Streak: 2L</div>
+        <div class="pr-note">Bryan Reynolds put up 47 points and the Gamblers lost anyway. Two straight losses and a 5-7 record. The White Division is genuinely bad &mdash; Tempe leads it at 5-7 &mdash; which keeps the Gamblers' playoff math technically alive. Week 13 they face Sidd Finch, projected as a Sidd win. Losing that game would make things very difficult.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">9</div><div>
+        <div class="pr-team">Tempe Scorpions <span class="dn">&#9660; SEASON LOW</span></div>
+        <div class="pr-pts">5-7 &nbsp;&middot;&nbsp; 4,144.667 FPtsF &nbsp;&middot;&nbsp; Div: 2-1-0 (White) &nbsp;&middot;&nbsp; Streak: 1L</div>
+        <div class="pr-note">218 points. The week's lowest total. For a team that leads the White Division. The Scorpions are the most confounding squad in the league right now &mdash; they have a 5-7 record AND a divisional lead, which tells you everything about how bad the White Division has been. Week 13 they face the Desert Rats, projected to lose 458&ndash;427. Things could get worse before they get better.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">10</div><div>
+        <div class="pr-team">Troutdale Gales <span class="dn">&#9660; 3-GAME SKID</span></div>
+        <div class="pr-pts">4-8 &nbsp;&middot;&nbsp; 4,306.834 FPtsF &nbsp;&middot;&nbsp; Div: 0-4-0 (Red) &nbsp;&middot;&nbsp; Streak: 3L</div>
+        <div class="pr-note">Kyle Schwarber gave them 48.5 points. They still lost. The Gales are 4-8 with an 0-4-0 divisional record and the league's best cumulative hitting total (2,877 FPts). Their pitching (1,429.833, 10th in the league) is the single reason their record looks like this. Week 13 they face the Ithaca Spartans, projected as a Gales win. They need it.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">11</div><div>
+        <div class="pr-team">Ithaca Spartans <span class="dn">&#9660;</span></div>
+        <div class="pr-pts">4-8 &nbsp;&middot;&nbsp; 3,718.667 FPtsF &nbsp;&middot;&nbsp; Div: 1-2-0 (White) &nbsp;&middot;&nbsp; Streak: 1L</div>
+        <div class="pr-note">Dead last in cumulative FPts (3,718) and dead last in pitching FPts (1,161). Travis Bazzana had a strong week (43 pts) but there isn't enough around him. At 4-8, the season is effectively over in terms of playoff math. Week 13 they face the Troutdale Gales, projected to lose. The Spartans are playing for pride and individual performances at this point.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank" style="color:var(--red);-webkit-text-stroke:1px var(--red)">12</div><div>
+        <div class="pr-team">Sons of Pitches <span class="up">&#9650; WON BY TWO</span></div>
+        <div class="pr-pts">4-8 &nbsp;&middot;&nbsp; 4,164.833 FPtsF &nbsp;&middot;&nbsp; Div: 1-2-0 (White) &nbsp;&middot;&nbsp; Streak: 1W</div>
+        <div class="pr-note">Ranked 12th because the record says 4-8. But two things are true: they just won the most dramatic game of the 2026 season by two points, and Zack Wheeler (50.33 pts) plus Joey Cantillo (35 pts) is a legitimate pitching duo. Week 13 they face The BANK of Texas in a game projected as a narrow BANK win. The Sons have defied projections before.</div>
+    </div></div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+<div class="section-label">Week 13 Preview &mdash; June 22&ndash;28, 2026 &nbsp;&middot;&nbsp; Verified Schedule</div>
+<div class="headline-md" style="margin-bottom:16px">Six Matchups. The Race at the Top Has No Margin for Error.</div>
+<div class="col-2">
+<div>
+    <div class="wk-card">
+        <div class="wk-hdr">&#9733; MARQUEE &mdash; Newberry Indians (7-5) vs Troutdale Cascades (10-2)</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Newberry Indians</div><div class="wk-rec">7-5 &middot; 422.83 pts Wk12</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Troutdale Cascades <span class="badge badge-hot">FAV</span></div><div class="wk-rec">10-2 &middot; 490.50 pts Wk12</div></div>
+        </div>
+        <div class="wk-look">Projections say Cascades 436, Indians 431. Five points. This is the week's closest projected matchup and one of the most meaningful games of the second half. A Cascades loss combined with a Rats win ties the race at the top. The Indians have been the steadiest team in the middle tier and this is their best opportunity to announce themselves as genuine playoff contenders. The Cascades are favored. They are always favored. That stopped meaning much weeks ago.</div>
+    </div>
+
+    <div class="wk-card">
+        <div class="wk-hdr">&#128000; Desert Rats (9-3) vs Tempe Scorpions (5-7)</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Desert Rats <span class="badge badge-hot">FAV</span></div><div class="wk-rec">9-3 &middot; 504.33 pts Wk12</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Tempe Scorpions <span class="badge badge-must">MUST WIN</span></div><div class="wk-rec">5-7 &middot; 218 pts Wk12</div></div>
+        </div>
+        <div class="wk-look">Projections favor the Rats 458.54&ndash;427.23. Coming off a 504-point week, on a three-game win streak, facing a team that just posted 218 points &mdash; the Rats should be comfortable here. But a Scorpions offense that is capable of big weeks (they led the White Division for a reason) can't be dismissed entirely. The Rats cannot afford to give this one back while waiting on Cascades-Indians.</div>
+    </div>
+
+    <div class="wk-card">
+        <div class="wk-hdr">Goldy Goldy Gone (7-5) vs Midland Red Weasel Dogs (6-6)</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Goldy Goldy Gone <span class="badge badge-hot">FAV</span></div><div class="wk-rec">7-5 &middot; 332.83 pts Wk12</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Midland Red Weasel Dogs</div><div class="wk-rec">6-6 &middot; 330.17 pts Wk12</div></div>
+        </div>
+        <div class="wk-look">Projections favor Goldy 337.21&ndash;323.28. The Dogs are on a two-game win streak with real pitching (Schlittler, Varland both cracked the top-10 this week). Their 0-3-0 Blue Division record means this isn't a division game, but both teams are firmly in playoff contention. Goldy needs to stay at 7-5 or better. The Dogs need to keep the streak alive. Something has to give.</div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="wk-card">
+        <div class="wk-hdr">Houston Gamblers (5-7) vs Sidd Finch (6-6)</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Houston Gamblers</div><div class="wk-rec">5-7 &middot; 254.83 pts Wk12</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Sidd Finch <span class="badge badge-hot">FAV</span></div><div class="wk-rec">6-6 &middot; 439.50 pts Wk12</div></div>
+        </div>
+        <div class="wk-look">Projections favor Sidd 381.28&ndash;337.53. Sidd Finch is coming off their most agonizing loss of the season &mdash; two points to the Sons &mdash; and this is a matchup they should win comfortably on paper. Crow-Armstrong, McLean, and a competent rotation should outperform a Gamblers squad that posted 254 last week. Sidd takes this and gets back to 7-6. The Gamblers continue to fall backward.</div>
+    </div>
+
+    <div class="wk-card">
+        <div class="wk-hdr">Ithaca Spartans (4-8) vs Troutdale Gales (4-8)</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Ithaca Spartans</div><div class="wk-rec">4-8 &middot; 250.17 pts Wk12</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Troutdale Gales <span class="badge badge-hot">FAV</span></div><div class="wk-rec">4-8 &middot; 361.50 pts Wk12</div></div>
+        </div>
+        <div class="wk-look">Projections favor the Gales 421&ndash;333.16. A battle between two 4-8 teams with playoff ambitions that belong to a different season. The Gales' cumulative hitting total (best in the league) and Schwarber's presence give them the edge. The Spartans need Bazzana to have another big week and their pitching &mdash; the worst in the league &mdash; to not give it all back. The Gales should win this. Should.</div>
+    </div>
+
+    <div class="wk-card">
+        <div class="wk-hdr">Sons of Pitches (4-8) vs The BANK of Texas (5-7)</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Sons of Pitches</div><div class="wk-rec">4-8 &middot; 441.50 pts Wk12</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">The BANK of Texas <span class="badge badge-toss">TOSS-UP</span></div><div class="wk-rec">5-7 &middot; 405.83 pts Wk12</div></div>
+        </div>
+        <div class="wk-look">Projections favor the BANK 369.43&ndash;362.18, but this league just watched the Sons win by two points on a night Sidd Finch posted 439. Wheeler and Cantillo are a legitimate pitching tandem. The BANK's Larnach and Langford give them real offensive upside. The projections say BANK by seven. After last week, seven points is a coin flip.</div>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Power Rankings reflect post-Week 12 standings. Week 13 projections from Fantrax. June 21, 2026.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 5: FA & WIRE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="fa">
+<div class="section-label">Week 12 &mdash; Free Agent &amp; Waiver Wire Activity</div>
+<div class="headline-lg" style="margin-bottom:4px">The Wire Report</div>
+<div class="deck">No transaction data was provided for Week 12. The section below reflects verified player availability and notable free agent performances from Scoring Period 12 data.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; TRANSACTION DATA NOT SUBMITTED</div>
+        <p style="font-size:.83em">No waiver or Vickrey auction data was provided for Scoring Period 12. If you have the transaction log, submit it and this section will be updated. What we can report: the most notable free agent of the week was Robert Gasser, who put up 42.83 points while unowned.</p>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">&#128165; Free Agent Alert &mdash; Week 12 Performance</div>
+        <div class="fa-row"><span class="fa-add">FA</span> <span><strong>Robert Gasser</strong> SP (MIL) &mdash; 42.83 pts, 11.2 IP, 1.54 ERA, 12 K &mdash; unowned</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">The week's third-best pitching performance came from a free agent. Gasser threw 11.2 innings, posted a 1.54 ERA, and struck out 12 for Milwaukee while sitting unclaimed on every MLBLONGBALL roster. He is either being ignored or unavailable for reasons not reflected in the Fantrax data. Worth investigating before Week 13 locks.</div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="waste-box">
+        <div class="waste-title">&#128683; Points Left on the Table</div>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Tempe Scorpions &mdash; 218 points:</strong> The week's lowest score by a wide margin. Whatever the Scorpions' roster configuration looked like this week, 218 points is a crisis-level output for a team that needs wins. Bench decisions, lineup optimization, or a broken lineup &mdash; something went very wrong.</p>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Ithaca Spartans &mdash; 250 points:</strong> The second-lowest total of the week for the team with the lowest cumulative FPts in the league. Travis Bazzana gave them 43 points. No one else came close to that level of production. The Spartans' pitching situation (last in the league at 1,161 FPts) continues to drag the entire operation down.</p>
+        <p style="font-size:.85em"><strong>Houston Gamblers &mdash; 254 points:</strong> Bryan Reynolds (47 pts) was genuinely excellent. The rest of the Gamblers' roster was not. A team that has three hitters capable of top-10 weeks posted 254 total. The offense is inconsistent in a way that keeps costing them winnable games.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Free agent data from Fantrax Scoring Period 12. Transaction log not submitted for Week 12. June 21, 2026.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 6: COLUMNISTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="columns">
+<div class="section-label">Opinion &amp; Commentary &mdash; Week 12 Final</div>
+<div class="headline-lg" style="margin-bottom:4px">The Columnists</div>
+<div class="deck">Joe Falls. Mitch Albom. Big Lou Palmieri. Week 12 is done. The race is one game. Two teams left standing at the top. The rest of the league is watching.</div>
+<hr class="rule-h-thick">
+
+<div class="column-box">
+    <div class="column-box-title">One Game. Every Week. That's the Race.</div>
+    <div class="column-box-byline">By Joe Falls &nbsp;&middot;&nbsp; J.G. Taylor Spink Award Winner, 2001 &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">The gap between the Troutdale Cascades and the Desert Rats has been one game for what feels like half the season now. One game in April. One game in May. One game entering Week 12. One game after it. I have been covering fantasy baseball for a long time and I am telling you: two teams running this close for this long is unusual. It means something about both of them.</p>
+            <p class="body-sm">The Cascades are 10-2. They posted 490 points this week against a BANK of Texas team that put up 405. They have two pitchers in the top seven of the weekly leaderboard and two hitters in the top ten. Their cumulative FPts total is the highest in the league by 496 points over the second-place Rats. They are the best team in MLBLONGBALL. That is not an opinion. That is what the numbers say.</p>
+            <p class="body-sm">And then there are the Desert Rats, who went out and posted 504 points, which was the week's highest total, and Logan Gilbert threw 13.1 innings with an ERA of 1.35 and 18 strikeouts. That is a dominant pitching performance on a dominant scoring week from a team that is 9-3 and on a three-game winning streak. The Rats are not fading. They are not content with second place. They have been one game back for a month and they keep refusing to let it become two.</p>
+        </div>
+        <div>
+            <p class="body-sm">I want to say something about the Sidd Finch situation because 439.50 points is a legitimate team effort and they lost by two. Pete Crow-Armstrong gave them 58.5 points &mdash; the week's best individual hitting performance in the league. Nolan McLean went 7 innings and allowed nothing. That is a complete team week. They lost. Two points separated a 6-6 record from a 7-5 record in the Red Division standings. Sidd Finch has had bad weeks this season and they have had brilliant weeks. Week 12 was a brilliant week that they lost anyway. That is a different kind of hard.</p>
+            <p class="body-sm">The Tempe Scorpions posted 218 points. I have been doing this long enough to know that 218 points in a single week is a configuration problem, not a talent problem. The talent is there. The Scorpions lead the White Division despite a 5-7 record because the White Division has been collectively poor this year. But 218 points is the kind of week that derails seasons. They face the Desert Rats in Week 13. The projections are not kind. For the Scorpions to stay relevant, they need to find 200 additional points from somewhere before the week ends.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Two Points and What They Mean</div>
+    <div class="column-box-byline">By Mitch Albom &nbsp;&middot;&nbsp; Detroit Free Press &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">There is a game being played in this league that will be remembered, if such things are remembered, for the fact that it ended with a margin of two fantasy points. Sidd Finch scored 439.50. The Sons of Pitches scored 441.50. Between those two numbers is the difference between a winning record and a losing one, between momentum and disappointment, between a week that felt like progress and a week that will feel like loss for some time.</p>
+            <p class="body-sm">Pete Crow-Armstrong delivered 58.5 points for Sidd Finch. If you are building a case for the week's best individual performance, you start with Crow-Armstrong. He was excellent. His team had 439 points at the final whistle. And they lost. That is the nature of this game &mdash; individual brilliance does not guarantee collective success, and a week that deserved to go differently went differently anyway.</p>
+            <p class="body-sm">I want to think about what it means to be the Sons of Pitches right now. Four wins and eight losses is a hard record to carry. But they have now won two of their last three games, and the most recent victory came against 439.50 points of opposition. Zack Wheeler threw 11.2 innings and gave up three runs. Joey Cantillo added eight more innings at 1.13 ERA. That is not a team that is losing. That is a team that is 4-8 because the first month of the season happened the way it happened, and what comes after that is a different story written by different weeks.</p>
+        </div>
+        <div>
+            <p class="body-sm">The Desert Rats posted 504 points. I do not want to only see the number, though the number is significant. What matters is what the number came from: Logan Gilbert choosing Week 12 to throw the best individual pitching performance in the league this period. A team that is three wins behind the Cascades in the all-time season standings and one game behind them in the current one. A commissioner's squad that has been climbing toward something all year and keeps arriving exactly one game short. The Rats are not chasing the Cascades anymore. They are running alongside them. The last month of the season will tell us which one is actually faster.</p>
+            <p class="body-sm">The Troutdale Gales are 4-8 with the best cumulative hitting total in the league. That is a sentence I keep returning to because I cannot resolve the contradiction it contains. Kyle Schwarber gave them 48.5 points this week in a losing effort. Somewhere in the gap between what the Gales' hitting numbers promise and what their record delivers is a pitching staff that has cost them somewhere between four and six wins this season. I do not know how to feel about a team whose offense is this good and whose season looks like this. I think they know exactly how to feel. I think it has been this way for months.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Big Lou&rsquo;s Corner: Gilbert Was a Freight Train and Nobody Was Getting Off the Tracks</div>
+    <div class="column-box-byline">By Lou Palmieri, Baseball Lifer &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">SIXTY-THREE POINT SIXTY-SEVEN. That is what Logan Gilbert did for the Desert Rats this week and I need everyone to sit with that number for a moment. Thirteen-and-a-third innings. One-point-three-five ERA. Eighteen strikeouts. The week's best pitching performance in MLBLONGBALL by a margin that is not close. And he did it while his team was posting FIVE HUNDRED AND FOUR TOTAL POINTS. That is not a coincidence. That is an ace doing ace things at the exact moment his team needed a statement week. The Rats went out and made a statement. Gilbert signed it, sealed it, and delivered it personally.</p>
+            <p class="body-sm">Now let me talk about the Cascades because 10-2 is a number that deserves to be said out loud. TEN AND TWO. In a twelve-team competitive fantasy league where everybody is trying, ten wins through twelve weeks is extraordinary. Chase Burns at 0.90 ERA. Bryan Woo at 0.00 ERA. Two pitchers in the top seven of the weekly leaderboard AND two hitters in the top ten batting leaderboard. The BANK of Texas put up 405 points and lost by 85. You want to know how good the Cascades are? That is how good the Cascades are.</p>
+        </div>
+        <div>
+            <p class="body-sm">SONS OF PITCHES WIN BY TWO POINTS. I was not going to let this issue close without addressing this directly. The Sons are 4-8. They have Zack Wheeler throwing 11.2 innings at 1.54 ERA. They have Joey Cantillo at 8 innings, 1.13 ERA. They beat Sidd Finch who had the week's best hitter and 439.50 total points. They beat them by TWO POINTS. I am not saying the Sons are a playoff team. I am not saying the 4-8 record is misleading. I am saying that when this league sits down to write the story of the 2026 season, the Sons-Sidd game from Week 12 is going to be in the chapter about things that matter. Two points. That is all.</p>
+            <p class="body-sm">Tempe Scorpions: 218 points. I am going to give them the benefit of the doubt and assume something went catastrophically wrong with their lineup. I have to believe that. Because the alternative &mdash; that a team in contention for a playoff spot, however tenuous, simply produced 218 points in a full week of major league baseball &mdash; is a scenario I cannot fully accept. They face the Desert Rats next week. The Rats just posted 504. I hope for the Scorpions' sake that what happened in Week 12 is an anomaly and not a preview of what the rest of their season looks like.</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-footer">
+    <p>The opinions expressed in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office, its commissioner, or anyone who lost to the Sons of Pitches by two fantasy points and has strong feelings about it.</p>
+    <p style="margin-top:8px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Vol. 1, No. 15 &nbsp;&middot;&nbsp; Week 12 Final Edition &nbsp;&middot;&nbsp; Next edition following Week 13 (June 28, 2026)</p>
+</div>
+</div>
+
+</div></div><!-- /inner /newspaper -->
+
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
