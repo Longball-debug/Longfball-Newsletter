@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Longball Gazette — Trade Deadline Special Report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f2ecdb;
+    --paper-dark:#e9e0c8;
+    --ink:#201b13;
+    --ink-soft:#4a4334;
+    --rule:#bdb190;
+    --red:#9c2b26;
+    --gold:#a97c1f;
+    --green:#3f5c3f;
+    --bar-bg:#ddd3b3;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-dark);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    line-height:1.5;
+  }
+  .sheet{
+    max-width:980px;
+    margin:0 auto;
+    background:var(--paper);
+    background-image:
+      radial-gradient(rgba(0,0,0,0.025) 1px, transparent 1px);
+    background-size:3px 3px;
+    box-shadow:0 0 0 1px var(--rule), 0 20px 50px rgba(0,0,0,0.25);
+    padding:0 0 60px 0;
+  }
+
+  /* ===== MASTHEAD ===== */
+  .ticker{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Special Elite', monospace;
+    font-size:12px;
+    letter-spacing:0.5px;
+    padding:6px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:3px solid var(--red);
+  }
+  .ticker span{
+    display:inline-block;
+    padding-left:100%;
+    animation:scroll 38s linear infinite;
+  }
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+  }
+  .masthead{
+    text-align:center;
+    padding:28px 20px 14px 20px;
+    border-bottom:4px double var(--ink);
+  }
+  .masthead .eyebrow{
+    font-family:'Special Elite', monospace;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .masthead h1{
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:clamp(42px, 7vw, 78px);
+    margin:6px 0 4px 0;
+    letter-spacing:-1px;
+  }
+  .masthead .sub{
+    font-style:italic;
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .meta-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:7px 20px;
+    font-family:'Special Elite', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--ink-soft);
+    margin:0 20px;
+  }
+
+  /* ===== INTRO ===== */
+  .intro{
+    padding:30px 40px 10px 40px;
+  }
+  .kicker{
+    color:var(--red);
+    font-family:'Special Elite', monospace;
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+  .headline{
+    font-family:'Playfair Display', serif;
+    font-weight:800;
+    font-size:34px;
+    line-height:1.1;
+    margin:6px 0 14px 0;
+  }
+  .byline{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+    font-style:italic;
+  }
+  .dropcap:first-letter{
+    float:left;
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:74px;
+    line-height:0.78;
+    padding:6px 8px 0 0;
+    color:var(--red);
+  }
+  .lede{
+    columns:2;
+    column-gap:32px;
+    font-size:15.5px;
+  }
+  .lede p{margin:0 0 12px 0;}
+  .rules-box{
+    background:var(--paper-dark);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--gold);
+    padding:14px 18px;
+    margin:18px 0 4px 0;
+    font-size:13px;
+    column-span:all;
+  }
+  .rules-box strong{font-family:'Playfair Display', serif;}
+
+  /* ===== POWER RANKING STRIP ===== */
+  .power-strip{
+    margin:26px 40px 0 40px;
+    border-top:3px solid var(--ink);
+    border-bottom:1px solid var(--rule);
+    padding:14px 0;
+  }
+  .power-strip h2{
+    font-family:'Playfair Display', serif;
+    font-size:18px;
+    margin:0 0 10px 0;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  .power-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(190px,1fr));
+    gap:6px 18px;
+    font-size:13px;
+  }
+  .power-list div{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px dotted var(--rule);
+    padding:2px 0;
+  }
+  .power-list b{font-family:'Playfair Display', serif;}
+
+  /* ===== TEAM SECTIONS ===== */
+  .teams{
+    padding:10px 40px 0 40px;
+  }
+  .team{
+    border-top:3px solid var(--ink);
+    padding:22px 0 26px 0;
+  }
+  .team-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .team-name-block .rank{
+    font-family:'Special Elite', monospace;
+    font-size:11px;
+    color:var(--red);
+    letter-spacing:1px;
+  }
+  .team-name{
+    font-family:'Playfair Display', serif;
+    font-weight:800;
+    font-size:26px;
+    margin:2px 0 0 0;
+  }
+  .team-code{
+    font-family:'Special Elite', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .verdict-tag{
+    font-family:'Special Elite', monospace;
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border:1px solid var(--ink);
+    white-space:nowrap;
+    height:fit-content;
+  }
+  .v-buy{background:var(--green); color:var(--paper); border-color:var(--green);}
+  .v-sell{background:var(--red); color:var(--paper); border-color:var(--red);}
+  .v-mixed{background:var(--gold); color:var(--paper); border-color:var(--gold);}
+
+  .bars{
+    display:flex;
+    gap:24px;
+    margin:14px 0;
+    font-size:11px;
+    font-family:'Special Elite', monospace;
+    color:var(--ink-soft);
+  }
+  .bar-group{flex:1; min-width:160px;}
+  .bar-label{display:flex; justify-content:space-between; margin-bottom:3px;}
+  .bar-track{
+    height:9px;
+    background:var(--bar-bg);
+    border:1px solid var(--rule);
+  }
+  .bar-fill{height:100%;}
+  .bar-fill.bat{background:var(--gold);}
+  .bar-fill.pitch{background:var(--ink-soft);}
+
+  .team-body{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:24px;
+    font-size:14.5px;
+  }
+  .team-body h4{
+    font-family:'Playfair Display', serif;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin:0 0 4px 0;
+    border-bottom:1px solid var(--rule);
+    padding-bottom:3px;
+  }
+  .team-body p{margin:0 0 10px 0;}
+  .stat-list{
+    font-size:12.5px;
+    margin:0;
+    padding-left:0;
+    list-style:none;
+  }
+  .stat-list li{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px dotted var(--rule);
+    padding:3px 0;
+  }
+  .stat-list .neg{color:var(--red);}
+  .injury-tag{
+    display:inline-block;
+    font-size:11px;
+    font-family:'Special Elite', monospace;
+    color:var(--red);
+    border:1px solid var(--red);
+    padding:1px 6px;
+    border-radius:2px;
+    margin:2px 4px 0 0;
+  }
+
+  @media (max-width:640px){
+    .lede{columns:1;}
+    .team-body{grid-template-columns:1fr;}
+    .intro, .teams, .power-strip{padding-left:18px; padding-right:18px;}
+  }
+
+  /* ===== FOOTER ===== */
+  .gazette-footer{
+    margin:30px 40px 0 40px;
+    border-top:4px double var(--ink);
+    padding-top:14px;
+    font-size:11px;
+    font-family:'Special Elite', monospace;
+    color:var(--ink-soft);
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="ticker"><span>FAAB BIDS LOCK SUNDAY 7PM MST &nbsp;&bull;&nbsp; 12 STARTS-PER-PERIOD CAP IN EFFECT &nbsp;&bull;&nbsp; TRADE DEADLINE: MIDNIGHT, JULY 4 &nbsp;&bull;&nbsp; SEASON 19 OF MLBLONGBALL &nbsp;&bull;&nbsp; FAAB BIDS LOCK SUNDAY 7PM MST &nbsp;&bull;&nbsp; 12 STARTS-PER-PERIOD CAP IN EFFECT &nbsp;&bull;&nbsp; TRADE DEADLINE: MIDNIGHT, JULY 4 &nbsp;&bull;&nbsp;</span></div>
+
+  <div class="masthead">
+    <div class="eyebrow">Established 2008 &middot; Season XIX</div>
+    <h1>The Longball Gazette</h1>
+    <div class="sub">"All the Box Scores Fit to Print"</div>
+  </div>
+  <div class="meta-row">
+    <span>Trade Deadline Special Report</span>
+    <span>Tuesday, June 30, 2026</span>
+  </div>
+
+  <div class="intro">
+    <div class="kicker">Deadline Watch &middot; 12-Team Breakdown</div>
+    <h2 class="headline">Fireworks Early: Every Roster's Cracks, Exposed Before Midnight on the Fourth</h2>
+    <div class="byline">By Joe Falls, Longball Gazette Staff</div>
+    <div class="lede dropcap">
+      <p>With the Trade Deadline closing at midnight on the Fourth of July, there's no more time for general managers around MLBLONGBALL to admire their rosters from a distance. We pulled the full league ledger — every starter, every reserve, every man on the injury wire — and ran it slot by slot against the league averages to find exactly where each of these twelve outfits is bleeding production. What follows is not a hunch. It's a diagnosis.</p>
+      <p>A note on method: this report is built entirely from current roster construction and cumulative fantasy production (FPts) at each lineup slot, cross-checked against league-wide averages per position. It does not reflect the actual win-loss standings, which the Commissioner's office tracks separately. Think of it as a scouting report on the chassis, not the scoreboard — though the two tend to rhyme.</p>
+      <div class="rules-box">
+        <strong>Deadline Reminders:</strong> Vickrey (FAAB) bidding remains in effect through the break, with the waiver wire processing Sundays at 7:00 PM MST. The 12-starts-per-period cap is still very much alive for any club stockpiling arms for a stretch run. Trades must be completed by midnight, July 4th.
+      </div>
+    </div>
+  </div>
+
+  <div class="power-strip">
+    <h2>League Production Index — Total Roster FPts</h2>
+    <div class="power-list">
+      <div><span>1. Desert Rats (RATS)</span><b>6,060.5</b></div>
+      <div><span>2. Troutdale Cascades (TING)</span><b>5,934.8</b></div>
+      <div><span>3. Troutdale Gales (GALES)</span><b>5,920.7</b></div>
+      <div><span>4. Houston Gamblers (GMBLRS)</span><b>5,834.0</b></div>
+      <div><span>5. Midland Red Weasel Dogs (DOGS)</span><b>5,554.8</b></div>
+      <div><span>6. Newberry Indians (METZ)</span><b>5,526.7</b></div>
+      <div><span>7. Goldy Goldy Gone (Triple G)</span><b>5,509.7</b></div>
+      <div><span>8. Tempe Scorpions (SCORP)</span><b>5,378.8</b></div>
+      <div><span>9. Sons of Pitches (A-ARON)</span><b>5,294.0</b></div>
+      <div><span>10. Sidd Finch (SIDD)</span><b>5,063.7</b></div>
+      <div><span>11. The BANK of Texas (BANK)</span><b>5,030.0</b></div>
+      <div><span>12. Ithaca Spartans (MSU)</span><b>4,896.3</b></div>
+    </div>
+  </div>
+
+  <div class="teams">
+
+    <!-- 1 DESERT RATS -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 1 in Roster Production</div>
+          <div class="team-name">Desert Rats <span class="team-code">RATS</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,572.5</span></div><div class="bar-track"><div class="bar-fill bat" style="width:100%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,488.0</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:71%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>The Rats sit atop the entire league in roster production, and it isn't close — Shohei Ohtani (357.0), Bryce Harper (351.0) and Freddie Freeman (314.5) anchor a lineup with thump at every corner, while a stacked rotation (Logan Gilbert, Logan Webb, Dylan Cease, Nathan Eovaldi, Seth Lugo) gives this club more usable starts than it can even play. This is a club built to win now.</p>
+          <p>The soft spot is the middle infield slot, where Corey Seager has produced just 129.0 points — more than 100 below the league-average MI bat — and a bullpen (Barnett, Kerkering, Melton, Weaver) that's serviceable but unspectacular. Zack Gelof (2B), Trent Grisham (OF) and Logan Henderson (SP) are all currently on the injury wire.</p>
+          <h4>Deadline Move</h4>
+          <p>With three healthy, productive starters stashed on the bench (Cease, Eovaldi, Lugo all rostered behind the active five), the Rats have the rarest asset in the league: surplus front-line pitching. Flip one for a bat at MI and a save-chaser for the pen, and this is the team to beat in the second half.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>MI — Corey Seager</span><span class="neg">129.0 pts</span></li>
+            <li><span>RP — Mason Barnett</span><span class="neg">60.7 pts</span></li>
+            <li><span>OF — Cole Carrigg</span><span class="neg">72.5 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">Z. Gelof — 2B</span>
+          <span class="injury-tag">T. Grisham — OF</span>
+          <span class="injury-tag">L. Henderson — SP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 TROUTDALE CASCADES -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 2 in Roster Production</div>
+          <div class="team-name">Troutdale Cascades <span class="team-code">TING</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>2,901.0</span></div><div class="bar-track"><div class="bar-fill bat" style="width:78%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>3,033.8</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:100%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>No staff in the league produces like Troutdale's. Jacob Misiorowski (419.0) leads every pitcher in MLBLONGBALL, and he's got Chase Burns (313.8) and Braxton Ashcraft (294.3) for company — plus David Bednar, Mason Miller and Cade Smith stabilizing the bullpen. This is, by the numbers, the best pitching staff in the Gazette's coverage area.</p>
+          <p>The offense is the drag. Catcher is a genuine void — Cal Raleigh, normally an MVP-caliber bat, is producing just 99.5 points, the worst output at the position leaguewide. CI (Bryce Eldridge, 135.0) is similarly thin. Tyler Soderstrom (OF) and Blake Snell (SP) are both shelved.</p>
+          <h4>Deadline Move</h4>
+          <p>Cascades have five rostered starters and could deal from a position of absurd strength. A change-of-scenery package — spare SP for a bat at catcher or corner infield — fixes the only real hole on a roster that's otherwise championship-built.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>C — Cal Raleigh</span><span class="neg">99.5 pts</span></li>
+            <li><span>CI — Bryce Eldridge</span><span class="neg">135.0 pts</span></li>
+            <li><span>SP — Z. Matthews (res.)</span><span class="neg">103.7 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">T. Soderstrom — OF</span>
+          <span class="injury-tag">B. Snell — SP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 TROUTDALE GALES -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 3 in Roster Production</div>
+          <div class="team-name">Troutdale Gales <span class="team-code">GALES</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,716.0</span></div><div class="bar-track"><div class="bar-fill bat" style="width:100%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,204.7</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:63%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>The Gales own the league's most productive offense, full stop — Andy Pages (338.0), Kyle Schwarber (310.5) and Pete Alonso (310.0) lead an outfield-and-corners attack with no real holes, and Nico Hoerner anchors second base at an excellent 305.0.</p>
+          <p>The rotation behind George Kirby is where this club leaks value: Aaron Nola (94.0) and Griffin Jax (88.0) are giving back starts, and Hunter Greene remains a zero on the injury wire alongside Michael Soroka. Third base and shortstop are also running a touch below league norm.</p>
+          <h4>Deadline Move</h4>
+          <p>This is the textbook buyer: elite, deep offense, thin rotation. A change-the-deadline-day trade — spare bat for a controllable starter — turns the Gales from a scary offense into a complete club.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>SP — Aaron Nola</span><span class="neg">94.0 pts</span></li>
+            <li><span>SP — Griffin Jax</span><span class="neg">88.0 pts</span></li>
+            <li><span>3B — Austin Riley (res.)</span><span class="neg">178.5 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">M. Trout — UT</span>
+          <span class="injury-tag">M. Soroka — SP</span>
+          <span class="injury-tag">H. Greene — SP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 HOUSTON GAMBLERS -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 4 in Roster Production</div>
+          <div class="team-name">Houston Gamblers <span class="team-code">GMBLRS</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,504.0</span></div><div class="bar-track"><div class="bar-fill bat" style="width:94%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,330.0</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:67%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>An outfield trio of Bryan Reynolds (345.0), Brandon Marsh (290.0) and Daylen Lile (273.0), paired with Matt Olson at corner infield (329.5), gives Houston one of the league's more balanced lineups. Chris Sale headlines a rotation with four extra arms stashed behind him.</p>
+          <p>The injury to Jose Ramirez is the story here — he was pacing for 329.0 points before landing on the wire, and third base production craters without him. Catcher (Will Smith, also injured) and the deep pitching pool (Andrew Alvarez, Bubba Chandler) round out the soft spots.</p>
+          <h4>Deadline Move</h4>
+          <p>With Ramirez's return date uncertain, a short-term rental at third base or catcher — paid for with one of those four extra starters — keeps this roster's floor high while it waits for its $300-million man to get back on the field.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>C — Will Smith</span><span class="neg">140.0 pts</span></li>
+            <li><span>P — Andrew Alvarez</span><span class="neg">92.3 pts</span></li>
+            <li><span>SP — Emmet Sheehan</span><span class="neg">123.8 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">W. Smith — C</span>
+          <span class="injury-tag">J. Ramirez — 3B</span>
+          <span class="injury-tag">T. Glasnow — SP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 MIDLAND RED WEASEL DOGS -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 5 in Roster Production</div>
+          <div class="team-name">Midland Red Weasel Dogs <span class="team-code">DOGS</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,048.0</span></div><div class="bar-track"><div class="bar-fill bat" style="width:82%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,506.8</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:72%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>James Wood (370.0), CJ Abrams (359.5) and Byron Buxton (314.0) make this a lineup nobody wants to face, and the bullpen — Bryan Baker, Eduard Bazardo, Abner Uribe, Louis Varland — is arguably the league's deepest, all four men comfortably above-average.</p>
+          <p>But the rotation took a direct hit: Nick Pivetta (38.0) and Grayson Rodriguez (8.8) are both on the injury wire, effectively voiding two roster spots that should be producing innings. That's a lot of dead weight for the defending champs to be carrying into August.</p>
+          <h4>Deadline Move</h4>
+          <p>The Dogs have four championships in the trophy case (most recently back-to-back in '23-'24) and the lineup to make a fifth run — but they need a real top-of-rotation arm now. Spare an elite bullpen piece for a healthy starter and the path is clear.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>SP — Grayson Rodriguez</span><span class="neg">8.8 pts</span></li>
+            <li><span>SP — Nick Pivetta</span><span class="neg">38.0 pts</span></li>
+            <li><span>2B — Kody Clemens</span><span class="neg">229.0 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">N. Pivetta — SP</span>
+          <span class="injury-tag">G. Rodriguez — SP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 NEWBERRY INDIANS -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 6 in Roster Production</div>
+          <div class="team-name">Newberry Indians <span class="team-code">METZ</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Must-Buy</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>2,991.5</span></div><div class="bar-track"><div class="bar-fill bat" style="width:80%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,535.2</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:73%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>This is the most lopsided single-slot problem in the entire league. Francisco Lindor — a perennial top-five shortstop — has managed only 77.0 points at a position averaging 250.8 leaguewide. That's a 173.8-point gap, the single largest shortfall at any position for any team in MLBLONGBALL.</p>
+          <p>It's a shame, because everything else here works: Yandy Diaz (343.5), Cody Bellinger (344.0) and a deep, productive rotation that includes Yoshinobu Yamamoto and Taj Bradley sitting in reserve behind the active five.</p>
+          <h4>Deadline Move</h4>
+          <p>Newberry is sitting on the most obvious trade chip in the league — a stash of capable starters nobody else has room for — and the most obvious need. Package an extra arm (or two) for a shortstop and this roster jumps several spots overnight.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>SS — Francisco Lindor</span><span class="neg">77.0 pts</span></li>
+            <li><span>SP — Erick Fedde</span><span class="neg">55.8 pts</span></li>
+            <li><span>C — Ryan Jeffers</span><span class="neg">162.5 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">R. Jeffers — C</span>
+          <span class="injury-tag">K. Bubic — SP</span>
+          <span class="injury-tag">R. Suarez — RP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 GOLDY GOLDY GONE -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 7 in Roster Production</div>
+          <div class="team-name">Goldy Goldy Gone <span class="team-code">Triple G</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,133.5</span></div><div class="bar-track"><div class="bar-fill bat" style="width:84%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,376.2</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:68%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>Otto Lopez (354.0) and Ketel Marte (318.5) headline a productive infield, and an outfield of Corbin Carroll, Jung Hoo Lee and the injured Oneil Cruz gives this club plenty of thump. Nine pitchers are rostered here — easily the deepest staff in the league by volume, fronted by Tarik Skubal.</p>
+          <p>Utility is the disaster zone: Samad Taylor's 71.5 points represent a 190-point shortfall against the league-average UT bat — the single worst gap at any slot for any team in MLBLONGBALL.</p>
+          <h4>Deadline Move</h4>
+          <p>With nine arms on the roster, Triple G can deal from a two-for-one position of strength. Send out a surplus starter or two and bring back a real everyday bat to plug the UT spot — this roster is too talented in the infield to keep bleeding points there.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>UT — Samad Taylor</span><span class="neg">71.5 pts</span></li>
+            <li><span>1B — Munetaka Murakami</span><span class="neg">217.0 pts</span></li>
+            <li><span>SP — Matthew Boyd</span><span class="neg">65.3 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">M. Murakami — 1B</span>
+          <span class="injury-tag">O. Cruz — OF</span>
+          <span class="injury-tag">M. Fried — SP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 TEMPE SCORPIONS -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 8 in Roster Production</div>
+          <div class="team-name">Tempe Scorpions <span class="team-code">SCORP</span></div>
+        </div>
+        <div class="verdict-tag v-mixed">Sell High / Buy Low</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,293.0</span></div><div class="bar-track"><div class="bar-fill bat" style="width:89%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,085.8</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:60%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>Miguel Vargas (363.0) is putting up one of the best lines at any position in the league, and an outfield five-deep with Jordan Walker, Ian Happ, Randy Arozarena and the injured Daulton Varsho gives Tempe more viable bats than active outfield spots.</p>
+          <p>Mookie Betts, normally a top-tier shortstop, is running 84.3 points below the league-average SS, and Salvador Perez is well off the pace at catcher. Tyler Kinley's injury thins out an already shallow bullpen.</p>
+          <h4>Deadline Move</h4>
+          <p>Tempe has a genuine luxury problem at outfield. Moving one of the surplus bats for help at catcher or in the bullpen is the cleanest deadline transaction on the board — and would put real pressure on the top of the standings.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>SS — Mookie Betts</span><span class="neg">166.5 pts</span></li>
+            <li><span>C — Salvador Perez</span><span class="neg">160.5 pts</span></li>
+            <li><span>RP — Gabe Speier</span><span class="neg">100.5 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">D. Varsho — OF</span>
+          <span class="injury-tag">S. Strider — SP</span>
+          <span class="injury-tag">T. Kinley — RP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 SONS OF PITCHES -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 9 in Roster Production</div>
+          <div class="team-name">Sons of Pitches <span class="team-code">A-ARON</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,175.0</span></div><div class="bar-track"><div class="bar-fill bat" style="width:85%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,119.0</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:61%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>Yordan Alvarez's 409.5 points is the single highest total of any hitter in MLBLONGBALL, and Luis Arraez (333.5) gives the Sons a true two-headed monster at the top of the order. The bullpen, anchored by Joey Cantillo and Nick Martinez, is among the league's better units.</p>
+          <p>The left side of the infield is lagging — Jeremy Pena and Nolan Arenado are both running well off league-average pace at their slots, and catcher depth behind Carter Jensen is thin.</p>
+          <h4>Deadline Move</h4>
+          <p>With two of the league's best bats already locked in and a strong bullpen to spare, a swap that upgrades third base or shortstop is the move that turns this roster from good to genuinely scary.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>SS — Jeremy Pena</span><span class="neg">190.5 pts</span></li>
+            <li><span>3B — Nolan Arenado</span><span class="neg">217.5 pts</span></li>
+            <li><span>C — Christian Vazquez (res.)</span><span class="neg">110.5 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">S. Matz — RP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 SIDD FINCH -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 10 in Roster Production</div>
+          <div class="team-name">Sidd Finch <span class="team-code">SIDD</span></div>
+        </div>
+        <div class="verdict-tag v-buy">Must-Buy</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,081.5</span></div><div class="bar-track"><div class="bar-fill bat" style="width:83%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>1,982.2</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:57%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>Pete Crow-Armstrong (356.5) and Bobby Witt Jr. (348.0) make this lineup's top end as good as anyone's, with Xavier Edwards (308.5) quietly excellent at shortstop.</p>
+          <p>The bullpen is a five-alarm fire: Edwin Diaz is hurt and producing just 25.0 points, Alan Rangel sits at 16.5, and starter Shane Bieber is actually in negative territory (-2.0) — a near-impossible feat that's actively costing this roster ground every week. Catcher (Francisco Alvarez, 96.5) is also a sinkhole.</p>
+          <h4>Deadline Move</h4>
+          <p>This club has the bats to compete but is hemorrhaging points on the mound and behind the plate. A bat-for-arm(s) package — using the deep middle infield as currency — is close to mandatory before midnight on the Fourth.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>SP — Shane Bieber</span><span class="neg">-2.0 pts</span></li>
+            <li><span>RP — Alan Rangel</span><span class="neg">16.5 pts</span></li>
+            <li><span>C — Francisco Alvarez</span><span class="neg">96.5 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">M. Semien — 2B</span>
+          <span class="injury-tag">E. Diaz — RP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 THE BANK OF TEXAS -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 11 in Roster Production</div>
+          <div class="team-name">The BANK of Texas <span class="team-code">BANK</span></div>
+        </div>
+        <div class="verdict-tag v-sell">Desperate Buyer</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>2,865.5</span></div><div class="bar-track"><div class="bar-fill bat" style="width:77%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>2,164.5</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:62%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>Cristopher Sanchez (387.5) is putting up the second-best pitching season in the league, and Ben Rice (322.0) and Kevin McGonigle (324.0) give the BANK real thump at catcher and shortstop.</p>
+          <p>But the middle infield is, statistically, the single worst positional duo anywhere in MLBLONGBALL. Edwin Arroyo's 39.5 points at second base is the worst output at any slot for any team — a 199.9-point shortfall — and Denzer Guzman's 61.5 at the MI utility spot is the second-worst gap in the league (-173.4). Together, two roster spots are producing almost nothing.</p>
+          <h4>Deadline Move</h4>
+          <p>This is not optional. With a true ace anchoring the staff and real bats at catcher and short, the BANK has the foundation of a contender — it just needs two functioning middle infielders. This should be the most aggressive team at the deadline.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>2B — Edwin Arroyo</span><span class="neg">39.5 pts</span></li>
+            <li><span>MI — Denzer Guzman</span><span class="neg">61.5 pts</span></li>
+            <li><span>CI — Royce Lewis</span><span class="neg">135.0 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">L. Hicks — C</span>
+          <span class="injury-tag">R. Acuna Jr. — OF</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 ITHACA SPARTANS -->
+    <div class="team">
+      <div class="team-head">
+        <div class="team-name-block">
+          <div class="rank">No. 12 in Roster Production</div>
+          <div class="team-name">Ithaca Spartans <span class="team-code">MSU</span></div>
+        </div>
+        <div class="verdict-tag v-sell">Sell Bats, Buy Arms</div>
+      </div>
+      <div class="bars">
+        <div class="bar-group"><div class="bar-label"><span>BAT</span><span>3,348.5</span></div><div class="bar-track"><div class="bar-fill bat" style="width:90%"></div></div></div>
+        <div class="bar-group"><div class="bar-label"><span>PITCH</span><span>1,547.8</span></div><div class="bar-track"><div class="bar-fill pitch" style="width:44%"></div></div></div>
+      </div>
+      <div class="team-body">
+        <div>
+          <h4>The Read</h4>
+          <p>Ithaca is the most lopsided club in the league. The offense — led by Jonathan Aranda (302.5) and a strong return from Dillon Dingler at catcher (294.5) — ranks third overall and would compete for the top spot if Aaron Judge weren't on the injury wire.</p>
+          <p>The rotation is the worst in MLBLONGBALL by a wide margin, producing barely three-quarters of the next-lowest staff's output. Gerrit Cole (65.3) and an injured Garrett Crochet (52.5) are nearly empty roster spots, and closer Kenley Jansen has fallen off to 51.7.</p>
+          <h4>Deadline Move</h4>
+          <p>The offense is too good to waste. This is the league's clearest sell-bats-for-arms candidate — move a surplus hitter (or two) for any of the rotation help being shopped around Newberry, Goldy Goldy Gone, or Cascades, and the Spartans become a real second-half threat.</p>
+        </div>
+        <div>
+          <h4>Slot Watch</h4>
+          <ul class="stat-list">
+            <li><span>RP — Kenley Jansen</span><span class="neg">51.7 pts</span></li>
+            <li><span>SP — Garrett Crochet</span><span class="neg">52.5 pts</span></li>
+            <li><span>SP — Gerrit Cole</span><span class="neg">65.3 pts</span></li>
+          </ul>
+          <h4>Injury Wire</h4>
+          <span class="injury-tag">A. Judge — OF</span>
+          <span class="injury-tag">G. Crochet — SP</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="gazette-footer">
+    The Longball Gazette &middot; MLBLONGBALL Season XIX &middot; All player FPts current as of report date &middot; Get your offers in before midnight, July 4th
+  </div>
+
+</div>
+</body>
+</html>
