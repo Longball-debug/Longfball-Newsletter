@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Longball Gazette — Week 14</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Playfair+Display+SC:wght@700&family=Old+Standard+TT:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f0e6;
+    --paper2:#ece5d4;
+    --ink:#1c1a16;
+    --ink-soft:#3a362f;
+    --rule:#1c1a16;
+    --rule-light:#b9b0a0;
+    --accent:#8c1c22;
+    --accent-dark:#5e1216;
+    --gold:#a9822f;
+    --win:#1f5c33;
+    --loss:#8c1c22;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Old Standard TT', 'Times New Roman', serif;
+    font-size:16px; line-height:1.5;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display', serif; margin:0;}
+  .masthead{
+    background:var(--paper); border-bottom:5px double var(--rule);
+    padding:18px 24px 10px; text-align:center;
+  }
+  .masthead .kicker{
+    font-family:'Inter',sans-serif; letter-spacing:3px; font-size:11px;
+    text-transform:uppercase; color:var(--ink-soft); display:flex; justify-content:space-between;
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:4px 4px; margin-bottom:6px;
+  }
+  .masthead h1{
+    font-size:64px; font-weight:900; letter-spacing:1px; margin:6px 0 2px;
+  }
+  .masthead .tagline{
+    font-style:italic; color:var(--ink-soft); font-size:14px; margin-bottom:4px;
+  }
+  .ticker-wrap{
+    background:var(--ink); color:var(--paper); overflow:hidden; white-space:nowrap;
+    border-bottom:3px solid var(--accent);
+  }
+  .ticker{
+    display:inline-block; padding-left:100%; animation:scroll 42s linear infinite;
+    font-family:'Inter',sans-serif; font-size:13px; letter-spacing:0.5px; padding-top:7px; padding-bottom:7px;
+  }
+  .ticker b{color:var(--gold);}
+  @keyframes scroll{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
+
+  nav.tabs{
+    display:flex; background:var(--ink); border-bottom:3px solid var(--rule);
+    font-family:'Inter',sans-serif; overflow-x:auto;
+  }
+  nav.tabs button{
+    flex:1; min-width:120px; background:none; border:none; color:var(--paper2);
+    padding:13px 6px; font-size:13px; letter-spacing:1.5px; text-transform:uppercase;
+    cursor:pointer; border-right:1px solid #3a362f; font-weight:600;
+  }
+  nav.tabs button.active{ background:var(--accent); color:#fff; }
+  nav.tabs button:hover{ background:var(--accent-dark); color:#fff; }
+
+  main{ max-width:1180px; margin:0 auto; padding:26px 22px 60px; }
+  .tabpanel{ display:none; animation:fade .25s ease; }
+  .tabpanel.active{ display:block; }
+  @keyframes fade{ from{opacity:0;} to{opacity:1;} }
+
+  .section-label{
+    font-family:'Inter',sans-serif; text-transform:uppercase; letter-spacing:3px;
+    font-size:12px; color:var(--accent); border-bottom:2px solid var(--rule); padding-bottom:6px; margin-bottom:16px;
+    font-weight:700;
+  }
+  .headline-block h2{ font-size:40px; line-height:1.08; margin-bottom:8px;}
+  .byline{ font-family:'Inter',sans-serif; font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;}
+  .dropcap:first-letter{
+    float:left; font-family:'Playfair Display',serif; font-size:64px; font-weight:800;
+    line-height:0.8; padding:6px 8px 0 0; color:var(--accent);
+  }
+  .grid2{ display:grid; grid-template-columns:2fr 1fr; gap:28px; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:820px){ .grid2,.grid3{grid-template-columns:1fr;} }
+
+  .box{ border:1px solid var(--rule); padding:16px; background:var(--paper2); }
+  .box h3{ font-size:18px; border-bottom:2px solid var(--rule); padding-bottom:6px; margin-bottom:10px;}
+
+  .recap-card{
+    border:1px solid var(--rule); margin-bottom:22px; background:#fff;
+  }
+  .recap-head{
+    background:var(--ink); color:var(--paper); padding:12px 16px;
+    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
+  }
+  .recap-head h3{ color:#fff; font-size:22px; }
+  .recap-head .score{ font-family:'Inter',sans-serif; font-weight:700; font-size:18px; color:var(--gold);}
+  .recap-body{ padding:16px 18px; }
+  .recap-body p{ margin:0 0 10px; }
+  .recap-meta{ font-family:'Inter',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:var(--ink-soft);}
+
+  table{ width:100%; border-collapse:collapse; font-family:'Inter',sans-serif; font-size:13px; }
+  th{
+    background:var(--ink); color:var(--paper); text-align:left; padding:8px 10px;
+    text-transform:uppercase; letter-spacing:0.5px; font-size:11px;
+  }
+  td{ padding:7px 10px; border-bottom:1px solid var(--rule-light); }
+  tr:nth-child(even) td{ background:rgba(0,0,0,0.03); }
+  .num{ text-align:center; }
+  .rank1 td{ background:rgba(169,130,47,0.18) !important; font-weight:700;}
+
+  .badge{ display:inline-block; padding:2px 8px; border-radius:2px; font-family:'Inter',sans-serif; font-size:11px; font-weight:700; }
+  .badge.up{ background:#dcecdf; color:var(--win); }
+  .badge.down{ background:#f3dcdc; color:var(--loss); }
+  .badge.flat{ background:#ece5d4; color:var(--ink-soft); }
+
+  .pr-row{ display:grid; grid-template-columns:40px 1fr 90px; gap:14px; align-items:center;
+    padding:10px 6px; border-bottom:1px solid var(--rule-light); }
+  .pr-row .rk{ font-family:'Playfair Display',serif; font-size:26px; font-weight:800; color:var(--accent); text-align:center;}
+  .pr-row .team{ font-weight:700; }
+  .pr-row .note{ font-family:'Inter',sans-serif; font-size:12.5px; color:var(--ink-soft); font-weight:400; display:block; margin-top:2px;}
+
+  .road-card{ border:1px solid var(--rule); padding:12px 14px; margin-bottom:10px; background:#fff;}
+  .road-card h4{ font-size:15px; border-bottom:1px solid var(--rule-light); padding-bottom:4px; margin-bottom:6px;}
+  .road-card p{ margin:0; font-size:14px;}
+
+  .wire-item{ border-bottom:1px dotted var(--rule-light); padding:8px 0; font-size:14px;}
+  .wire-item b{ color:var(--accent-dark);}
+
+  .col-piece{ border:1px solid var(--rule); padding:18px 20px; margin-bottom:24px; background:#fff;}
+  .col-byline{ font-family:'Playfair Display',serif; font-style:italic; font-size:15px; color:var(--accent-dark); margin-bottom:10px; border-bottom:1px solid var(--rule-light); padding-bottom:8px;}
+
+  .proposal-flag{
+    font-family:'Inter',sans-serif; background:#fff8e0; border:1px dashed var(--gold);
+    color:#5e4a12; font-size:12.5px; padding:8px 12px; margin-bottom:16px;
+  }
+  footer{ text-align:center; padding:22px; font-family:'Inter',sans-serif; font-size:11px;
+    color:var(--ink-soft); border-top:3px double var(--rule); letter-spacing:1px; text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="kicker"><span>SEASON XIX &middot; VOL. 14</span><span>MLBLONGBALL OFFICIAL RECORD</span><span>ESTABLISHED 2008</span></div>
+  <h1>THE LONGBALL GAZETTE</h1>
+  <div class="tagline">"All the Bombs Fit to Print" — Serving Twelve Franchises Since the Great Snake Draft of Aught-Eight</div>
+</div>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <b>DEADLINE DAY AFTERMATH:</b> Kazuma Okamoto lands with Desert Rats for $222 &nbsp;&bull;&nbsp;
+    <b>BIG SPENDER:</b> Midland drops $321 on Dean Kremer &nbsp;&bull;&nbsp;
+    <b>CASCADES</b> roll to 11-3, best record in Longball &nbsp;&bull;&nbsp;
+    <b>ITHACA SPARTANS</b> reportedly fielding offers for the entire franchise &nbsp;&bull;&nbsp;
+    <b>GOLDY GOLDY GONE</b> survives Sunday scare against Sidd Finch &nbsp;&bull;&nbsp;
+    <b>PLAYOFF PICTURE</b> tightens as six teams sit within two games of the final spot &nbsp;&bull;&nbsp;
+    <b>NEWBERRY INDIANS</b> churn roster with league-high transaction count over Periods 97-104 &nbsp;&bull;&nbsp;
+  </div>
+</div>
+
+<nav class="tabs">
+  <button class="tab-btn active" data-tab="front">Front Page</button>
+  <button class="tab-btn" data-tab="scores">Scores &amp; Recaps</button>
+  <button class="tab-btn" data-tab="players">Top Players</button>
+  <button class="tab-btn" data-tab="rankings">Power Rankings</button>
+  <button class="tab-btn" data-tab="wire">FA &amp; Wire</button>
+  <button class="tab-btn" data-tab="columnists">Columnists</button>
+</nav>
+
+<main>
+
+<!-- ============ FRONT PAGE ============ -->
+<section id="front" class="tabpanel active">
+  <div class="grid2">
+    <div>
+      <div class="section-label">Above the Fold</div>
+      <div class="headline-block">
+        <h2>Cascades Selling Playoff Tickets in Troutdale — Spartans Selling the Whole Franchise</h2>
+        <div class="byline">By the Gazette Staff &middot; Week 14 &middot; Period 14 Final</div>
+        <p class="dropcap">Troutdale's Cascades handled Ithaca 421 to 361.33 in Week 14 and haven't lost since the calendar flipped to June, pushing their record to a league-best 11-3. The margin wasn't just on the scoreboard — it was in the mood. One clubhouse is measuring up for a parade route. The other is reportedly fielding calls about a sale.</p>
+        <p>The Ithaca Spartans, mathematically buried at 4-10 and dead last in the Combined standings, saw their loss to Troutdale accompanied by tongue-in-cheek reports that ownership is exploring "strategic alternatives" for the franchise ahead of 2027. Ithaca's pitching staff has been the primary culprit all year, sitting last in the league in pitching FPts (1,363.5) by a wide margin.</p>
+        <p>Meanwhile, second-place Desert Rats (10-4) kept pace with a 493.33-435.67 win over Midland, exploiting what can only be described as a pitching no-show from the Weasel Dogs early in the week. Newberry (9-5) is quietly the league's hottest team — a wire-to-wire win over The BANK of Texas makes it three straight — and sits just a game behind the Rats for second place in Combined.</p>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Also Inside</div>
+      <div class="box" style="margin-bottom:16px;">
+        <h3>Goldy's Big Sunday</h3>
+        <p style="font-size:14px;">Goldy Goldy Gone needed every last Sunday at-bat to hold off Sidd Finch, 516.33-480.67, in the week's highest-scoring affair. See Scores &amp; Recaps.</p>
+      </div>
+      <div class="box" style="margin-bottom:16px;">
+        <h3>Deadline Splash</h3>
+        <p style="font-size:14px;">Desert Rats landed Kazuma Okamoto for $222 and Midland dropped $321 on Dean Kremer as the July 4th trade deadline supercharged the wire. Full breakdown in FA &amp; Wire.</p>
+      </div>
+      <div class="box">
+        <h3>Standings Snapshot</h3>
+        <table>
+          <tr><th>#</th><th>Team</th><th class="num">W-L</th><th class="num">Streak</th></tr>
+          <tr class="rank1"><td>1</td><td>Troutdale Cascades</td><td class="num">11-3</td><td class="num">W1</td></tr>
+          <tr><td>2</td><td>Desert Rats</td><td class="num">10-4</td><td class="num">W1</td></tr>
+          <tr><td>3</td><td>Newberry Indians</td><td class="num">9-5</td><td class="num">W3</td></tr>
+          <tr><td>4</td><td>Goldy Goldy Gone</td><td class="num">8-6</td><td class="num">W1</td></tr>
+          <tr><td>5</td><td>Midland Red Weasel Dogs</td><td class="num">7-7</td><td class="num">L1</td></tr>
+          <tr><td>6</td><td>Houston Gamblers</td><td class="num">7-7</td><td class="num">W2</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:26px;">Under the Fold</div>
+  <div class="grid3">
+    <div class="box">
+      <h3>Sons Keep Winning</h3>
+      <p style="font-size:14px;">Sons of Pitches beat Houston 352.33-344.17 for their second straight win — by 8, but a win's a win. Still last in Combined FPtsF, but the tide may be turning.</p>
+    </div>
+    <div class="box">
+      <h3>Gales Playoff Brawl</h3>
+      <p style="font-size:14px;">Troutdale Gales put the hurt on Tempe, 385.67-309, in a game that mattered more for playoff seeding than the final margin suggests. Both sit at 6-8.</p>
+    </div>
+    <div class="box">
+      <h3>Newberry, Wire to Wire</h3>
+      <p style="font-size:14px;">Newberry's 366.67-298.67 win over The BANK was never really in doubt. The Indians have now won three straight and own the league's best active streak.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCORES & RECAPS ============ -->
+<section id="scores" class="tabpanel">
+  <div class="section-label">Period 14 Final Scores &amp; Recaps</div>
+
+  <div class="recap-card">
+    <div class="recap-head">
+      <h3>Goldy Goldy Gone def. Sidd Finch</h3>
+      <div class="score">516.33 &ndash; 480.67</div>
+    </div>
+    <div class="recap-body">
+      <p class="recap-meta">Week's High-Water Mark</p>
+      <p>Goldy needed a big Sunday to steal this one, and got it. Sidd Finch pushed the league's second-highest total of the week and still walked away with a loss, undone by Goldy's late-week surge. Otto Lopez and Kyle Karros both featured among the week's top ten hitters for Goldy, while Eury Perez turned in the league's second-best pitching line. Sidd Finch got a strong week from Nolan McLean and Sandy Alcantara but couldn't cover the gap.</p>
+    </div>
+  </div>
+
+  <div class="recap-card">
+    <div class="recap-head">
+      <h3>Desert Rats def. Midland Red Weasel Dogs</h3>
+      <div class="score">493.33 &ndash; 435.67</div>
+    </div>
+    <div class="recap-body">
+      <p class="recap-meta">Pitching No-Show</p>
+      <p>The Rats capitalized on what was, charitably, a no-show week from Midland's pitching staff, building an early lead and never letting go. Jake McCarthy and Dylan Cease both cracked the league's top-ten leaderboards for the Rats, who improved to 10-4 and stayed within a game of first place. Midland's offense held up its end — the Weasel Dogs are second in the league in hitting FPts on the season — but the staff couldn't keep pace.</p>
+    </div>
+  </div>
+
+  <div class="recap-card">
+    <div class="recap-head">
+      <h3>Sons of Pitches def. Houston Gamblers</h3>
+      <div class="score">352.33 &ndash; 344.17</div>
+    </div>
+    <div class="recap-body">
+      <p class="recap-meta">Winners of Two Straight</p>
+      <p>The Sons win again — by 8 this time — but a win is a win, and it's the second in a row for a team that's spent most of the season at the bottom of Combined. Dansby Swanson and Yordan Alvarez both landed on the week's top hitter list. Houston's Ryan Weathers pickup didn't have time to make an impact; the Gamblers fall to 7-7.</p>
+    </div>
+  </div>
+
+  <div class="recap-card">
+    <div class="recap-head">
+      <h3>Troutdale Cascades def. Ithaca Spartans</h3>
+      <div class="score">421.00 &ndash; 361.33</div>
+    </div>
+    <div class="recap-body">
+      <p class="recap-meta">First Place Business</p>
+      <p>Business as usual for the league's best team. Trey Yesavage delivered another quality pitching week to help the Cascades to 11-3, extending their win streak and their lead atop the Combined standings. Ithaca falls to 4-10 and last place, its pitching staff still last in the league in points by a wide margin — the on-again, off-again jokes about the franchise for sale write themselves at this point.</p>
+    </div>
+  </div>
+
+  <div class="recap-card">
+    <div class="recap-head">
+      <h3>Troutdale Gales def. Tempe Scorpions</h3>
+      <div class="score">385.67 &ndash; 309.00</div>
+    </div>
+    <div class="recap-body">
+      <p class="recap-meta">Playoff Race Statement</p>
+      <p>Gales put the hurt on the Scorpions in a game that had real playoff-race stakes — both teams entered 6-8 and jockeying for position in a crowded middle tier. Sean Burke's strong week on the mound (fourth among all pitchers) set the tone. Tempe never found an answer, falling to 6-8 with a share of the wild-card picture now a little more crowded behind them.</p>
+    </div>
+  </div>
+
+  <div class="recap-card">
+    <div class="recap-head">
+      <h3>Newberry Indians def. The BANK of Texas</h3>
+      <div class="score">366.67 &ndash; 298.67</div>
+    </div>
+    <div class="recap-body">
+      <p class="recap-meta">Wire to Wire</p>
+      <p>Solid, start to finish — Newberry never trailed. Yoshinobu Yamamoto's week ranked among the league's best pitching lines, and the Indians' league-leading roster churn (more moves than any other team over Periods 97-104) is clearly paying off. It's three straight wins for Newberry, now 9-5 and firmly in the second-place conversation. The BANK falls to 5-9 and has now lost four in a row.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOP PLAYERS ============ -->
+<section id="players" class="tabpanel">
+  <div class="section-label">Week 14 Top Performers</div>
+
+  <div class="grid2">
+    <div>
+      <h3 style="font-size:19px; margin-bottom:10px;">Top Hitters</h3>
+      <table>
+        <tr><th>#</th><th>Player</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">FP/G</th><th class="num">R</th><th class="num">HR</th></tr>
+        <tr class="rank1"><td>1</td><td>Otto Lopez</td><td>Goldy Goldy Gone</td><td class="num">61.0</td><td class="num">10.17</td><td class="num">7</td><td class="num">3</td></tr>
+        <tr><td>2</td><td>Jake McCarthy</td><td>Desert Rats</td><td class="num">58.0</td><td class="num">8.29</td><td class="num">6</td><td class="num">3</td></tr>
+        <tr><td>3</td><td>Dansby Swanson</td><td>Sons of Pitches</td><td class="num">54.5</td><td class="num">9.08</td><td class="num">8</td><td class="num">5</td></tr>
+        <tr><td>4</td><td>Riley Greene</td><td>Ithaca Spartans</td><td class="num">52.0</td><td class="num">10.40</td><td class="num">5</td><td class="num">4</td></tr>
+        <tr><td>5</td><td>Yordan Alvarez</td><td>Sons of Pitches</td><td class="num">50.0</td><td class="num">8.33</td><td class="num">4</td><td class="num">4</td></tr>
+        <tr><td>6</td><td>Javier Sanoja</td><td>The BANK of Texas</td><td class="num">47.5</td><td class="num">6.79</td><td class="num">5</td><td class="num">1</td></tr>
+        <tr><td>7</td><td>Kyle Stowers</td><td>The BANK of Texas</td><td class="num">46.5</td><td class="num">7.75</td><td class="num">10</td><td class="num">3</td></tr>
+        <tr><td>8</td><td>Pete Crow-Armstrong</td><td>Sidd Finch</td><td class="num">46.0</td><td class="num">7.67</td><td class="num">6</td><td class="num">2</td></tr>
+        <tr><td>9</td><td>Kyle Karros</td><td>Goldy Goldy Gone</td><td class="num">46.0</td><td class="num">6.57</td><td class="num">8</td><td class="num">2</td></tr>
+        <tr><td>10</td><td>James Wood</td><td>Midland Red Weasel Dogs</td><td class="num">45.5</td><td class="num">7.58</td><td class="num">6</td><td class="num">3</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="font-size:19px; margin-bottom:10px;">Top Pitchers</h3>
+      <table>
+        <tr><th>#</th><th>Player</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">IP</th><th class="num">K</th><th class="num">ERA</th></tr>
+        <tr class="rank1"><td>1</td><td>Casey Mize</td><td>Ithaca Spartans</td><td class="num">58.33</td><td class="num">13.2</td><td class="num">14</td><td class="num">1.32</td></tr>
+        <tr><td>2</td><td>Eury Perez</td><td>Goldy Goldy Gone</td><td class="num">55.67</td><td class="num">12.1</td><td class="num">16</td><td class="num">0.73</td></tr>
+        <tr><td>3</td><td>Nolan McLean</td><td>Sidd Finch</td><td class="num">50.50</td><td class="num">12.0</td><td class="num">12</td><td class="num">1.50</td></tr>
+        <tr><td>4</td><td>Sean Burke</td><td>Troutdale Gales</td><td class="num">41.17</td><td class="num">11.1</td><td class="num">19</td><td class="num">2.38</td></tr>
+        <tr><td>5</td><td>Cade Cavalli</td><td>Tempe Scorpions</td><td class="num">40.17</td><td class="num">9.1</td><td class="num">16</td><td class="num">2.89</td></tr>
+        <tr><td>6</td><td>Yoshinobu Yamamoto</td><td>Newberry Indians</td><td class="num">36.50</td><td class="num">7.0</td><td class="num">10</td><td class="num">0.00</td></tr>
+        <tr><td>7</td><td>Sandy Alcantara</td><td>Sidd Finch</td><td class="num">36.33</td><td class="num">13.2</td><td class="num">11</td><td class="num">3.95</td></tr>
+        <tr><td>8</td><td>Dylan Cease</td><td>Desert Rats</td><td class="num">35.50</td><td class="num">7.0</td><td class="num">9</td><td class="num">0.00</td></tr>
+        <tr><td>9</td><td>Trey Yesavage</td><td>Troutdale Cascades</td><td class="num">35.33</td><td class="num">12.2</td><td class="num">10</td><td class="num">2.13</td></tr>
+        <tr><td>10</td><td>Cristopher Sanchez</td><td>The BANK of Texas</td><td class="num">35.00</td><td class="num">7.0</td><td class="num">9</td><td class="num">0.00</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:28px;">Season Points Standings — Hitting</div>
+  <table>
+    <tr><th>#</th><th>Team</th><th class="num">FPts</th><th class="num">R</th><th class="num">HR</th><th class="num">RBI</th><th class="num">SB</th><th class="num">SO</th></tr>
+    <tr class="rank1"><td>1</td><td>Goldy Goldy Gone</td><td class="num">3,337.0</td><td class="num">509</td><td class="num">632</td><td class="num">1,046</td><td class="num">267</td><td class="num">-897</td></tr>
+    <tr><td>2</td><td>Midland Red Weasel Dogs</td><td class="num">3,301.5</td><td class="num">569</td><td class="num">752</td><td class="num">1,004</td><td class="num">327</td><td class="num">-980</td></tr>
+    <tr><td>3</td><td>Desert Rats</td><td class="num">3,290.0</td><td class="num">542</td><td class="num">540</td><td class="num">1,030</td><td class="num">204</td><td class="num">-823</td></tr>
+    <tr><td>4</td><td>Troutdale Gales</td><td class="num">3,256.0</td><td class="num">534</td><td class="num">668</td><td class="num">1,004</td><td class="num">234</td><td class="num">-956</td></tr>
+    <tr><td>5</td><td>Tempe Scorpions</td><td class="num">3,215.5</td><td class="num">538</td><td class="num">516</td><td class="num">968</td><td class="num">312</td><td class="num">-836</td></tr>
+    <tr><td>6</td><td>Houston Gamblers</td><td class="num">3,212.5</td><td class="num">523</td><td class="num">584</td><td class="num">998</td><td class="num">252</td><td class="num">-877</td></tr>
+    <tr><td>6</td><td>Troutdale Cascades</td><td class="num">3,212.5</td><td class="num">526</td><td class="num">524</td><td class="num">946</td><td class="num">297</td><td class="num">-903</td></tr>
+    <tr><td>8</td><td>Newberry Indians</td><td class="num">3,145.5</td><td class="num">512</td><td class="num">568</td><td class="num">976</td><td class="num">141</td><td class="num">-828</td></tr>
+    <tr><td>9</td><td>Sidd Finch</td><td class="num">3,070.0</td><td class="num">469</td><td class="num">520</td><td class="num">940</td><td class="num">261</td><td class="num">-827</td></tr>
+    <tr><td>10</td><td>Sons of Pitches</td><td class="num">3,012.5</td><td class="num">481</td><td class="num">448</td><td class="num">894</td><td class="num">183</td><td class="num">-733</td></tr>
+    <tr><td>11</td><td>Ithaca Spartans</td><td class="num">2,982.5</td><td class="num">445</td><td class="num">440</td><td class="num">964</td><td class="num">138</td><td class="num">-730</td></tr>
+    <tr><td>12</td><td>The BANK of Texas</td><td class="num">2,892.5</td><td class="num">463</td><td class="num">476</td><td class="num">838</td><td class="num">177</td><td class="num">-760</td></tr>
+  </table>
+
+  <div class="section-label" style="margin-top:28px;">Season Points Standings — Pitching</div>
+  <table>
+    <tr><th>#</th><th>Team</th><th class="num">FPts</th><th class="num">IP</th><th class="num">K</th><th class="num">W</th><th class="num">QS</th><th class="num">SVH</th></tr>
+    <tr class="rank1"><td>1</td><td>Troutdale Cascades</td><td class="num">3,096.8</td><td class="num">2,125.3</td><td class="num">1,815</td><td class="num">355</td><td class="num">335</td><td class="num">400</td></tr>
+    <tr><td>2</td><td>Desert Rats</td><td class="num">2,711.5</td><td class="num">2,180.0</td><td class="num">1,650</td><td class="num">345</td><td class="num">380</td><td class="num">275</td></tr>
+    <tr><td>3</td><td>Goldy Goldy Gone</td><td class="num">2,597.2</td><td class="num">2,194.7</td><td class="num">1,671</td><td class="num">305</td><td class="num">325</td><td class="num">455</td></tr>
+    <tr><td>4</td><td>Newberry Indians</td><td class="num">2,581.8</td><td class="num">2,415.3</td><td class="num">1,663.5</td><td class="num">405</td><td class="num">335</td><td class="num">470</td></tr>
+    <tr><td>5</td><td>The BANK of Texas</td><td class="num">2,435.8</td><td class="num">2,071.3</td><td class="num">1,471.5</td><td class="num">380</td><td class="num">335</td><td class="num">345</td></tr>
+    <tr><td>6</td><td>Midland Red Weasel Dogs</td><td class="num">2,283.0</td><td class="num">2,136.0</td><td class="num">1,615.5</td><td class="num">350</td><td class="num">280</td><td class="num">390</td></tr>
+    <tr><td>7</td><td>Sidd Finch</td><td class="num">2,278.2</td><td class="num">2,100.7</td><td class="num">1,453.5</td><td class="num">305</td><td class="num">320</td><td class="num">320</td></tr>
+    <tr><td>8</td><td>Troutdale Gales</td><td class="num">1,927.7</td><td class="num">1,836.7</td><td class="num">1,392</td><td class="num">260</td><td class="num">265</td><td class="num">300</td></tr>
+    <tr><td>9</td><td>Sons of Pitches</td><td class="num">1,900.8</td><td class="num">1,633.3</td><td class="num">1,191</td><td class="num">285</td><td class="num">260</td><td class="num">120</td></tr>
+    <tr><td>10</td><td>Houston Gamblers</td><td class="num">1,889.8</td><td class="num">1,801.3</td><td class="num">1,345.5</td><td class="num">265</td><td class="num">235</td><td class="num">250</td></tr>
+    <tr><td>11</td><td>Tempe Scorpions</td><td class="num">1,698.2</td><td class="num">1,656.7</td><td class="num">1,120.5</td><td class="num">250</td><td class="num">280</td><td class="num">220</td></tr>
+    <tr><td>12</td><td>Ithaca Spartans</td><td class="num">1,363.5</td><td class="num">1,594.0</td><td class="num">1,048.5</td><td class="num">245</td><td class="num">190</td><td class="num">245</td></tr>
+  </table>
+</section>
+
+<!-- ============ POWER RANKINGS ============ -->
+<section id="rankings" class="tabpanel">
+  <div class="section-label">Power Rankings — Week 14</div>
+  <div class="proposal-flag">Commish — these are proposed rankings, blending Combined record, streak, and both points-standings splits. Flag anything you want moved before this goes live.</div>
+
+  <div class="pr-row"><div class="rk">1</div><div class="team">Troutdale Cascades <span class="note">11-3, W1 — best record in the league and #1 in pitching points. No real weakness right now.</span></div><div class="badge flat">&mdash;</div></div>
+  <div class="pr-row"><div class="rk">2</div><div class="team">Desert Rats <span class="note">10-4, W1 — #2 in pitching points, aggressive deadline addition of Okamoto raises the offensive floor further.</span></div><div class="badge flat">&mdash;</div></div>
+  <div class="pr-row"><div class="rk">3</div><div class="team">Newberry Indians <span class="note">9-5, W3 — hottest team in the league, league-leading pitching depth thanks to relentless wire activity.</span></div><div class="badge up">&#9650; 1</div></div>
+  <div class="pr-row"><div class="rk">4</div><div class="team">Goldy Goldy Gone <span class="note">8-6, W1 — #1 in hitting points, needed late heroics to beat Sidd but the offense is the league's best.</span></div><div class="badge down">&#9660; 1</div></div>
+  <div class="pr-row"><div class="rk">5</div><div class="team">Midland Red Weasel Dogs <span class="note">7-7, L1 — elite offense (#2 hitting) undercut by a pitching staff that no-showed against the Rats.</span></div><div class="badge flat">&mdash;</div></div>
+  <div class="pr-row"><div class="rk">6</div><div class="team">Troutdale Gales <span class="note">6-8, W2 — statement win over Tempe, climbing at the right time with a soft-looking Period 15-16 stretch ahead.</span></div><div class="badge up">&#9650; 2</div></div>
+  <div class="pr-row"><div class="rk">7</div><div class="team">Houston Gamblers <span class="note">7-7, W2 — quietly two straight wins, but bottom-half in both hitting and pitching points.</span></div><div class="badge down">&#9660; 1</div></div>
+  <div class="pr-row"><div class="rk">8</div><div class="team">Sidd Finch <span class="note">6-8, L3 — put up the week's second-highest score in a loss; talent is there, results aren't.</span></div><div class="badge down">&#9660; 1</div></div>
+  <div class="pr-row"><div class="rk">9</div><div class="team">Tempe Scorpions <span class="note">6-8, L1 — lost the playoff-race head-to-head with Troutdale Gales, schedule gets tougher before it gets easier.</span></div><div class="badge down">&#9660; 1</div></div>
+  <div class="pr-row"><div class="rk">10</div><div class="team">The BANK of Texas <span class="note">5-9, L4 — four straight losses, dead last in hitting points; deadline spending (Jax, Caglianone) hasn't turned the tide yet.</span></div><div class="badge flat">&mdash;</div></div>
+  <div class="pr-row"><div class="rk">11</div><div class="team">Sons of Pitches <span class="note">5-9, W2 — two straight wins is two straight wins; still last in the league in hitting FPts on the season.</span></div><div class="badge up">&#9650; 1</div></div>
+  <div class="pr-row"><div class="rk">12</div><div class="team">Ithaca Spartans <span class="note">4-10, L3 — last place in Combined and dead last in pitching points by a wide margin. The "for sale" jokes aren't going away.</span></div><div class="badge flat">&mdash;</div></div>
+
+  <div class="section-label" style="margin-top:32px;">The Road Ahead — Periods 15 Through 19</div>
+  <div class="grid3">
+
+    <div class="road-card"><h4>1. Troutdale Cascades (11-3)</h4><p>vs Tempe (9), @Midland (5), vs Sidd (8), vs Sons (10), @Houston (6). The league's easiest remaining stretch on paper — every opponent sits at .500 or below. No excuses if the lead shrinks.</p></div>
+
+    <div class="road-card"><h4>2. Desert Rats (10-4)</h4><p>@Sidd (8), vs Sons (10), @Houston (6), vs Goldy (4), @BANK (11). Manageable outside of the Period 18 date with Goldy — that one could decide second place in Combined.</p></div>
+
+    <div class="road-card"><h4>3. Newberry Indians (9-5)</h4><p>vs Ithaca (12), @Tempe (9), vs Midland (5), @Sidd (8), vs Sons (10). About as friendly a five-week slate as anyone gets. If the win streak ends here, it's on Newberry, not the schedule.</p></div>
+
+    <div class="road-card"><h4>4. Goldy Goldy Gone (8-6)</h4><p>@Sons (10), vs Houston (6), @BANK (11), @Desert Rats (2), @Troutdale Gales (7). Soft going in, but a road trip through Desert Rats and Gales late could expose the pitching depth.</p></div>
+
+    <div class="road-card"><h4>5. Midland Red Weasel Dogs (7-7)</h4><p>vs Troutdale Gales (7), @Cascades (1), @Newberry (3), vs Ithaca (12), vs Tempe (9). Brutal middle stretch against the league's #1 and #3 teams before the schedule turns friendly.</p></div>
+
+    <div class="road-card"><h4>6. Houston Gamblers (7-7)</h4><p>@BANK (11), @Goldy (4), vs Desert Rats (2), vs Troutdale Gales (7), @Cascades (1). The toughest closing kick in the league — Rats and Cascades in the final two weeks of this window.</p></div>
+
+    <div class="road-card"><h4>7. Troutdale Gales (6-8)</h4><p>vs Midland (5), vs Sidd (8), @Sons (10), @Houston (6), vs Goldy (4). A playoff-race gauntlet against fellow .500-ish teams — every game here is a swing game for the final bracket spots.</p></div>
+
+    <div class="road-card"><h4>8. Sidd Finch (6-8)</h4><p>vs Desert Rats (2), @Troutdale Gales (7), @Cascades (1), vs Newberry (3), @Ithaca (12). About as hard a run as exists in the league — three of the top four teams — before a get-right game against Ithaca.</p></div>
+
+    <div class="road-card"><h4>9. Tempe Scorpions (6-8)</h4><p>@Cascades (1), vs Newberry (3), @Ithaca (12), vs BANK (11), vs Midland (5). Front-loaded misery against the league's top two, but the back half is winnable and could rescue the playoff push.</p></div>
+
+    <div class="road-card"><h4>10. Sons of Pitches (5-9)</h4><p>vs Goldy (4), @Desert Rats (2), vs Troutdale Gales (7), @Cascades (1), @Newberry (3). The hardest schedule in the league, full stop — four of five opponents are currently top-4 teams.</p></div>
+
+    <div class="road-card"><h4>11. The BANK of Texas (5-9)</h4><p>vs Houston (6), @Ithaca (12), vs Goldy (4), @Tempe (9), vs Desert Rats (2). A get-right game against Ithaca in Period 16 is the one clear opportunity to snap the four-game skid.</p></div>
+
+    <div class="road-card"><h4>12. Ithaca Spartans (4-10)</h4><p>@Newberry (3), vs BANK (11), vs Tempe (9), @Midland (5), vs Sidd (8). Outside of Newberry, every one of these is a plausible Ithaca win — the most realistic path to salvaging a bad season starts here.</p></div>
+
+  </div>
+</section>
+
+<!-- ============ FA & WIRE ============ -->
+<section id="wire" class="tabpanel">
+  <div class="section-label">Free Agency &amp; Waiver Wire — Periods 97 through 104</div>
+  <p style="font-size:14px;">The wire caught fire around the July 4th trade deadline. Newberry led the league in transaction volume by a wide margin, Desert Rats ran their usual bullpen carousel, and three teams made real Vickrey commitments to upgrade before the deadline bell.</p>
+
+  <h3 style="margin-top:20px; font-size:18px;">Big-Ticket Bids</h3>
+  <div class="wire-item"><b>Midland Red Weasel Dogs</b> won <b>Dean Kremer</b> (BAL, SP) for <b>$321</b>, dropping Brady Singer — the largest single bid of the window, addressing a rotation that's been outscored by its offense all year.</div>
+  <div class="wire-item"><b>The BANK of Texas</b> committed <b>$250</b> for <b>Jac Caglianone</b> (KC, 1B/OF), dropping Jordan Lawlar, then followed up with <b>$200</b> for reliever <b>Griffin Jax</b> (TB) days later — real spending for a team trying to snap a four-game slide.</div>
+  <div class="wire-item"><b>Desert Rats</b> paid <b>$222</b> to secure <b>Kazuma Okamoto</b> (TOR, 1B/3B) right at the July 4th deadline, their most significant addition of the window and a clear power upgrade for the stretch run.</div>
+
+  <h3 style="margin-top:22px; font-size:18px;">The Newberry Machine</h3>
+  <p style="font-size:14px;">Newberry Indians touched the wire more than any other franchise across this window — a steady stream of speculative SP/RP claims (Chad Patrick, Eduard Bazardo, Brad Lord, Willi Castro, Spencer Steer, Alec Bohm, and more, several churned multiple times) as the front office searched for the right complementary arms. It's the kind of volume that looks scattershot in the moment and looks like depth once the QS/SVH numbers roll in — and Newberry currently sits 4th in the league in pitching points, so the approach is paying off.</p>
+
+  <h3 style="margin-top:22px; font-size:18px;">Desert Rats' Bullpen Carousel</h3>
+  <p style="font-size:14px;">True to form, the Rats ran a near-constant rotation of $1 relief claims — Kerkering, Thielbar, Alvarado, Yuki Matsui, Paul Blackburn, Luke Weaver, Jeff Hoffman, Yennier Cano, Bryan King, Mason Barnett — cycling arms in and out to chase favorable matchups and save/hold opportunities rather than committing significant FAAB. Combined with the Okamoto splash, it's a team building offensive firepower while streaming its way through the pitching staff.</p>
+
+  <h3 style="margin-top:22px; font-size:18px;">Notable Moves</h3>
+  <table>
+    <tr><th>Team</th><th>Added</th><th>Dropped</th><th class="num">Period</th></tr>
+    <tr><td>Troutdale Cascades</td><td>Jose Altuve (HOU, 2B/OF)</td><td>Henry Bolte</td><td class="num">104</td></tr>
+    <tr><td>Newberry Indians</td><td>Eric Lauer / Brandon Pfaadt</td><td>Ryan Zeferjahn / Martin Perez</td><td class="num">103-104</td></tr>
+    <tr><td>The BANK of Texas</td><td>Colt Keith (DET, 1B/2B/3B)</td><td>Jeff McNeil</td><td class="num">104</td></tr>
+    <tr><td>Sons of Pitches</td><td>Matthew Liberatore (STL, SP)</td><td>Lineup change (Matz)</td><td class="num">103</td></tr>
+    <tr><td>Sidd Finch</td><td>Keibert Ruiz / Spencer Steer / Adrian Morejon</td><td>Francisco Alvarez / Rocchio / Bieber</td><td class="num">103</td></tr>
+    <tr><td>Goldy Goldy Gone</td><td>Jake Mangum / Victor Caratini</td><td>Masyn Winn / Jakob Junis</td><td class="num">103</td></tr>
+  </table>
+</section>
+
+<!-- ============ COLUMNISTS ============ -->
+<section id="columnists" class="tabpanel">
+  <div class="section-label">From Our Columnists</div>
+
+  <div class="col-piece">
+    <h3>The Ithaca Question</h3>
+    <div class="col-byline">Joe Falls</div>
+    <p>There comes a point in every fantasy season where a franchise stops being a team and starts being a cautionary tale. Ithaca Spartans crossed that line sometime around Period 90, and Week 14's loss to Troutdale — their tenth of the year against just four wins — didn't so much confirm it as notarize it. A pitching staff that ranks dead last in the league by nearly 250 points doesn't get fixed with a waiver claim here or there. It gets fixed with an offseason and a hard look in the mirror. Whether ownership actually entertains selling the franchise or that's just clubhouse gallows humor, the truth is the same either way: next year starts now for Ithaca, and it should start on the mound.</p>
+  </div>
+
+  <div class="col-piece">
+    <h3>Three Straight, and Counting</h3>
+    <div class="col-byline">Mitch Albom</div>
+    <p>Nobody circles Newberry Indians on the schedule in April. Nine and five doesn't scream contender, not with Troutdale sitting at eleven wins and Desert Rats breathing down its neck. But watch the process, not just the record: a pitching staff built one waiver claim at a time, now fourth in the league in points. A win over The BANK that was, in the recap's own words, solid from start to finish — no fireworks required. Three in a row is a streak. What Newberry is building looks more like a system. The Road Ahead is about as gentle as it gets for a contender — Ithaca, Tempe, Midland, Sidd, Sons — and if the Indians don't turn that into five more wins, the conversation changes fast.</p>
+  </div>
+
+  <div class="col-piece">
+    <h3>Big Lou's Wire Report: Who's Actually Buying?</h3>
+    <div class="col-byline">Big Lou Palmieri</div>
+    <p>Deadline week separates the men from the boys, and I got receipts. Midland drops three hundred and change on Dean Kremer — that's not a hedge, that's a statement. Desert Rats go get Okamoto for two-twenty-two right as the buzzer sounds. The BANK throws real money at Caglianone and then Griffin Jax days later, which tells me somebody in that front office knows the record doesn't reflect the roster. Meanwhile Newberry's out here collecting relievers like bottle caps, one-dollar bids left and right, and I gotta be honest — the results say don't knock it. Everybody's got a way of building a bullpen. Not everybody's way is working. Newberry's is.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>The Longball Gazette &middot; MLBLONGBALL Season XIX &middot; Week 14 Edition &middot; Circulation: 12 Franchises</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tabpanel');
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
