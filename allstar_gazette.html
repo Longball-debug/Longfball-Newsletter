@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Longball Gazette — All-Star Break Special Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f2ead8;
+    --paper-dark:#e9dfc7;
+    --ink:#2b2420;
+    --ink-soft:#4a4038;
+    --rule:#2b2420;
+    --rust:#a8471f;
+    --gold:#8a6d1d;
+    --team1:#1f4d3a;
+    --team2:#7a1f2b;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-dark);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,0,0,0.03), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03), transparent 45%);
+    color:var(--ink);
+    font-family:'Libre Baskerville', serif;
+    padding:24px 12px 60px;
+  }
+  .sheet{
+    max-width:980px;
+    margin:0 auto;
+    background:var(--paper);
+    border:1px solid var(--ink);
+    box-shadow:0 0 0 1px var(--paper-dark), 0 12px 30px rgba(0,0,0,0.25);
+    padding:32px 40px 48px;
+  }
+  .masthead{
+    text-align:center;
+    border-bottom:4px double var(--rule);
+    padding-bottom:14px;
+    margin-bottom:6px;
+  }
+  .eyebrow-row{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Oswald', sans-serif;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding:4px 0;
+    margin-bottom:14px;
+  }
+  .title{
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:64px;
+    letter-spacing:1px;
+    margin:6px 0 2px;
+  }
+  .subtitle{
+    font-family:'Oswald', sans-serif;
+    font-size:14px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:8px;
+  }
+  .dateline{
+    font-family:'Courier Prime', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+  .lede{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:20px;
+    text-align:center;
+    max-width:720px;
+    margin:22px auto 30px;
+    line-height:1.5;
+    color:var(--ink-soft);
+  }
+  h2.section-head{
+    font-family:'Oswald', sans-serif;
+    font-size:22px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    border-bottom:3px solid var(--rule);
+    padding-bottom:6px;
+    margin:40px 0 4px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  h2.section-head .flag{
+    font-family:'Courier Prime', monospace;
+    font-size:12px;
+    letter-spacing:1px;
+    text-transform:none;
+    color:var(--ink-soft);
+  }
+  .squad-intro{
+    font-size:14.5px;
+    line-height:1.65;
+    margin:10px 0 18px;
+  }
+  table.roster{
+    width:100%;
+    border-collapse:collapse;
+    font-family:'Courier Prime', monospace;
+    font-size:13px;
+    margin-bottom:8px;
+  }
+  table.roster caption{
+    caption-side:top;
+    text-align:left;
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:16px;
+    margin-bottom:8px;
+  }
+  table.roster th{
+    text-align:left;
+    font-family:'Oswald', sans-serif;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border-bottom:2px solid var(--ink);
+    padding:6px 8px;
+    background:rgba(0,0,0,0.04);
+  }
+  table.roster td{
+    padding:6px 8px;
+    border-bottom:1px solid rgba(43,36,32,0.18);
+  }
+  table.roster tr.pitcher-row td{
+    background:rgba(0,0,0,0.025);
+  }
+  .team1 caption{color:var(--team1);}
+  .team2 caption{color:var(--team2);}
+  .badge{
+    display:inline-block;
+    font-family:'Oswald', sans-serif;
+    font-size:10px;
+    letter-spacing:1px;
+    padding:1px 6px;
+    border-radius:2px;
+    color:#f2ead8;
+  }
+  .badge.team1{background:var(--team1);}
+  .badge.team2{background:var(--team2);}
+  .fpts{text-align:right; font-weight:700;}
+  .divider-row td{
+    border-bottom:none;
+    padding-top:14px;
+    font-family:'Oswald', sans-serif;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .counts-wrap{
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    margin:16px 0 6px;
+  }
+  table.counts{
+    border-collapse:collapse;
+    font-family:'Courier Prime', monospace;
+    font-size:13px;
+    flex:1;
+    min-width:260px;
+  }
+  table.counts th{
+    text-align:left;
+    font-family:'Oswald', sans-serif;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border-bottom:2px solid var(--ink);
+    padding:6px 8px;
+  }
+  table.counts td{
+    padding:5px 8px;
+    border-bottom:1px dotted rgba(43,36,32,0.35);
+  }
+  table.counts td.num{text-align:right; font-weight:700;}
+  .zero-row td{color:var(--ink-soft); font-style:italic;}
+  .pull-quote{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:26px;
+    line-height:1.4;
+    text-align:center;
+    border-top:1px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding:20px 10px;
+    margin:36px 0;
+  }
+  .pull-quote span{
+    display:block;
+    font-family:'Oswald', sans-serif;
+    font-style:normal;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-top:10px;
+    color:var(--rust);
+  }
+  .columns{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:28px;
+    margin-top:36px;
+  }
+  .column h3{
+    font-family:'Playfair Display', serif;
+    font-size:17px;
+    margin:0 0 2px;
+  }
+  .byline{
+    font-family:'Oswald', sans-serif;
+    font-size:10px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:8px;
+  }
+  .column p{
+    font-size:13px;
+    line-height:1.6;
+    margin:0 0 10px;
+  }
+  .dropcap::first-letter{
+    font-family:'Playfair Display', serif;
+    font-size:38px;
+    font-weight:900;
+    float:left;
+    line-height:0.8;
+    padding-right:6px;
+    padding-top:4px;
+    color:var(--rust);
+  }
+  .footer{
+    margin-top:44px;
+    border-top:4px double var(--rule);
+    padding-top:10px;
+    text-align:center;
+    font-family:'Oswald', sans-serif;
+    font-size:10px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  @media (max-width:720px){
+    .sheet{padding:22px 16px 32px;}
+    .title{font-size:38px;}
+    .columns{grid-template-columns:1fr;}
+    .counts-wrap{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="eyebrow-row">
+      <span>Vol. 1, Special Issue</span>
+      <span>MLBLONGBALL — Est. This Season</span>
+      <span>Price: One Roster Spot</span>
+    </div>
+    <div class="title">THE LONGBALL GAZETTE</div>
+    <div class="subtitle">All-Star Break Special Edition</div>
+    <div class="dateline">Monday, July 13, 2026 &nbsp;|&nbsp; Mesa, Arizona &nbsp;|&nbsp; First-Half Stats Final</div>
+  </div>
+
+  <p class="lede">Half a season in the books, and the numbers have spoken. Two full All-Star squads — eleven bats and five arms apiece — built strictly off first-half FPts, one player per position, no reputation, no seniority. Here's who made the cut, and which of the league's twelve clubs stocked the shelves.</p>
+
+  <h2 class="section-head">All-Star Team One <span class="flag">— The FPts Leaders —</span></h2>
+  <p class="squad-intro">The top producer at every position, full stop. Led by Yordan Alvarez's 486.5 points in the outfield and a pitching staff fronted by Jacob Misiorowski's absurd 458.5.</p>
+  <table class="roster team1">
+    <caption>Team One — Starting Eleven &amp; Rotation</caption>
+    <tr><th>Pos</th><th>Player</th><th>Fantasy Team</th><th class="fpts">FPts</th></tr>
+    <tr><td>C</td><td>Ben Rice</td><td>The BANK of Texas</td><td class="fpts">398.5</td></tr>
+    <tr><td>1B</td><td>Yandy Diaz</td><td>Newberry Indians</td><td class="fpts">369.0</td></tr>
+    <tr><td>2B</td><td>Brice Turang</td><td>Houston Gamblers</td><td class="fpts">389.5</td></tr>
+    <tr><td>3B</td><td>Miguel Vargas</td><td>Tempe Scorpions</td><td class="fpts">411.0</td></tr>
+    <tr><td>SS</td><td>Otto Lopez</td><td>Goldy Goldy Gone</td><td class="fpts">416.0</td></tr>
+    <tr><td>CI</td><td>Luis Arraez</td><td>Sons of Pitches</td><td class="fpts">388.5</td></tr>
+    <tr><td>MI</td><td>Bobby Witt Jr.</td><td>Sidd Finch</td><td class="fpts">398.5</td></tr>
+    <tr><td>OF</td><td>Yordan Alvarez</td><td>Sons of Pitches</td><td class="fpts">486.5</td></tr>
+    <tr><td>OF</td><td>James Wood</td><td>Midland Red Weasel Dogs</td><td class="fpts">477.5</td></tr>
+    <tr><td>OF</td><td>Jordan Walker</td><td>Tempe Scorpions</td><td class="fpts">409.0</td></tr>
+    <tr><td>UT</td><td>Pete Crow-Armstrong</td><td>Sidd Finch</td><td class="fpts">426.0</td></tr>
+    <tr class="divider-row"><td colspan="4">Rotation</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Jacob Misiorowski</td><td>Troutdale Cascades</td><td class="fpts">458.5</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Cristopher Sanchez</td><td>The BANK of Texas</td><td class="fpts">405.17</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Cam Schlittler</td><td>Midland Red Weasel Dogs</td><td class="fpts">385.83</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Zack Wheeler</td><td>Sons of Pitches</td><td class="fpts">342.5</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Chase Burns</td><td>Troutdale Cascades</td><td class="fpts">340.33</td></tr>
+  </table>
+
+  <h2 class="section-head">All-Star Team Two <span class="flag">— The Runners-Up —</span></h2>
+  <p class="squad-intro">Not a consolation bracket — this is a squad that starts on most rosters in the league. Anchored by a two-way marvel doing double duty at UT and on the mound.</p>
+  <table class="roster team2">
+    <caption>Team Two — Starting Eleven &amp; Rotation</caption>
+    <tr><th>Pos</th><th>Player</th><th>Fantasy Team</th><th class="fpts">FPts</th></tr>
+    <tr><td>C</td><td>Ivan Herrera</td><td>Desert Rats</td><td class="fpts">323.0</td></tr>
+    <tr><td>1B</td><td>Nick Kurtz</td><td>Troutdale Cascades</td><td class="fpts">367.5</td></tr>
+    <tr><td>2B</td><td>Ketel Marte</td><td>Goldy Goldy Gone</td><td class="fpts">358.0</td></tr>
+    <tr><td>3B</td><td>Sal Stewart</td><td>Troutdale Cascades</td><td class="fpts">377.0</td></tr>
+    <tr><td>SS</td><td>CJ Abrams</td><td>Midland Red Weasel Dogs</td><td class="fpts">408.0</td></tr>
+    <tr><td>CI</td><td>Matt Olson</td><td>Houston Gamblers</td><td class="fpts">375.0</td></tr>
+    <tr><td>MI</td><td>Brandon Lowe</td><td>Houston Gamblers</td><td class="fpts">339.5</td></tr>
+    <tr><td>OF</td><td>Bryan Reynolds</td><td>Houston Gamblers</td><td class="fpts">398.5</td></tr>
+    <tr><td>OF</td><td>Andy Pages</td><td>Troutdale Gales</td><td class="fpts">377.0</td></tr>
+    <tr><td>OF</td><td>Alec Burleson</td><td>Sidd Finch</td><td class="fpts">374.5</td></tr>
+    <tr><td>UT</td><td>Shohei Ohtani</td><td>Desert Rats</td><td class="fpts">402.0</td></tr>
+    <tr class="divider-row"><td colspan="4">Rotation</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Dylan Cease</td><td>Desert Rats</td><td class="fpts">339.17</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Joe Ryan</td><td>Goldy Goldy Gone</td><td class="fpts">320.67</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Jesus Luzardo</td><td>Troutdale Gales</td><td class="fpts">317.17</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Shohei Ohtani (P)</td><td>Desert Rats</td><td class="fpts">315.33</td></tr>
+    <tr class="pitcher-row"><td>SP</td><td>Braxton Ashcraft</td><td>Troutdale Cascades</td><td class="fpts">314.67</td></tr>
+  </table>
+  <p style="font-family:'Courier Prime', monospace; font-size:11.5px; color:var(--ink-soft); margin-top:-4px;">* Ohtani counted at UT (hitting) and SP (pitching) — a two-way selection, not a duplicate entry.</p>
+
+  <h2 class="section-head">By The Numbers <span class="flag">— Franchise Representation —</span></h2>
+  <p class="squad-intro">32 total All-Star selections across both squads. Here's how the league's twelve GMs stocked the talent pool.</p>
+  <div class="counts-wrap">
+    <table class="counts">
+      <tr><th>Fantasy Team</th><th class="num">Selections</th></tr>
+      <tr><td>Troutdale Cascades</td><td class="num">5</td></tr>
+      <tr><td>Houston Gamblers</td><td class="num">4</td></tr>
+      <tr><td>Desert Rats</td><td class="num">4</td></tr>
+      <tr><td>Goldy Goldy Gone</td><td class="num">3</td></tr>
+      <tr><td>Sons of Pitches</td><td class="num">3</td></tr>
+      <tr><td>Sidd Finch</td><td class="num">3</td></tr>
+      <tr><td>Midland Red Weasel Dogs</td><td class="num">3</td></tr>
+      <tr><td>Tempe Scorpions</td><td class="num">2</td></tr>
+      <tr><td>The BANK of Texas</td><td class="num">2</td></tr>
+      <tr><td>Troutdale Gales</td><td class="num">2</td></tr>
+      <tr><td>Newberry Indians</td><td class="num">1</td></tr>
+      <tr class="zero-row"><td>Ithaca Spartans</td><td class="num">0</td></tr>
+    </table>
+    <table class="counts">
+      <tr><th>Note</th><th></th></tr>
+      <tr><td colspan="2">Troutdale Cascades tops the league — Misiorowski, Burns and Ashcraft on the mound, Kurtz and Stewart in the field.</td></tr>
+      <tr><td colspan="2">Desert Rats' 4 selections include Ohtani twice (UT + SP), so it's really 3 unique players.</td></tr>
+      <tr><td colspan="2">Ithaca Spartans is the only club shut out entirely — zero representation on either squad.</td></tr>
+    </table>
+  </div>
+
+  <div class="pull-quote">
+    "Two rosters. Twelve owners. One club with nothing to show for the first half."
+    <span>— The Numbers, Uncontested</span>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <h3>The Cascades Made a Statement</h3>
+      <div class="byline">Joe Falls</div>
+      <p class="dropcap">Five All-Stars is not an accident. Troutdale Cascades didn't just get lucky at the top of a shallow position — they stacked value at three different arms and two infield spots, and none of it came from a single monster outlier. That's a front office that drafted a floor, not just a ceiling.</p>
+      <p>If the second half plays out anywhere close to the first, this is the team the rest of the league circles on the schedule.</p>
+    </div>
+    <div class="column">
+      <h3>Spare a Thought for Ithaca</h3>
+      <div class="byline">Mitch Albom</div>
+      <p class="dropcap">Zero. Not one player. Twelve teams took the field for these two rosters and the Spartans watched from the parking lot. It isn't a knock on effort — Aaron Judge and Gerrit Cole are fine players having fine seasons — it's a reminder that "fine" doesn't cut against a league this deep.</p>
+      <p>There's a full half of baseball left to write a different ending. Nobody remembers the All-Star break by August.</p>
+    </div>
+    <div class="column">
+      <h3>The Two-Way Wrinkle</h3>
+      <div class="byline">Big Lou Palmieri</div>
+      <p class="dropcap">Ohtani shows up twice on Team Two and that's exactly right. A UT bat that hits like a top-five slugger and a rotation arm that hits like a top-ten starter isn't a loophole — it's the whole point of rostering the guy. Desert Rats got two All-Star-caliber seasons out of one roster spot.</p>
+      <p>Every other GM in this league would take that problem in a heartbeat.</p>
+    </div>
+  </div>
+
+  <div class="footer">The Longball Gazette &nbsp;·&nbsp; MLBLONGBALL Fantasy Baseball &nbsp;·&nbsp; All-Star Break Special &nbsp;·&nbsp; Compiled from First-Half FPts</div>
+
+</div>
+</body>
+</html>
