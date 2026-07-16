@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Longball Gazette — Sprint to the Playoffs Special Edition, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a;--blue:#1c3d5a;--green:#2f5233}
+body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+.newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 0 80px rgba(184,134,11,.04);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+.newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+.inner{position:relative;z-index:1}
+.masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+.masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+.paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+.paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+.paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:12px}
+.special-band{text-align:center;background:var(--red);color:var(--paper);font-family:"Oswald",sans-serif;font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:.9em;padding:6px 0;margin-top:2px}
+.ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 80s linear infinite}
+.ticker-inner span{padding:0 30px}
+.ticker-inner .sep{color:var(--gold);font-weight:700}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+.nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+.nav-tab:first-child{border-left:1px solid #c0b090}
+.nav-tab:hover{background:var(--paper);color:var(--ink)}
+.nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+.nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+.page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+.headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+.headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+.headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+.deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+.byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+.col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+.col-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+.rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+.rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+.rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+.col-rule{border-left:1px solid #b0a080;padding-left:30px}
+.info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+.info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+.column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+.column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+.column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+.alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+.alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+.gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+.green-box{border:2px solid var(--green);background:#f4faf5;padding:14px 16px;margin-bottom:16px}
+.blue-box{border:2px solid var(--blue);background:#f2f6fa;padding:14px 16px;margin-bottom:16px}
+.waste-box{border:3px solid var(--red);background:#fff0f0;padding:14px 16px;margin-bottom:16px}
+.waste-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);text-align:center;border-bottom:2px solid var(--red);padding-bottom:6px;margin-bottom:10px}
+table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+table.data tr:last-child td{border-bottom:none}
+table.data tr.highlight{background:#fff9e0;font-weight:700}
+table.data tr.danger{background:#fff0f0}
+table.data tr.warning{background:#fff8ee}
+table.data tr.safe{background:#f2faf3}
+table.data .num{text-align:right;font-weight:700}
+table.data .rk{text-align:center;width:26px}
+.tag{display:inline-block;font-family:"Oswald",sans-serif;font-size:.65em;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-left:5px}
+.tag-champ{background:var(--gold);color:var(--ink)}
+.tag-wc{background:var(--blue);color:var(--paper)}
+.tag-bubble{background:#a06010;color:var(--paper)}
+.tag-out{background:var(--muted);color:var(--paper)}
+.div-badge{font-family:"Oswald",sans-serif;font-size:.68em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border:1px solid var(--rule)}
+.div-blue{background:#dce6f0}
+.div-red{background:#f2d9d9}
+.div-white{background:#f0f0e8}
+.grade{font-family:"Playfair Display",serif;font-weight:900;font-size:1.6em;display:inline-block;width:50px;text-align:center}
+.footer-note{font-family:"Courier Prime",monospace;font-size:.72em;color:var(--muted);font-style:italic;text-align:right}
+.page-footer{border-top:3px double var(--rule);padding:16px 40px 24px;font-family:"Courier Prime",monospace;font-size:.72em;color:var(--muted);text-align:center;line-height:1.6}
+@media(max-width:760px){.newspaper{outline:none}.page{padding:20px}.col-2,.col-2-1,.col-3{grid-template-columns:1fr}.col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}.paper-name{font-size:2em;letter-spacing:1px}.nav-tab{padding:8px 10px;font-size:.72em}}
+</style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<!-- ═══════════════ MASTHEAD ═══════════════ -->
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Vol. 1, No. 19 &nbsp;|&nbsp; Special Edition</span>
+        <span>Thursday, July 16, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"Four Scoring Periods Stand Between Twelve Teams and the Truth" &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+    <div class="special-band">Sprint to the Playoffs &nbsp;&mdash;&nbsp; The Post&ndash;All-Star Break Special</div>
+</div>
+
+<!-- ═══════════════ TICKER ═══════════════ -->
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#127942; SIX SPOTS, TWELVE TEAMS &mdash; the field for October is six-sevenths decided and one-seventh chaos</span><span class="sep">&#9670;</span>
+    <span>&#128018; HOUSTON GAMBLERS hold a playoff spot at 7-8 &mdash; the only losing record in the projected six</span><span class="sep">&#9670;</span>
+    <span>&#9888; GAMBLERS face the toughest closing schedule of any team in playoff position &mdash; Goldy, Rats, Gales, Cascades in order</span><span class="sep">&#9670;</span>
+    <span>&#128021; MIDLAND RED WEASEL DOGS open with Cascades then Newberry &mdash; two division leaders in the first two weeks</span><span class="sep">&#9670;</span>
+    <span>&#128200; NEWBERRY INDIANS have the softest remaining slate in the league &mdash; Red Division looks locked up</span><span class="sep">&#9670;</span>
+    <span>&#128176; FOUR TEAMS SIT AT 6-9 &mdash; Sidd Finch, The BANK of Texas, Troutdale Gales, Tempe Scorpions all 2 games back of the final spot</span><span class="sep">&#9670;</span>
+    <span>&#9889; SONS OF PITCHES face the single hardest schedule in MLBLONGBALL &mdash; Rats, Gales, Cascades, Newberry</span><span class="sep">&#9670;</span>
+    <span>&#128000; DESERT RATS lead the league in Quality Starts with 395 &mdash; the deepest rotation in the field</span><span class="sep">&#9670;</span>
+    <span>&#127942; SIX SPOTS, TWELVE TEAMS &mdash; the field for October is six-sevenths decided and one-seventh chaos</span><span class="sep">&#9670;</span>
+</div></div>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('picture')">The Playoff Picture</div>
+    <div class="nav-tab" onclick="showPage('gauntlet')">The Gauntlet</div>
+    <div class="nav-tab" onclick="showPage('report')">Report Card</div>
+    <div class="nav-tab" onclick="showPage('odds')">Championship Odds</div>
+    <div class="nav-tab" onclick="showPage('columns')">Tout Wars &amp; Columnists</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 1: FRONT PAGE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page active" id="front">
+<div class="section-label">Special Edition &mdash; Following Scoring Period 15 &middot; Week 16 Final Edition Arrives Sunday, July 26</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">FOUR WEEKS LEFT. SIX SPOTS. AND A DIVISION CHAMPION HOLDING A LOSING RECORD.</div>
+    <div class="deck">The All-Star break is over and the math has arrived. Three division titles are effectively decided, three wild card spots belong to the Blue Division almost by default, and the league's softest division has produced a champion who would not make the field on merit alone. Here is the state of the race, four scoring periods from the finish.</div>
+    <div class="byline">By the Longball Gazette Wire Staff</div>
+    <div class="dateline">League Headquarters &mdash; Thursday, July 16, 2026</div>
+
+    <p class="body">The MLBLONGBALL playoff format sends three division champions and the next three best overall records to the postseason. As of this morning, that math produces a field of Troutdale Cascades (12-3, Blue), Newberry Indians (10-5, Red), and Houston Gamblers (7-8, White) as division champions, joined by Desert Rats (11-4), Goldy Goldy Gone (9-6), and Midland Red Weasel Dogs (8-7) on wild card lines. Look closely at that list and one fact jumps out: four of the six playoff teams currently live in the Blue Division. Red and White have produced one apiece. If the season ended today, the Blue Division would send more teams to the postseason than the other two divisions combined.</p>
+
+    <p class="body">The other fact worth sitting with is Houston Gamblers. At 7-8, the Gamblers own a losing record and still control an automatic playoff spot &mdash; the only team in the projected field with more losses than wins. It is not a fluke or a scheduling gift; it is simply that the White Division has been the weakest group in the league all season, and someone has to win it. The problem for Houston is that division titles do not come with easy roads. The Gamblers now face the toughest closing schedule of any team in playoff position: Goldy Goldy Gone, Desert Rats, Troutdale Gales, and Troutdale Cascades, in that order. Three of those four opponents are legitimate playoff teams. If there is a team built to remind the league that a division crown is not the same as a good roster, it is Houston over the next four weeks.</p>
+
+    <p class="body">Everyone else on the bubble is stacked in a five-way pileup at 6-9 and 5-10, separated from the sixth and final spot by two to three games with a month to make it up. Sidd Finch, The BANK of Texas, Troutdale Gales, and Tempe Scorpions all sit exactly two games back of Midland's 8-7 mark. Sons of Pitches trail by three. Only Ithaca Spartans, four games back and with the league's weakest roster on both sides of the ball, look truly finished. Everyone else has a real, if narrow, path &mdash; and this week's Gazette is built to map every inch of it.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">Newberry's Soft Landing, Midland's Brutal Opener</div>
+    <p class="body-sm">Buried in the schedule release is a genuine competitive imbalance: Newberry Indians, already the Red Division's clear leader, own the easiest remaining slate in the league, averaging a .416 opponent winning percentage over their final four games. Compare that to Midland Red Weasel Dogs, currently holding the last wild card spot, who open the stretch run against Troutdale Cascades and then Newberry Indians &mdash; the league's number one and number three teams &mdash; in consecutive weeks. How Midland survives that gauntlet may decide the final playoff berth more than anything that happens in August.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">The Numbers Behind the Standings</div>
+    <p class="body-sm">Every hitting and pitching category total in this edition was cross-checked against the official Fantrax scoring totals &mdash; hitting FPts plus pitching FPts reconciles exactly to each team's season FPtsF to the decimal point. Where this edition makes a claim about a team's biggest strength or clearest weakness, it is drawn directly from that verified data, not projection or guesswork.</p>
+</div>
+
+<div>
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">&#127942; The Projected Six</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th class="num">W-L</th><th>Status</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td>Troutdale Cascades</td><td class="num">12-3</td><td><span class="tag tag-champ">Blue Champ</span></td></tr>
+            <tr class="highlight"><td class="rk">2</td><td>Desert Rats</td><td class="num">11-4</td><td><span class="tag tag-wc">Wild Card</span></td></tr>
+            <tr class="highlight"><td class="rk">3</td><td>Newberry Indians</td><td class="num">10-5</td><td><span class="tag tag-champ">Red Champ</span></td></tr>
+            <tr class="highlight"><td class="rk">4</td><td>Goldy Goldy Gone</td><td class="num">9-6</td><td><span class="tag tag-wc">Wild Card</span></td></tr>
+            <tr class="highlight"><td class="rk">5</td><td>Midland Red Weasel Dogs</td><td class="num">8-7</td><td><span class="tag tag-wc">Wild Card</span></td></tr>
+            <tr class="highlight"><td class="rk">6</td><td>Houston Gamblers</td><td class="num">7-8</td><td><span class="tag tag-champ">White Champ</span></td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Field: 3 division champions + next 3 best overall records. Tiebreaker: head-to-head record, then total points.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128721; On the Bubble</div>
+        <table class="data">
+            <tr><th>Team</th><th class="num">W-L</th><th class="num">GB*</th></tr>
+            <tr><td>Sidd Finch</td><td class="num">6-9</td><td class="num">2.0</td></tr>
+            <tr><td>The BANK of Texas</td><td class="num">6-9</td><td class="num">2.0</td></tr>
+            <tr><td>Troutdale Gales</td><td class="num">6-9</td><td class="num">2.0</td></tr>
+            <tr><td>Tempe Scorpions</td><td class="num">6-9</td><td class="num">2.0</td></tr>
+            <tr><td>Sons of Pitches</td><td class="num">5-10</td><td class="num">3.0</td></tr>
+            <tr><td>Ithaca Spartans</td><td class="num">4-11</td><td class="num">4.0</td></tr>
+        </table>
+        <p style="font-size:.7em;font-style:italic;color:var(--muted);margin-top:6px;font-family:'Courier Prime',monospace">*Gazette-calculated games behind the 6th and final projected spot (Midland, 8-7). Four scoring periods remain.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">&#128202; Combined Standings &mdash; Entering Week 16</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">GB</th><th>Div</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td>Troutdale Cascades</td><td class="num">12</td><td class="num">3</td><td class="num">&mdash;</td><td><span class="div-badge div-blue">BLU</span></td></tr>
+            <tr class="highlight"><td class="rk">2</td><td>Desert Rats</td><td class="num">11</td><td class="num">4</td><td class="num">1</td><td><span class="div-badge div-blue">BLU</span></td></tr>
+            <tr class="highlight"><td class="rk">3</td><td>Newberry Indians</td><td class="num">10</td><td class="num">5</td><td class="num">2</td><td><span class="div-badge div-red">RED</span></td></tr>
+            <tr class="highlight"><td class="rk">4</td><td>Goldy Goldy Gone</td><td class="num">9</td><td class="num">6</td><td class="num">3</td><td><span class="div-badge div-blue">BLU</span></td></tr>
+            <tr class="highlight"><td class="rk">5</td><td>Midland Red Weasel Dogs</td><td class="num">8</td><td class="num">7</td><td class="num">4</td><td><span class="div-badge div-blue">BLU</span></td></tr>
+            <tr class="highlight"><td class="rk">6</td><td>Houston Gamblers</td><td class="num">7</td><td class="num">8</td><td class="num">5</td><td><span class="div-badge div-white">WHT</span></td></tr>
+            <tr><td class="rk">7</td><td>Sidd Finch</td><td class="num">6</td><td class="num">9</td><td class="num">6</td><td><span class="div-badge div-red">RED</span></td></tr>
+            <tr><td class="rk">8</td><td>The BANK of Texas</td><td class="num">6</td><td class="num">9</td><td class="num">6</td><td><span class="div-badge div-red">RED</span></td></tr>
+            <tr><td class="rk">9</td><td>Troutdale Gales</td><td class="num">6</td><td class="num">9</td><td class="num">6</td><td><span class="div-badge div-red">RED</span></td></tr>
+            <tr><td class="rk">10</td><td>Tempe Scorpions</td><td class="num">6</td><td class="num">9</td><td class="num">6</td><td><span class="div-badge div-white">WHT</span></td></tr>
+            <tr><td class="rk">11</td><td>Sons of Pitches</td><td class="num">5</td><td class="num">10</td><td class="num">7</td><td><span class="div-badge div-white">WHT</span></td></tr>
+            <tr><td class="rk">12</td><td>Ithaca Spartans</td><td class="num">4</td><td class="num">11</td><td class="num">8</td><td><span class="div-badge div-white">WHT</span></td></tr>
+        </table>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All statistics from official Fantrax league data through Scoring Period 15. Games-back figures for the wild card cutline are Gazette calculations based on official win-loss records.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 2: THE PLAYOFF PICTURE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="picture">
+<div class="section-label">The Playoff Picture &mdash; Division by Division</div>
+<div class="headline-lg">Three Crowns, Three Very Different Races</div>
+<div class="deck">The format is simple: three division champions plus the next three best overall records make the six-team field. In practice, the three divisions are living in entirely different realities.</div>
+
+<div class="col-3">
+<div>
+    <div class="info-box" style="border-color:var(--blue)">
+        <div class="info-box-title" style="color:var(--blue);border-color:var(--blue)">Blue Division</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th class="num">W-L</th><th class="num">Div</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td>Cascades</td><td class="num">12-3</td><td class="num">2-1-0</td></tr>
+            <tr><td class="rk">2</td><td>Rats</td><td class="num">11-4</td><td class="num">3-1-0</td></tr>
+            <tr><td class="rk">3</td><td>Goldy</td><td class="num">9-6</td><td class="num">2-2-0</td></tr>
+            <tr><td class="rk">4</td><td>Dogs</td><td class="num">8-7</td><td class="num">1-4-0</td></tr>
+        </table>
+        <p class="body-sm" style="margin-top:10px;font-size:.82em">Not a race &mdash; a rout. Cascades lead by a game over Rats, but both are locks for October regardless of who wins the division, since both clear the wild card bar comfortably. The real stakes here are pride and a rivalry that has been a one-game gap for a month. Goldy and Dogs are fighting to be Blue's third and fourth playoff team, not for the crown.</p>
+    </div>
+</div>
+<div>
+    <div class="info-box" style="border-color:var(--red)">
+        <div class="info-box-title" style="color:var(--red);border-color:var(--red)">Red Division</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th class="num">W-L</th><th class="num">Div</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td>Newberry</td><td class="num">10-5</td><td class="num">3-2-0</td></tr>
+            <tr><td class="rk">2</td><td>Sidd Finch</td><td class="num">6-9</td><td class="num">3-0-0</td></tr>
+            <tr><td class="rk">3</td><td>BANK</td><td class="num">6-9</td><td class="num">2-2-0</td></tr>
+            <tr><td class="rk">4</td><td>Gales</td><td class="num">6-9</td><td class="num">0-4-0</td></tr>
+        </table>
+        <p class="body-sm" style="margin-top:10px;font-size:.82em">Newberry by a landslide. Five games clear of the field with the league's easiest remaining schedule &mdash; barring collapse, this crown is decided. Sidd, BANK, and Gales aren't chasing the division; they're chasing Midland's overall wild card spot instead, since Newberry has that locked.</p>
+    </div>
+</div>
+<div>
+    <div class="info-box" style="border-color:var(--muted)">
+        <div class="info-box-title" style="border-color:var(--muted)">White Division</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th class="num">W-L</th><th class="num">Div</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td>Gamblers</td><td class="num">7-8</td><td class="num">3-1-0</td></tr>
+            <tr><td class="rk">2</td><td>Scorpions</td><td class="num">6-9</td><td class="num">2-1-0</td></tr>
+            <tr><td class="rk">3</td><td>Sons</td><td class="num">5-10</td><td class="num">1-3-0</td></tr>
+            <tr><td class="rk">4</td><td>Spartans</td><td class="num">4-11</td><td class="num">1-2-0</td></tr>
+        </table>
+        <p class="body-sm" style="margin-top:10px;font-size:.82em">The only division in the league where a sub-.500 leader is still catchable by a team with even fewer wins. Gamblers hold a one-game division edge over Scorpions with a brutal schedule ahead. This is the one crown genuinely in play &mdash; and the one spot where a huge upset could reshape the whole field.</p>
+    </div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+
+<div class="col-2">
+<div>
+    <div class="headline-md">The Wild Card Math</div>
+    <p class="body-sm">With Cascades, Newberry, and Gamblers presumed division champions, the three wild card lines currently belong to Desert Rats, Goldy Goldy Gone, and Midland Red Weasel Dogs &mdash; all three from the Blue Division. That is the single most important structural fact about this race: unless something changes in Red or White, Blue sends four teams to the postseason and the other eight teams in the league are fighting over two spots that both already belong to Blue.</p>
+    <p class="body-sm">The four teams sitting at 6-9 &mdash; Sidd Finch, The BANK of Texas, Troutdale Gales, and Tempe Scorpions &mdash; are all exactly two games back of Midland's 8-7 mark with four scoring periods to play. That gap is entirely closeable. A 3-1 finish from any of them, paired with a Midland slide, changes the picture fast. Sons of Pitches, three back at 5-10, need a similar surge plus real help. Ithaca Spartans, four games back at 4-11 with the league's weakest roster on both sides of the ball, would need a near-perfect close and a full-scale collapse above them &mdash; not impossible on paper, but the longest of long shots.</p>
+</div>
+<div class="col-rule">
+    <div class="headline-md">How Ties Get Broken</div>
+    <p class="body-sm">Per league rule, ties in the standings are broken first by head-to-head record between the tied teams, and second by total points scored on the season. With four of the six bubble teams sitting at identical 6-9 records, head-to-head results from earlier in the season could matter enormously if the closing month produces another logjam. Keep an eye on total FPtsF as a fallback tiebreaker &mdash; Sidd Finch (5,735.5) currently holds a real scoring edge over Troutdale Gales (5,568.668) among the 6-9 group, for whatever that's worth if it comes down to it.</p>
+    <div class="blue-box" style="margin-top:14px">
+        <div style="font-family:'Oswald',sans-serif;font-size:.78em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:6px">Storyline to Watch</div>
+        <p style="font-size:.85em">If Houston Gamblers falter and either Tempe Scorpions or Sons of Pitches catches them in the White Division, the division champion and a Blue Division wild card would both flip &mdash; potentially swapping a losing-record division winner for a stronger overall team on the outside. It is the single biggest swing scenario left on the board.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Standings and division alignment per official Fantrax data through Scoring Period 15. Games-back figures are Gazette calculations.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 3: THE GAUNTLET -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="gauntlet">
+<div class="section-label">The Gauntlet &mdash; Strength of Remaining Schedule</div>
+<div class="headline-lg">Four Weeks Left. Not All Roads Are Equal.</div>
+<div class="deck">Every team has four scoring periods left: SP16 (Jul 13&ndash;26), SP17 (Jul 27&ndash;Aug 2), SP18 (Aug 3&ndash;9), and SP19 (Aug 10&ndash;16). The Gazette ranked every team's road by the combined current winning percentage of its four remaining opponents. The results explain a lot about who is about to have a very hard month.</div>
+
+<div class="info-box">
+    <div class="info-box-title">Strength of Schedule Ranking &mdash; Hardest to Easiest</div>
+    <table class="data">
+        <tr><th class="rk">Rk</th><th>Team</th><th class="num">Current W-L</th><th class="num">Avg Opp Win%</th><th>Remaining Opponents (SP16&ndash;19)</th></tr>
+        <tr class="danger"><td class="rk">1</td><td>Sons of Pitches</td><td class="num">5-10</td><td class="num">.650</td><td>Rats &middot; Gales &middot; Cascades &middot; Newberry</td></tr>
+        <tr class="danger"><td class="rk">2</td><td>Houston Gamblers</td><td class="num">7-8</td><td class="num">.633</td><td>Goldy &middot; Rats &middot; Gales &middot; Cascades</td></tr>
+        <tr class="warning"><td class="rk">3</td><td>Midland Red Weasel Dogs</td><td class="num">8-7</td><td class="num">.533</td><td>Cascades &middot; Newberry &middot; Spartans &middot; Scorpions</td></tr>
+        <tr class="warning"><td class="rk">3</td><td>Sidd Finch</td><td class="num">6-9</td><td class="num">.533</td><td>Gales &middot; Cascades &middot; Newberry &middot; Spartans</td></tr>
+        <tr><td class="rk">5</td><td>Goldy Goldy Gone</td><td class="num">9-6</td><td class="num">.500</td><td>Gamblers &middot; BANK &middot; Rats &middot; Gales</td></tr>
+        <tr><td class="rk">5</td><td>The BANK of Texas</td><td class="num">6-9</td><td class="num">.500</td><td>Spartans &middot; Goldy &middot; Scorpions &middot; Rats</td></tr>
+        <tr><td class="rk">7</td><td>Tempe Scorpions</td><td class="num">6-9</td><td class="num">.467</td><td>Newberry &middot; Spartans &middot; BANK &middot; Dogs</td></tr>
+        <tr class="safe"><td class="rk">8</td><td>Desert Rats</td><td class="num">11-4</td><td class="num">.450</td><td>Sons &middot; Gamblers &middot; Goldy &middot; BANK</td></tr>
+        <tr class="safe"><td class="rk">8</td><td>Troutdale Gales</td><td class="num">6-9</td><td class="num">.450</td><td>Sidd &middot; Sons &middot; Gamblers &middot; Goldy</td></tr>
+        <tr class="safe"><td class="rk">10</td><td>Troutdale Cascades</td><td class="num">12-3</td><td class="num">.433</td><td>Dogs &middot; Sidd &middot; Sons &middot; Gamblers</td></tr>
+        <tr class="safe"><td class="rk">10</td><td>Ithaca Spartans</td><td class="num">4-11</td><td class="num">.433</td><td>BANK &middot; Scorpions &middot; Dogs &middot; Sidd</td></tr>
+        <tr class="safe"><td class="rk">12</td><td>Newberry Indians</td><td class="num">10-5</td><td class="num">.416</td><td>Scorpions &middot; Dogs &middot; Sidd &middot; Sons</td></tr>
+    </table>
+    <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Avg Opp Win% = average current winning percentage of a team's four remaining scheduled opponents. Higher number = harder road.</p>
+</div>
+
+<hr class="rule-h-dbl">
+
+<div class="col-2">
+<div>
+    <div class="headline-md">The Hardest Roads</div>
+    <p class="body-sm"><strong>Sons of Pitches</strong> face the single toughest closing schedule in the league &mdash; Desert Rats, Troutdale Gales, Troutdale Cascades, and Newberry Indians. Three of those four are playoff locks. Even a hot streak likely nets one, maybe two wins against that slate.</p>
+    <p class="body-sm"><strong>Houston Gamblers</strong> are the story that matters most: the division champion holding a playoff spot now has to survive Goldy Goldy Gone, Desert Rats, Troutdale Gales, and Troutdale Cascades &mdash; three legitimate contenders in a four-week stretch. If Houston's playoff hopes are going to unravel, this is the schedule that does it.</p>
+    <p class="body-sm"><strong>Midland Red Weasel Dogs</strong>, currently holding the last overall wild card spot, open with back-to-back games against the league's #1 and #3 teams (Cascades, then Newberry) before the schedule eases. Survive July, and August gets much friendlier.</p>
+</div>
+<div class="col-rule">
+    <div class="headline-md">The Easiest Roads</div>
+    <p class="body-sm"><strong>Newberry Indians</strong> have, by a clear margin, the softest remaining schedule in the league &mdash; Scorpions, Dogs, Sidd, and Sons. None of their remaining four opponents currently sits above .533. Barring an epic collapse, the Red Division crown is Newberry's to lose.</p>
+    <p class="body-sm"><strong>Troutdale Cascades</strong>, already the league's best team, also get one of the friendlier closing slates. That combination &mdash; best roster, easiest path &mdash; is exactly why Cascades are this edition's championship favorite (see Championship Odds).</p>
+    <p class="body-sm"><strong>Ithaca Spartans</strong> technically have a soft schedule too, but at 4-11 with four games behind the last playoff spot and the weakest roster in the league on both sides of the ball, an easy schedule mostly means the Spartans get to pad their win total rather than actually threaten for October.</p>
+</div>
+</div>
+<div class="page-footer"><p>Schedule per official league release for Scoring Periods 16&ndash;19. Strength-of-schedule figures calculated by the Gazette using current standings winning percentage as of Scoring Period 15.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 4: REPORT CARD -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="report">
+<div class="section-label">The Report Card &mdash; What Every Contender Needs to Shore Up</div>
+<div class="headline-lg">Twelve Teams, Twelve Verdicts</div>
+<div class="deck">Using verified season-long hitting and pitching category totals, here is where each team stands heading into the stretch run &mdash; and what needs fixing before the games start mattering most.</div>
+
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">The Projected Six</div>
+
+        <div style="margin-bottom:16px"><span class="grade" style="color:var(--green)">A</span><strong>Troutdale Cascades (12-3)</strong> &mdash; The league's best pitching staff by a mile: 3,319.8 pitching FPts, roughly 420 points clear of second place. Nothing screams "fix this" about a roster this complete. If there's a nitpick, it's that a soft closing schedule could breed complacency &mdash; the only real risk is rust, not roster construction.</div>
+
+        <div style="margin-bottom:16px"><span class="grade" style="color:var(--green)">A-</span><strong>Desert Rats (11-4)</strong> &mdash; The league's Quality Start leader by a wide margin (395 QS, well clear of the field) and second-best pitching staff overall. The one real leak: 170 GIDP-related points lost on the season, tied for the worst mark among playoff-caliber teams. A team this good shouldn't be bleeding points into double plays.</div>
+
+        <div style="margin-bottom:16px"><span class="grade" style="color:var(--gold)">B+</span><strong>Newberry Indians (10-5)</strong> &mdash; Tied for the league lead in saves-plus-holds (510) and the most pitcher wins in the league (425), but also the single worst blown-save mark among contenders (-63 FPts). The bullpen that built this lead is also its biggest risk. Also worth noting: Newberry's hitters have stolen just 156 bases, the fewest of any team in the league &mdash; shrewd on paper, station-to-station on the bases.</div>
+
+        <div style="margin-bottom:16px"><span class="grade" style="color:var(--gold)">B+</span><strong>Goldy Goldy Gone (9-6)</strong> &mdash; Tied for the league's best bullpen usage (510 SVH) but also the second-worst blown-save total in the league (-54). A tough closing draw against Rats in Week 18 will test exactly that weakness. Offensively, still the league's second-best hitting roster &mdash; this is a genuine contender if the ninth inning settles down.</div>
+
+        <div style="margin-bottom:16px"><span class="grade" style="color:var(--muted)">B-</span><strong>Midland Red Weasel Dogs (8-7)</strong> &mdash; The league's most explosive offense: 800 home runs, nearly 90 clear of the next-closest team, and the top overall hitting FPts total. But the pitching staff has bled the most points to pitcher losses of any team in the league (-420 FPts) and ranks just 6th overall. With Cascades and Newberry up first, this is the swing team of the entire stretch run &mdash; the bat is elite, the arm is the liability.</div>
+
+        <div style="margin-bottom:16px"><span class="grade" style="color:#a06010">C+</span><strong>Houston Gamblers (7-8)</strong> &mdash; The weakest pitching staff of any team in the projected six (2,013.7 FPts) and the fewest Quality Starts of the group (255). Combine that with the hardest closing schedule of any playoff-position team, and Houston's grip on this spot is the shakiest in the field. If there is a single team that needs a rotation upgrade off the wire immediately, it's the Gamblers.</div>
+    </div>
+</div>
+
+<div>
+    <div class="info-box">
+        <div class="info-box-title">The Chasers</div>
+
+        <div style="margin-bottom:14px"><span class="grade" style="color:var(--muted)">C</span><strong>Sidd Finch (6-9)</strong> &mdash; A four-game losing streak and a middling roster on both sides of the ball. Facing Cascades and Newberry twice combined over the next four weeks doesn't help. Needs a genuine spark, not a marginal upgrade, to close the two-game gap.</div>
+
+        <div style="margin-bottom:14px"><span class="grade" style="color:var(--red)">C-</span><strong>The BANK of Texas (6-9)</strong> &mdash; The league's worst hitting roster by total FPts (3,126.5), consistent with a franchise that has leaned on relief pitching over bats for years. Pitching is a respectable 5th overall &mdash; the offense is what's holding this team back from the bubble conversation.</div>
+
+        <div style="margin-bottom:14px"><span class="grade" style="color:var(--muted)">C</span><strong>Troutdale Gales (6-9)</strong> &mdash; Winless within their own division (0-4-0) despite a perfectly respectable overall roster. A moderate remaining schedule gives them as fair a shot as anyone in the 6-9 logjam &mdash; if they can finally solve divisional play.</div>
+
+        <div style="margin-bottom:14px"><span class="grade" style="color:var(--red)">D+</span><strong>Tempe Scorpions (6-9)</strong> &mdash; The league's worst GIDP mark (-198 FPts) on top of bottom-tier pitching (11th). A team leaking points on the bases and off the mound in equal measure. The path back is narrow.</div>
+
+        <div style="margin-bottom:14px"><span class="grade" style="color:var(--red)">D</span><strong>Sons of Pitches (5-10)</strong> &mdash; By far the least-used bullpen in the league (120 SVH, next-lowest is more than 80 points higher) &mdash; a clear sign of under-using the wire all season. Facing the hardest schedule of any team down the stretch. Realistically fighting for pride, but shoring up saves/holds now would pay off even if 2026 doesn't work out.</div>
+
+        <div style="margin-bottom:14px"><span class="grade" style="color:var(--red)">F</span><strong>Ithaca Spartans (4-11)</strong> &mdash; Worst hitting roster and worst pitching staff in the league, full stop. Four games back with four to play. This is a season to bank development for 2027's keeper decisions rather than chase a mathematical long shot.</div>
+    </div>
+
+    <div class="waste-box">
+        <div class="waste-title">&#9888; League-Wide Category Notes</div>
+        <p style="font-size:.85em"><strong>Power:</strong> Midland's 800 home runs stand alone &mdash; nobody else in the league has topped 712. <strong>Bullpen risk:</strong> Newberry and Goldy have the league's best save-plus-hold totals and its two worst blown-save totals &mdash; a real crack in the league's two best bullpens. <strong>Wire usage:</strong> Sons of Pitches' 120 SVH is the clearest under-utilization of the free agent pool in the league this season.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All category totals verified against official Fantrax hitting and pitching leaderboards through Scoring Period 15. Grades reflect Gazette editorial judgment, not an official league metric.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 5: CHAMPIONSHIP ODDS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="odds">
+<div class="section-label">Championship Odds &mdash; The Longball Gazette Power Tiers</div>
+<div class="headline-lg">Who Actually Wins This Thing?</div>
+<div class="deck">Not a betting line &mdash; an editorial read on roster completeness, remaining schedule, and category-level strength, tiered from favorite to rebuild-mode. These are the Gazette's opinions, not projections from any outside service.</div>
+
+<div class="column-box">
+    <div class="column-box-title">Tier 1 &mdash; The Favorite</div>
+    <p class="body-sm" style="text-align:center"><strong>Troutdale Cascades (12-3).</strong> Best record, by far the best pitching staff in the league, and one of the easier closing schedules among contenders. There is no obvious hole to exploit. This is the team to beat, and nobody else in the league can currently make the same claim on both sides of the ball.</p>
+</div>
+
+<div class="col-2">
+<div>
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Tier 2 &mdash; Legitimate Contenders</div>
+        <p style="font-size:.87em"><strong>Desert Rats.</strong> Second-best record, second-best pitching staff, league-leading Quality Start total. A well-rounded team with a manageable schedule and only a modest double-play problem standing between it and a real title push.</p>
+        <p style="font-size:.87em;margin-top:8px"><strong>Newberry Indians.</strong> The league's most favorable remaining schedule and elite bullpen volume. The blown-save rate is a real concern in a short playoff format, but the floor here is as safe as any team not named Cascades.</p>
+    </div>
+    <div class="blue-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:8px">Tier 3 &mdash; Dangerous but Flawed</div>
+        <p style="font-size:.87em"><strong>Goldy Goldy Gone.</strong> Elite offense and elite bullpen volume undercut by the league's second-worst blown-save rate. High ceiling, shaky floor in close games.</p>
+        <p style="font-size:.87em;margin-top:8px"><strong>Midland Red Weasel Dogs.</strong> The scariest offense in the league if the pitching holds up, and it hasn't so far. A brutal opening schedule (Cascades, then Newberry) will answer the question of whether this team is a real threat or a wild-card team that peaks early and fades.</p>
+    </div>
+</div>
+<div class="col-rule">
+    <div class="waste-box">
+        <div class="waste-title">Tier 4 &mdash; Fighting Just to Get In</div>
+        <p style="font-size:.87em"><strong>Houston Gamblers.</strong> Weakest pitching staff of any team currently in playoff position, facing the hardest remaining schedule of anyone in the field. This team's championship odds are close to academic &mdash; the real fight is simply staying in the six, and even that is no sure thing.</p>
+    </div>
+    <div class="info-box" style="margin-top:16px">
+        <div class="info-box-title">Tier 5 &mdash; Long Shots, Still Breathing</div>
+        <p class="body-sm">Sidd Finch, The BANK of Texas, Troutdale Gales, and Tempe Scorpions are all two games back with four to play. Any of them could still force their way into the picture with a hot month and some help &mdash; but none currently has the roster to be taken seriously as a championship threat even if they do sneak in.</p>
+    </div>
+    <div class="alert-box" style="margin-top:16px">
+        <div class="alert-box-title">Tier 6 &mdash; Start Thinking About Next Year</div>
+        <p style="font-size:.85em">Sons of Pitches and Ithaca Spartans face the two toughest roads back (or simply lack the roster) to make October a realistic conversation. Both would be better served using the next four weeks to evaluate keeper pieces for 2027 than chasing a bracket spot.</p>
+    </div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+<div class="col-3">
+<div><div class="headline-md" style="font-size:1.05em">Most Complete Team</div><p class="body-sm">Troutdale Cascades. No exploitable weakness on either side of the ball, and the schedule cooperates.</p></div>
+<div><div class="headline-md" style="font-size:1.05em">Highest Ceiling</div><p class="body-sm">Midland Red Weasel Dogs. The most explosive offense in the league &mdash; if the arms can survive July.</p></div>
+<div><div class="headline-md" style="font-size:1.05em">Most Fragile Leader</div><p class="body-sm">Houston Gamblers. A losing record, the league's thinnest rotation among contenders, and the hardest month still to come.</p></div>
+</div>
+<div class="page-footer"><p>Tiers and odds language reflect Gazette editorial opinion based on verified season statistics, not a licensed projection system or sportsbook.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 6: TOUT WARS & COLUMNISTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="columns">
+<div class="section-label">The Tout Wars Corner &amp; The Columnists</div>
+
+<div class="green-box">
+    <div style="font-family:'Oswald',sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;text-align:center">Expert Consensus &mdash; The Tout Wars Corner</div>
+    <p class="body-sm">This section applies general, publicly known valuation principles from head-to-head points fantasy strategy &mdash; the kind of thinking that has defined high-level Tout Wars-style points competitions &mdash; without attributing specific opinions or quotes to any individual analyst.</p>
+    <p class="body-sm"><strong>On roster construction in H2H points formats:</strong> The type of build that ATC-style projection systems tend to favor in points leagues is one built around accumulating volume in the format's highest fixed-value categories &mdash; quality starts, wins, and saves-plus-holds in this league's scoring, each worth a flat five points regardless of margin. A team can win a category-based roto league with batting average and speed; in a points format with QS/W/SVH weighted this heavily, stable, workload-heavy pitching depth tends to be the differentiator. That is precisely why Desert Rats' league-leading 395 Quality Starts and Newberry's 425 pitcher wins matter more here than they might in a shallower points system.</p>
+    <p class="body-sm"><strong>On the stretch run specifically:</strong> A Zinkie-style value read for the closing month of a H2H points season typically emphasizes floor over ceiling &mdash; streaming a probable Quality Start or a save opportunity is usually a better points bet down the stretch than chasing a boom-or-bust bat, because the QS/SVH categories pay out in flat five-point increments whether the underlying performance was dominant or merely adequate. Teams like Houston Gamblers, thin on rotation depth and facing three legitimate playoff opponents in a row, are exactly the profile that benefits most from an aggressive streaming approach off the wire right now.</p>
+    <p class="body-sm"><strong>On bullpen volatility:</strong> High-volume save-plus-hold totals paired with elevated blown-save rates &mdash; the exact pattern showing up for both Newberry and Goldy Goldy Gone this season &mdash; is a well-documented risk profile in points-league analysis: the same aggressive bullpen usage that racks up points in the SVH category is often the same usage pattern that produces more high-leverage blown chances. It is not a reason to panic, but it is a category worth monitoring on a week-to-week basis rather than assuming it holds at the same rate in a shorter playoff sample.</p>
+</div>
+
+<hr class="rule-h-dbl">
+
+<div class="col-2">
+<div>
+    <div class="column-box">
+        <div class="column-box-title">The Gamblers' Bluff</div>
+        <div class="column-box-byline">By Joe Falls</div>
+        <p class="body-sm">Houston Gamblers are in the playoffs today. Write it down, because it might not last. A 7-8 team holding a division crown while four teams with better records fight over table scraps is exactly the kind of thing that makes fans of the other eleven franchises want to throw their remote through a wall. I don't blame them. But rules are rules, and the Gamblers earned this the only way the format allows: they won their division.</p>
+        <p class="body-sm">Now comes the hard part. Goldy Goldy Gone. Desert Rats. Troutdale Gales. Troutdale Cascades. Three of the four are legitimate playoff-caliber outfits, and Houston's pitching staff ranks dead last among the six teams currently positioned to make October. You don't back into a bracket spot and then coast through a murderers' row with the league's thinnest rotation. Something has to give. My money says it's Houston's grip on this thing, not the schedule.</p>
+    </div>
+</div>
+<div class="col-rule">
+    <div class="column-box">
+        <div class="column-box-title">The Dignity of Playing It Out</div>
+        <div class="column-box-byline">By Mitch Albom</div>
+        <p class="body-sm">I want to talk about Sons of Pitches for a moment, because I think we owe them that. Five wins, ten losses, three games back of the last playoff spot, and staring down the single hardest closing schedule in the league &mdash; Desert Rats, Troutdale Gales, Troutdale Cascades, Newberry Indians. By any honest measure, this season is close to written. And yet somebody still has to set a lineup every single week. Somebody still has to decide whether to stream a pitcher or ride the one they've got. That is not a small thing, even when the standings say it barely matters.</p>
+        <p class="body-sm">There is a version of a fantasy season that ends in October with a trophy, and there is a version that ends with a manager quietly deciding which twenty-five-year-old on the roster is worth keeping into next year. Both versions require showing up. The Gazette will be watching Sons of Pitches not because they're going to make the playoffs &mdash; they almost certainly won't &mdash; but because how a team plays out a lost cause tells you something true about who's still building and who's already given up. My guess, based on nothing but years of watching people compete at things that stopped mattering weeks ago: they're still building.</p>
+    </div>
+</div>
+</div>
+
+<div class="column-box" style="margin-top:8px">
+    <div class="column-box-title">Somebody Has to Say It</div>
+    <div class="column-box-byline">By Big Lou Palmieri</div>
+    <p class="body-sm">You want to know what I love about this league? The BANK of Texas has the single worst offense in all twelve teams &mdash; 3,126.5 hitting points, dead last, not close &mdash; and it is the most predictable stat in the entire Gazette this week. Panic-drop the bats, load up on relievers, watch the saves pile up while the lineup produces like it's still April 2019. It's been the BANK's whole personality since I've been covering this league, and here we are again. Respect the consistency. Fix the batting order.</p>
+    <p class="body-sm">And don't think I forgot about the Rats. Eleven and four, second-best pitching staff in the league, and they're still finding a way to hit into 170 fantasy points' worth of double plays &mdash; tied for the worst mark of any contender. I don't care whose league this is or who signs my paycheck. A team that good should not be that careless on the bases. Fix it before October, or don't be surprised when somebody with a cleaner roster and a chip on their shoulder knocks you out in the first round.</p>
+</div>
+<div class="page-footer"><p>The opinions expressed in the Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office or its commissioner.</p></div>
+</div>
+
+<div class="page-footer">
+    <p>The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Vol. 1, No. 19 &nbsp;&middot;&nbsp; Sprint to the Playoffs Special Edition &nbsp;&middot;&nbsp; Week 16 Final Edition arrives Sunday, July 26, 2026</p>
+</div>
+
+</div></div><!-- /inner /newspaper -->
+
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
