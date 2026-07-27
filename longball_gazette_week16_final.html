@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette — Week 16 Final, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a}
+        body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+        .newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 0 80px rgba(184,134,11,.04);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+        .newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+        .inner{position:relative;z-index:1}
+        .masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+        .masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+        .paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+        .paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+        .paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:12px}
+        .ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+        .ticker-inner{display:flex;white-space:nowrap;animation:ticker 70s linear infinite}
+        .ticker-inner span{padding:0 30px}
+        .ticker-inner .sep{color:var(--gold);font-weight:700}
+        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+        .nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+        .nav-tab:first-child{border-left:1px solid #c0b090}
+        .nav-tab:hover{background:var(--paper);color:var(--ink)}
+        .nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+        .nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+        .page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+        .page.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        .section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+        .headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+        .headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+        .headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+        .deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+        .byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+        .dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+        p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+        p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+        p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+        .col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+        .rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+        .rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+        .col-rule{border-left:1px solid #b0a080;padding-left:30px}
+        .info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+        .info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+        .column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+        .column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+        .column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+        .alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+        .alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+        .gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+        .waste-box{border:3px solid var(--red);background:#fff0f0;padding:14px 16px;margin-bottom:16px}
+        .waste-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);text-align:center;border-bottom:2px solid var(--red);padding-bottom:6px;margin-bottom:10px}
+        table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+        table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+        table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+        table.data tr:last-child td{border-bottom:none}
+        table.data tr.highlight{background:#fff9e0;font-weight:700}
+        table.data tr.danger{background:#fff0f0}
+        table.data tr.warning{background:#fff8ee}
+        table.data .num{text-align:right;font-weight:700}
+        table.data .rk{text-align:center;width:30px;color:var(--muted)}
+        .recap-card{border:2px solid var(--rule);margin-bottom:24px;overflow:hidden}
+        .recap-header{display:flex;justify-content:space-between;align-items:stretch;background:var(--ink);color:var(--paper)}
+        .recap-team{flex:1;padding:10px 14px}
+        .recap-team.away{border-right:1px solid #555}
+        .recap-team-name{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+        .recap-score{font-family:"Courier Prime",monospace;font-size:1.5em;font-weight:700;line-height:1}
+        .recap-score.leading{color:var(--gold)}
+        .recap-vs{padding:10px 12px;font-family:"Courier Prime",monospace;font-size:.75em;text-align:center;opacity:.6;display:flex;align-items:center}
+        .recap-status{background:var(--red);color:white;font-family:"Courier Prime",monospace;font-size:.72em;text-align:center;padding:4px 10px;font-weight:700;letter-spacing:.5px}
+        .recap-body{padding:14px 16px}
+        .recap-body p{font-size:.88em;line-height:1.65;margin-bottom:8px}
+        .recap-stat{background:var(--paper-dark);border-left:4px solid var(--gold);padding:8px 12px;font-family:"Courier Prime",monospace;font-size:.8em;margin-top:8px}
+        .recap-stat strong{color:var(--red)}
+        .pr-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #d4c89a}
+        .pr-item:last-child{border-bottom:none}
+        .pr-rank{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--paper-dark);-webkit-text-stroke:1.5px var(--rule);min-width:44px;text-align:center;line-height:1;padding-top:2px}
+        .pr-rank.top3{color:var(--gold);-webkit-text-stroke:1px var(--gold)}
+        .pr-team{font-family:"Oswald",sans-serif;font-size:1.05em;font-weight:700}
+        .pr-pts{font-family:"Courier Prime",monospace;font-size:.85em;color:var(--muted)}
+        .pr-note{font-size:.83em;color:var(--muted);font-style:italic;line-height:1.4;margin-top:2px}
+        .up{color:#2a7a2a;font-weight:700}
+        .dn{color:var(--red);font-weight:700}
+        .same{color:var(--gold);font-weight:700}
+        .wk-card{border:2px solid var(--rule);margin-bottom:14px;overflow:hidden}
+        .wk-hdr{background:var(--paper-dark);padding:6px 12px;font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+        .wk-body{display:flex;justify-content:space-between;align-items:center;padding:10px 14px}
+        .wk-team{font-family:"Oswald",sans-serif;font-size:.95em;font-weight:700}
+        .wk-rec{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted)}
+        .wk-vs{font-family:"Courier Prime",monospace;font-size:.8em;color:var(--muted);padding:0 10px}
+        .wk-look{padding:8px 14px;font-size:.82em;font-style:italic;color:var(--muted);background:#fffef8;border-top:1px solid #d4c89a;line-height:1.5}
+        .badge{display:inline-block;font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+        .badge-hot{background:var(--red);color:white}
+        .badge-toss{background:var(--gold);color:var(--ink)}
+        .badge-must{background:#1a5a1a;color:white}
+        .fa-block{margin-bottom:18px}
+        .fa-name{font-family:"Oswald",sans-serif;font-size:.9em;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 10px}
+        .fa-row{display:flex;gap:8px;align-items:baseline;padding:4px 10px;border-bottom:1px solid #e0d4b0;font-size:.82em;flex-wrap:wrap}
+        .fa-row:last-child{border-bottom:none}
+        .fa-add{color:#1a5a1a;font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:44px}
+        .fa-drop{color:var(--red);font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:44px}
+        .fa-vic{color:var(--gold);font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:72px}
+        .expert-box{border:2px solid var(--ink);background:#f2ecdb;padding:16px 18px;margin-bottom:18px}
+        .expert-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink);border-bottom:2px solid var(--gold);padding-bottom:6px;margin-bottom:10px}
+        .expert-item{padding:8px 0;border-bottom:1px dashed #b0a080;font-size:.86em;line-height:1.6}
+        .expert-item:last-child{border-bottom:none}
+        .expert-item strong{color:var(--red)}
+        .page-footer{text-align:center;font-family:"Courier Prime",monospace;font-size:.78em;color:var(--muted);padding-top:20px;border-top:2px double var(--rule);margin-top:30px}
+        @media(max-width:760px){.newspaper{outline:none}.page{padding:20px}.col-2,.col-2-1{grid-template-columns:1fr}.col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}.paper-name{font-size:2em;letter-spacing:1px}.nav-tab{padding:8px 10px;font-size:.72em}}
+    </style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Vol. 1, No. 19 &nbsp;|&nbsp; Week 16 Final Edition</span>
+        <span>Sunday, July 26, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"The Sons Shocked the Commish." &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+</div>
+
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#128293; SONS OF PITCHES 558 &mdash; upset the Desert Rats 558&ndash;528 coming out of the All-Star break</span><span class="sep">&#9670;</span>
+    <span>&#128176; GOLDY GOLDY GONE 682.67 &mdash; week&apos;s HIGH SCORE, routs Houston Gamblers 682.67&ndash;535.83</span><span class="sep">&#9670;</span>
+    <span>&#9917; THE BANK survives Ithaca Spartans at the wire, 538.83&ndash;525.33</span><span class="sep">&#9670;</span>
+    <span>&#127381; NEWBERRY INDIANS win 5th straight, hold off Tempe Scorpions 549.33&ndash;492.5</span><span class="sep">&#9670;</span>
+    <span>&#9888; CASCADES survive a scare from Midland Red Weasel Dogs, 675.33&ndash;659.83</span><span class="sep">&#9670;</span>
+    <span>&#128293; TROUTDALE GALES crunch Sidd Finch 617.17&ndash;482.83, Sidd&apos;s 5th straight loss</span><span class="sep">&#9670;</span>
+    <span>&#127942; CJ ABRAMS (DOGS) leads the league&apos;s recent hot streak &mdash; 91 FPts</span><span class="sep">&#9670;</span>
+    <span>&#9889; TARIK SKUBAL (Triple G) tops all pitchers &mdash; 72.67 FPts, 0.63 ERA</span><span class="sep">&#9670;</span>
+    <span>&#127942; PLAYOFF WATCH: White Division wide open &mdash; 3 of 4 teams still alive for the crown</span><span class="sep">&#9670;</span>
+    <span>&#128197; Scoring Period 17 (Jul 27&ndash;Aug 2) matchups are set &mdash; six games, three weeks left</span><span class="sep">&#9670;</span>
+    <span>&#128293; SONS OF PITCHES 558 &mdash; upset the Desert Rats 558&ndash;528 coming out of the All-Star break</span><span class="sep">&#9670;</span>
+    <span>&#128176; GOLDY GOLDY GONE 682.67 &mdash; week&apos;s HIGH SCORE, routs Houston Gamblers 682.67&ndash;535.83</span><span class="sep">&#9670;</span>
+</div></div>
+
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('scores')">Scores &amp; Recaps</div>
+    <div class="nav-tab" onclick="showPage('players')">Top Players</div>
+    <div class="nav-tab" onclick="showPage('rankings')">Power Rankings</div>
+    <div class="nav-tab" onclick="showPage('fa')">FA &amp; Wire</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 1: FRONT PAGE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page active" id="front">
+<div class="section-label">Week 16 Final &mdash; July 20&ndash;26, 2026</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">SONS SHOCK THE COMMISH; GOLDY GOES OFF; CASCADES SURVIVE A SCARE</div>
+    <div class="deck">The Desert Rats came out of the All-Star break looking like a team that forgot how the game is played, and the Sons of Pitches made them pay for it. Goldy Goldy Gone posted the week's biggest number by a mile. The BANK survived last-place Ithaca by the length of a bunt single. And in Troutdale, the league's best team needed every last point to hold off the Weasel Dogs. Three scoring periods remain. The playoff race just got a lot more interesting.</div>
+    <div class="byline">By the Longball Gazette Wire Staff</div>
+    <div class="dateline">League Headquarters &mdash; Sunday, July 26, 2026</div>
+
+    <p class="body">The Desert Rats went into the All-Star break at 11-4 and looking every bit like a team built to chase the Cascades down the stretch. They came out of it 11-5, blindsided by a Sons of Pitches team that had lost four of five entering the week. Sons of Pitches 558, Desert Rats 528 &mdash; a thirty-point margin that will not show up as a blowout on paper but landed like one in the standings, because the commissioner's own team now has company at 11-5 rather than daylight over the field. Whatever went wrong for the Rats coming out of the break, it needs fixing fast. There are only three scoring periods left.</p>
+
+    <p class="body">Nobody in this league scored more baseball than Goldy Goldy Gone this week. Goldy dropped 682.67 points on the Houston Gamblers &mdash; the week's highest total by a comfortable margin &mdash; in a 682.67 to 535.83 rout that pushed Goldy to 10-6 and kept their three-game winning streak alive. The Gamblers, meanwhile, are the most fascinating case in the league right now: 7-9 overall, a losing record by any measure, and yet sitting atop the White Division by a single game. Tuesday's beatdown didn't cost them that lead. It might cost them their margin for error.</p>
+
+    <p class="body">The closest game of the week belonged to The BANK of Texas, who needed until the final tally to put away the last-place Ithaca Spartans, 538.83 to 525.33. A 13.5-point escape act keeps the BANK's two-game winning streak intact and puts them one game back of the final wildcard spot. Newberry Indians, meanwhile, keep doing what they've done all season &mdash; win without fanfare. Their 549.33 to 492.5 decision over Tempe Scorpions is the Indians' fifth consecutive victory, and it's getting harder to find anyone in this league still overlooking them.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">Cascades Survive a Genuine Scare</div>
+    <p class="body-sm">Troutdale Cascades 675.33, Midland Red Weasel Dogs 659.83. Fifteen and a half points. That's the entire margin between the best record in MLBLONGBALL and a Weasel Dogs team that came within a single big inning of pulling off the upset of the season. The Cascades move to 13-3 and still sit atop the Blue Division and the overall standings by two full games, but for one week the league's model of consistency needed every last point they could scrounge up. The Weasel Dogs, at 8-8, made a costly mistake somewhere in roster management this week &mdash; and it cost them a signature win that would have been the best of their season.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">Gales Crunch Sidd Finch; Sidd's Skid Reaches Five</div>
+    <p class="body-sm">The Troutdale Gales handled Sidd Finch decisively, 617.17 to 482.83, extending Sidd's losing streak to five straight games and pushing their record to 6-10. The Gales improve to 7-9 and snap back into the wildcard conversation, one game behind the BANK for the sixth and final playoff spot. Sidd Finch's season, once defined by boom weeks that could outscore the entire league, is now defined by a five-game skid with three scoring periods left to turn it around.</p>
+</div>
+
+<div class="col-rule">
+    <div class="info-box">
+        <div class="info-box-title">Week 16 Final Scores</div>
+        <table class="data">
+            <tr><th colspan="3">Scoring Period 16 &mdash; Final</th></tr>
+            <tr class="highlight"><td>Sons of Pitches <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">558.000</td><td class="num" style="color:var(--muted);font-size:.8em">+30.0</td></tr>
+            <tr><td>Desert Rats</td><td class="num">528.000</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>The BANK of Texas <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">538.830</td><td class="num" style="color:var(--muted);font-size:.8em">+13.5</td></tr>
+            <tr><td>Ithaca Spartans</td><td class="num">525.330</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Goldy Goldy Gone <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">682.670</td><td class="num" style="color:var(--muted);font-size:.8em">+146.8</td></tr>
+            <tr><td>Houston Gamblers</td><td class="num">535.830</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Newberry Indians <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">549.330</td><td class="num" style="color:var(--muted);font-size:.8em">+56.8</td></tr>
+            <tr><td>Tempe Scorpions</td><td class="num">492.500</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Troutdale Cascades <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">675.330</td><td class="num" style="color:var(--muted);font-size:.8em">+15.5</td></tr>
+            <tr><td>Midland Red Weasel Dogs</td><td class="num">659.830</td><td></td></tr>
+            <tr><td colspan="3" style="padding:3px"></td></tr>
+            <tr class="highlight"><td>Troutdale Gales <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">W</span></td><td class="num">617.170</td><td class="num" style="color:var(--muted);font-size:.8em">+134.3</td></tr>
+            <tr><td>Sidd Finch</td><td class="num">482.830</td><td></td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Final. Scoring Period 16: Jul 20 &ndash; Jul 26, 2026.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Week 16 Records</div>
+        <p style="font-size:.85em">
+        <strong>High Score:</strong> Goldy Goldy Gone &mdash; 682.670 pts<br>
+        <strong>Low Score:</strong> Sidd Finch &mdash; 482.830 pts<br>
+        <strong>Closest Game:</strong> BANK over Ithaca (+13.5)<br>
+        <strong>Biggest Blowout:</strong> Goldy over Gamblers (+146.8)<br>
+        <strong>Longest Streak:</strong> Newberry Indians &mdash; 5 straight wins<br>
+        <strong>Roughest Skid:</strong> Sidd Finch &mdash; 5 straight losses
+        </p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#9888; WHITE DIVISION: 3 OF 4 TEAMS STILL ALIVE</div>
+        <p style="font-size:.83em">Houston Gamblers lead the White Division at 7-9 &mdash; a record that wouldn't sniff a playoff spot anywhere else in this league. Sons of Pitches (6-10) and Tempe Scorpions (6-10) both sit one game back after this week. Only Ithaca Spartans (4-12, three back) look done. If the Gamblers stumble in the final stretch, the White crown &mdash; and an automatic playoff berth &mdash; is very much up for grabs.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">Current Standings &mdash; Combined (Verified)</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Team</th><th>W-L</th><th>Div</th><th class="num">FPtsF</th><th class="num">GB</th><th>Str</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Troutdale Cascades</strong></td><td>13-3</td><td>BLU</td><td class="num">7,427.2</td><td class="num">&mdash;</td><td>3W</td></tr>
+            <tr class="highlight"><td class="rk">2</td><td><strong>Desert Rats</strong></td><td>11-5</td><td>BLU</td><td class="num">6,923.7</td><td class="num">2</td><td>1L</td></tr>
+            <tr><td class="rk">3</td><td>Newberry Indians</td><td>11-5</td><td>RED</td><td class="num">6,686.2</td><td class="num">2</td><td>5W</td></tr>
+            <tr><td class="rk">4</td><td>Goldy Goldy Gone</td><td>10-6</td><td>BLU</td><td class="num">7,074.5</td><td class="num">3</td><td>3W</td></tr>
+            <tr><td class="rk">5</td><td>Midland Red Weasel Dogs</td><td>8-8</td><td>BLU</td><td class="num">6,698.3</td><td class="num">5</td><td>1L</td></tr>
+            <tr><td class="rk">6</td><td>The BANK of Texas</td><td>7-9</td><td>RED</td><td class="num">6,219.2</td><td class="num">6</td><td>2W</td></tr>
+            <tr><td class="rk">7</td><td>Houston Gamblers</td><td>7-9</td><td>WHT</td><td class="num">5,986.5</td><td class="num">6</td><td>2L</td></tr>
+            <tr><td class="rk">8</td><td>Troutdale Gales</td><td>7-9</td><td>RED</td><td class="num">6,185.8</td><td class="num">6</td><td>1W</td></tr>
+            <tr><td class="rk">9</td><td>Sons of Pitches</td><td>6-10</td><td>WHT</td><td class="num">5,872.3</td><td class="num">7</td><td>1W</td></tr>
+            <tr><td class="rk">10</td><td>Tempe Scorpions</td><td>6-10</td><td>WHT</td><td class="num">5,676.8</td><td class="num">7</td><td>3L</td></tr>
+            <tr><td class="rk">11</td><td>Sidd Finch</td><td>6-10</td><td>RED</td><td class="num">6,218.3</td><td class="num">7</td><td>5L</td></tr>
+            <tr class="danger"><td class="rk">12</td><td>Ithaca Spartans</td><td>4-12</td><td>WHT</td><td class="num">5,150.5</td><td class="num">9</td><td>5L</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px;font-family:'Courier Prime',monospace">Source: Fantrax official standings. All values verified. BLU=Blue Div, RED=Red Div, WHT=White Div. Playoffs: top 6 (3 division champs + 3 best overall records).</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Scores &amp; Recaps &rarr; &nbsp;|&nbsp; Top Players &rarr; &nbsp;|&nbsp; Power Rankings &rarr; &nbsp;|&nbsp; FA &amp; Wire &rarr; &nbsp;|&nbsp; The Columnists &rarr;</p>
+<p style="margin-top:6px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Week 16 Final Edition &nbsp;&middot;&nbsp; Next edition following Week 17</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 2: SCORES & RECAPS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="scores">
+<div class="section-label">Week 16 Final &mdash; All Six Matchups</div>
+<div class="headline-lg" style="margin-bottom:4px">Full Matchup Recaps</div>
+<div class="deck">Six games. Every story. The break that broke the Rats, the rout in the Goldy building, and the escape act at The BANK that came down to the wire.</div>
+<hr class="rule-h-thick">
+
+<!-- RECAP 1: Sons vs Rats -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Sons of Pitches &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">558.000</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Home</div><div class="recap-score">528.000</div></div>
+    </div>
+    <div class="recap-status">Sons of Pitches win by 30.0 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Sons: 6-10 &nbsp;&middot;&nbsp; Rats: 11-5</div>
+    <div class="recap-body">
+        <p>The Desert Rats went into the All-Star break sitting alone at the top of the wildcard chase, comfortably clear of the pack, looking like a team built for a long playoff run. They came out of it and promptly lost to a Sons of Pitches team carrying a losing record into the matchup. Final: Sons of Pitches 558, Desert Rats 528. Whatever rust accumulated over the break, it showed.</p>
+        <p>This was not a blowout by MLBLONGBALL's standards this week &mdash; thirty points is a normal margin in a league where Goldy Goldy Gone just posted 682 &mdash; but it lands differently for a first-place-caliber team getting outscored by a team fighting for its playoff life. The Rats remain 11-5 and squarely in the wildcard field. But the cushion they were building before the break is gone, and Newberry Indians now sit level with them at 11-5 with the league's hottest streak behind them.</p>
+        <p>For the commissioner's own team, there's no version of this recap that reads kindly, and there shouldn't be one. Roasting the Rats is fair game in these pages, and a 30-point loss to a team with a losing record coming out of the break is exactly the kind of week that earns it.</p>
+        <div class="recap-stat"><strong>WAKE-UP CALL:</strong> Rats lose their first game since before the break &nbsp;&middot;&nbsp; <strong>SONS:</strong> 558 pts, their best output in weeks &nbsp;&middot;&nbsp; <strong>STANDINGS IMPACT:</strong> Indians pull level with Rats at 11-5</div>
+    </div>
+</div>
+
+<!-- RECAP 2: BANK vs Ithaca -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">The BANK of Texas &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">538.830</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Ithaca Spartans &nbsp;&middot;&nbsp; Home</div><div class="recap-score">525.330</div></div>
+    </div>
+    <div class="recap-status">The BANK wins by 13.5 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Closest game of the week &nbsp;&middot;&nbsp; BANK: 7-9, W-streak 2 &nbsp;&middot;&nbsp; Ithaca: 4-12</div>
+    <div class="recap-body">
+        <p>The Ithaca Spartans own the league's worst record at 4-12 and very nearly made The BANK of Texas pay for underestimating them. The BANK escaped with a 538.83 to 525.33 win &mdash; 13.5 points, the closest final margin of Week 16 &mdash; to extend their winning streak to two and climb back within a game of the final playoff spot.</p>
+        <p>There's no dressing this one up as a statement win. The BANK needed every last point against a last-place team, and that's the story regardless of the final score in the box. Still, a win is a win in the standings, and at 7-9 with three scoring periods left, The BANK doesn't have the luxury of being picky about how they come.</p>
+        <p>Ithaca falls to 4-12 and continues to be the one team in this league that looks mathematically finished. But the margin here suggests there's more competitive baseball left in this roster than the record indicates &mdash; cold comfort with nine games back of the Cascades and the playoff line well out of reach.</p>
+        <div class="recap-stat"><strong>NAIL-BITER:</strong> 13.5-point margin, tightest game of Week 16 &nbsp;&middot;&nbsp; <strong>BANK:</strong> now one game back of the 6-seed &nbsp;&middot;&nbsp; <strong>ITHACA:</strong> 4-12, effectively eliminated</div>
+    </div>
+</div>
+
+<!-- RECAP 3: Gamblers vs Goldy -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Houston Gamblers &nbsp;&middot;&nbsp; Away</div><div class="recap-score">535.830</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Goldy Goldy Gone &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">682.670</div></div>
+    </div>
+    <div class="recap-status">Goldy Goldy Gone wins by 146.8 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Week's high score &nbsp;&middot;&nbsp; Goldy: 10-6, W-streak 3 &nbsp;&middot;&nbsp; Gamblers: 7-9, L-streak 2</div>
+    <div class="recap-body">
+        <p>Goldy Goldy Gone did not just win Week 16 &mdash; they lapped it. The 682.67-point output is the single highest team total posted anywhere in MLBLONGBALL this week, and it came against a Houston Gamblers team that had no answer for it, falling 682.67 to 535.83. Goldy extends their winning streak to three and climbs to 10-6, firmly entrenched as a wildcard team with the look of a squad peaking at the right time.</p>
+        <p>For the Gamblers, this is the uncomfortable side of a story that otherwise reads well: they still lead the White Division at 7-9 despite this loss, because nobody else in that division has separated from the pack either. But a 146.8-point beating is the kind of week that erodes confidence heading into a stretch run where every division game matters more than the last.</p>
+        <div class="recap-stat"><strong>WEEK'S BEST:</strong> Goldy 682.67 &mdash; highest team total of Scoring Period 16 &nbsp;&middot;&nbsp; <strong>BIGGEST MARGIN:</strong> 146.8 pts, the week's largest blowout &nbsp;&middot;&nbsp; <strong>GAMBLERS:</strong> still lead White at 7-9 despite the loss</div>
+    </div>
+</div>
+
+<!-- RECAP 4: Indians vs Scorpions -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Newberry Indians &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">549.330</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Tempe Scorpions &nbsp;&middot;&nbsp; Home</div><div class="recap-score">492.500</div></div>
+    </div>
+    <div class="recap-status">Newberry Indians win by 56.8 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Indians: 11-5, W-streak 5 &nbsp;&middot;&nbsp; Scorpions: 6-10, L-streak 3</div>
+    <div class="recap-body">
+        <p>Five in a row. The Newberry Indians have quietly turned into the hottest team in MLBLONGBALL not named the Cascades, holding off the Tempe Scorpions 549.33 to 492.5 for their fifth consecutive win. Newberry sits at 11-5, tied with the Desert Rats atop the wildcard picture, and leads the Red Division comfortably. This is a team peaking at the exact moment the standings start to matter most.</p>
+        <p>Tempe drops to 6-10 on a three-game losing streak, still mathematically alive in a soft White Division but running low on margin for error. With Houston's division lead sitting at just one game, the Scorpions can't afford many more weeks like this one if they want to make a real run at the crown.</p>
+        <div class="recap-stat"><strong>INDIANS STREAK:</strong> 5 consecutive wins &mdash; tied for the league's longest active run &nbsp;&middot;&nbsp; <strong>STANDINGS:</strong> Newberry now tied with Desert Rats at 11-5 &nbsp;&middot;&nbsp; <strong>SCORPIONS:</strong> 6-10, third straight loss</div>
+    </div>
+</div>
+
+<!-- RECAP 5: Cascades vs Weasel Dogs -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">675.330</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Midland Red Weasel Dogs &nbsp;&middot;&nbsp; Home</div><div class="recap-score">659.830</div></div>
+    </div>
+    <div class="recap-status">Troutdale Cascades win by 15.5 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Cascades: 13-3, W-streak 3 &nbsp;&middot;&nbsp; Weasel Dogs: 8-8, L-streak 1</div>
+    <div class="recap-body">
+        <p>This was supposed to be another routine Tuesday for the league's best team. Instead, the Troutdale Cascades needed every one of their 675.33 points to hold off a Midland Red Weasel Dogs team that put up 659.83 and came within 15.5 points of the upset of the season. The Cascades survive, extend their winning streak to three, and remain two games clear at the top of the overall standings and the Blue Division at 13-3.</p>
+        <p>For the Weasel Dogs, this is the one that got away. At 8-8 and sitting fifth overall &mdash; comfortably in wildcard position for now &mdash; a signature win over the league leader would have been the best result of their season and a statement heading into the stretch run. Instead, a costly mistake somewhere in the lineup left just enough points on the table, and the Dogs walk away with a moral victory instead of an actual one.</p>
+        <div class="recap-stat"><strong>CLOSEST TOP-OF-TABLE GAME:</strong> Cascades win by 15.5, their tightest margin in weeks &nbsp;&middot;&nbsp; <strong>CASCADES:</strong> still 2 games clear at 13-3 &nbsp;&middot;&nbsp; <strong>WEASEL DOGS:</strong> 8-8, the near-miss stings</div>
+    </div>
+</div>
+
+<!-- RECAP 6: Sidd vs Gales -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Sidd Finch &nbsp;&middot;&nbsp; Away</div><div class="recap-score">482.830</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Troutdale Gales &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">617.170</div></div>
+    </div>
+    <div class="recap-status">Troutdale Gales win by 134.3 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Gales: 7-9, W-streak 1 &nbsp;&middot;&nbsp; Sidd Finch: 6-10, L-streak 5</div>
+    <div class="recap-body">
+        <p>The Troutdale Gales handled Sidd Finch from start to finish, winning 617.17 to 482.83 &mdash; a 134.3-point margin, the second-largest blowout of the week. The Gales climb to 7-9 and pull into a share of the wildcard bubble alongside The BANK, one game back of the sixth seed with three scoring periods to make up the ground.</p>
+        <p>Sidd Finch's season has officially become a five-game losing streak in search of an ending. Once the league's most volatile boom-or-bust roster, capable of outscoring the field in a good week, Sidd now sits at 6-10 with the fewest good weeks left to find. The talent that made this team must-watch television in April hasn't disappeared &mdash; it just hasn't shown up in over a month.</p>
+        <div class="recap-stat"><strong>GALES:</strong> 7-9, now tied with The BANK for the bubble &nbsp;&middot;&nbsp; <strong>SIDD FINCH:</strong> 5 straight losses, longest active skid in the league</div>
+    </div>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 3: TOP PLAYERS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="players">
+<div class="section-label">League Leaders &mdash; Recent Stretch</div>
+<div class="headline-lg" style="margin-bottom:4px">Who's Hot Heading Into the Stretch Run</div>
+<div class="deck">CJ Abrams and Tarik Skubal lead the pack. Three of the top ten hitters play for teams still fighting for their playoff lives.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#128202; Top 10 Hitters</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Team</th><th>H/AB</th><th class="num">FPts</th><th class="num">FP/G</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>CJ Abrams</strong></td><td>DOGS</td><td>19/39</td><td class="num">91.0</td><td class="num">10.11</td></tr>
+            <tr><td class="rk">2</td><td>Drake Baldwin</td><td>TING</td><td>17/39</td><td class="num">73.0</td><td class="num">7.30</td></tr>
+            <tr><td class="rk">3</td><td>Ty France</td><td>BANK</td><td>16/42</td><td class="num">65.5</td><td class="num">6.55</td></tr>
+            <tr><td class="rk">4</td><td>Fernando Tatis Jr.</td><td>A-ARON</td><td>11/40</td><td class="num">64.0</td><td class="num">6.40</td></tr>
+            <tr><td class="rk">5</td><td>Gabriel Moreno</td><td>METZ</td><td>15/37</td><td class="num">63.0</td><td class="num">6.30</td></tr>
+            <tr><td class="rk">6</td><td>Jeremy Pe&ntilde;a</td><td>A-ARON</td><td>16/31</td><td class="num">61.5</td><td class="num">7.69</td></tr>
+            <tr><td class="rk">7</td><td>Michael Harris II</td><td>DOGS</td><td>14/45</td><td class="num">56.0</td><td class="num">5.60</td></tr>
+            <tr><td class="rk">8</td><td>Chandler Simpson</td><td>TING</td><td>16/35</td><td class="num">53.5</td><td class="num">5.35</td></tr>
+            <tr><td class="rk">9</td><td>Jackson Merrill</td><td>DOGS</td><td>13/39</td><td class="num">53.0</td><td class="num">5.30</td></tr>
+            <tr><td class="rk">10</td><td>Dillon Dingler</td><td>MSU</td><td>13/32</td><td class="num">52.5</td><td class="num">5.25</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px">Trailing Fantrax leaderboard as of publication. DOGS=Midland Red Weasel Dogs, TING=Troutdale Cascades, BANK=The BANK of Texas, A-ARON=Sons of Pitches, METZ=Newberry Indians, MSU=Ithaca Spartans. Not tied to a single scoring period.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128293; ABRAMS CARRYING THE WEASEL DOGS</div>
+        <p style="font-size:.83em">Three of the league's top ten hitters right now &mdash; CJ Abrams, Michael Harris II, and Jackson Merrill &mdash; all play for the Midland Red Weasel Dogs. That kind of top-heavy production is exactly how a middling roster nearly knocked off the Cascades this week. If the Dogs get even a little more from the rest of the lineup, this playoff race gets more crowded fast.</p>
+    </div>
+</div>
+
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#9889; Top 10 Pitchers</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Team</th><th class="num">IP</th><th class="num">ERA</th><th class="num">K</th><th class="num">FPts</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Tarik Skubal</strong></td><td>Triple G</td><td class="num">14.1</td><td class="num">0.63</td><td class="num">21</td><td class="num">72.67</td></tr>
+            <tr><td class="rk">2</td><td>Chris Sale</td><td>GMBLRS</td><td class="num">13.0</td><td class="num">2.08</td><td class="num">17</td><td class="num">60.50</td></tr>
+            <tr><td class="rk">3</td><td>Cade Cavalli</td><td>SCORP</td><td class="num">12.0</td><td class="num">1.50</td><td class="num">17</td><td class="num">58.50</td></tr>
+            <tr><td class="rk">4</td><td>Dylan Cease</td><td>RATS</td><td class="num">15.0</td><td class="num">1.80</td><td class="num">19</td><td class="num">56.50</td></tr>
+            <tr><td class="rk">5</td><td>Yoshinobu Yamamoto</td><td>METZ</td><td class="num">15.0</td><td class="num">1.80</td><td class="num">12</td><td class="num">56.00</td></tr>
+            <tr><td class="rk">6</td><td>Shane Bieber</td><td>DOGS</td><td class="num">13.0</td><td class="num">0.69</td><td class="num">9</td><td class="num">53.50</td></tr>
+            <tr><td class="rk">7</td><td>Shota Imanaga</td><td>RATS</td><td class="num">13.0</td><td class="num">0.00</td><td class="num">8</td><td class="num">52.00</td></tr>
+            <tr><td class="rk">8</td><td>Brandon Young</td><td>BANK</td><td class="num">13.1</td><td class="num">1.35</td><td class="num">13</td><td class="num">51.17</td></tr>
+            <tr><td class="rk">9</td><td>Drew Rasmussen</td><td>A-ARON</td><td class="num">12.0</td><td class="num">1.50</td><td class="num">14</td><td class="num">50.00</td></tr>
+            <tr><td class="rk">10</td><td>Sean Burke</td><td>GALES</td><td class="num">12.2</td><td class="num">1.42</td><td class="num">15</td><td class="num">48.83</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px">Trailing Fantrax leaderboard as of publication. Triple G=Goldy Goldy Gone, GMBLRS=Houston Gamblers, SCORP=Tempe Scorpions, RATS=Desert Rats, GALES=Troutdale Gales. Not tied to a single scoring period.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Notable</div>
+        <p style="font-size:.85em">
+        Shota Imanaga posted a <strong>0.00 ERA</strong> across 13 innings for the Desert Rats &mdash; the cleanest pitching line of anyone in the top ten, hitter or arm, and it still wasn't enough to keep the Rats from stumbling out of the break.<br><br>
+        Tarik Skubal and Dylan Cease give Goldy Goldy Gone and the Desert Rats a top-shelf arm apiece &mdash; a real asset for both clubs heading into a stretch run where quality starts and strikeouts add up fast.
+        </p>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 4: POWER RANKINGS + SP17 PREVIEW -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="rankings">
+<div class="section-label">Post-Week 16 Power Rankings</div>
+<div class="headline-lg" style="margin-bottom:4px">Where They Stand</div>
+<div class="deck">Three scoring periods left. The top is settling in, the bubble is a five-team pileup, and the White Division crown is anyone's to take.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="pr-item"><div class="pr-rank top3">1</div><div>
+        <div class="pr-team">Troutdale Cascades <span class="same">&#9654; STILL ROLLING</span></div>
+        <div class="pr-pts">13-3 &nbsp;&middot;&nbsp; 7,427.2 FPtsF &nbsp;&middot;&nbsp; Blue Division leader &nbsp;&middot;&nbsp; Streak: 3(W)</div>
+        <div class="pr-note">Needed a season-tightest 15.5 points to hold off the Weasel Dogs, but a win is a win and the Cascades remain two full games clear at the top with three periods to go. Nobody has separated the league leader from their throne yet.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">2</div><div>
+        <div class="pr-team">Desert Rats <span class="dn">&#9660; STUMBLED OUT OF THE BREAK</span></div>
+        <div class="pr-pts">11-5 &nbsp;&middot;&nbsp; 6,923.7 FPtsF &nbsp;&middot;&nbsp; Blue Division &nbsp;&middot;&nbsp; Streak: 1(L)</div>
+        <div class="pr-note">A 30-point loss to a losing-record Sons of Pitches team, coming right out of the All-Star break, is not the kind of week a wildcard front-runner wants on the resume. Still 2 games back of the Cascades, but now sharing the wildcard picture with a red-hot Newberry team instead of standing clear of it.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">3</div><div>
+        <div class="pr-team">Newberry Indians <span class="up">&#9650; FIVE STRAIGHT</span></div>
+        <div class="pr-pts">11-5 &nbsp;&middot;&nbsp; 6,686.2 FPtsF &nbsp;&middot;&nbsp; Red Division leader &nbsp;&middot;&nbsp; Streak: 5(W)</div>
+        <div class="pr-note">The league's longest active winning streak, and it doesn't get nearly enough attention. Newberry is tied with the Rats at 11-5, running away with the Red Division, and playing the most consistent baseball of any team not named Troutdale Cascades.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">4</div><div>
+        <div class="pr-team">Goldy Goldy Gone <span class="up">&#9650; LEAGUE'S HIGH SCORE</span></div>
+        <div class="pr-pts">10-6 &nbsp;&middot;&nbsp; 7,074.5 FPtsF &nbsp;&middot;&nbsp; Blue Division &nbsp;&middot;&nbsp; Streak: 3(W)</div>
+        <div class="pr-note">682.67 points is a video-game number, and it came against a real playoff-caliber opponent in Houston. Goldy's cumulative FPtsF (7,074.5) is the second-highest in the league, behind only the Cascades. Three straight wins and trending toward a dangerous playoff seed.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">5</div><div>
+        <div class="pr-team">Midland Red Weasel Dogs <span class="dn">&#9660; SO CLOSE</span></div>
+        <div class="pr-pts">8-8 &nbsp;&middot;&nbsp; 6,698.3 FPtsF &nbsp;&middot;&nbsp; Blue Division &nbsp;&middot;&nbsp; Streak: 1(L)</div>
+        <div class="pr-note">15.5 points from the best win of their season. The Dogs are the current sixth seed, holding the last automatic wildcard spot, but The BANK and the Gales are both one game back and hunting. CJ Abrams, Michael Harris II, and Jackson Merrill are all top-ten hitters right now &mdash; the offense is there if the rest of the roster catches up.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">6</div><div>
+        <div class="pr-team">The BANK of Texas <span class="up">&#9650; TWO STRAIGHT</span></div>
+        <div class="pr-pts">7-9 &nbsp;&middot;&nbsp; 6,219.2 FPtsF &nbsp;&middot;&nbsp; Red Division &nbsp;&middot;&nbsp; Streak: 2(W)</div>
+        <div class="pr-note">An ugly-but-effective win over Ithaca keeps The BANK's streak alive and puts them one game behind the Weasel Dogs for the sixth seed. H2H tiebreakers favor whoever wins the head-to-head down the stretch &mdash; The BANK controls its own path if it can keep stacking wins.</div>
+    </div></div>
+</div>
+
+<div>
+    <div class="pr-item"><div class="pr-rank">7</div><div>
+        <div class="pr-team">Houston Gamblers <span class="dn">&#9660; ROUTED, STILL LEADS WHITE</span></div>
+        <div class="pr-pts">7-9 &nbsp;&middot;&nbsp; 5,986.5 FPtsF &nbsp;&middot;&nbsp; White Division leader &nbsp;&middot;&nbsp; Streak: 2(L)</div>
+        <div class="pr-note">A 146.8-point beatdown from Goldy is the kind of week that should worry a division leader with this little margin. Houston's overall record wouldn't make the playoffs on points alone &mdash; the only reason they're in this conversation is a one-game lead over two teams that just proved they can play with anyone.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">8</div><div>
+        <div class="pr-team">Troutdale Gales <span class="up">&#9650; BACK ON THE BUBBLE</span></div>
+        <div class="pr-pts">7-9 &nbsp;&middot;&nbsp; 6,185.8 FPtsF &nbsp;&middot;&nbsp; Red Division &nbsp;&middot;&nbsp; Streak: 1(W)</div>
+        <div class="pr-note">A 134-point win over a struggling Sidd Finch squad pulls the Gales level with The BANK, one game back of the final playoff spot. Three periods left to make up the ground in a crowded Red Division race.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">9</div><div>
+        <div class="pr-team">Sons of Pitches <span class="up">&#9650; UPSET OF THE WEEK</span></div>
+        <div class="pr-pts">6-10 &nbsp;&middot;&nbsp; 5,872.3 FPtsF &nbsp;&middot;&nbsp; White Division &nbsp;&middot;&nbsp; Streak: 1(W)</div>
+        <div class="pr-note">Beating the Desert Rats out of the break is the best result of their season and keeps the Sons alive in a soft White Division, one game back of the Gamblers. A long shot everywhere else in the standings, but not out of the division race.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">10</div><div>
+        <div class="pr-team">Tempe Scorpions <span class="dn">&#9660; THREE-GAME SKID</span></div>
+        <div class="pr-pts">6-10 &nbsp;&middot;&nbsp; 5,676.8 FPtsF &nbsp;&middot;&nbsp; White Division &nbsp;&middot;&nbsp; Streak: 3(L)</div>
+        <div class="pr-note">Still mathematically alive for the White crown, one game back of Houston, but three straight losses is the wrong direction with three periods left. Needs to find its footing fast.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">11</div><div>
+        <div class="pr-team">Sidd Finch <span class="dn">&#9660; FIVE STRAIGHT LOSSES</span></div>
+        <div class="pr-pts">6-10 &nbsp;&middot;&nbsp; 6,218.3 FPtsF &nbsp;&middot;&nbsp; Red Division &nbsp;&middot;&nbsp; Streak: 5(L)</div>
+        <div class="pr-note">The league's longest active losing streak, matched against the league's longest active winning streak (Newberry) for symmetry nobody asked for. Sidd's cumulative FPtsF (6,218.3) is actually higher than four teams ahead of them in the standings &mdash; the talent hasn't left, the results have.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank">12</div><div>
+        <div class="pr-team">Ithaca Spartans <span class="dn">&#9660; NINE BACK</span></div>
+        <div class="pr-pts">4-12 &nbsp;&middot;&nbsp; 5,150.5 FPtsF &nbsp;&middot;&nbsp; White Division &nbsp;&middot;&nbsp; Streak: 5(L)</div>
+        <div class="pr-note">Nine games back with three left to play. The math is effectively closed, but a 13.5-point loss to The BANK this week says there's still a competitive roster in here somewhere &mdash; just not enough season left to matter.</div>
+    </div></div>
+
+    <div class="expert-box">
+        <div class="expert-title">&#128220; Tout Wars Corner: Expert Consensus</div>
+        <div class="expert-item"><strong>On the White Division:</strong> The consensus among elite H2H points strategists is that division-leader status built on a losing overall record is the shakiest kind of playoff position &mdash; it rewards early scheduling luck more than roster strength, and it tends to get exposed exactly the way Houston got exposed this week. The framework these analysts use for stretch-run planning weighs schedule strength and remaining games heavily; on that measure, none of the three White contenders is a clear favorite.</div>
+        <div class="expert-item"><strong>On streaming vs. holding arms:</strong> With QS and SVH both worth 5 points in this format, the shared advice from the format's top strategists is to prioritize rostering multi-category, high-floor arms over one-week boom starters down the stretch &mdash; a Skubal or a Cease is worth more than two streamers most weeks in a points league this deep.</div>
+        <div class="expert-item"><strong>On teams like Sidd Finch:</strong> A team with a top-half cumulative FPts total and a bottom-three record is a textbook case that H2H points analysts flag every year &mdash; talent and results diverge, and the fix is almost always lineup consistency rather than a roster overhaul. Three weeks is enough time to matter if Sidd stabilizes the week-to-week volatility.</div>
+        <p style="font-size:.7em;font-style:italic;color:var(--muted);margin-top:8px">Aggregated H2H points strategy framing, informed by the publicly known analytical approaches of Ariel Cohen, Chris Towers, Paul Sporer, and Fred Zinkie. Not direct quotes or attributed opinions.</p>
+    </div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+
+<div class="section-label">Scoring Period 17 Preview</div>
+<div class="headline-lg" style="margin-bottom:4px">Six Games, Three Weeks Left</div>
+<div class="deck">Monday, July 27 &ndash; Sunday, August 2, 2026. Every matchup carries playoff weight now.</div>
+
+<div class="wk-card">
+    <div class="wk-hdr">Tempe Scorpions (6-10) @ Ithaca Spartans (4-12)</div>
+    <div class="wk-body"><div class="wk-team">Tempe Scorpions</div><div class="wk-vs">AT</div><div class="wk-team">Ithaca Spartans</div></div>
+    <div class="wk-look">Tempe needs this one to stay alive in the White race. Ithaca has nothing left to play for but pride &mdash; and a chance to be a spoiler after nearly knocking off The BANK.</div>
+</div>
+
+<div class="wk-card">
+    <div class="wk-hdr">Goldy Goldy Gone (10-6) @ The BANK of Texas (7-9)</div>
+    <div class="wk-body"><div class="wk-team">Goldy Goldy Gone</div><div class="wk-vs">AT</div><div class="wk-team">The BANK of Texas</div></div>
+    <div class="wk-look">Goldy rides a 682-point week and a three-game streak into Texas. The BANK needs a signature win here to prove last week's escape act wasn't a fluke.</div>
+</div>
+
+<div class="wk-card">
+    <div class="wk-hdr">Midland Red Weasel Dogs (8-8) @ Newberry Indians (11-5)</div>
+    <div class="wk-body"><div class="wk-team">Midland Red Weasel Dogs</div><div class="wk-vs">AT</div><div class="wk-team">Newberry Indians</div></div>
+    <div class="wk-look">The Dogs nearly beat the league's best team last week. Newberry hasn't lost in five. Something has to give &mdash; this is the marquee matchup of Scoring Period 17.</div>
+</div>
+
+<div class="wk-card">
+    <div class="wk-hdr">Desert Rats (11-5) @ Houston Gamblers (7-9)</div>
+    <div class="wk-body"><div class="wk-team">Desert Rats</div><div class="wk-vs">AT</div><div class="wk-team">Houston Gamblers</div></div>
+    <div class="wk-look">The Rats need a bounce-back badly after their break-week stumble. The Gamblers need a response after getting run off the field by Goldy. Something has to give.</div>
+</div>
+
+<div class="wk-card">
+    <div class="wk-hdr">Sidd Finch (6-10) @ Troutdale Cascades (13-3)</div>
+    <div class="wk-body"><div class="wk-team">Sidd Finch</div><div class="wk-vs">AT</div><div class="wk-team">Troutdale Cascades</div></div>
+    <div class="wk-look">The league's coldest team walks into the league's best building. On paper this is not close. Sidd Finch has made a habit this season of ignoring what's on paper &mdash; just not recently.</div>
+</div>
+
+<div class="wk-card">
+    <div class="wk-hdr">Troutdale Gales (7-9) @ Sons of Pitches (6-10)</div>
+    <div class="wk-body"><div class="wk-team">Troutdale Gales</div><div class="wk-vs">AT</div><div class="wk-team">Sons of Pitches</div></div>
+    <div class="wk-look">The Gales are riding a big win into a matchup with a Sons team that just took down the Rats. Two teams with something real to prove in a game that could swing both playoff races.</div>
+</div>
+
+<div class="page-footer"><p>All matchups verified against the official Scoring Period 17 schedule. Records reflect Week 16 Final standings.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 5: FA & WIRE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="fa">
+<div class="section-label">Free Agent &amp; Waiver Wire &mdash; Week 16</div>
+<div class="headline-lg" style="margin-bottom:4px">Quiet Week on the Wire</div>
+<div class="deck">No confirmed FAAB transactions came through for Scoring Period 16. With three periods left and five teams packed onto the wildcard bubble, that's likely to change fast.</div>
+<hr class="rule-h-thick">
+
+<div class="info-box">
+    <div class="info-box-title">Wire Report</div>
+    <p class="body-sm">No verified waiver claims or FAAB bids were reported for Week 16 at press time. Given the standings picture &mdash; five teams within one game of the final two playoff spots, and three separate division races still technically alive &mdash; the Gazette expects the FAAB market to heat up quickly over the next scoring period. Teams sitting on unused FAAB with the bubble this tight are taking a real risk letting it sit idle down the stretch.</p>
+</div>
+
+<div class="alert-box">
+    <div class="alert-box-title">&#128064; WATCH LIST FOR SCORING PERIOD 17</div>
+    <p style="font-size:.83em">Bubble teams &mdash; The BANK, the Gales, Sons of Pitches, Tempe Scorpions, and Sidd Finch &mdash; are the clubs with the most motivation to be aggressive on the wire this week. A single well-timed streaming pitcher add can be the difference between the sixth seed and a golf-course October in a race this crowded.</p>
+</div>
+
+<div class="page-footer"><p>Wire activity will be verified against official Fantrax transaction logs before the next edition. No claims reported does not necessarily mean no claims occurred &mdash; check back next week.</p></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 6: THE COLUMNISTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="columns">
+<div class="section-label">The Columnists &mdash; Week 16</div>
+<div class="headline-lg" style="margin-bottom:4px">Three Voices on a Week That Reshuffled Everything</div>
+<div class="deck">The break claimed the Rats. The Indians keep winning without applause. And Big Lou has thoughts about a division leader with a losing record.</div>
+<hr class="rule-h-thick">
+
+<div class="column-box">
+    <div class="column-box-title">The Break Doesn't Care Who You Are</div>
+    <div class="column-box-byline">By Joe Falls, J.G. Taylor Spink Award Winner &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">Here is what the All-Star break does: it stops everything for a few days, and then it starts again, and some teams remember how to play and some teams don't. The Desert Rats didn't. Sons of Pitches 558, Desert Rats 528. Write it down plainly, because that's how it happened. A team carrying a losing record beat a team that had been building toward the top of this league all season, and there is no complicated explanation for it. The Rats came out flat. It happens to good teams. It happened to this one at the worst possible time, with Newberry Indians waiting to pounce on the tie in the standings.</p>
+            <p class="body-sm">Goldy Goldy Gone posted 682.67 points against Houston this week. I have covered a lot of lopsided weeks in this league and that number still made me sit up. That's not a team having a good week. That's a team reminding everybody what a peaking roster looks like three periods before the finish line.</p>
+        </div>
+        <div>
+            <p class="body-sm">The BANK beat Ithaca by 13.5 points and I want to be clear about what that means: not much, and everything. Not much, because Ithaca is 4-12 and nine games out. Everything, because The BANK needed it, got it, and is now one game from the playoff line instead of two. In a league this tight down the stretch, ugly wins count exactly the same as pretty ones.</p>
+            <p class="body-sm">Houston Gamblers lead the White Division at 7-9. I've said my piece about records that don't match division standing before, and I'll say it again: a division title is a division title, no matter how it looks on paper. But Goldy just put a 146-point beating on that team, and if I'm Houston, that loss keeps me up at night more than the standings sheet lets on.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Five Wins Nobody's Talking About</div>
+    <div class="column-box-byline">By Mitch Albom &nbsp;&middot;&nbsp; Detroit Free Press &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">There is a particular kind of losing streak that becomes its own gravity. Not one bad week, but five, each one pulling a little harder than the last, until a team that once looked capable of anything starts to look like it's waiting for the season to end rather than trying to change it. That is where Sidd Finch sits tonight. Five straight losses. A cumulative points total that is still, on paper, better than four teams ranked ahead of them. The math says this roster can still play. The record says otherwise. Somewhere between those two truths is the actual story, and it is not a comfortable one to write.</p>
+            <p class="body-sm">Contrast that with the Newberry Indians, who are doing the opposite thing in complete silence. Five straight wins. Nobody is writing about it, because there's no dramatic collapse to describe, no signature blowout to marvel at &mdash; just a team beating the team in front of them, week after week, with the kind of quiet professionalism that never makes a headline until the standings force you to notice it. They are tied with the Desert Rats at 11-5 now. The gap between "hot streak" and "who this team actually is" has closed completely.</p>
+        </div>
+        <div>
+            <p class="body-sm">I want to talk about the Weasel Dogs for a moment, because losing by 15.5 points to the best team in the league is not a footnote &mdash; it's a data point. CJ Abrams, Michael Harris II, and Jackson Merrill are all producing at a top-ten level right now. That's not luck. That's a roster with real firepower that came within one big swing of the best win of its season. The record says 8-8. The performance says something better than that is coming.</p>
+            <p class="body-sm">And then there is Houston, sitting atop the White Division with a losing record, which is either the most fragile playoff position in the league or the most efficient one, depending on how you want to tell the story. I don't think Houston cares which version is true. A division title gets you into October regardless of how you got there. The Gamblers just need to survive three more weeks of a division that no longer wants to let them have it easily.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Big Lou's Corner: A Division Leader With a Losing Record and I Have Thoughts</div>
+    <div class="column-box-byline">By Big Lou Palmieri, Baseball Lifer &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">SEVEN AND NINE. That is the record of the team currently leading the White Division. SEVEN AND NINE. I have seen a lot of things in this league over the years and I am telling you right now, a losing record leading a division with three weeks left in the season is the kind of thing that keeps commissioners up at night, and I happen to know this particular commissioner's team just got embarrassed by the Sons of Pitches, so maybe he's got other things keeping him up too. GOLDY GOLDY GONE went into Houston and dropped SIX HUNDRED AND EIGHTY-TWO POINTS on them. Six hundred and eighty-two! I don't care what division you're leading, that is a number that should terrify you.</p>
+            <p class="body-sm">And speaking of the commissioner &mdash; DESERT RATS, 528 POINTS, LOSS, TO A TEAM THAT WAS SIX AND TEN COMING IN. I don't make the rules about who gets roasted in this newspaper, but I am fairly certain the rules say roasting the Rats is fair game, and a break-week face-plant against a losing team is exactly the kind of week that earns it. Newberry Indians are now tied with you in the standings, sir. FIVE STRAIGHT WINS for that team while you were apparently still on vacation.</p>
+        </div>
+        <div>
+            <p class="body-sm">THE MIDLAND RED WEASEL DOGS. Fifteen and a half points. FIFTEEN AND A HALF. That's how close they came to knocking off the Cascades, the best team in this entire league, and I need everybody to understand that CJ Abrams is out there posting NINETY-ONE FANTASY POINTS like it's nothing. Ninety-one! If this team finds one more consistent bat they are a problem for everybody in the top six, and I mean everybody.</p>
+            <p class="body-sm">SIDD FINCH. Five losses in a row. FIVE. I have been watching this team all season swing wildly between "best roster in the league" and "can't buy a win" and I am here to tell you the losing streak has officially become the identity. The talent is still in there &mdash; their season point total is still better than four teams ahead of them in the standings, which if you think about it too hard will make you angry on their behalf &mdash; but three weeks is not a lot of time to fix a five-game skid. The clock is loud now. It is very loud.</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-footer">
+    <p>The opinions expressed in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office, its commissioner, or anyone who just lost to a team with a losing record and has strong feelings about it.</p>
+    <p style="margin-top:8px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Vol. 1, No. 19 &nbsp;&middot;&nbsp; Week 16 Final Edition &nbsp;&middot;&nbsp; Next edition following Week 17 (August 2, 2026)</p>
+</div>
+</div>
+
+</div></div><!-- /inner /newspaper -->
+
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
