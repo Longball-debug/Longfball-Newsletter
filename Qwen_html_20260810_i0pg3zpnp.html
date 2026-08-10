@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Longball Gazette — Week 18 Final, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0d0d0d;
+    color: #e8e8e8;
+    line-height: 1.6;
+  }
+
+  .gazette {
+    max-width: 780px;
+    margin: 0 auto;
+    background: #111;
+    border-left: 4px solid #d4a017;
+    border-right: 4px solid #d4a017;
+  }
+
+  /* MASTHEAD */
+  .masthead {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%);
+    padding: 32px 28px 24px;
+    text-align: center;
+    border-bottom: 3px solid #d4a017;
+  }
+  .masthead .vol {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d4a017;
+    margin-bottom: 8px;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+  .masthead .edition {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 6px;
+  }
+  .masthead .tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #d4a017;
+    margin-top: 14px;
+    padding: 10px 20px;
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .masthead .official {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    margin-top: 12px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: #d4a017;
+    color: #000;
+    padding: 14px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 2.0;
+  }
+  .ticker span {
+    display: block;
+    padding: 2px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .ticker span:last-child { border-bottom: none; }
+
+  /* NAV */
+  .nav {
+    background: #1a1a1a;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    border-bottom: 1px solid #333;
+  }
+  .nav span { margin: 0 10px; }
+  .nav .active { color: #d4a017; font-weight: 700; }
+
+  /* SECTIONS */
+  .section {
+    padding: 36px 28px;
+    border-bottom: 1px solid #222;
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #d4a017;
+    margin-bottom: 6px;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .section h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    margin: 24px 0 10px;
+  }
+  .section .subtitle {
+    font-size: 14px;
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+  .byline {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  p { margin-bottom: 14px; font-size: 14px; color: #ccc; }
+
+  /* PULL QUOTES / CALLOUTS */
+  .callout {
+    background: rgba(212,160,23,0.08);
+    border-left: 4px solid #d4a017;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: #e0c060;
+    font-weight: 600;
+  }
+  .callout.red {
+    background: rgba(220,50,50,0.08);
+    border-left-color: #dc3232;
+    color: #ff6b6b;
+  }
+  .callout.green {
+    background: rgba(50,200,100,0.08);
+    border-left-color: #32c864;
+    color: #6fdf9a;
+  }
+  .callout.blue {
+    background: rgba(80,140,255,0.08);
+    border-left-color: #508cff;
+    color: #7db3ff;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  th {
+    background: #1a1a2e;
+    color: #d4a017;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 2px solid #d4a017;
+  }
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #222;
+    color: #ccc;
+  }
+  tr.gold td { background: rgba(212,160,23,0.12); color: #ffd700; font-weight: 700; }
+  tr.amber td { background: rgba(255,165,0,0.08); color: #ffb347; }
+  tr.win td:first-child { color: #6fdf9a; font-weight: 700; }
+
+  /* SCORE BOXES */
+  .score-box {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  .score-box .teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .score-box .team-name {
+    font-weight: 800;
+    font-size: 15px;
+    color: #fff;
+  }
+  .score-box .team-name.winner { color: #6fdf9a; }
+  .score-box .team-name.loser { color: #888; }
+  .score-box .pts {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .score-box .pts.winner { color: #6fdf9a; }
+  .score-box .pts.loser { color: #666; }
+  .score-box .margin {
+    text-align: center;
+    font-size: 11px;
+    color: #d4a017;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #333;
+  }
+
+  /* POWER RANKINGS */
+  .pr-item {
+    padding: 18px 0;
+    border-bottom: 1px solid #222;
+  }
+  .pr-item:last-child { border-bottom: none; }
+  .pr-rank {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: #d4a017;
+    float: left;
+    margin-right: 16px;
+    width: 40px;
+    text-align: center;
+  }
+  .pr-team {
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+  }
+  .pr-badge {
+    display: inline-block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-left: 8px;
+    font-weight: 700;
+  }
+  .pr-badge.clinched { background: #1a4d1a; color: #6fdf9a; }
+  .pr-badge.tiebreak { background: #4d3a00; color: #ffd700; }
+  .pr-badge.alive { background: #00304d; color: #7db3ff; }
+  .pr-badge.out { background: #333; color: #999; }
+  .pr-stats {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+  .pr-blurb {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 6px;
+    clear: both;
+  }
+
+  /* COLUMNISTS */
+  .columnist {
+    margin: 28px 0;
+    padding: 24px;
+    background: #1a1a1a;
+    border-radius: 6px;
+    border: 1px solid #2a2a2a;
+  }
+  .columnist .col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .columnist .col-byline {
+    font-size: 11px;
+    color: #d4a017;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .columnist p { font-size: 13px; color: #bbb; }
+  .columnist .big-lou {
+    font-weight: 800;
+    color: #ff6b6b;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #0a0a0a;
+    padding: 24px 28px;
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    border-top: 2px solid #d4a017;
+  }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    padding: 12px 0;
+    color: #d4a017;
+    font-size: 18px;
+    letter-spacing: 8px;
+  }
+
+  .highlight { color: #d4a017; font-weight: 700; }
+  .green-text { color: #6fdf9a; }
+  .red-text { color: #ff6b6b; }
+
+  @media (max-width: 600px) {
+    .masthead h1 { font-size: 28px; }
+    .section { padding: 24px 16px; }
+    .section h2 { font-size: 22px; }
+    .score-box .pts { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="gazette">
+
+<!-- ═══════════ MASTHEAD ═══════════ -->
+<div class="masthead">
+  <div class="vol">Vol. 1, No. 21 &nbsp;|&nbsp; Week 18 Final Edition &nbsp;|&nbsp; Sunday, August 9, 2026</div>
+  <h1>THE LONGBALL GAZETTE</h1>
+  <div class="edition">MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</div>
+  <div class="tagline">"Sidd Snaps the Streak. Gales Come Storming Back. Scorpions Hold On By Five."</div>
+  <div class="official">Official Publication of the MLBLONGBALL Fantasy League</div>
+</div>
+
+<!-- ═══════════ NEWS TICKER ═══════════ -->
+<div class="ticker">
+  <span>🏆 DESERT RATS 559.50 — Week's high score; clinch Wild Card, finish 13-5</span>
+  <span>🔥 SIDD FINCH 455.33 upsets NEWBERRY INDIANS 331.17 — snaps Indians' 6-game win streak</span>
+  <span>⚡ TROUTDALE GALES 356.67 rally past HOUSTON GAMBLERS 328.50 to reach 9-9 — still alive for the final Wild Card</span>
+  <span>💰 THE BANK OF TEXAS 289.17 holds off TEMPE SCORPIONS 282.17 by 7 points — White Division sweeps itself out of first</span>
+  <span>🏆 SCORPIONS remain atop White Division at 7-11 as all four White teams lose in Week 18</span>
+  <span>🌟 FOUR CLINCHED: Cascades, Desert Rats, Newberry Indians, Goldy Goldy Gone lock playoff spots — two seeds still live</span>
+  <span>⚠️ GALES vs. WEASEL DOGS and GAMBLERS vs. SCORPIONS — both final Wild Card and White Division races go to Week 19</span>
+  <span>⚾ JAKE McCARTHY 55.5 pts tops all hitters for Desert Rats in Week 18</span>
+  <span>⚡ JESUS LUZARDO 64.0 pts — 15 IP, 1.20 ERA, 19 K — league's best pitching week for Troutdale Gales</span>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<div class="nav">
+  <span class="active">Front Page</span> ·
+  <span>Scores & Recaps</span> ·
+  <span>Top Players</span> ·
+  <span>Power Rankings</span> ·
+  <span>FA & Wire</span> ·
+  <span>The Columnists</span>
+</div>
+
+<!-- ═══════════ FRONT PAGE ═══════════ -->
+<div class="section">
+  <div class="section-label">Week 18 Final — One Week to Go</div>
+  <h2>Sidd Finch Ends the Streak, Four Playoff Spots Are Locked — and Two Are Still Very Much Alive</h2>
+  <p class="subtitle">Four teams are safely through to the 2026 playoffs. The final two spots — and the White Division title — will be decided in the Week 19 finale.</p>
+  <div class="byline">By Duke Falcone &nbsp;|&nbsp; MLBLONGBALL League Office — August 9, 2026</div>
+
+  <p>Newberry Indians had won six straight. They had clinched the Red Division. They were rolling into the season's final stretch looking like the hottest team nobody was talking about. Then Sidd Finch happened. A 455.33-to-331.17 beatdown that had nothing to do with a slump and everything to do with a team that decided this was the week to remind the league it still had teeth. The streak is over. The Indians' spot in the field is not in question — but the loss is a reminder that nothing is guaranteed once October baseball starts.</p>
+
+  <p>Four teams are safely in regardless of what happens in Week 19: the <span class="highlight">Troutdale Cascades</span> (Blue Division champs, best record in the league), the <span class="highlight">Desert Rats</span> (Wild Card, fresh off the week's high score of 559.50), the <span class="highlight">Newberry Indians</span> (Red Division champs), and <span class="highlight">Goldy Goldy Gone</span> (Wild Card). The last two spots are genuinely up for grabs. Midland Red Weasel Dogs and Troutdale Gales are knotted at 9-9, with the Weasel Dogs holding the tiebreaker — the Gales need a win over Goldy Goldy Gone and a Weasel Dogs loss to Tempe Scorpions to leap them. And in the White Division, Tempe Scorpions and Houston Gamblers are tied at 7-11, with the Scorpions holding the tiebreaker — the Gamblers need a win over the Cascades and a Scorpions loss to Midland to steal the division and the final playoff seed.</p>
+
+  <!-- PLAYOFF PICTURE -->
+  <h3>🏆 2026 Playoff Picture — Entering Week 19</h3>
+  <table>
+    <tr><th>#</th><th>Team</th><th>Path</th><th>Record</th></tr>
+    <tr class="gold"><td>1</td><td>Troutdale Cascades</td><td>Blue Champ — Clinched</td><td>15-3</td></tr>
+    <tr class="gold"><td>2</td><td>Desert Rats</td><td>Wild Card — Clinched</td><td>13-5</td></tr>
+    <tr class="gold"><td>3</td><td>Newberry Indians</td><td>Red Champ — Clinched</td><td>12-6</td></tr>
+    <tr class="gold"><td>4</td><td>Goldy Goldy Gone</td><td>Wild Card — Clinched</td><td>11-7</td></tr>
+    <tr class="amber"><td>5</td><td>Midland Red Weasel Dogs</td><td>Wild Card — holds tiebreak vs. Gales</td><td>9-9</td></tr>
+    <tr class="amber"><td>6</td><td>Tempe Scorpions</td><td>White Champ — holds tiebreak vs. Gamblers</td><td>7-11</td></tr>
+  </table>
+  <p style="font-size:12px; color:#888;">Seeds 1–4 are locked. Seed 5: Weasel Dogs hold the tiebreaker over Troutdale Gales (both 9-9) — Gales need a win AND a Dogs loss to take it. Seed 6: Scorpions hold the tiebreaker over Houston Gamblers (both 7-11) for the White Division — Gamblers need a win AND a Scorpions loss to take it.</p>
+
+  <div class="callout red">⚠️ TWO SEEDS STILL LIVE<br><br>Troutdale Gales came from behind to beat Houston Gamblers 356.67–328.50 in Week 18 to reach 9-9 — but they remain on the outside looking in, since Midland Red Weasel Dogs (also 9-9) currently hold the tiebreaker for the final Wild Card. The Gales are alive: a win over Goldy Goldy Gone combined with a Weasel Dogs loss to Tempe Scorpions in Week 19 would flip the spot. Same story in White: Houston Gamblers (7-11) need a win over the Cascades and a Scorpions loss to steal the division.</div>
+
+  <!-- WEEK 18 SCORES -->
+  <h3>📋 Week 18 Final Scores</h3>
+  <table>
+    <tr><th colspan="3">Scoring Period 18 — Final</th></tr>
+    <tr class="win"><td>Desert Rats <strong>W</strong></td><td>559.50</td><td>+168.5</td></tr>
+    <tr><td>Goldy Goldy Gone</td><td>391.00</td><td></td></tr>
+    <tr><td colspan="3" style="border:none;height:8px;"></td></tr>
+    <tr class="win"><td>Troutdale Cascades <strong>W</strong></td><td>474.67</td><td>+107.0</td></tr>
+    <tr><td>Sons of Pitches</td><td>367.67</td><td></td></tr>
+    <tr><td colspan="3" style="border:none;height:8px;"></td></tr>
+    <tr class="win"><td>Sidd Finch <strong>W</strong></td><td>455.33</td><td>+124.16</td></tr>
+    <tr><td>Newberry Indians</td><td>331.17</td><td></td></tr>
+    <tr><td colspan="3" style="border:none;height:8px;"></td></tr>
+    <tr class="win"><td>Midland Red Weasel Dogs <strong>W</strong></td><td>437.83</td><td>+71.0</td></tr>
+    <tr><td>Ithaca Spartans</td><td>366.83</td><td></td></tr>
+    <tr><td colspan="3" style="border:none;height:8px;"></td></tr>
+    <tr class="win"><td>Troutdale Gales <strong>W</strong></td><td>356.67</td><td>+28.17</td></tr>
+    <tr><td>Houston Gamblers</td><td>328.50</td><td></td></tr>
+    <tr><td colspan="3" style="border:none;height:8px;"></td></tr>
+    <tr class="win"><td>The BANK of Texas <strong>W</strong></td><td>289.17</td><td>+7.0</td></tr>
+    <tr><td>Tempe Scorpions</td><td>282.17</td><td></td></tr>
+  </table>
+  <p style="font-size:11px; color:#666;">Final. Scoring Period 18: Aug 3 – Aug 9, 2026.</p>
+
+  <!-- STANDINGS -->
+  <h3>📊 Combined Standings — After Week 18</h3>
+  <table>
+    <tr><th>Rk</th><th>Team</th><th>W</th><th>L</th><th>GB</th></tr>
+    <tr class="gold"><td>1</td><td>Troutdale Cascades</td><td>15</td><td>3</td><td>—</td></tr>
+    <tr class="gold"><td>2</td><td>Desert Rats</td><td>13</td><td>5</td><td>2</td></tr>
+    <tr class="gold"><td>3</td><td>Newberry Indians</td><td>12</td><td>6</td><td>3</td></tr>
+    <tr class="gold"><td>4</td><td>Goldy Goldy Gone</td><td>11</td><td>7</td><td>4</td></tr>
+    <tr class="amber"><td>5</td><td>Midland Red Weasel Dogs</td><td>9</td><td>9</td><td>6</td></tr>
+    <tr><td>6</td><td>Troutdale Gales</td><td>9</td><td>9</td><td>6</td></tr>
+    <tr><td>7</td><td>The BANK of Texas</td><td>8</td><td>10</td><td>7</td></tr>
+    <tr class="amber"><td>8</td><td>Tempe Scorpions</td><td>7</td><td>11</td><td>8</td></tr>
+    <tr><td>9</td><td>Houston Gamblers</td><td>7</td><td>11</td><td>8</td></tr>
+    <tr><td>10</td><td>Sidd Finch</td><td>7</td><td>11</td><td>8</td></tr>
+    <tr><td>11</td><td>Sons of Pitches</td><td>6</td><td>12</td><td>9</td></tr>
+    <tr><td>12</td><td>Ithaca Spartans</td><td>4</td><td>14</td><td>11</td></tr>
+  </table>
+  <p style="font-size:11px; color:#666;">Gold rows (1–4): playoff spots clinched. Amber rows (5, 8): currently hold a playoff spot on tiebreaker but not yet clinched.</p>
+
+  <div class="callout">🌟 <strong>White Division Wipeout</strong><br><br>All four White Division teams — Tempe Scorpions, Houston Gamblers, Sons of Pitches, Ithaca Spartans — lost in Week 18. The Scorpions' 282.17 points were the second-lowest total in the league on the week, and it still left them atop the division at 7-11 heading into the finale. Nobody in White is winning a style contest right now, but the Scorpions are winning the only contest that counts.</div>
+
+  <!-- WEEK 19 SCHEDULE -->
+  <h3>📅 Week 19: The Final Week</h3>
+  <p>One scoring period remains in the 2026 MLBLONGBALL regular season. Four playoff spots are locked; the final Wild Card and the White Division title are both live tiebreaker races. The consolation bracket for the six teams currently on the outside — and the No. 1 pick that comes with winning it — won't be finalized until Week 19 results are in.</p>
+  <table>
+    <tr><th>Away</th><th>Home</th></tr>
+    <tr><td>Midland Red Weasel Dogs</td><td>Tempe Scorpions</td></tr>
+    <tr><td>Troutdale Cascades</td><td>Houston Gamblers</td></tr>
+    <tr><td>Desert Rats</td><td>The BANK of Texas</td></tr>
+    <tr><td>Sons of Pitches</td><td>Newberry Indians</td></tr>
+    <tr><td>Sidd Finch</td><td>Ithaca Spartans</td></tr>
+    <tr><td>Troutdale Gales</td><td>Goldy Goldy Gone</td></tr>
+  </table>
+  <p style="font-size:11px; color:#666;">Scoring Period 19: Mon Aug 10 – Sun Aug 16, 2026. Season finale.</p>
+
+  <!-- CONSOLATION -->
+  <h3>🏆 Consolation Bracket Watch — Provisional</h3>
+  <p>The six teams currently on the outside play a consolation bracket for the No. 1 overall pick in next year's draft, seeded best record to worst. As of today, entering Week 19:</p>
+  <p style="font-size:13px; color:#aaa;">1. Troutdale Gales (9-9) · 2. The BANK of Texas (8-10) · 3. Houston Gamblers (7-11) · 4. Sidd Finch (7-11) · 5. Sons of Pitches (6-12) · 6. Ithaca Spartans (4-14)</p>
+  <p style="font-size:12px; color:#888;">Not final. If the Gales beat Weasel Dogs out for the 5th playoff seed, or the Gamblers beat Scorpions out for the 6th, this pool — and its seeding — changes. Pairings lock after Week 19.</p>
+
+  <div class="callout green">⚡ <strong>TOP PERFORMERS, WEEK 18</strong><br><br>Jake McCarthy (Desert Rats) led all hitters at 55.5 points. Jesus Luzardo (Troutdale Gales) led all pitchers at 64.0 points on 15 innings, a 1.20 ERA, and 19 strikeouts. Full leaderboards inside.</div>
+
+  <p style="font-size:11px; color:#555;">All statistics from official Fantrax league data. Scoring Period 18: August 3 – August 9, 2026.</p>
+</div>
+
+<!-- ═══════════ SCORES & RECAPS ═══════════ -->
+<div class="section">
+  <div class="section-label">Week 18 Final — Matchup Recaps</div>
+  <h2>Six Games, Six Storylines, One Streak Snapped</h2>
+  <p class="subtitle">From a division-clinching upset to a division-topping win-and-in that still fell short, Scoring Period 18 set the stage for the finale.</p>
+
+  <!-- GAME 1 -->
+  <div class="score-box">
+    <div class="teams">
+      <div><span class="team-name winner">Desert Rats · Away</span><br><span class="pts winner">559.50</span></div>
+      <div style="text-align:center; font-size:11px; color:#666;">FINAL</div>
+      <div style="text-align:right;"><span class="team-name loser">Goldy Goldy Gone · Home</span><br><span class="pts loser">391.00</span></div>
+    </div>
+    <div class="margin">Desert Rats win by 168.5 pts · Rats: 13-5 · Triple G: 11-7</div>
+  </div>
+  <p>The week's high score belonged to Commish's own Desert Rats, who put up 559.50 to close the regular season at 13-5 and lock a Wild Card berth without needing to sweat the finale. Jake McCarthy anchored the effort with 55.5 fantasy points, the top individual hitting performance in the league this week.</p>
+  <p>Goldy Goldy Gone's 391.00 points would have won plenty of games this season — it just ran into a Rats team peaking at the right time. Both clubs are safely in the playoff field regardless of what happens in Week 19, which makes this one a preview with real stakes if these two meet again in October.</p>
+  <div class="callout"><strong>RATS ANCHOR:</strong> Jake McCarthy 55.5 pts (14/27, 8 R, 2 HR, 5 RBI, 3 SB) · <strong>MARGIN:</strong> 168.5 pts</div>
+
+  <!-- GAME 2 -->
+  <div class="score-box">
+    <div class="teams">
+      <div><span class="team-name loser">Sons of Pitches · Away</span><br><span class="pts loser">367.67</span></div>
+      <div style="text-align:center; font-size:11px; color:#666;">FINAL</div>
+      <div style="text-align:right;"><span class="team-name winner">Troutdale Cascades · Home</span><br><span class="pts winner">474.67</span></div>
+    </div>
+    <div class="margin">Cascades win by 107.0 pts · Cascades: 15-3 · Sons: 6-12</div>
+  </div>
+  <p>Business as usual for the league's best team. The Cascades closed the regular season 15-3 and never looked threatened, extending a five-game winning streak that has them positioned as the clear No. 1 seed heading into the playoffs.</p>
+  <p>The Sons of Pitches finish the regular season 6-12 and enter Week 19 playing for draft position rather than a playoff spot — currently slotted 5th in the offseason order.</p>
+  <div class="callout"><strong>MARGIN:</strong> 107.0 pts · Cascades' 5th straight win</div>
+
+  <!-- GAME 3 -->
+  <div class="score-box">
+    <div class="teams">
+      <div><span class="team-name winner">Sidd Finch · Away</span><br><span class="pts winner">455.33</span></div>
+      <div style="text-align:center; font-size:11px; color:#666;">FINAL</div>
+      <div style="text-align:right;"><span class="team-name loser">Newberry Indians · Home</span><br><span class="pts loser">331.17</span></div>
+    </div>
+    <div class="margin">Sidd Finch wins by 124.2 pts · Sidd: 7-11 · Indians: 12-6</div>
+  </div>
+  <p>The upset of the week. Newberry Indians rolled into Scoring Period 18 winners of six straight and freshly crowned Red Division champions — and walked straight into a Sidd Finch team that had nothing left to lose. The final margin, 124.2 points, was not close.</p>
+  <p>The loss costs the Indians nothing in the standings; the Red Division and a playoff spot were already secured. But it is a jarring way to enter the postseason stretch, and it is the kind of result that will get brought up if Newberry stumbles again in Week 19.</p>
+  <div class="callout red"><strong>STREAK SNAPPED:</strong> Indians' 6-game win streak · <strong>MARGIN:</strong> 124.2 pts</div>
+
+  <!-- GAME 4 -->
+  <div class="score-box">
+    <div class="teams">
+      <div><span class="team-name winner">Midland Red Weasel Dogs · Away</span><br><span class="pts winner">437.83</span></div>
+      <div style="text-align:center; font-size:11px; color:#666;">FINAL</div>
+      <div style="text-align:right;"><span class="team-name loser">Ithaca Spartans · Home</span><br><span class="pts loser">366.83</span></div>
+    </div>
+    <div class="margin">Weasel Dogs win by 71.0 pts · Dogs: 9-9 · Spartans: 4-14</div>
+  </div>
+  <p>The Midland Red Weasel Dogs handled business, improving to 9-9 and holding onto the tiebreaker edge for the final Wild Card spot — but it isn't locked up yet. Troutdale Gales are also 9-9, and if the Gales win in Week 19 while Midland loses to Tempe Scorpions, the spot flips.</p>
+  <p>The Ithaca Spartans close the regular season 4-14, dead last in the league, and currently sit at the bottom of the provisional consolation bracket seeding.</p>
+  <div class="callout blue"><strong>STATUS:</strong> Weasel Dogs hold Wild Card tiebreaker, not yet clinched · <strong>MARGIN:</strong> 71.0 pts</div>
+
+  <!-- GAME 5 -->
+  <div class="score-box">
+    <div class="teams">
+      <div><span class="team-name winner">Troutdale Gales · Away</span><br><span class="pts winner">356.67</span></div>
+      <div style="text-align:center; font-size:11px; color:#666;">FINAL</div>
+      <div style="text-align:right;"><span class="team-name loser">Houston Gamblers · Home</span><br><span class="pts loser">328.50</span></div>
+    </div>
+    <div class="margin">Gales win by 28.2 pts · Gales: 9-9 · Gamblers: 7-11</div>
+  </div>
+  <p>Jesus Luzardo threw 15 innings, posted a 1.20 ERA, struck out 19, and turned in the single best pitching performance in the league this week — 64.0 fantasy points — to carry Troutdale Gales past Houston Gamblers in a genuine comeback effort.</p>
+  <p>It moved the Gales to 9-9, tied with Midland Red Weasel Dogs — but the Dogs currently hold the tiebreaker for the final Wild Card spot. The Gales are not eliminated: a win over Goldy Goldy Gone in Week 19, combined with a Weasel Dogs loss to Tempe Scorpions, would flip the seed in Troutdale's favor. Anything less, and the Gales fall into the consolation bracket as its top seed.</p>
+  <div class="callout blue"><strong>GALES ANCHOR:</strong> Jesus Luzardo 64.0 pts (15 IP, 1.20 ERA, 19 K) · <strong>STATUS:</strong> Alive for the final Wild Card, needs help</div>
+
+  <!-- GAME 6 -->
+  <div class="score-box">
+    <div class="teams">
+      <div><span class="team-name winner">The BANK of Texas · Away</span><br><span class="pts winner">289.17</span></div>
+      <div style="text-align:center; font-size:11px; color:#666;">FINAL</div>
+      <div style="text-align:right;"><span class="team-name loser">Tempe Scorpions · Home</span><br><span class="pts loser">282.17</span></div>
+    </div>
+    <div class="margin">BANK wins by 7.0 pts · BANK: 8-10 · Scorpions: 7-11</div>
+  </div>
+  <p>The lowest-scoring game of the week nearly flipped the White Division race entirely. The BANK of Texas held off a late push from Tempe Scorpions, winning by seven points in a game that would have handed the Scorpions sole possession of first place with a different final swing.</p>
+  <p>Instead, the Scorpions' 7-11 record stands, and because every other White Division team also lost this week, Tempe holds the division on tiebreaker heading into the finale — a losing record perched atop a potential playoff bracket. It isn't locked in: Houston Gamblers, also 7-11, can still take the division and the 6th seed with a win over the Cascades and a Scorpions loss to Midland in Week 19.</p>
+  <div class="callout red"><strong>MARGIN:</strong> 7.0 pts — second-closest game of the season · <strong>STATUS:</strong> Scorpions hold White tiebreaker, not yet clinched</div>
+
+  <p style="font-size:11px; color:#555;">All game data from Fantrax official scoring. Scoring Period 18: August 3 – August 9, 2026.</p>
+</div>
+
+<!-- ═══════════ TOP PLAYERS ═══════════ -->
+<div class="section">
+  <div class="section-label">Week 18 Final — Individual Leaderboards</div>
+  <h2>The Leaderboard</h2>
+  <p class="subtitle">Top performers from Scoring Period 18. Fantasy team designations used throughout — this is MLBLONGBALL, not SportsCenter.</p>
+
+  <h3>⚾ Top 10 Hitters — Week 18</h3>
+  <table>
+    <tr><th>Rk</th><th>Player</th><th>MLB</th><th>Fantasy Team</th><th>FPts</th><th>FP/G</th></tr>
+    <tr><td>1</td><td><strong>Jake McCarthy</strong></td><td>COL</td><td>Desert Rats</td><td>55.5</td><td>9.25</td></tr>
+    <tr><td>2</td><td>Pete Crow-Armstrong</td><td>CHC</td><td>Sidd Finch</td><td>55.0</td><td>7.86</td></tr>
+    <tr><td>3</td><td>Wilyer Abreu</td><td>BOS</td><td>Newberry Indians</td><td>52.5</td><td>10.50</td></tr>
+    <tr><td>4</td><td>Bryson Stott</td><td>PHI</td><td>Sons of Pitches</td><td>50.0</td><td>7.14</td></tr>
+    <tr><td>5</td><td>Caleb Durbin</td><td>BOS</td><td>Goldy Goldy Gone</td><td>47.5</td><td>7.92</td></tr>
+    <tr><td>6</td><td>Jac Caglianone</td><td>KC</td><td>Troutdale Cascades</td><td>43.0</td><td>7.17</td></tr>
+    <tr><td>7</td><td>Fernando Tatis Jr.</td><td>SD</td><td>Sons of Pitches</td><td>40.0</td><td>5.71</td></tr>
+    <tr><td>8</td><td>Dillon Dingler</td><td>DET</td><td>Ithaca Spartans</td><td>40.0</td><td>6.67</td></tr>
+    <tr><td>9</td><td>Jackson Merrill</td><td>SD</td><td>Midland Red Weasel Dogs</td><td>39.5</td><td>5.64</td></tr>
+    <tr><td>10</td><td>Chandler Simpson</td><td>TB</td><td>Troutdale Cascades</td><td>39.0</td><td>6.50</td></tr>
+  </table>
+  <p style="font-size:12px; color:#888;">Sons of Pitches place two hitters in the top 7 (Stott, Tatis) on a team that still lost by 107. Troutdale Cascades also place two (Caglianone, Simpson).</p>
+
+  <div class="callout">🚨 <strong>McCARTHY EDGES CROW-ARMSTRONG FOR TOP HITTER</strong><br><br>Jake McCarthy's 55.5 points led all MLBLONGBALL hitters this week — half a point ahead of Pete Crow-Armstrong's 55.0 for Sidd Finch. McCarthy went 14-for-27 with 8 runs, 2 home runs, 5 RBI, and 3 stolen bases, the definition of a five-category week, and it anchored the Desert Rats' league-best 559.50 output.</div>
+
+  <h3>📊 Verified Stat Lines — Week 18 Hitters</h3>
+  <table>
+    <tr><th>Player</th><th>Team</th><th>H/AB</th><th>R</th><th>HR</th><th>RBI</th><th>SB</th><th>FPts</th></tr>
+    <tr><td>Jake McCarthy</td><td>RATS</td><td>14/27</td><td>8</td><td>2</td><td>5</td><td>3</td><td>55.5</td></tr>
+    <tr><td>Pete Crow-Armstrong</td><td>SIDD</td><td>10/29</td><td>11</td><td>2</td><td>7</td><td>4</td><td>55.0</td></tr>
+    <tr><td>Wilyer Abreu</td><td>METZ</td><td>7/16</td><td>7</td><td>3</td><td>9</td><td>1</td><td>52.5</td></tr>
+    <tr><td>Bryson Stott</td><td>A-ARON</td><td>10/22</td><td>5</td><td>0</td><td>3</td><td>3</td><td>50.0</td></tr>
+    <tr><td>Caleb Durbin</td><td>Triple G</td><td>8/21</td><td>5</td><td>1</td><td>9</td><td>2</td><td>47.5</td></tr>
+    <tr><td>Jac Caglianone</td><td>TING</td><td>11/23</td><td>3</td><td>2</td><td>7</td><td>0</td><td>43.0</td></tr>
+    <tr><td>Fernando Tatis Jr.</td><td>A-ARON</td><td>8/28</td><td>8</td><td>3</td><td>5</td><td>0</td><td>40.0</td></tr>
+    <tr><td>Dillon Dingler</td><td>MSU</td><td>8/26</td><td>6</td><td>0</td><td>8</td><td>0</td><td>40.0</td></tr>
+    <tr><td>Jackson Merrill</td><td>DOGS</td><td>10/29</td><td>7</td><td>1</td><td>7</td><td>1</td><td>39.5</td></tr>
+    <tr><td>Chandler Simpson</td><td>TING</td><td>11/26</td><td>3</td><td>0</td><td>3</td><td>4</td><td>39.0</td></tr>
+  </table>
+  <p style="font-size:11px; color:#666;">All H/AB, R, HR, RBI, SB from Fantrax. TING=Troutdale Cascades, Triple G=Goldy Goldy Gone, A-ARON=Sons of Pitches, MSU=Ithaca Spartans, METZ=Newberry Indians.</p>
+
+  <h3>⚡ Top 10 Pitchers — Week 18</h3>
+  <table>
+    <tr><th>Rk</th><th>Player</th><th>MLB</th><th>Fantasy Team</th><th>FPts</th><th>IP</th><th>ERA</th><th>K</th></tr>
+    <tr><td>1</td><td><strong>Jesus Luzardo</strong></td><td>PHI</td><td>Troutdale Gales</td><td>64.0</td><td>15.0</td><td>1.20</td><td>19</td></tr>
+    <tr><td>2</td><td>Sean Manaea</td><td>NYM</td><td>The BANK of Texas</td><td>55.5</td><td>13.0</td><td>2.08</td><td>18</td></tr>
+    <tr><td>3</td><td>Ian Seymour</td><td>TB</td><td>Tempe Scorpions</td><td>53.0</td><td>12.0</td><td>2.25</td><td>16</td></tr>
+    <tr><td>4</td><td>Logan Webb</td><td>SF</td><td>Desert Rats</td><td>50.5</td><td>14.0</td><td>0.64</td><td>10</td></tr>
+    <tr><td>5</td><td>Troy Melton</td><td>DET</td><td>Desert Rats</td><td>49.5</td><td>13.0</td><td>0.00</td><td>9</td></tr>
+    <tr><td>6</td><td>Brandon Pfaadt</td><td>ARI</td><td>Midland Red Weasel Dogs</td><td>44.83</td><td>13.2</td><td>0.00</td><td>5</td></tr>
+    <tr><td>7</td><td>Grant Holmes</td><td>ATL</td><td>Ithaca Spartans</td><td>44.0</td><td>12.0</td><td>0.00</td><td>7</td></tr>
+    <tr><td>8</td><td>Bubba Chandler</td><td>PIT</td><td>Ithaca Spartans</td><td>43.33</td><td>11.2</td><td>1.54</td><td>10</td></tr>
+    <tr><td>9</td><td>Payton Tolle</td><td>BOS</td><td>Troutdale Cascades</td><td>38.0</td><td>6.0</td><td>1.50</td><td>14</td></tr>
+    <tr><td>10</td><td>Mitch Bratt</td><td>ARI</td><td>Free Agent</td><td>35.5</td><td>7.0</td><td>0.00</td><td>9</td></tr>
+  </table>
+  <p style="font-size:12px; color:#888;">Mitch Bratt (ARI) listed as Free Agent — unowned in MLBLONGBALL this week. Desert Rats and Ithaca Spartans each place two pitchers in the top 8.</p>
+
+  <div class="callout blue"><strong>Luzardo: The Ace the Gales Needed, One Week Too Late</strong><br><br>Jesus Luzardo: 64.0 pts, 15 IP, 1.20 ERA, 19 strikeouts. The week's best pitching performance in the league by nearly nine points over second place, and it powered the Gales' win over Houston. It just wasn't enough to save their season — Troutdale finishes 9-9 and out of the playoff field despite arguably the single best pitching week turned in by anyone this season.</div>
+
+  <div class="callout red">🚨 <strong>FREE AGENT ALERT: Mitch Bratt</strong><br><br>Mitch Bratt (ARI) posted 35.5 points — a top-10 pitching week — while sitting unowned in MLBLONGBALL. 7.0 IP, 0.00 ERA, 9 K. With one week left in the regular season and the playoffs on deck, that's a rotation piece worth a claim before Week 19 locks.</div>
+
+  <h3>⚡ Verified Pitching Lines — Week 18</h3>
+  <table>
+    <tr><th>Player</th><th>Team</th><th>IP</th><th>ERA</th><th>K</th><th>FPts</th></tr>
+    <tr><td>Jesus Luzardo</td><td>GALES</td><td>15.0</td><td>1.20</td><td>19</td><td>64.0</td></tr>
+    <tr><td>Sean Manaea</td><td>BANK</td><td>13.0</td><td>2.08</td><td>18</td><td>55.5</td></tr>
+    <tr><td>Ian Seymour</td><td>SCORP</td><td>12.0</td><td>2.25</td><td>16</td><td>53.0</td></tr>
+    <tr><td>Logan Webb</td><td>RATS</td><td>14.0</td><td>0.64</td><td>10</td><td>50.5</td></tr>
+    <tr><td>Troy Melton</td><td>RATS</td><td>13.0</td><td>0.00</td><td>9</td><td>49.5</td></tr>
+    <tr><td>Brandon Pfaadt</td><td>DOGS</td><td>13.2</td><td>0.00</td><td>5</td><td>44.83</td></tr>
+    <tr><td>Grant Holmes</td><td>MSU</td><td>12.0</td><td>0.00</td><td>7</td><td>44.0</td></tr>
+    <tr><td>Bubba Chandler</td><td>MSU</td><td>11.2</td><td>1.54</td><td>10</td><td>43.33</td></tr>
+    <tr><td>Payton Tolle</td><td>TING</td><td>6.0</td><td>1.50</td><td>14</td><td>38.0</td></tr>
+    <tr><td>Mitch Bratt</td><td>FA</td><td>7.0</td><td>0.00</td><td>9</td><td>35.5</td></tr>
+  </table>
+  <p style="font-size:11px; color:#666;">All IP, ERA, K from Fantrax. GALES=Troutdale Gales, BANK=The BANK of Texas, SCORP=Tempe Scorpions, RATS=Desert Rats, DOGS=Midland Red Weasel Dogs, MSU=Ithaca Spartans, TING=Troutdale Cascades.</p>
+  <p style="font-size:11px; color:#555;">All player statistics from Fantrax official data. Scoring Period 18, August 9, 2026.</p>
+</div>
+
+<!-- ═══════════ POWER RANKINGS ═══════════ -->
+<div class="section">
+  <div class="section-label">Post-Week 18 Power Rankings</div>
+  <h2>Where They Stand Entering the Finale</h2>
+  <p class="subtitle">Full standings context, momentum, and Week 19 matchup previews. Four teams are locked into the playoffs. Two spots are still live tiebreaker races. Everyone else is playing for the consolation bracket and a shot at the No. 1 pick. Every game still matters.</p>
+
+  <div class="pr-item">
+    <div class="pr-rank">1</div>
+    <div><span class="pr-team">Troutdale Cascades</span><span class="pr-badge clinched">CLINCHED</span></div>
+    <div class="pr-stats">15-3 · 8,328.833 FPtsF · Div: 3-1-0 (Blue) · Streak: 5W</div>
+    <div class="pr-blurb">Blue Division champions, No. 1 overall seed, best record in the league by two full games. Fifteen wins through eighteen weeks and a five-game win streak heading into the finale. Nobody has a better claim to the top line of the bracket.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">2</div>
+    <div><span class="pr-team">Desert Rats</span><span class="pr-badge clinched">CLINCHED</span></div>
+    <div class="pr-stats">13-5 · 7,958.499 FPtsF · Div: 4-1-0 (Blue) · Streak: 2W</div>
+    <div class="pr-blurb">The week's high score (559.50) closes the regular season on the Rats' terms. A Wild Card berth — and the No. 2 seed — is secured; at two games back with one week left, the Cascades' hold on the No. 1 seed is safe. Week 19 vs. The BANK of Texas is a chance to close strong before the bracket sets.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">3</div>
+    <div><span class="pr-team">Newberry Indians</span><span class="pr-badge clinched">CLINCHED</span></div>
+    <div class="pr-stats">12-6 · 7,456.334 FPtsF · Div: 3-3-0 (Red) · Streak: 1L</div>
+    <div class="pr-blurb">Red Division champions despite the Week 18 hiccup against Sidd Finch that snapped a six-game win streak. Twelve wins is the third-best mark in the league and the Indians are locked into the playoff field regardless of Week 19. The loss stings, but it changes nothing about their seeding path.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">4</div>
+    <div><span class="pr-team">Goldy Goldy Gone</span><span class="pr-badge clinched">CLINCHED</span></div>
+    <div class="pr-stats">11-7 · 7,839.833 FPtsF · Div: 2-3-0 (Blue) · Streak: 1L</div>
+    <div class="pr-blurb">A Wild Card berth is banked, and the season-long cumulative FPts total (7,839.833) is the second-highest in the league — ahead of every team but the Cascades. The Blue Division gauntlet cost Goldy some win-loss shine, but the underlying production says this is a dangerous six-seed.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">5</div>
+    <div><span class="pr-team">Midland Red Weasel Dogs</span><span class="pr-badge tiebreak">HOLDS TIEBREAK</span></div>
+    <div class="pr-stats">9-9 · 7,493.834 FPtsF · Div: 1-5-0 (Blue) · Streak: 1W</div>
+    <div class="pr-blurb">Currently the 5th seed on a tiebreaker over Troutdale Gales — both sit at 9-9. It is not locked up: the Gales can leapfrog Midland with a win over Goldy Goldy Gone combined with a Weasel Dogs loss to Tempe Scorpions in Week 19. Pfaadt's top-6 pitching week in Week 18 was part of the closing push to get here.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">6</div>
+    <div><span class="pr-team">Tempe Scorpions</span><span class="pr-badge tiebreak">HOLDS TIEBREAK</span></div>
+    <div class="pr-stats">7-11 · 6,257.334 FPtsF · Div: 3-1-0 (White) · Streak: 1L</div>
+    <div class="pr-blurb">The most precarious spot in the field. A losing record and a White Division that's been the league's weakest all season, holding the 6th seed on tiebreaker over Houston Gamblers (also 7-11) only because every other White team lost in Week 18 too. It is not locked up: a Gamblers win over the Cascades plus a Scorpions loss to Midland in Week 19 hands Houston the division.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">7</div>
+    <div><span class="pr-team">Troutdale Gales</span><span class="pr-badge alive">ALIVE, NEEDS HELP</span></div>
+    <div class="pr-stats">9-9 · 6,892.002 FPtsF · Div: 1-4-0 (Red) · Streak: 3W</div>
+    <div class="pr-blurb">Nine wins, a three-game winning streak, and Jesus Luzardo's 64-point week — the single best pitching performance in the league — and the Gales still trail Midland on the tiebreaker for the final playoff spot. Not eliminated: beat Goldy Goldy Gone and get a Weasel Dogs loss to Tempe in Week 19, and the Gales are in. Anything less and they're the top seed in the consolation bracket.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">8</div>
+    <div><span class="pr-team">The BANK of Texas</span><span class="pr-badge out">▲ HOLDS OFF SCORPIONS</span></div>
+    <div class="pr-stats">8-10 · 6,877.334 FPtsF · Div: 2-2-0 (Red) · Streak: 1W</div>
+    <div class="pr-blurb">A seven-point win over Tempe in the closest game of the week keeps the BANK out of the division-title conversation but ends the regular season on a high note. Sean Manaea's 55.5-point week (second-best pitching performance in the league) was the difference. Currently No. 2 in the provisional consolation bracket seeding.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">9</div>
+    <div><span class="pr-team">Houston Gamblers</span><span class="pr-badge alive">ALIVE, NEEDS HELP</span></div>
+    <div class="pr-stats">7-11 · 6,712.666 FPtsF · Div: 3-1-0 (White) · Streak: 4L</div>
+    <div class="pr-blurb">A four-game losing streak and a 328.50-point week that wasn't enough against a Gales team playing for its playoff life. Still tied with Tempe Scorpions at 7-11 for the White Division, trailing only on tiebreaker. A win over the Cascades combined with a Scorpions loss to Midland in Week 19 would hand Houston the division and the 6th seed. A tall order against the league's best team, but not impossible.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">10</div>
+    <div><span class="pr-team">Sidd Finch</span><span class="pr-badge out">▲ SNAPS THE STREAK</span></div>
+    <div class="pr-stats">7-11 · 7,047.666 FPtsF · Div: 4-1-0 (Red) · Streak: 1W</div>
+    <div class="pr-blurb">The Week 18 headline. Sidd Finch ended Newberry's six-game win streak with a 124-point beatdown, the kind of statement win that has nothing to do with the standings and everything to do with pride. A dominant 4-1-0 divisional record couldn't overcome a rough middle stretch of the season. No. 4 in the provisional consolation bracket seeding — mathematically out of the playoff race itself.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">11</div>
+    <div><span class="pr-team">Sons of Pitches</span><span class="pr-badge out">▼</span></div>
+    <div class="pr-stats">6-12 · 6,538.167 FPtsF · Div: 1-3-0 (White) · Streak: 2L</div>
+    <div class="pr-blurb">A 367.67-point week against the Cascades was a respectable number against the league's best team, but the Sons close out the regular season 6-12. Bryson Stott and Fernando Tatis Jr. both cracked the top-10 hitting leaderboard this week — individual bright spots in a lost season. No. 5 in the provisional consolation bracket seeding.</div>
+  </div>
+
+  <div class="pr-item">
+    <div class="pr-rank">12</div>
+    <div><span class="pr-team">Ithaca Spartans</span><span class="pr-badge out">▼ LAST PLACE</span></div>
+    <div class="pr-stats">4-14 · 5,803.165 FPtsF · Div: 1-3-0 (White) · Streak: 7L</div>
+    <div class="pr-blurb">A seven-game losing streak and the league's worst record close out a difficult season for Ithaca. Grant Holmes and Bubba Chandler both landed in the pitching top-8 this week — real building blocks for 2027. The Spartans currently hold the No. 6 — last — spot in the provisional consolation bracket seeding.</div>
+  </div>
+
+  <div class="divider">◆ ◆ ◆</div>
+
+  <!-- WEEK 19 PREVIEW -->
+  <h3>📅 Week 19 — Season Finale Preview</h3>
+  <p class="subtitle">Six Games, Two Seasons on the Line. Four playoff spots are locked. Two are decided this week by results, not just tiebreakers. Fantrax full-week projections included below.</p>
+
+  <div class="callout red"><strong>Midland Red Weasel Dogs (9-9) at Tempe Scorpions (7-11)</strong> — MUST-SEE<br><br>Fantrax projects Midland 323.30 – Tempe 318.76, essentially a coin flip — and the single most important result of the finale. Both clubs currently hold a contested playoff seed on tiebreaker, and this result swings both races: a Midland win locks the Dogs in outright, while a Midland loss opens the door for the Gales if they beat Goldy. A Tempe loss opens the door for Houston Gamblers if the Gamblers beat the Cascades.</div>
+
+  <div class="callout"><strong>Troutdale Cascades (15-3) at Houston Gamblers (7-11)</strong><br><br>Fantrax projects Cascades 409.28 – Gamblers 363.99, and the Cascades are heavy favorites to close the regular season riding a five-game win streak. But the stakes for Houston are real, not cosmetic: an upset win here, combined with a Tempe Scorpions loss to Midland, would hand the Gamblers the White Division and the 6th playoff seed outright.</div>
+
+  <div class="callout"><strong>Desert Rats (13-5) at The BANK of Texas (8-10)</strong><br><br>Fantrax projects Rats 434.19 – BANK 330.48. The Rats are locked into the No. 2 seed and the Cascades' two-game division lead is safe with one week left, so this one is about playoff momentum, not positioning. The BANK plays for pride and its spot in the provisional consolation bracket.</div>
+
+  <div class="callout"><strong>Sons of Pitches (6-12) at Newberry Indians (12-6)</strong><br><br>Fantrax projects Sons 320.19 – Indians 376.96. Newberry will want to answer the Sidd Finch loss immediately and re-establish momentum before the playoffs begin. The Sons of Pitches are locked into the consolation bracket regardless of outcome.</div>
+
+  <div class="callout"><strong>Sidd Finch (7-11) at Ithaca Spartans (4-14)</strong><br><br>Fantrax projects Sidd 403.22 – Ithaca 343.54. Fresh off the season's signature upset, Sidd Finch is projected to keep rolling against the league's last-place team. A loss here would be the second gut-punch of the closing stretch for Ithaca after a seven-game skid.</div>
+
+  <div class="callout red"><strong>Troutdale Gales (9-9) at Goldy Goldy Gone (11-7)</strong> — MUST WIN<br><br>Fantrax projects Gales 369.14 – Goldy 430.17 — the Gales as projected underdogs in the biggest game of their season. This is genuinely win-or-go-home: Troutdale needs a win here AND a Midland Red Weasel Dogs loss to Tempe Scorpions to claim the final playoff spot. A loss, or a Weasel Dogs win, and the Gales open the offseason as the No. 1 seed in the consolation bracket instead.</div>
+
+  <p style="font-size:11px; color:#555;">Power Rankings reflect post-Week 18 standings. Week 19 projections from Fantrax. August 9, 2026.</p>
+</div>
+
+<!-- ═══════════ FA & WIRE ═══════════ -->
+<div class="section">
+  <div class="section-label">Week 18 — Free Agent & Waiver Wire Activity</div>
+  <h2>The Wire Report</h2>
+  <p class="subtitle">The final stretch run before playoff rosters lock. Transaction activity below reflects the most recent waiver periods submitted by the league office, plus notable Vickrey auction bids from the closing weeks of the season.</p>
+
+  <h3>💥 Desert Rats — Catcher Carousel Continues</h3>
+  <p><strong>$50.00/1 Adley Rutschman C (BOS)</strong> — claim, Sun Aug 9<br>
+  CLM Yainer Diaz C (HOU) — claim, Sat Aug 8<br>
+  DRP James McCann C (ARI) — drop, Sat Aug 8</p>
+  <p>A $50 winning Vickrey bid for Rutschman is the headline — a real commitment of FAAB from a team that's already clinched, spent to upgrade at catcher heading into the playoffs rather than coast.</p>
+
+  <h3>💥 Newberry Indians — Rotation Churn</h3>
+  <p>CLM Tyler Mahle SP (ATL) — claim, Sun Aug 9<br>
+  DRP Kumar Rocker SP (TEX) — drop, Sun Aug 9<br>
+  CLM Dylan Dodd SP/RP (ATL) — claim, Sun Aug 9<br>
+  CLM Tomoyuki Sugano SP (COL) — claim, Sun Aug 9</p>
+  <p>Three separate pitching claims in a single Sunday for the newly-crowned Red Division champs. Newberry is actively retooling its staff in the closing hours before Week 19 — a team treating the finale like a playoff dress rehearsal.</p>
+
+  <h3>💥 Sidd Finch — Cal Raleigh Lands</h3>
+  <p>CLM Cal Raleigh C (SEA) — claim, Sun Aug 9<br>
+  DRP Keibert Ruiz C (WSH) / Joe Mack C (MIA) — dropped</p>
+  <p>Fresh off snapping Newberry's win streak, Sidd Finch adds one of the league's premier power-hitting catchers off waivers. Combined with the Week 18 upset, this is a team playing its best baseball at the right time.</p>
+
+  <h3>💥 Other Week 18 Activity</h3>
+  <p>CLM Michael Busch 1B (CHC) — The BANK of Texas, Sun Aug 9<br>
+  CLM Cade Povich SP (BAL) — Houston Gamblers, Sun Aug 9<br>
+  CLM Randy Vasquez SP (SD), Grant Holmes SP (ATL) — Ithaca Spartans, Sun Aug 9</p>
+
+  <h3>💰 FAAB Bidding War: The Closing Weeks</h3>
+  <p>As predicted all season, Vickrey auction bids have escalated sharply down the stretch. The largest winning bids from the past several scoring periods:</p>
+  <table>
+    <tr><th>Player</th><th>Pos</th><th>Winning Team</th><th>Bid</th></tr>
+    <tr><td>Reid Detmers</td><td>SP/RP</td><td>Sidd Finch</td><td>$500.00</td></tr>
+    <tr><td>Justin Wrobleski</td><td>SP/RP</td><td>Midland Red Weasel Dogs</td><td>$313.00</td></tr>
+    <tr><td>Casey Mize</td><td>SP</td><td>Troutdale Gales</td><td>$150.00</td></tr>
+    <tr><td>Freddy Peralta</td><td>SP</td><td>Troutdale Cascades</td><td>$120.00</td></tr>
+    <tr><td>Adley Rutschman</td><td>C</td><td>Desert Rats</td><td>$50.00</td></tr>
+  </table>
+  <p style="font-size:11px; color:#666;">Bids shown are winning (second-price Vickrey) amounts from recent scoring periods, per league transaction log.</p>
+
+  <div class="callout red">🚫 <strong>FA Alert: Points Left on the Wire</strong><br><br>Mitch Bratt (ARI, SP) — 35.5 pts, unowned: A top-10 pitching week from a free agent, one week before the playoffs. See Top Players for the full line.</div>
+
+  <p style="font-size:12px; color:#888;">Reminder for the bubble teams: with two playoff spots still live and consolation-bracket seeding hanging on Week 19, every roster decision this week is either a playoff-push move or a 2027 asset-management decision, depending which side of the tiebreaker you land on. Worth a look at who's still sitting on the wire before the season closes.</p>
+  <p style="font-size:11px; color:#555;">Transaction data from Fantrax waiver log, most recent scoring periods (Periods 138–139). August 9, 2026.</p>
+</div>
+
+<!-- ═══════════ THE COLUMNISTS ═══════════ -->
+<div class="section">
+  <div class="section-label">Opinion & Analysis</div>
+  <h2>The Columnists</h2>
+  <p class="subtitle">Three voices, one league, zero agreement. Opinions are the columnists' own.</p>
+
+  <!-- DUKE -->
+  <div class="columnist">
+    <div class="col-title">Four In, Two Up for Grabs, and the Gales Aren't Done Yet</div>
+    <div class="col-byline">By Duke Falcone · The Longball Gazette</div>
+    <p>Troutdale Gales won their game. Jesus Luzardo threw fifteen innings, walked away with a 1.20 ERA and nineteen strikeouts, and put up the single best pitching week anybody in this league produced all season. The Gales beat Houston by nearly thirty points. And on Monday morning they're still on the outside of the playoff field — tied at 9-9 with Midland Red Weasel Dogs, losing the tiebreaker. That's fantasy baseball in a twelve-team league with a tiebreaker rule nobody thinks about until it's the only thing standing between them and October.</p>
+    <p>Here's the thing, though: it isn't over. Beat Goldy Goldy Gone this week, get a Weasel Dogs loss to Tempe Scorpions, and the Gales are in. Luzardo just turned in the best pitching week anyone in this league has produced all season in exactly the week they needed it. Do it again, and get a little help, and Troutdale's got a real shot. I'm not calling it likely. I'm calling it alive, which is more than a lot of teams can say with one week left.</p>
+    <p>Meanwhile the Tempe Scorpions are currently holding a playoff spot at 7-and-11. Say that out loud. A losing record, a shaky grip on a division title, and it's not even locked up yet. I don't make the rules and honestly I don't love the rules, but credit where it's due: the White Division has been a disaster all year and Tempe's the one hanging on. Houston Gamblers, also 7-11, get one more shot to steal it — but they have to beat the best team in the league to do it. That's a tall order.</p>
+    <p>Sidd Finch snapping Newberry's six-game streak is the story nobody saw coming. The Indians had the division locked up and still lost by 124 points to a team playing out the string. If I'm Newberry, I'm not panicking — the division title's banked — but I'm also not forgetting that score before the playoffs start.</p>
+  </div>
+
+  <!-- MARTY -->
+  <div class="columnist">
+    <div class="col-title">What a Tiebreaker Takes From You</div>
+    <div class="col-byline">By Marty Aldrich · The Longball Gazette</div>
+    <p>There is a version of next Sunday where Troutdale Gales are a playoff team, and it runs through exactly one week of baseball. Nine wins, nine losses, a three-game winning streak arriving right on time. Somewhere in a spreadsheet, a tiebreaker currently says Midland Red Weasel Dogs instead of the Gales, and the spreadsheet does not care that Jesus Luzardo threw the best week any pitcher threw all year to get Troutdale here. But the spreadsheet is not done talking. One more week remains, and this time the Gales control it themselves.</p>
+    <p>I keep coming back to what it means to arrive at the final week still needing something from a team you can't control. The Gales beat Houston on their own; now they need Goldy Goldy Gone at home and a Weasel Dogs loss to Tempe Scorpions on someone else's field. Their offense ranked among the league's best much of this season. Their pitching, for one week, was the best anyone produced. Whether that's enough by Sunday night depends on a game they're not even playing in.</p>
+    <p>Contrast that with Tempe Scorpions, seven wins and eleven losses, holding a division title heading into the finale because the three teams around them fell further. There is something almost generous about a system that lets you outlast collapse rather than achieve greatness — right up until the moment it demands you finish the job yourself. The Scorpions have not had a good season. They will get one more week to have a good week, and Houston Gamblers, tied with them at 7-11, get one more week to take it away.</p>
+    <p>And Newberry — twelve wins, a division locked up for weeks, a six-game streak that felt inevitable until Sidd Finch decided it wasn't. Sometimes a loss with nothing at stake tells you more than a win with everything on the line. The Indians will want to answer that before the games start counting for real. I suspect they will. I suspect it will not be enough to erase what Sunday looked like.</p>
+  </div>
+
+  <!-- BIG LOU -->
+  <div class="columnist">
+    <div class="col-title">Big Lou's Corner: A Losing Record Is One Win Away From the Playoffs and I Have Thoughts</div>
+    <div class="col-byline">By Lou Palmieri, Baseball Lifer · The Longball Gazette</div>
+    <p><span class="big-lou">SEVEN AND ELEVEN.</span> That's the Tempe Scorpions' record. That's who's CURRENTLY holding the White Division playoff spot heading into the final week. I need everybody to sit with that for a second because I certainly have been sitting with it since Sunday afternoon. A LOSING TEAM is one tiebreaker away from the postseason and I'm not even mad about it, I'm just AMAZED by it. The White Division collectively decided this year that wins were optional, and the Scorpions have to go one more week without blowing it.</p>
+    <p>And can we talk about Jesus Luzardo for one second? <span class="big-lou">SIXTY-FOUR POINTS.</span> Fifteen innings. Nineteen strikeouts. That is a season-defining week from a pitcher on a team that WON its game and is STILL on the outside of the playoff field. Troutdale Gales did everything they could control. EVERYTHING. And it's Midland holding the tiebreaker anyway, at least until Sunday. I have watched fantasy baseball for a long time and I have never seen a better week put a team in a better must-win spot instead of just ending its season. Baseball is cruel. Fantasy baseball makes you wait a whole extra week to find out how cruel.</p>
+    <p><span class="big-lou">NEWBERRY LOST BY 124 POINTS TO SIDD FINCH.</span> One hundred and twenty-four. After SIX STRAIGHT WINS. I don't care that the division was already locked up, you do not want to walk into the playoffs having just gotten run out of the building by a team with a losing record. Sidd Finch, for one week, looked like a completely different team, and Newberry needs to figure out real fast whether that was a fluke or a preview.</p>
+    <p>Last thing: the BANK of Texas holding off Tempe by <span class="big-lou">SEVEN POINTS</span> in the lowest-scoring game of the week. Seven points is nothing. Seven points is a rounding error. And it's part of why the Scorpions are still only HOLDING the tiebreaker instead of celebrating a clinch — Houston Gamblers are sitting right there at 7-11 too, one upset over the Cascades away from taking the whole thing. This division isn't over. It won't be over until Sunday.</p>
+  </div>
+
+  <!-- TOUT WARS -->
+  <div class="columnist">
+    <div class="col-title">Tout Wars Corner: How the Experts Think About Week 19-Type Games</div>
+    <div class="col-byline">H2H Points Strategy, Aggregated for MLBLONGBALL · The Longball Gazette</div>
+    <p>The consensus among the fantasy industry's top head-to-head points minds — the crowd that competes annually in Tout Wars' H2H format — is that the final week of a regular season, particularly one where playoff seeding is still moving, is exactly the wrong time to bench a struggling regular. Small-sample overreactions to one bad week are how good rosters lose meaningful seeding games; the analysts who consistently cash in these formats tend to trust full-season projections over a single ugly line.</p>
+    <p>The other recurring theme in published H2H strategy: stream aggressively in the final week if a matchup edge is truly marginal, because there is no next week to recover innings or at-bats you left on the bench. That applies directly to Troutdale Gales and Houston Gamblers this week — both still alive for a playoff seed and both needing every point they can find. For the four MLBLONGBALL teams with nothing left to play for but consolation-bracket seeding, the logic flips: there's an argument for resting rostered stars and auditioning wire pieces who might matter for keeper or draft-strategy purposes next spring. Either way, the through-line from the experts is the same: know which kind of week you're playing before you set your lineup.</p>
+  </div>
+
+  <p style="font-size:11px; color:#555; font-style:italic;">The opinions expressed in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office, its commissioner, or anyone one tiebreaker away from a very different Week 20.</p>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="footer">
+  <p>The Longball Gazette — Est. 2008 · Vol. 1, No. 21 · Week 18 Final Edition</p>
+  <p>Next edition following Week 19 — Season Finale (August 16, 2026)</p>
+</div>
+
+</div>
+</body>
+</html>
