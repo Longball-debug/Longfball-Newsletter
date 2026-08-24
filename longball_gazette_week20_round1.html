@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette — Playoff Round 1 Recap, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a}
+        body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+        .newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 0 80px rgba(184,134,11,.04);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+        .newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+        .inner{position:relative;z-index:1}
+        .masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+        .masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+        .paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+        .paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+        .paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:12px}
+        .ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+        .ticker-inner{display:flex;white-space:nowrap;animation:ticker 70s linear infinite}
+        .ticker-inner span{padding:0 30px}
+        .ticker-inner .sep{color:var(--gold);font-weight:700}
+        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+        .nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+        .nav-tab:first-child{border-left:1px solid #c0b090}
+        .nav-tab:hover{background:var(--paper);color:var(--ink)}
+        .nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+        .nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+        .page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+        .page.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        .section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+        .headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+        .headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+        .headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+        .deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+        .byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+        .dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+        p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+        p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+        p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+        .col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+        .rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+        .rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+        .col-rule{border-left:1px solid #b0a080;padding-left:30px}
+        .info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+        .info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+        .column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+        .column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+        .column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+        .alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+        .alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+        .gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+        .waste-box{border:3px solid var(--red);background:#fff0f0;padding:14px 16px;margin-bottom:16px}
+        .waste-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);text-align:center;border-bottom:2px solid var(--red);padding-bottom:6px;margin-bottom:10px}
+        table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+        table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+        table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+        table.data tr:last-child td{border-bottom:none}
+        table.data tr.highlight{background:#fff9e0;font-weight:700}
+        table.data tr.danger{background:#fff0f0}
+        table.data tr.warning{background:#fff8ee}
+        table.data .num{text-align:right;font-weight:700}
+        table.data .rk{text-align:center;width:30px;color:var(--muted)}
+        .recap-card{border:2px solid var(--rule);margin-bottom:24px;overflow:hidden}
+        .recap-header{display:flex;justify-content:space-between;align-items:stretch;background:var(--ink);color:var(--paper)}
+        .recap-team{flex:1;padding:10px 14px}
+        .recap-team.away{border-right:1px solid #555}
+        .recap-team-name{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+        .recap-score{font-family:"Courier Prime",monospace;font-size:1.5em;font-weight:700;line-height:1}
+        .recap-score.leading{color:var(--gold)}
+        .recap-vs{padding:10px 12px;font-family:"Courier Prime",monospace;font-size:.75em;text-align:center;opacity:.6;display:flex;align-items:center}
+        .recap-status{background:var(--red);color:white;font-family:"Courier Prime",monospace;font-size:.72em;text-align:center;padding:4px 10px;font-weight:700;letter-spacing:.5px}
+        .recap-body{padding:14px 16px}
+        .recap-body p{font-size:.88em;line-height:1.65;margin-bottom:8px}
+        .recap-stat{background:var(--paper-dark);border-left:4px solid var(--gold);padding:8px 12px;font-family:"Courier Prime",monospace;font-size:.8em;margin-top:8px}
+        .recap-stat strong{color:var(--red)}
+        .pr-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #d4c89a}
+        .pr-item:last-child{border-bottom:none}
+        .pr-rank{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--paper-dark);-webkit-text-stroke:1.5px var(--rule);min-width:44px;text-align:center;line-height:1;padding-top:2px}
+        .pr-rank.top3{color:var(--gold);-webkit-text-stroke:1px var(--gold)}
+        .pr-team{font-family:"Oswald",sans-serif;font-size:1.05em;font-weight:700}
+        .pr-pts{font-family:"Courier Prime",monospace;font-size:.85em;color:var(--muted)}
+        .pr-note{font-size:.83em;color:var(--muted);font-style:italic;line-height:1.4;margin-top:2px}
+        .up{color:#2a7a2a;font-weight:700}
+        .dn{color:var(--red);font-weight:700}
+        .same{color:var(--gold);font-weight:700}
+        .wk-card{border:2px solid var(--rule);margin-bottom:14px;overflow:hidden}
+        .wk-hdr{background:var(--paper-dark);padding:6px 12px;font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+        .wk-body{display:flex;justify-content:space-between;align-items:center;padding:10px 14px}
+        .wk-team{font-family:"Oswald",sans-serif;font-size:.95em;font-weight:700}
+        .wk-rec{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted)}
+        .wk-vs{font-family:"Courier Prime",monospace;font-size:.8em;color:var(--muted);padding:0 10px}
+        .wk-look{padding:8px 14px;font-size:.82em;font-style:italic;color:var(--muted);background:#fffef8;border-top:1px solid #d4c89a;line-height:1.5}
+        .badge{display:inline-block;font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+        .badge-hot{background:var(--red);color:white}
+        .badge-toss{background:var(--gold);color:var(--ink)}
+        .badge-must{background:#1a5a1a;color:white}
+        .fa-block{margin-bottom:18px}
+        .fa-name{font-family:"Oswald",sans-serif;font-size:.9em;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 10px}
+        .fa-row{display:flex;gap:8px;align-items:baseline;padding:4px 10px;border-bottom:1px solid #e0d4b0;font-size:.82em;flex-wrap:wrap}
+        .fa-row:last-child{border-bottom:none}
+        .fa-add{color:#1a5a1a;font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:44px}
+        .fa-drop{color:var(--red);font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:44px}
+        .fa-vic{color:var(--gold);font-weight:700;font-family:"Courier Prime",monospace;font-size:.82em;min-width:72px}
+        .page-footer{text-align:center;font-family:"Courier Prime",monospace;font-size:.78em;color:var(--muted);padding-top:20px;border-top:2px double var(--rule);margin-top:30px}
+        @media(max-width:760px){.newspaper{outline:none}.page{padding:20px}.col-2,.col-2-1{grid-template-columns:1fr}.col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}.paper-name{font-size:2em;letter-spacing:1px}.nav-tab{padding:8px 10px;font-size:.72em}}
+        .bracket-box{border:2px solid var(--rule);background:#fffef8;padding:16px 18px;margin-bottom:18px}
+        .bracket-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px;color:var(--red)}
+        .bracket-game{display:flex;justify-content:space-between;align-items:center;padding:8px 4px;border-bottom:1px dashed #c0b090;font-family:"Courier Prime",monospace;font-size:.85em}
+        .bracket-game:last-child{border-bottom:none}
+        .bracket-seed{color:var(--muted);font-size:.85em}
+        .bracket-win{font-weight:700;color:var(--red)}
+        .bye-tag{display:inline-block;background:var(--gold);color:var(--ink);font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:6px}
+    </style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<!-- ═══════════════ MASTHEAD ═══════════════ -->
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Vol. 1, No. 23 &nbsp;|&nbsp; Playoff Round 1 Recap</span>
+        <span>Sunday, August 23, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"Scorpions Stun Newberry. Sons Ride Tatis. Goldy Adds 46 Players and a Win." &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+</div>
+
+<!-- ═══════════════ TICKER ═══════════════ -->
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#128029; TEMPE SCORPIONS 492.17 &mdash; upset No. 3 seed Newberry Indians 492.17&ndash;363.33, largest margin of Round 1</span><span class="sep">&#9670;</span>
+    <span>&#128007; GOLDY GOLDY GONE 397.33 &mdash; tops Midland Red Weasel Dogs 397.33&ndash;352.67; 46 transactions on the week</span><span class="sep">&#9670;</span>
+    <span>&#9916; SONS OF PITCHES 332.67 &mdash; def. Houston Gamblers 332.67&ndash;282.83 behind Fernando Tatis Jr.'s 59-point game</span><span class="sep">&#9670;</span>
+    <span>&#127974; THE BANK OF TEXAS 264.00 &mdash; survives Ithaca Spartans 264.00&ndash;242.67 in the round's tightest game</span><span class="sep">&#9670;</span>
+    <span>&#9918; PETE CROW-ARMSTRONG 60.0 pts &mdash; Round 1's top individual hitting performance for Sidd Finch</span><span class="sep">&#9670;</span>
+    <span>&#127942; ROUND 2 SET &mdash; Cascades-Goldy, Rats-Scorpions, Gales-Sons, Sidd-BANK</span><span class="sep">&#9670;</span>
+    <span>&#128000; DESERT RATS open postseason vs. Tempe Scorpions behind Dylan Cease's 21.36 FP/G</span><span class="sep">&#9670;</span>
+    <span>&#128128; TROUTDALE CASCADES, TROUTDALE GALES &amp; SIDD FINCH all rested on Round 1 byes</span><span class="sep">&#9670;</span>
+    <span>&#128029; TEMPE SCORPIONS 492.17 &mdash; upset No. 3 seed Newberry Indians 492.17&ndash;363.33, largest margin of Round 1</span><span class="sep">&#9670;</span>
+    <span>&#128007; GOLDY GOLDY GONE 397.33 &mdash; tops Midland Red Weasel Dogs 397.33&ndash;352.67; 46 transactions on the week</span><span class="sep">&#9670;</span>
+</div></div>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('scores')">Scores &amp; Recaps</div>
+    <div class="nav-tab" onclick="showPage('players')">Top Players</div>
+    <div class="nav-tab" onclick="showPage('rankings')">Power Rankings</div>
+    <div class="nav-tab" onclick="showPage('fa')">FA &amp; Wire</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 1: FRONT PAGE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page active" id="front">
+<div class="section-label">Playoff Round 1 Recap &mdash; MLBLONGBALL Postseason</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">SCORPIONS STING NO. 3 SEED; SONS RIDE TATIS; BANK SURVIVES A DOGFIGHT</div>
+    <div class="deck">The MLBLONGBALL postseason opened with a bracket-shaking upset, a Fernando Tatis Jr. masterpiece, and a two-touchdown escape act. Four teams punch their tickets to Round 2. Four teams go home. And the four bye-week teams &mdash; Troutdale Cascades, Desert Rats, Troutdale Gales, and Sidd Finch &mdash; watched it all from the couch.</div>
+    <div class="byline">By the Longball Gazette Wire Staff</div>
+    <div class="dateline">League Headquarters &mdash; Sunday, August 23, 2026</div>
+
+    <p class="body">If you had circled the Tempe Scorpions as a sleeper entering the postseason, you have every right to feel smug this morning. The 6-seed Scorpions did not just beat the 3-seed Newberry Indians &mdash; they buried them, 492.17 to 363.33, the largest margin of victory in Round 1 by a wide berth. A .303 team batting average, 17 home runs, and a pitching staff that struck out 64 while posting a 3.20 ERA turned what many expected to be a competitive first-round game into a rout. Newberry, by contrast, hit .222 as a team and finished on the wrong side of a 4-7 pitching record for the week. The Scorpions advance to face the No. 2 seed Desert Rats in Round 2. Newberry's season is over.</p>
+
+    <p class="body">Elsewhere in the Championship Bracket, Goldy Goldy Gone did what Goldy Goldy Gone does &mdash; they overwhelmed the waiver wire and then went out and won the game anyway. Forty-six separate roster transactions over the course of the week (a league-high, and it isn't particularly close) preceded a 397.33-to-352.67 win over the Midland Red Weasel Dogs. Goldy advances to face the top-seeded Troutdale Cascades, fresh off their bye, in Round 2.</p>
+
+    <p class="body">In the Draft Bracket, Fernando Tatis Jr. put on a show. The Sons of Pitches slugger went off for a 59-point game &mdash; 12-for-25 with six runs, four home runs, and 11 RBI &mdash; to power the 10-seed Sons past the Houston Gamblers, 332.67 to 282.83. The Sons hit .318 as a team, the best cumulative average of any club in Round 1. They move on to face top-seeded Troutdale Gales in Round 2. The BANK of Texas, meanwhile, survived the round's closest call, edging the Ithaca Spartans 264.00 to 242.67 &mdash; a 21-point margin built despite a bullpen ERA (6.18) that would make most Championship Bracket teams blush.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">Round 2 Is Set</div>
+    <p class="body-sm">The bracket now sends the No. 1 seed Troutdale Cascades against a hot Goldy Goldy Gone club, and the No. 2 seed Desert Rats &mdash; anchored by Dylan Cease's 21.36 FP/G &mdash; against the red-hot Tempe Scorpions coming off their upset. In the Draft Bracket, Troutdale Gales get the Tatis-fueled Sons of Pitches, while Sidd Finch, rested off a bye, draws The BANK of Texas. Full previews inside.</p>
+</div>
+
+<div>
+    <div class="bracket-box">
+        <div class="bracket-box-title">&#127942; Championship Bracket &mdash; Round 1 Results</div>
+        <div class="bracket-game"><span><span class="bracket-seed">(4)</span> <span class="bracket-win">Goldy Goldy Gone 397.33</span></span><span>W</span></div>
+        <div class="bracket-game"><span><span class="bracket-seed">(5)</span> Midland Red Weasel Dogs 352.67</span><span>&mdash;</span></div>
+        <div class="bracket-game" style="padding-top:14px"><span><span class="bracket-seed">(6)</span> <span class="bracket-win">Tempe Scorpions 492.17</span></span><span>W</span></div>
+        <div class="bracket-game"><span><span class="bracket-seed">(3)</span> Newberry Indians 363.33</span><span>&mdash;</span></div>
+        <div class="bracket-game" style="padding-top:14px;font-style:italic;color:var(--muted)"><span>(1) Troutdale Cascades</span><span class="bye-tag">BYE</span></div>
+        <div class="bracket-game" style="font-style:italic;color:var(--muted)"><span>(2) Desert Rats</span><span class="bye-tag">BYE</span></div>
+    </div>
+
+    <div class="bracket-box">
+        <div class="bracket-box-title">&#127942; Draft Bracket &mdash; Round 1 Results</div>
+        <div class="bracket-game"><span><span class="bracket-seed">(10)</span> <span class="bracket-win">Sons of Pitches 332.67</span></span><span>W</span></div>
+        <div class="bracket-game"><span>Houston Gamblers 282.83</span><span>&mdash;</span></div>
+        <div class="bracket-game" style="padding-top:14px"><span><span class="bracket-seed">(8)</span> <span class="bracket-win">The BANK of Texas 264.00</span></span><span>W</span></div>
+        <div class="bracket-game"><span>Ithaca Spartans 242.67</span><span>&mdash;</span></div>
+        <div class="bracket-game" style="padding-top:14px;font-style:italic;color:var(--muted)"><span>(1) Troutdale Gales</span><span class="bye-tag">BYE</span></div>
+        <div class="bracket-game" style="font-style:italic;color:var(--muted)"><span>(3) Sidd Finch</span><span class="bye-tag">BYE</span></div>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">&#9889; Round 1's Biggest Number</div>
+        <p style="font-size:.85em">Fernando Tatis Jr. (Sons of Pitches): 59.0 FPts on a 12-for-25, 6 R, 4 HR, 11 RBI week. The single best hitting line of the round, and the reason a 10-seed is still playing.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All statistics from official Fantrax league data. Playoff Round 1, August 17&ndash;23, 2026.</p></div>
+</div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 2: SCORES & RECAPS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="scores">
+<div class="section-label">Playoff Round 1 &mdash; Matchup Recaps</div>
+<div class="headline-lg" style="margin-bottom:4px">Four Games. Four Eliminations. One Bracket Reshuffled.</div>
+<div class="deck">Eight teams played for their postseason lives this round. Four survive. Here is how each game broke.</div>
+<hr class="rule-h-thick">
+
+<!-- RECAP 1: Scorpions over Newberry -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Tempe Scorpions &nbsp;&middot;&nbsp; No. 6 Seed</div><div class="recap-score leading">492.17</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Newberry Indians &nbsp;&middot;&nbsp; No. 3 Seed</div><div class="recap-score">363.33</div></div>
+    </div>
+    <div class="recap-status">Tempe Scorpions win by 128.84 pts &nbsp;&middot;&nbsp; UPSET &nbsp;&middot;&nbsp; Scorpions advance to face Desert Rats</div>
+    <div class="recap-body">
+        <p>The largest margin of Round 1, and it belonged to the lowest seed to win a game. The Scorpions hit .303 as a team (79-for-261) with 17 home runs, 51 RBI, and 49 runs scored &mdash; an offensive week that would have been the best of almost any regular-season round this year. The pitching staff matched it: 7-2 with a 3.20 ERA and 64 strikeouts across 56.1 innings. Newberry, the No. 3 seed, simply had no answer. The Indians hit .222 as a team and their pitching staff went 4-7 despite throwing nearly 30 more innings (85.2) than the Scorpions.</p>
+        <p>This is the kind of week that makes a No. 6 seed dangerous heading into a matchup with the No. 2 seed Desert Rats. Newberry's season ends in the first round after a Red Division-leading regular season &mdash; a reminder that in a one-week playoff format, seeding buys you a bye, not a guarantee.</p>
+        <div class="recap-stat"><strong>SCORPIONS:</strong> .303 AVG, 17 HR, 6 W / 3.20 ERA, 64 K &nbsp;&middot;&nbsp; <strong>NEWBERRY:</strong> .222 AVG, 3 HR, 4 W-7 L pitching &nbsp;&middot;&nbsp; <strong>MARGIN:</strong> 128.84 pts &mdash; round's largest</div>
+    </div>
+</div>
+
+<!-- RECAP 2: Goldy over Midland -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Goldy Goldy Gone &nbsp;&middot;&nbsp; No. 4 Seed</div><div class="recap-score leading">397.33</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Midland Red Weasel Dogs &nbsp;&middot;&nbsp; No. 5 Seed</div><div class="recap-score">352.67</div></div>
+    </div>
+    <div class="recap-status">Goldy Goldy Gone win by 44.66 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Goldy advances to face Troutdale Cascades</div>
+    <div class="recap-body">
+        <p>Goldy Goldy Gone did not so much win this game as out-manage it. Forty-six transactions over the course of the week &mdash; nearly every waiver-wire arm in the league cycled through their roster at some point &mdash; produced a pitching staff that logged 88.2 innings with 86 strikeouts, the most volume of any team in Round 1. The offense chipped in a modest .220 average but drew 46 walks, the most in the round, and that patience turned into 42 runs scored. Midland countered with a respectable .237 average and a tidy 3.44 ERA, but 73.1 innings of pitching simply couldn't match Goldy's workload.</p>
+        <p>The volume strategy gets its biggest test yet in Round 2: Goldy draws the top-seeded, well-rested Troutdale Cascades.</p>
+        <div class="recap-stat"><strong>GOLDY:</strong> 88.2 IP, 86 K, 46 BB drawn, 5 W-6 L / 4.67 ERA &nbsp;&middot;&nbsp; <strong>MIDLAND:</strong> .237 AVG, 3.44 ERA &nbsp;&middot;&nbsp; <strong>MARGIN:</strong> 44.66 pts</div>
+    </div>
+</div>
+
+<!-- RECAP 3: Sons over Gamblers -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Sons of Pitches &nbsp;&middot;&nbsp; No. 10 Seed</div><div class="recap-score leading">332.67</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Houston Gamblers &nbsp;&middot;&nbsp; Draft Bracket</div><div class="recap-score">282.83</div></div>
+    </div>
+    <div class="recap-status">Sons of Pitches win by 49.84 pts &nbsp;&middot;&nbsp; FINAL &nbsp;&middot;&nbsp; Sons advance to face Troutdale Gales</div>
+    <div class="recap-body">
+        <p>Fernando Tatis Jr. carried this game on his back. A 12-for-25 week with six runs, four home runs, and 11 RBI netted 59.0 fantasy points &mdash; the single best individual hitting performance of Round 1 &mdash; and it was the difference-maker in a Sons of Pitches offense that hit .318 as a team, tops among all eight clubs that played. Houston hit .261 with 8 home runs and 7 stolen bases, a perfectly respectable week, but their pitching staff went just 1-8 with a 4.52 ERA and that was too much to overcome.</p>
+        <p>The Sons move on to face the top-seeded Troutdale Gales in Round 2, riding the hottest bat in the league.</p>
+        <div class="recap-stat"><strong>SONS:</strong> Fernando Tatis Jr. 59.0 pts (12/25, 4 HR, 11 RBI) &nbsp;&middot;&nbsp; .318 team AVG &nbsp;&middot;&nbsp; <strong>GAMBLERS:</strong> 1 W-8 L pitching, 4.52 ERA &nbsp;&middot;&nbsp; <strong>MARGIN:</strong> 49.84 pts</div>
+    </div>
+</div>
+
+<!-- RECAP 4: BANK over Spartans -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">The BANK of Texas &nbsp;&middot;&nbsp; No. 8 Seed</div><div class="recap-score leading">264.00</div></div>
+        <div class="recap-vs">FINAL</div>
+        <div class="recap-team"><div class="recap-team-name">Ithaca Spartans &nbsp;&middot;&nbsp; Draft Bracket</div><div class="recap-score">242.67</div></div>
+    </div>
+    <div class="recap-status">The BANK of Texas win by 21.33 pts &nbsp;&middot;&nbsp; ROUND'S CLOSEST GAME &nbsp;&middot;&nbsp; BANK advances to face Sidd Finch</div>
+    <div class="recap-body">
+        <p>The tightest game of the round, and not a pretty one for either bullpen. The BANK of Texas won despite a pitching staff that allowed 46 earned runs in 67 innings &mdash; a 6.18 ERA and 13 home runs surrendered, both the worst marks among Round 1 winners. What saved them was thump: 9 team home runs and 38 RBI on a modest .228 average. Ithaca countered with a low-power, low-damage week &mdash; just 3 home runs and 16 RBI &mdash; and their own pitching staff wasn't much better, coughing up 17 home runs, the most allowed by any team in Round 1.</p>
+        <p>Two shaky pitching staffs, one 21-point margin. The BANK survives to face a well-rested Sidd Finch club in Round 2, and they'll need considerably more from the mound to get past them.</p>
+        <div class="recap-stat"><strong>BANK:</strong> 9 HR, 38 RBI, 6.18 ERA &nbsp;&middot;&nbsp; <strong>ITHACA:</strong> 3 HR, 17 HR allowed (round's most) &nbsp;&middot;&nbsp; <strong>MARGIN:</strong> 21.33 pts &mdash; round's closest</div>
+    </div>
+</div>
+
+<hr class="rule-h">
+<div class="info-box">
+    <div class="info-box-title">Round 1 Byes</div>
+    <p style="font-size:.85em;text-align:center">Troutdale Cascades (No. 1, Championship) &nbsp;&middot;&nbsp; Desert Rats (No. 2, Championship) &nbsp;&middot;&nbsp; Troutdale Gales (No. 1, Draft) &nbsp;&middot;&nbsp; Sidd Finch (No. 3, Draft) all sat Round 1 out and enter Round 2 fresh.</p>
+</div>
+
+<div class="page-footer"><p>All statistics from official Fantrax league data. Playoff Round 1, August 17&ndash;23, 2026.</p></div>
+</div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 3: TOP PLAYERS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="players">
+<div class="section-label">Playoff Round 1 &mdash; Individual Leaderboards</div>
+<div class="headline-lg" style="margin-bottom:4px">The Leaderboard</div>
+<div class="deck">Round 1's top hitting performances, plus the league's season-long ace leaderboard entering the postseason. Fantasy team designations used throughout.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#9918; Top Hitters &mdash; Round 1</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Fantasy Team</th><th class="num">FPts</th><th>H/AB</th><th class="num">R</th><th class="num">HR</th><th class="num">RBI</th><th class="num">SB</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Pete Crow-Armstrong</strong></td><td>Sidd Finch</td><td class="num">60.0</td><td>9/24</td><td class="num">6</td><td class="num">5</td><td class="num">8</td><td class="num">2</td></tr>
+            <tr><td class="rk">2</td><td><strong>Fernando Tatis Jr.</strong></td><td>Sons of Pitches</td><td class="num">59.0</td><td>12/25</td><td class="num">6</td><td class="num">4</td><td class="num">11</td><td class="num">1</td></tr>
+            <tr><td class="rk">3</td><td><strong>Zach Neto</strong></td><td>Houston Gamblers</td><td class="num">57.5</td><td>14/28</td><td class="num">5</td><td class="num">2</td><td class="num">9</td><td class="num">2</td></tr>
+            <tr><td class="rk">4</td><td><strong>Jordan Walker</strong></td><td>Tempe Scorpions</td><td class="num">50.5</td><td>12/34</td><td class="num">9</td><td class="num">3</td><td class="num">8</td><td class="num">2</td></tr>
+            <tr><td class="rk">5</td><td><strong>Bobby Witt Jr.</strong></td><td>Sidd Finch</td><td class="num">49.5</td><td>10/27</td><td class="num">8</td><td class="num">2</td><td class="num">5</td><td class="num">3</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Notable: Crow-Armstrong (Sidd Finch) and Witt Jr. (Sidd Finch) both posted top-5 weeks despite Sidd Finch being on a Round 1 bye &mdash; a preview of what's coming for The BANK of Texas in Round 2.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; SIDD FINCH HAS TWO TOP-5 HITTERS &mdash; AND DIDN'T EVEN PLAY</div>
+        <p style="font-size:.85em">Pete Crow-Armstrong (60.0 pts, #1) and Bobby Witt Jr. (49.5 pts, #5) both landed in Round 1's individual top five while their team sat on a bye. The BANK of Texas should be very concerned about what's waiting for them in Round 2.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Tatis Delivers When It Mattered Most</div>
+        <p style="font-size:.85em">Fernando Tatis Jr. (Sons of Pitches): 59.0 pts, 12-for-25, 6 R, 4 HR, 11 RBI. The best performance by any player on a team that actually took the field in Round 1, and the single biggest reason the No. 10 seed is still alive.</p>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="info-box">
+        <div class="info-box-title">&#9889; Season Aces Leaderboard &mdash; Entering the Postseason</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Fantasy Team</th><th class="num">FP/G</th><th class="num">IP</th><th class="num">ERA</th><th class="num">K</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Jacob Misiorowski</strong></td><td>Troutdale Cascades</td><td class="num">24.75</td><td class="num">145.0</td><td class="num">1.68</td><td class="num">216</td></tr>
+            <tr><td class="rk">2</td><td><strong>Dylan Cease</strong></td><td>Desert Rats</td><td class="num">21.36</td><td class="num">144.1</td><td class="num">2.37</td><td class="num">209</td></tr>
+            <tr><td class="rk">3</td><td><strong>Cristopher Sanchez</strong></td><td>The BANK of Texas</td><td class="num">20.32</td><td class="num">168.1</td><td class="num">2.62</td><td class="num">194</td></tr>
+            <tr><td class="rk">4</td><td><strong>Chris Sale</strong></td><td>Houston Gamblers</td><td class="num">19.72</td><td class="num">135.0</td><td class="num">2.20</td><td class="num">166</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Season cumulative figures, not Round 1 single-week lines. Note that Houston Gamblers own the league's No. 4 ace by season FP/G (Sale) and still lost in Round 1 &mdash; a pitching staff issue elsewhere on the roster, not at the top.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Misiorowski's Season Has Been the Best in the League</div>
+        <p style="font-size:.85em">Jacob Misiorowski (Troutdale Cascades): 24.75 FP/G across 145 innings, a 1.68 ERA, and 216 strikeouts. The Cascades were already the No. 1 overall seed with a Round 1 bye. Their ace being the best pitcher in MLBLONGBALL by a comfortable margin is exactly why Goldy Goldy Gone should be nervous about Round 2.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#9889; RATS' ACE READY FOR ROUND 2</div>
+        <p style="font-size:.83em">Dylan Cease (Desert Rats): 21.36 FP/G, 144.1 IP, 2.37 ERA, 209 K &mdash; the league's No. 2 ace by season production, sitting fresh off a bye. Tempe Scorpions' Round 1 pitching staff posted a 3.20 ERA to win going away. Round 2 is a legitimate strength-on-strength matchup.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All player statistics from Fantrax official data. Playoff Round 1, August 17&ndash;23, 2026.</p></div>
+</div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 4: POWER RANKINGS / BRACKET TRACKER -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="rankings">
+<div class="section-label">The Bracket &mdash; Postseason Tracker</div>
+<div class="headline-lg" style="margin-bottom:4px">Eight Down to Four. Round 2 Awaits.</div>
+<div class="deck">No regular-season power rankings this edition &mdash; the only ranking that matters now is who's still playing. Here's the full bracket state and what's coming in Round 2.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="bracket-box">
+        <div class="bracket-box-title">&#127942; Championship Bracket</div>
+        <p style="font-size:.8em;color:var(--muted);text-align:center;margin-bottom:10px;font-style:italic">Seeds 1&ndash;6 &middot; Three division champions + three best remaining records</p>
+        <div class="bracket-game"><span><span class="bracket-seed">(1)</span> Troutdale Cascades <span class="bye-tag">BYE</span></span><span>&mdash;</span></div>
+        <div class="bracket-game"><span><span class="bracket-seed">(4)</span> <span class="bracket-win">Goldy Goldy Gone</span> &nbsp;<span style="font-size:.75em;color:var(--muted)">def. (5) Midland 397.33&ndash;352.67</span></span><span>&mdash;</span></div>
+        <div class="bracket-game" style="padding-top:14px"><span><span class="bracket-seed">(2)</span> Desert Rats <span class="bye-tag">BYE</span></span><span>&mdash;</span></div>
+        <div class="bracket-game"><span><span class="bracket-seed">(6)</span> <span class="bracket-win">Tempe Scorpions</span> &nbsp;<span style="font-size:.75em;color:var(--muted)">def. (3) Newberry 492.17&ndash;363.33</span></span><span>&mdash;</span></div>
+    </div>
+
+    <div class="bracket-box">
+        <div class="bracket-box-title">&#127942; Draft Bracket</div>
+        <p style="font-size:.8em;color:var(--muted);text-align:center;margin-bottom:10px;font-style:italic">Seeds 7&ndash;12 &middot; Bracket winner earns the No. 1 overall 2027 draft pick</p>
+        <div class="bracket-game"><span><span class="bracket-seed">(1)</span> Troutdale Gales <span class="bye-tag">BYE</span></span><span>&mdash;</span></div>
+        <div class="bracket-game"><span><span class="bracket-seed">(10)</span> <span class="bracket-win">Sons of Pitches</span> &nbsp;<span style="font-size:.75em;color:var(--muted)">def. Houston Gamblers 332.67&ndash;282.83</span></span><span>&mdash;</span></div>
+        <div class="bracket-game" style="padding-top:14px"><span><span class="bracket-seed">(3)</span> Sidd Finch <span class="bye-tag">BYE</span></span><span>&mdash;</span></div>
+        <div class="bracket-game"><span><span class="bracket-seed">(8)</span> <span class="bracket-win">The BANK of Texas</span> &nbsp;<span style="font-size:.75em;color:var(--muted)">def. Ithaca Spartans 264.00&ndash;242.67</span></span><span>&mdash;</span></div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="waste-box">
+        <div class="waste-title">&#128683; Eliminated in Round 1</div>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Newberry Indians:</strong> The No. 3 seed and a Red Division champion, run off the field 492.17&ndash;363.33. A .222 team average and a 4-7 pitching week is not how a division winner's season is supposed to end.</p>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Midland Red Weasel Dogs:</strong> A respectable .237 AVG and 3.44 ERA week wasn't enough against Goldy's transaction-fueled 88.2 innings of pitching. Season over at No. 5 seed.</p>
+        <p style="font-size:.85em;margin-bottom:8px"><strong>Houston Gamblers:</strong> Chris Sale's season-long excellence (19.72 FP/G, No. 4 ace in the league) couldn't save a pitching staff that went 1-8 with a 4.52 ERA in the game that mattered most.</p>
+        <p style="font-size:.85em"><strong>Ithaca Spartans:</strong> The round's closest loss. 17 home runs allowed by the pitching staff, the most of any team in Round 1, proved to be the difference in a 21-point defeat.</p>
+    </div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+<div class="section-label">Round 2 Preview &mdash; Semifinals</div>
+<div class="headline-md" style="margin-bottom:16px">Four Games. Two Trophies on the Line. Everyone Else Is Playing for a Draft Pick.</div>
+<div class="col-2">
+<div>
+    <div class="wk-card">
+        <div class="wk-hdr">&#9733; MARQUEE &mdash; (1) Troutdale Cascades vs. (4) Goldy Goldy Gone</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Troutdale Cascades <span class="badge badge-hot">FAV</span></div><div class="wk-rec">No. 1 seed &middot; Round 1 bye</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Goldy Goldy Gone</div><div class="wk-rec">No. 4 seed &middot; def. Midland 397.33&ndash;352.67</div></div>
+        </div>
+        <div class="wk-look">The top-seeded Cascades enter fresh off a bye, and they enter with Jacob Misiorowski &mdash; the league's best pitcher by season FP/G (24.75, 1.68 ERA, 216 K) &mdash; ready to go. Goldy Goldy Gone arrives having played through 46 transactions and a full week of roster churn to beat Midland. The question for Round 2: does that constant tinkering produce a sharper, more optimized roster, or a tired front office walking into a buzzsaw? Either way, Goldy has to prove their volume approach works against elite talent, not just against a 5-seed.</div>
+    </div>
+
+    <div class="wk-card">
+        <div class="wk-hdr">&#128000; (2) Desert Rats vs. (6) Tempe Scorpions</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Desert Rats <span class="badge badge-hot">FAV</span></div><div class="wk-rec">No. 2 seed &middot; Round 1 bye</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Tempe Scorpions <span class="badge badge-must">HOT</span></div><div class="wk-rec">No. 6 seed &middot; def. Newberry 492.17&ndash;363.33</div></div>
+        </div>
+        <div class="wk-look">The Rats open their postseason run behind Dylan Cease, the league's No. 2 ace by season production (21.36 FP/G, 2.37 ERA, 209 K), fully rested off a bye. But Tempe just posted the single best team week of the entire postseason so far &mdash; 492.17 points, a .303 team average, 17 home runs. This is arguably the most dangerous team left in the Championship Bracket walking in as a 6-seed. A monumental upset over Newberry doesn't guarantee anything against a well-rested No. 2 seed, but the Scorpions have shown they can produce a ceiling week when it matters.</div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="wk-card">
+        <div class="wk-hdr">(1) Troutdale Gales vs. (10) Sons of Pitches</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Troutdale Gales <span class="badge badge-hot">FAV</span></div><div class="wk-rec">No. 1 Draft seed &middot; Round 1 bye</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">Sons of Pitches</div><div class="wk-rec">No. 10 seed &middot; def. Houston Gamblers 332.67&ndash;282.83</div></div>
+        </div>
+        <div class="wk-look">The top seed in the Draft Bracket gets the Sons of Pitches, who advanced almost entirely on the strength of one player: Fernando Tatis Jr.'s 59-point week. A .318 team average is real production, but it's a fair question whether the Sons can replicate a Tatis-sized outlier against a rested top seed. The Gales, sitting on a bye, get first crack at finding out.</div>
+    </div>
+
+    <div class="wk-card">
+        <div class="wk-hdr">(3) Sidd Finch vs. (8) The BANK of Texas</div>
+        <div class="wk-body">
+            <div><div class="wk-team">Sidd Finch <span class="badge badge-hot">FAV</span></div><div class="wk-rec">No. 3 Draft seed &middot; Round 1 bye</div></div>
+            <div class="wk-vs">vs</div>
+            <div style="text-align:right"><div class="wk-team">The BANK of Texas</div><div class="wk-rec">No. 8 seed &middot; def. Ithaca Spartans 264.00&ndash;242.67</div></div>
+        </div>
+        <div class="wk-look">Sidd Finch didn't play Round 1, but two of their hitters &mdash; Pete Crow-Armstrong (60.0 pts) and Bobby Witt Jr. (49.5 pts) &mdash; still posted top-5 individual weeks in the league. That's the roster BANK of Texas has to deal with, fresh off a round where their own pitching staff allowed a 6.18 ERA. If that bullpen performance repeats, this could be a short series for the BANK.</div>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Bracket reflects results through Playoff Round 1. Round 2 begins the week of August 24, 2026.</p></div>
+</div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 5: FA & WIRE -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="fa">
+<div class="section-label">Playoff Round 1 &mdash; Free Agent &amp; Waiver Wire Activity</div>
+<div class="headline-lg" style="margin-bottom:4px">The Wire Report</div>
+<div class="deck">Headline moves from a wild transaction week, verified against the Fantrax claim/drop log (Aug 17&ndash;23, Scoring Periods 146&ndash;153). Full log available on request; this is the highlight reel.</div>
+<hr class="rule-h-thick">
+
+<div class="gold-box">
+    <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">&#128176; Biggest FAAB Bids of the Week</div>
+    <p style="font-size:.85em"><strong>Troutdale Gales &mdash; $250</strong> for Luis Garcia Jr. (1B/2B), their only real move of a quiet 3-transaction week. <strong>Desert Rats &mdash; $226</strong> for Jared Young (1B/OF), immediately flipped two days later. <strong>Newberry Indians &mdash; $150 (twice)</strong>, landing Andruw Monasterio and then Andres Gimenez, part of a league-high 48-transaction week.</p>
+</div>
+
+<div class="col-2">
+<div>
+    <div class="fa-block">
+        <div class="fa-name">Newberry Indians &mdash; 48 moves (league high)</div>
+        <div class="fa-row"><span class="fa-vic">$150</span> <span>Andres Gimenez (2B/SS) &amp; Andruw Monasterio (1B/2B/SS) &mdash; the week's two biggest bids from one team</span></div>
+        <div class="fa-row"><span class="fa-vic">$25</span> <span>Andrew Morris (SP/RP), Jung Hoo Lee (OF), Nolan Schanuel (1B) &mdash; a same-day triple claim on Aug 18</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Newberry churned through nearly a quarter of the league's total transaction volume this week. Round 1 result: eliminated as the No. 3 seed.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">Goldy Goldy Gone &mdash; 46 moves</div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Hao-Yu Lee (2B/3B) &mdash; added, dropped, and re-added in the same day (Aug 23)</span></div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Will Warren (SP) &mdash; claimed twice in one week, dropped in between</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Constant SP/RP streaming all week &mdash; no FAAB bids logged, just relentless waiver-priority churn. It worked: Goldy won Round 1.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">Midland Red Weasel Dogs &mdash; 31 moves</div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Eugenio Suarez (3B), Alejandro Kirk (C), Taj Bradley (SP), Brayan Bello (SP/RP)</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Heavy rotation churn all week. Eliminated in Round 1 despite the activity.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">Ithaca Spartans &mdash; 18 moves</div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Luis Castillo (SP), Sean Newcomb (SP/RP), Janson Junk (SP)</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Pitching-focused churn. Eliminated in the round's closest game.</div>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="fa-block">
+        <div class="fa-name">Sidd Finch &mdash; 10 moves (on a bye)</div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Tyler Stephenson (C), Brayan Rocchio (2B/SS), Ryan Jeffers (C)</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Tinkering the bench during the bye week ahead of a Round 2 date with The BANK.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">Troutdale Cascades &mdash; 9 moves (on a bye)</div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Michael Busch (1B), Konnor Griffin (SS), Jackson Holliday (2B), Kade Anderson (SP)</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Prospect-focused speculative adds while resting on a bye. Jackson Holliday didn't stick.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">Desert Rats &mdash; 9 moves (on a bye)</div>
+        <div class="fa-row"><span class="fa-vic">$226</span> <span>Jared Young (1B/OF) &mdash; won the bid, flipped two days later for Mauricio Dubon</span></div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Joe Musgrove (SP), Walbert Urena (SP)</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Commish's own squad spent big on a player they didn't keep. Duke Falcone has thoughts &mdash; see The Columnists.</div>
+    </div>
+
+    <div class="fa-block">
+        <div class="fa-name">Houston Gamblers &mdash; 7 &nbsp;&middot;&nbsp; The BANK of Texas &mdash; 7 &nbsp;&middot;&nbsp; Tempe Scorpions &mdash; 6 &nbsp;&middot;&nbsp; Troutdale Gales &mdash; 3</div>
+        <div class="fa-row"><span class="fa-add">ADD</span> <span>Gamblers: DL Hall (RP), George Klassen (SP) &nbsp;&middot;&nbsp; BANK: Vinnie Pasquantino (1B), Dominic Canzone (OF) &nbsp;&middot;&nbsp; Scorpions: Alec Bohm (3B), Grant Holmes (SP) &nbsp;&middot;&nbsp; Gales: Andrew Painter (SP)</span></div>
+        <div class="fa-row" style="font-size:.78em;padding:4px 10px;font-style:italic;color:var(--muted)">Tempe Scorpions posted the round's best score (492.17) on just 6 transactions &mdash; the lightest touch of any team that actually played this round. Sometimes the best move is the one you don't make.</div>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Transaction data verified against Fantrax Claim/Drop export, Scoring Periods 146&ndash;153 (Aug 17&ndash;23, 2026). Headline moves only &mdash; full 194-row log available on request.</p></div>
+</div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE 6: COLUMNISTS -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="columns">
+<div class="section-label">Opinion &amp; Analysis</div>
+<div class="headline-lg" style="margin-bottom:16px">The Longball Gazette Columnists</div>
+
+<div class="column-box">
+    <div class="column-box-title">Six Seed, No Fear</div>
+    <div class="column-box-byline">By Duke Falcone &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">Here's what I know: a No. 3 seed just got run off the field by 128 points, and the team that did it is a six seed nobody circled in June. Tempe Scorpions hit .303 as a team. Seventeen home runs. A 3.20 ERA from the mound. That is not an upset, that is a statement, and the Desert Rats better be watching tape instead of celebrating their bye week.</p>
+            <p class="body-sm">Newberry Indians won a division. Newberry Indians hit .222 in the one week that decided their season. I'm not going to pretend those two facts don't sit uneasily next to each other. A regular season is a marathon. A one-week playoff game is a sprint, and Newberry got left at the blocks.</p>
+        </div>
+        <div>
+            <p class="body-sm">Now the Rats draw the hottest team in the bracket. Dylan Cease is sitting on 21.36 FP/G and a 2.37 ERA, fresh off a bye, and that is a legitimate weapon. But the Scorpions just showed they can produce a ceiling week out of nowhere. If Tempe brings anything close to Round 1 into this matchup, the No. 2 seed has a real problem on its hands.</p>
+            <p class="body-sm">One more thing before I go: Goldy Goldy Gone made 46 transactions to win a game by 44 points. I don't know if that's genius team management or a front office that can't sit still. Ask me again after they play the Cascades.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">The Ones Who Waited</div>
+    <div class="column-box-byline">By Marty Aldrich &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">There is a particular kind of quiet that belongs to a team on a bye week during the first round of the playoffs. Four franchises in this league experienced it this week &mdash; Troutdale Cascades, Desert Rats, Troutdale Gales, Sidd Finch &mdash; and none of them touched a single scoring period while the rest of the bracket fought for its life. It is a strange privilege, watching other people's seasons end while yours simply continues, untouched, into the next round.</p>
+            <p class="body-sm">Sidd Finch didn't play a game this week, and two of their hitters still cracked the league's individual top five. Pete Crow-Armstrong put up 60 points. Bobby Witt Jr. put up 49.5. Those numbers happened in a vacuum, uncounted, unused, and they will mean nothing in the standings &mdash; but they mean something to The BANK of Texas, who now has to face a roster capable of producing that kind of week on command.</p>
+        </div>
+        <div>
+            <p class="body-sm">I keep coming back to Newberry Indians. A Red Division champion, eliminated in the first round, by a team seeded three spots below them. There is no story here about a team that didn't deserve its season &mdash; the record was earned over five months. There is only the fact that fantasy baseball, like the real thing, does not care what you did in April. It asks what you can do this week, and this week the Scorpions had an answer Newberry didn't.</p>
+            <p class="body-sm">The BANK of Texas survived their game by 21 points while allowing a 6.18 ERA. I don't know what to make of a team that wins while its pitching staff is actively on fire. Perhaps that is simply what survival looks like sometimes &mdash; not clean, not convincing, just enough.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Big Lou&rsquo;s Corner: Forty-Six Moves and Nobody Got Hurt</div>
+    <div class="column-box-byline">By Lou Palmieri, Baseball Lifer &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+        <div>
+            <p class="body">FORTY-SIX TRANSACTIONS. I counted it twice because I did not believe the first count. Goldy Goldy Gone ran through more waiver moves in ONE WEEK than some teams in this league have made all SEASON, and then they went out and WON THEIR PLAYOFF GAME. Hao-Yu Lee got added, dropped, and added again IN THE SAME DAY. I don't know if that's a fantasy team or a Wall Street trading desk, but whatever it is, it's 1-0 in the postseason and playing the Cascades next. Somebody buy that GM a coffee. Or take the coffee away. I genuinely cannot tell which one helps.</p>
+            <p class="body-sm">TEMPE SCORPIONS made SIX transactions all week and posted FOUR HUNDRED NINETY-TWO POINTS. Six! Goldy made forty-six and put up 397! I am begging somebody in this league to explain the math to me because right now it looks like the answer to "how many moves should I make" is either "all of them" or "almost none," and there is no in-between that works.</p>
+        </div>
+        <div>
+            <p class="body-sm">Let's talk about the Commish's own Desert Rats for a second because I love a good self-own. TWO HUNDRED TWENTY-SIX DOLLARS on Jared Young. Won the bid. Two days later? DROPPED HIM for Mauricio Dubon. Two hundred twenty-six dollars of FAAB, gone, for a player who didn't survive the week. I don't make the rules of this newsletter but I do get to point out when the man who does make the rules loses a bidding war to his own bench. That's not an insult, Commish, that's just accounting.</p>
+            <p class="body-sm">And THE BANK OF TEXAS. Six-point-one-eight ERA on the mound. THIRTEEN home runs allowed. And they WIN by 21 points anyway. That is not pitching, that is hostage negotiation. They survive to play Sidd Finch next round, and Sidd Finch has two guys who just put up top-5 individual weeks without even suiting up. I would not want to be the BANK's bullpen coach right now. I would not want to be anywhere near that bullpen right now.</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-footer">
+    <p>The opinions expressed in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office, its commissioner, or the $226 he spent on a player he dropped two days later.</p>
+    <p style="margin-top:8px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Vol. 1, No. 23 &nbsp;&middot;&nbsp; Playoff Round 1 Recap &nbsp;&middot;&nbsp; Next edition following Round 2 (Week 21)</p>
+</div>
+</div>
+
+</div></div><!-- /inner /newspaper -->
+
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
