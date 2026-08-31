@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Longball Gazette — Week 21 Semi-Final Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment: #f4ecd8;
+    --parchment-dark: #ead9b3;
+    --ink: #2b2318;
+    --ink-soft: #4a3f2f;
+    --sepia: #7a5c3a;
+    --rule: #a68a5b;
+    --rule-dark: #5c4a30;
+    --masthead: #1f1912;
+    --accent-red: #8c2f2f;
+    --accent-green: #3d5c3a;
+    --card-bg: #fbf5e6;
+    --card-border: #c9b183;
+    --shadow: 0 2px 6px rgba(43,35,24,0.18);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background: var(--parchment-dark);
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(166,138,91,0.10) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(92,74,48,0.08) 0%, transparent 45%);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', serif;
+    line-height:1.55;
+  }
+  .paper{
+    max-width: 1080px;
+    margin: 24px auto;
+    background: var(--parchment);
+    border: 1px solid var(--rule-dark);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    padding: 0 0 32px 0;
+  }
+  .masthead{
+    text-align:center;
+    padding: 28px 20px 14px;
+    border-bottom: 4px double var(--rule-dark);
+    background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent);
+  }
+  .masthead .kicker{
+    font-family:'Oswald',sans-serif;
+    letter-spacing: 4px;
+    font-size: 12px;
+    color: var(--sepia);
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+  .masthead h1{
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size: 58px;
+    margin: 4px 0 6px;
+    color: var(--masthead);
+    letter-spacing: 1px;
+  }
+  .masthead .tagline{
+    font-family:'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .masthead .dateline{
+    display:flex;
+    justify-content:space-between;
+    max-width: 760px;
+    margin: 14px auto 0;
+    font-family:'Courier Prime', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 6px 4px;
+  }
+  nav.tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap: 2px;
+    background: var(--rule-dark);
+    padding: 0;
+  }
+  nav.tabs button{
+    font-family:'Oswald', sans-serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 13px;
+    padding: 13px 18px;
+    background: var(--masthead);
+    color: #e9dcb8;
+    border: none;
+    cursor: pointer;
+    flex: 1 1 auto;
+    min-width: 130px;
+    transition: background 0.15s ease;
+  }
+  nav.tabs button:hover{ background: #34291a; }
+  nav.tabs button.active{
+    background: var(--parchment);
+    color: var(--masthead);
+    font-weight:700;
+  }
+  .tabcontent{ display:none; padding: 26px 34px 6px; }
+  .tabcontent.active{ display:block; }
+
+  h2.section-title{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size: 30px;
+    color: var(--masthead);
+    border-bottom: 3px solid var(--rule-dark);
+    padding-bottom: 6px;
+    margin: 0 0 18px;
+  }
+  h3.sub-title{
+    font-family:'Oswald', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sepia);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom:4px;
+    margin: 26px 0 12px;
+  }
+
+  .headline{
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size: 34px;
+    line-height:1.15;
+    color: var(--masthead);
+    margin: 0 0 6px;
+  }
+  .subhead{
+    font-family:'Libre Baskerville', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+  .byline{
+    font-family:'Oswald', sans-serif;
+    font-size:11.5px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--sepia);
+    margin-bottom: 14px;
+  }
+
+  .front-columns{
+    display:grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 26px;
+  }
+  .drop-cap:first-letter{
+    font-family:'Playfair Display', serif;
+    font-size: 54px;
+    font-weight:900;
+    float:left;
+    line-height: 0.8;
+    padding: 4px 8px 0 0;
+    color: var(--accent-red);
+  }
+
+  .sidebar-box{
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .sidebar-box h4{
+    font-family:'Oswald', sans-serif;
+    font-size: 13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--accent-red);
+    margin: 0 0 8px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom:6px;
+  }
+  .sidebar-box p{ font-size: 14.5px; margin: 6px 0; }
+
+  .matchup-card{
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    padding: 18px 20px;
+    margin-bottom: 22px;
+  }
+  .matchup-card .bracket-tag{
+    font-family:'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent-red);
+    display:inline-block;
+    padding: 3px 10px;
+    margin-bottom:10px;
+  }
+  .matchup-card .bracket-tag.gold{ background: var(--sepia); }
+  .score-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-family:'Oswald', sans-serif;
+    font-size: 20px;
+    border-bottom: 1px dashed var(--rule);
+    padding: 6px 0;
+  }
+  .score-row .team-name{ font-weight:500; }
+  .score-row .score{ font-family:'Courier Prime', monospace; font-weight:700; }
+  .score-row.winner .team-name{ color: var(--accent-green); font-weight:700; }
+  .score-row.winner .score{ color: var(--accent-green); }
+  .score-row.loser{ opacity: 0.72; }
+
+  table.stat-table{
+    width:100%;
+    border-collapse: collapse;
+    font-family:'Courier Prime', monospace;
+    font-size: 13.5px;
+    margin: 10px 0 4px;
+  }
+  table.stat-table th{
+    text-align:left;
+    font-family:'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color: var(--sepia);
+    border-bottom: 2px solid var(--rule-dark);
+    padding: 6px 8px;
+  }
+  table.stat-table td{
+    padding: 5px 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  table.stat-table td.num{ text-align:right; font-weight:700; }
+  table.stat-table tr:nth-child(even){ background: rgba(166,138,91,0.08); }
+
+  .split-stats{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 14px 0;
+  }
+
+  .box-summary{
+    font-family:'Courier Prime', monospace;
+    font-size: 13px;
+    background: rgba(166,138,91,0.10);
+    border-left: 3px solid var(--rule-dark);
+    padding: 10px 14px;
+    margin: 12px 0;
+  }
+
+  .rank-list{ list-style:none; padding:0; margin:0; counter-reset: rankcounter; }
+  .rank-item{
+    counter-increment: rankcounter;
+    display:grid;
+    grid-template-columns: 46px 1fr auto;
+    align-items:center;
+    gap: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .rank-item::before{
+    content: counter(rankcounter);
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size: 26px;
+    color: var(--accent-red);
+    text-align:center;
+  }
+  .rank-item .rname{ font-family:'Oswald', sans-serif; font-weight:600; font-size:16px; color: var(--masthead); }
+  .rank-item .rnote{ font-family:'Libre Baskerville', serif; font-size:13.5px; color: var(--ink-soft); font-style:italic; }
+  .rank-item .rstatus{ font-family:'Courier Prime', monospace; font-size:12px; color: var(--sepia); white-space:nowrap; }
+
+  .fallen-list{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+    font-family:'Courier Prime', monospace;
+    font-size: 13.5px;
+  }
+  .fallen-list div{ padding: 6px 0; border-bottom: 1px dotted var(--rule); }
+
+  .transaction{
+    display:grid;
+    grid-template-columns: 130px 1fr auto;
+    gap: 10px;
+    align-items:baseline;
+    font-family:'Courier Prime', monospace;
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .transaction .ttype-claim{ color: var(--accent-green); font-weight:700; }
+  .transaction .ttype-drop{ color: var(--accent-red); font-weight:700; }
+  .wire-story{
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+  .wire-story h4{
+    font-family:'Playfair Display', serif;
+    font-size: 19px;
+    margin: 0 0 8px;
+    color: var(--masthead);
+  }
+
+  .columnist{
+    margin-bottom: 34px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--rule);
+  }
+  .columnist:last-child{ border-bottom:none; }
+  .columnist-head{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .columnist-badge{
+    width: 52px; height:52px;
+    border-radius:50%;
+    background: var(--masthead);
+    color: var(--parchment);
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size: 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .columnist-name{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size: 21px;
+    color: var(--masthead);
+    margin:0;
+  }
+  .columnist-title{
+    font-family:'Oswald', sans-serif;
+    font-size: 11.5px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--sepia);
+  }
+  .col-headline{
+    font-family:'Playfair Display', serif;
+    font-style: italic;
+    font-weight:700;
+    font-size: 21px;
+    margin: 4px 0 10px;
+    color: var(--accent-red);
+  }
+  .col-body p{ font-size: 15px; }
+  .col-body p:first-of-type:first-letter{
+    font-family:'Playfair Display', serif;
+    font-size: 44px;
+    font-weight:900;
+    float:left;
+    line-height:0.75;
+    padding: 4px 6px 0 0;
+    color: var(--accent-red);
+  }
+
+  .pull-quote{
+    font-family:'Playfair Display', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--sepia);
+    border-left: 3px solid var(--accent-red);
+    padding: 4px 0 4px 16px;
+    margin: 16px 0;
+  }
+
+  footer.masthead-foot{
+    text-align:center;
+    font-family:'Oswald', sans-serif;
+    font-size: 11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color: var(--sepia);
+    padding: 20px 20px 0;
+    margin-top: 20px;
+    border-top: 3px double var(--rule-dark);
+  }
+
+  @media(max-width: 720px){
+    .front-columns{ grid-template-columns: 1fr; }
+    .split-stats{ grid-template-columns: 1fr; }
+    .fallen-list{ grid-template-columns: 1fr; }
+    .masthead h1{ font-size: 38px; }
+    .tabcontent{ padding: 18px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <div class="masthead">
+    <div class="kicker">MLBLONGBALL &middot; Season 19</div>
+    <h1>THE LONGBALL GAZETTE</h1>
+    <div class="tagline">Official Record of the League &middot; Est. 2008</div>
+    <div class="dateline">
+      <span>WEEK 21 &middot; SEMI-FINAL EDITION</span>
+      <span>AUG 24&ndash;30, 2026</span>
+      <span>PRICE: ONE WAIVER CLAIM</span>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <button class="tablink active" data-tab="front">Front Page</button>
+    <button class="tablink" data-tab="scores">Scores &amp; Recaps</button>
+    <button class="tablink" data-tab="players">Top Players</button>
+    <button class="tablink" data-tab="power">Power Rankings</button>
+    <button class="tablink" data-tab="wire">FA &amp; Wire</button>
+    <button class="tablink" data-tab="columnists">The Columnists</button>
+  </nav>
+
+  <!-- FRONT PAGE -->
+  <div id="front" class="tabcontent active">
+    <div class="front-columns">
+      <div>
+        <div class="headline">Cascades, Desert Rats Set for Two-Week War as Championship Field Narrows to Two</div>
+        <div class="subhead">Top-seeded Troutdale outlasts Goldy Goldy Gone; No. 2 Desert Rats survive a scare from the Scorpions to book the Final</div>
+        <div class="byline">Longball Gazette Staff &middot; Week 21 Semi-Final Recap</div>
+        <p class="drop-cap">The chase for the Season 19 crown is down to two teams, and it took everything both semifinalists had to get there. The top-seeded Troutdale Cascades needed a 419.33-point Round 2 explosion to hold off Goldy Goldy Gone's late offensive push, 419.33&ndash;400, while the No. 2 seed Desert Rats survived a week-long dogfight with the White Division champion Tempe Scorpions, escaping 397.33&ndash;332.17 after Tempe kept the margin inside 15 points for most of the week.</p>
+        <p>The Final Round now stretches across two weeks &mdash; Aug 31 through Sep 13 &mdash; with the Desert Rats looking to avenge last year's finish and the Cascades chasing a title behind a pitching staff that has carried them through both playoff rounds.</p>
+        <p>On the other side of the bracket, the race for the No. 1 overall pick in next year's draft is set: the Troutdale Gales, who blew out Sons of Pitches 370.33&ndash;254.17, will face The BANK of Texas, fresh off a 365.67&ndash;306 win over Sidd Finch. Unlike the Championship, that field will settle in a single week &mdash; the winner of this one-week Final claims the top selection.</p>
+        <p>Elsewhere around the league, the waiver wire stayed hot all the way through Sunday's deadline, with Kyle Tucker and Bo Bichette both changing hands out of the Desert Rats' clubhouse and into Troutdale Cascades'. Full story inside.</p>
+      </div>
+      <div>
+        <div class="sidebar-box">
+          <h4>The Brackets</h4>
+          <p><strong>Championship Final</strong> (2 weeks, Aug 31&ndash;Sep 13)<br>
+          #1 Troutdale Cascades vs. #2 Desert Rats</p>
+          <p><strong>No. 1 Pick Final</strong> (1 week, Aug 31&ndash;Sep 13)<br>
+          Troutdale Gales vs. The BANK of Texas</p>
+        </div>
+        <div class="sidebar-box">
+          <h4>Semi-Final Results</h4>
+          <p>Troutdale Cascades 419.33, Goldy Goldy Gone 400</p>
+          <p>Desert Rats 397.33, Tempe Scorpions 332.17</p>
+          <p>Troutdale Gales 370.33, Sons of Pitches 254.17</p>
+          <p>The BANK of Texas 365.67, Sidd Finch 306</p>
+        </div>
+        <div class="sidebar-box">
+          <h4>Offseason Notice: Keepers</h4>
+          <p>Every roster carries up to five keepers into Season 20. Owners must trim down to their two keepers by January 1. Whatever gets cut loose lands in the Free Agent Frenzy, run on FAAB with a $200 per-team maximum bid.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORES & RECAPS -->
+  <div id="scores" class="tabcontent">
+    <h2 class="section-title">Scores &amp; Recaps</h2>
+
+    <h3 class="sub-title">Championship Bracket &mdash; Semi-Final</h3>
+
+    <div class="matchup-card">
+      <span class="bracket-tag">Championship Semi-Final</span>
+      <div class="score-row winner"><span class="team-name">Desert Rats</span><span class="score">397.33</span></div>
+      <div class="score-row loser"><span class="team-name">Tempe Scorpions</span><span class="score">332.17</span></div>
+      <p style="margin-top:14px;">The Desert Rats defeated the White Division champion Tempe Scorpions by 65.16 points, using a deep and powerful offense to secure the Week 21 victory. The Rats won the hitting battle 215.5&ndash;158.5 and edged Tempe in pitching 181.83&ndash;173.67.</p>
+      <p>It was closer than the final margin suggests. The Scorpions kept the deficit inside roughly 15 points for most of the week, and the Rats compounded their own difficulty by missing a start from Logan Webb &mdash; an oversight that cost them an estimated 16 points. Arizona still had just enough in reserve to pull away on the final day.</p>
+      <div class="split-stats">
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">Desert Rats &mdash; Top Hitters</th></tr>
+            <tr><td>Carter Jensen</td><td class="num">29</td></tr>
+            <tr><td>Cody Bellinger</td><td class="num">29</td></tr>
+            <tr><td>Freddie Freeman</td><td class="num">26</td></tr>
+            <tr><td>Jake McCarthy</td><td class="num">24.5</td></tr>
+            <tr><td>Bryce Harper</td><td class="num">24</td></tr>
+            <tr><td>Alex Bregman</td><td class="num">20</td></tr>
+          </table>
+          <table class="stat-table">
+            <tr><th colspan="2">Desert Rats &mdash; Top Pitchers</th></tr>
+            <tr><td>Logan Henderson</td><td class="num">30</td></tr>
+            <tr><td>Dylan Cease</td><td class="num">27.5</td></tr>
+            <tr><td>Clay Holmes</td><td class="num">24.5</td></tr>
+            <tr><td>Andrew Alvarez</td><td class="num">23.5</td></tr>
+            <tr><td>Adrian Morejon</td><td class="num">21.5</td></tr>
+          </table>
+        </div>
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">Tempe Scorpions &mdash; Top Hitters</th></tr>
+            <tr><td>Brooks Lee</td><td class="num">24</td></tr>
+            <tr><td>Miguel Vargas</td><td class="num">23.5</td></tr>
+            <tr><td>Mookie Betts</td><td class="num">17.5</td></tr>
+            <tr><td>Vladimir Guerrero Jr.</td><td class="num">16.5</td></tr>
+            <tr><td>Jarren Duran</td><td class="num">16</td></tr>
+          </table>
+          <table class="stat-table">
+            <tr><th colspan="2">Tempe Scorpions &mdash; Top Pitchers</th></tr>
+            <tr><td>Kevin Gausman</td><td class="num">39.5</td></tr>
+            <tr><td>Cade Cavalli</td><td class="num">39</td></tr>
+            <tr><td>Michael Wacha</td><td class="num">39</td></tr>
+            <tr><td>Eduardo Rodriguez</td><td class="num">35</td></tr>
+            <tr><td>Carmen Mlodzinski</td><td class="num">14.17</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="box-summary">
+        Desert Rats hitters doubled Tempe in home runs (8&ndash;4) while also leading in RBI (30&ndash;23) and stolen bases (7&ndash;2). Tempe got four outstanding starting-pitcher performances, but Gavin Williams' &minus;10.33-point outing undercut the comeback bid.
+      </div>
+      <p>Jensen and Bellinger shared the team scoring lead for Arizona, while Freeman, McCarthy, Harper and Bregman kept pressure on throughout the lineup. On the mound, Henderson, Cease, Holmes and Alvarez supplied enough production to preserve the offensive advantage and send the Rats to their first Championship Final since the seeding shakeup.</p>
+    </div>
+
+    <div class="matchup-card">
+      <span class="bracket-tag">Championship Semi-Final</span>
+      <div class="score-row winner"><span class="team-name">Troutdale Cascades</span><span class="score">419.33</span></div>
+      <div class="score-row loser"><span class="team-name">Goldy Goldy Gone</span><span class="score">400</span></div>
+      <p style="margin-top:14px;">The Troutdale Cascades defeated Goldy Goldy Gone by 19.33 points, surviving Goldy's huge offensive week with a commanding performance on the mound. Goldy won the hitting battle 266&ndash;215, but Troutdale answered with a decisive 204.33&ndash;134 pitching advantage &mdash; more than enough to erase Goldy's 51-point edge at the plate.</p>
+      <div class="split-stats">
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">Troutdale Cascades &mdash; Top Hitters</th></tr>
+            <tr><td>Seiya Suzuki</td><td class="num">39</td></tr>
+            <tr><td>Sal Stewart</td><td class="num">32.5</td></tr>
+            <tr><td>Steven Kwan</td><td class="num">30</td></tr>
+            <tr><td>Chandler Simpson</td><td class="num">29</td></tr>
+            <tr><td>Drake Baldwin</td><td class="num">25</td></tr>
+            <tr><td>Tommy Edman</td><td class="num">20.5</td></tr>
+          </table>
+          <table class="stat-table">
+            <tr><th colspan="2">Troutdale Cascades &mdash; Top Pitchers</th></tr>
+            <tr><td>Parker Messick</td><td class="num">48</td></tr>
+            <tr><td>Braxton Ashcraft</td><td class="num">27.5</td></tr>
+            <tr><td>Jacob Misiorowski</td><td class="num">25</td></tr>
+            <tr><td>Bryan Abreu</td><td class="num">21</td></tr>
+            <tr><td>Blake Snell</td><td class="num">20</td></tr>
+            <tr><td>Grant Taylor</td><td class="num">20</td></tr>
+            <tr><td>Bryan Baker</td><td class="num">20</td></tr>
+          </table>
+        </div>
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">Goldy Goldy Gone &mdash; Top Hitters</th></tr>
+            <tr><td>Jac Caglianone</td><td class="num">33.5</td></tr>
+            <tr><td>Otto Lopez</td><td class="num">31</td></tr>
+            <tr><td>Sam Antonacci</td><td class="num">25.5</td></tr>
+            <tr><td>Kazuma Okamoto</td><td class="num">24.5</td></tr>
+            <tr><td>Oneil Cruz</td><td class="num">19</td></tr>
+          </table>
+          <table class="stat-table">
+            <tr><th colspan="2">Goldy Goldy Gone &mdash; Top Pitchers</th></tr>
+            <tr><td>Jake Bennett</td><td class="num">31</td></tr>
+            <tr><td>Michael King</td><td class="num">25</td></tr>
+            <tr><td>Tarik Skubal</td><td class="num">23.5</td></tr>
+            <tr><td>A.J. Blubaugh</td><td class="num">11.5</td></tr>
+            <tr><td>Jhoan Duran</td><td class="num">11.5</td></tr>
+            <tr><td>Tyler Wells</td><td class="num">10</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="box-summary">
+        Goldy's offense produced 43 runs, 76 hits, 11 home runs and 14 stolen bases &mdash; Caglianone and Lopez led a deep lineup that put up 266 points on their own. Troutdale's staff recorded seven wins, five quality starts and six save-holds, while Goldy's pitchers absorbed seven losses and allowed 39 earned runs.
+      </div>
+      <p>Parker Messick supplied the defining performance of the round: two wins, two quality starts and 48 points in a single week. Goldy's lineup did enough offense to win most weeks on the schedule, but Troutdale's pitching depth was simply overwhelming, and the Cascades advance to defend the No. 1 seed in the Final.</p>
+    </div>
+
+    <h3 class="sub-title">No. 1 Pick Bracket &mdash; Semi-Final</h3>
+
+    <div class="matchup-card">
+      <span class="bracket-tag gold">Draft-Position Semi-Final</span>
+      <div class="score-row winner"><span class="team-name">Troutdale Gales</span><span class="score">370.33</span></div>
+      <div class="score-row loser"><span class="team-name">Sons of Pitches</span><span class="score">254.17</span></div>
+      <p style="margin-top:14px;">The Troutdale Gales defeated Sons of Pitches by 116.16 points, a dominant, wire-to-wire win. Troutdale controlled both sides of the matchup, winning the hitting battle 227&ndash;151.5 and the pitching battle 143.33&ndash;102.67.</p>
+      <div class="split-stats">
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">Troutdale Gales &mdash; Top Hitters</th></tr>
+            <tr><td>Elly De La Cruz</td><td class="num">30.5</td></tr>
+            <tr><td>Luis Garcia Jr.</td><td class="num">30.5</td></tr>
+            <tr><td>William Contreras</td><td class="num">30</td></tr>
+            <tr><td>Pete Alonso</td><td class="num">29.5</td></tr>
+            <tr><td>Jos&eacute; Caballero</td><td class="num">26</td></tr>
+            <tr><td>Kyle Schwarber</td><td class="num">21.5</td></tr>
+          </table>
+          <table class="stat-table">
+            <tr><th colspan="2">Troutdale Gales &mdash; Top Pitchers</th></tr>
+            <tr><td>Drew Rasmussen</td><td class="num">45.17</td></tr>
+            <tr><td>Jes&uacute;s Luzardo</td><td class="num">35.5</td></tr>
+            <tr><td>George Kirby</td><td class="num">33.33</td></tr>
+            <tr><td>Yohan Ram&iacute;rez</td><td class="num">20.17</td></tr>
+            <tr><td>Andrew Painter</td><td class="num">17.5</td></tr>
+          </table>
+        </div>
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">Sons of Pitches &mdash; Top Hitters</th></tr>
+            <tr><td>Jeremy Pe&ntilde;a</td><td class="num">31.5</td></tr>
+            <tr><td>Willi Castro</td><td class="num">21.5</td></tr>
+            <tr><td>Jo Adell</td><td class="num">21</td></tr>
+            <tr><td>Yordan Alvarez</td><td class="num">20</td></tr>
+            <tr><td>Ozzie Albies</td><td class="num">16</td></tr>
+            <tr><td>Cal Raleigh</td><td class="num">14.5</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="box-summary">
+        The Gales' offense produced 37 runs, 69 hits, 11 home runs and 35 RBI; Sons of Pitches finished with 27 runs, 53 hits, six homers and 20 RBI. Troutdale's five-homer advantage and 15 additional RBI created most of the separation. Rasmussen, Luzardo and Kirby combined for 114 pitching points.
+      </div>
+      <p>Jeremy Pe&ntilde;a led Sons of Pitches with three home runs, six runs and five RBI, and got productive weeks from Willi Castro, Jo Adell and Yordan Alvarez, but the roster lacked the depth to keep pace on either side of the ball. Sons of Pitches' season ends in the semis; Troutdale Gales move on to face The BANK of Texas for the top pick.</p>
+    </div>
+
+    <div class="matchup-card">
+      <span class="bracket-tag gold">Draft-Position Semi-Final</span>
+      <div class="score-row winner"><span class="team-name">The BANK of Texas</span><span class="score">365.67</span></div>
+      <div class="score-row loser"><span class="team-name">Sidd Finch</span><span class="score">306</span></div>
+      <p style="margin-top:14px;">The BANK of Texas defeated Sidd Finch by 59.67 points behind a dominant offensive week. The BANK outscored Sidd 230&ndash;149 at the plate, an 81-point advantage that proved decisive. Sidd won the pitching battle 157&ndash;135.67, but couldn't overcome BANK's hitting depth.</p>
+      <div class="split-stats">
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">The BANK &mdash; Top Hitters</th></tr>
+            <tr><td>Ben Rice</td><td class="num">27</td></tr>
+            <tr><td>Pedro Ramirez</td><td class="num">27</td></tr>
+            <tr><td>Wyatt Langford</td><td class="num">24.5</td></tr>
+            <tr><td>Vinnie Pasquantino</td><td class="num">23</td></tr>
+            <tr><td>Ty France</td><td class="num">22</td></tr>
+            <tr><td>Ronald Acu&ntilde;a Jr.</td><td class="num">20</td></tr>
+          </table>
+          <table class="stat-table">
+            <tr><th colspan="2">The BANK &mdash; Top Pitchers</th></tr>
+            <tr><td>Hunter Brown</td><td class="num">33.33</td></tr>
+            <tr><td>Josh Hader</td><td class="num">30.67</td></tr>
+            <tr><td>Cristopher S&aacute;nchez</td><td class="num">29.5</td></tr>
+            <tr><td>Brandon Young</td><td class="num">18</td></tr>
+            <tr><td>Bailey Ober</td><td class="num">13.5</td></tr>
+          </table>
+        </div>
+        <div>
+          <table class="stat-table">
+            <tr><th colspan="2">Sidd Finch &mdash; Top Hitters</th></tr>
+            <tr><td>Pete Crow-Armstrong</td><td class="num">39.5</td></tr>
+            <tr><td>Alec Burleson</td><td class="num">18.5</td></tr>
+            <tr><td>Bobby Witt Jr.</td><td class="num">18</td></tr>
+            <tr><td>Jeff McNeil</td><td class="num">14</td></tr>
+            <tr><td>Kody Clemens</td><td class="num">13</td></tr>
+          </table>
+          <table class="stat-table">
+            <tr><th colspan="2">Sidd Finch &mdash; Top Pitchers</th></tr>
+            <tr><td>Nolan McLean</td><td class="num">27.5</td></tr>
+            <tr><td>Sandy Alcantara</td><td class="num">26</td></tr>
+            <tr><td>Zac Thornton</td><td class="num">25</td></tr>
+            <tr><td>Robbie Ray</td><td class="num">24.67</td></tr>
+            <tr><td>Hayden Wesneski</td><td class="num">19.5</td></tr>
+            <tr><td>Erik Sabrowski</td><td class="num">19.17</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="box-summary">
+        Pete Crow-Armstrong delivered the matchup's biggest individual offensive performance for Sidd, blasting four home runs with seven RBI. BANK countered with production up and down the lineup: 66 hits, 39 walks, 30 RBI and eight stolen bases. Hunter Brown, Josh Hader and Cristopher S&aacute;nchez combined for 93.5 pitching points; Jacob deGrom's &minus;16.17-point outing was especially costly for Sidd.
+      </div>
+      <p>BANK's balanced lineup made the difference. Sidd Finch's season ends in the semis; The BANK of Texas advances to face Troutdale Gales for the No. 1 overall pick.</p>
+    </div>
+  </div>
+
+  <!-- TOP PLAYERS -->
+  <div id="players" class="tabcontent">
+    <h2 class="section-title">Top Players of the Week</h2>
+    <p style="font-style:italic; color:var(--ink-soft); margin-top:-8px;">The best individual performances across all four semi-final matchups, Week 21.</p>
+
+    <h3 class="sub-title">Top Hitters</h3>
+    <table class="stat-table">
+      <tr><th>Player</th><th>Longball Team</th><th>Points</th></tr>
+      <tr><td>Seiya Suzuki</td><td>Troutdale Cascades</td><td class="num">39</td></tr>
+      <tr><td>Pete Crow-Armstrong</td><td>Sidd Finch</td><td class="num">39.5</td></tr>
+      <tr><td>Jac Caglianone</td><td>Goldy Goldy Gone</td><td class="num">33.5</td></tr>
+      <tr><td>Sal Stewart</td><td>Troutdale Cascades</td><td class="num">32.5</td></tr>
+      <tr><td>Jeremy Pe&ntilde;a</td><td>Sons of Pitches</td><td class="num">31.5</td></tr>
+      <tr><td>Otto Lopez</td><td>Goldy Goldy Gone</td><td class="num">31</td></tr>
+      <tr><td>Steven Kwan</td><td>Troutdale Cascades</td><td class="num">30</td></tr>
+      <tr><td>Elly De La Cruz</td><td>Troutdale Gales</td><td class="num">30.5</td></tr>
+      <tr><td>Luis Garcia Jr.</td><td>Troutdale Gales</td><td class="num">30.5</td></tr>
+      <tr><td>William Contreras</td><td>Troutdale Gales</td><td class="num">30</td></tr>
+      <tr><td>Chandler Simpson</td><td>Troutdale Cascades</td><td class="num">29</td></tr>
+      <tr><td>Pete Alonso</td><td>Troutdale Gales</td><td class="num">29.5</td></tr>
+      <tr><td>Carter Jensen</td><td>Desert Rats</td><td class="num">29</td></tr>
+      <tr><td>Cody Bellinger</td><td>Desert Rats</td><td class="num">29</td></tr>
+      <tr><td>Sam Antonacci</td><td>Goldy Goldy Gone</td><td class="num">25.5</td></tr>
+      <tr><td>Freddie Freeman</td><td>Desert Rats</td><td class="num">26</td></tr>
+      <tr><td>Jos&eacute; Caballero</td><td>Troutdale Gales</td><td class="num">26</td></tr>
+      <tr><td>Kazuma Okamoto</td><td>Goldy Goldy Gone</td><td class="num">24.5</td></tr>
+      <tr><td>Jake McCarthy</td><td>Desert Rats</td><td class="num">24.5</td></tr>
+      <tr><td>Wyatt Langford</td><td>The BANK of Texas</td><td class="num">24.5</td></tr>
+      <tr><td>Bryce Harper</td><td>Desert Rats</td><td class="num">24</td></tr>
+      <tr><td>Brooks Lee</td><td>Tempe Scorpions</td><td class="num">24</td></tr>
+    </table>
+
+    <h3 class="sub-title">Top Pitchers</h3>
+    <table class="stat-table">
+      <tr><th>Player</th><th>Longball Team</th><th>Points</th></tr>
+      <tr><td>Parker Messick</td><td>Troutdale Cascades</td><td class="num">48</td></tr>
+      <tr><td>Drew Rasmussen</td><td>Troutdale Gales</td><td class="num">45.17</td></tr>
+      <tr><td>Kevin Gausman</td><td>Tempe Scorpions</td><td class="num">39.5</td></tr>
+      <tr><td>Cade Cavalli</td><td>Tempe Scorpions</td><td class="num">39</td></tr>
+      <tr><td>Michael Wacha</td><td>Tempe Scorpions</td><td class="num">39</td></tr>
+      <tr><td>Eduardo Rodriguez</td><td>Tempe Scorpions</td><td class="num">35</td></tr>
+      <tr><td>Jes&uacute;s Luzardo</td><td>Troutdale Gales</td><td class="num">35.5</td></tr>
+      <tr><td>George Kirby</td><td>Troutdale Gales</td><td class="num">33.33</td></tr>
+      <tr><td>Hunter Brown</td><td>The BANK of Texas</td><td class="num">33.33</td></tr>
+      <tr><td>Josh Hader</td><td>The BANK of Texas</td><td class="num">30.67</td></tr>
+      <tr><td>Logan Henderson</td><td>Desert Rats</td><td class="num">30</td></tr>
+      <tr><td>Jake Bennett</td><td>Goldy Goldy Gone</td><td class="num">31</td></tr>
+      <tr><td>Cristopher S&aacute;nchez</td><td>The BANK of Texas</td><td class="num">29.5</td></tr>
+      <tr><td>Dylan Cease</td><td>Desert Rats</td><td class="num">27.5</td></tr>
+      <tr><td>Nolan McLean</td><td>Sidd Finch</td><td class="num">27.5</td></tr>
+      <tr><td>Braxton Ashcraft</td><td>Troutdale Cascades</td><td class="num">27.5</td></tr>
+      <tr><td>Sandy Alcantara</td><td>Sidd Finch</td><td class="num">26</td></tr>
+      <tr><td>Michael King</td><td>Goldy Goldy Gone</td><td class="num">25</td></tr>
+      <tr><td>Jacob Misiorowski</td><td>Troutdale Cascades</td><td class="num">25</td></tr>
+      <tr><td>Zac Thornton</td><td>Sidd Finch</td><td class="num">25</td></tr>
+      <tr><td>Clay Holmes</td><td>Desert Rats</td><td class="num">24.5</td></tr>
+    </table>
+
+    <div class="pull-quote">"Parker Messick's 48-point week wasn't just the best pitching line of the semis &mdash; it was the single biggest reason Troutdale is playing for a championship instead of watching one."</div>
+  </div>
+
+  <!-- POWER RANKINGS -->
+  <div id="power" class="tabcontent">
+    <h2 class="section-title">Power Rankings</h2>
+    <p style="font-style:italic; color:var(--ink-soft); margin-top:-8px;">The Final Round is set. Here's where all twelve teams stand as the postseason enters its last act.</p>
+
+    <h3 class="sub-title">Championship Contenders</h3>
+    <ol class="rank-list">
+      <li class="rank-item">
+        <span></span>
+        <span>
+          <div class="rname">Troutdale Cascades</div>
+          <div class="rnote">No. 1 seed. Two rounds, two wins, and a pitching staff that has now out-scored two straight opponents by a combined 44.66 points on the mound alone. The favorite entering the two-week Final.</div>
+        </span>
+        <span class="rstatus">419.33 &middot; RD2 W</span>
+      </li>
+      <li class="rank-item">
+        <span></span>
+        <span>
+          <div class="rname">Desert Rats</div>
+          <div class="rnote">No. 2 seed. Survived a week-long fight with the White Division champs and a self-inflicted lineup mistake to reach the Final. Deepest offense left standing in the bracket.</div>
+        </span>
+        <span class="rstatus">397.33 &middot; RD2 W</span>
+      </li>
+    </ol>
+
+    <h3 class="sub-title">Draft-Position Finalists</h3>
+    <ol class="rank-list">
+      <li class="rank-item">
+        <span></span>
+        <span>
+          <div class="rname">Troutdale Gales</div>
+          <div class="rnote">Blew out Sons of Pitches by 116 points behind three huge pitching lines. Controlled both sides of the ball all week &mdash; the clear favorite for the No. 1 pick.</div>
+        </span>
+        <span class="rstatus">370.33 &middot; RD2 W</span>
+      </li>
+      <li class="rank-item">
+        <span></span>
+        <span>
+          <div class="rname">The BANK of Texas</div>
+          <div class="rnote">Leaned entirely on its lineup depth to overcome Sidd Finch's pitching edge. One week stands between BANK and the top selection in next year's draft.</div>
+        </span>
+        <span class="rstatus">365.67 &middot; RD2 W</span>
+      </li>
+    </ol>
+
+    <h3 class="sub-title">Where They Fell</h3>
+    <p style="margin-bottom:10px;">Eight teams saw their Season 19 postseason end over the last two rounds. Here's the order of exit:</p>
+    <div class="fallen-list">
+      <div><strong>Round 2:</strong> Goldy Goldy Gone &mdash; lost to Cascades, 400&ndash;419.33</div>
+      <div><strong>Round 2:</strong> Tempe Scorpions &mdash; lost to Desert Rats, 332.17&ndash;397.33</div>
+      <div><strong>Round 2:</strong> Sons of Pitches &mdash; lost to Gales, 254.17&ndash;370.33</div>
+      <div><strong>Round 2:</strong> Sidd Finch &mdash; lost to BANK, 306&ndash;365.67</div>
+      <div><strong>Round 1:</strong> Midland Red Weasel Dogs &mdash; lost to Goldy, 352.67&ndash;397.33</div>
+      <div><strong>Round 1:</strong> Newberry Indians &mdash; lost to Tempe, 363.33&ndash;490.67</div>
+      <div><strong>Round 1:</strong> Houston Gamblers &mdash; lost to Sons of Pitches, 282.83&ndash;332.67</div>
+      <div><strong>Round 1:</strong> Ithaca Spartans &mdash; lost to BANK, 242.67&ndash;264</div>
+    </div>
+  </div>
+
+  <!-- FA & WIRE -->
+  <div id="wire" class="tabcontent">
+    <h2 class="section-title">Free Agency &amp; The Wire</h2>
+    <p style="font-style:italic; color:var(--ink-soft); margin-top:-8px;">The full waiver ledger for Week 21 (Aug 24&ndash;30) &mdash; 148 moves across the league.</p>
+
+    <div class="wire-story">
+      <h4>Tucker and Bichette Both Change Zip Codes &mdash; Straight Out of Arizona</h4>
+      <p>The week's headline waiver story played out entirely between two clubs. The Desert Rats, needing catcher and infield help ahead of their semi-final, cut loose both <strong>Kyle Tucker</strong> and <strong>Bo Bichette</strong> in separate moves on Thursday, Aug 27 &mdash; and Troutdale Cascades, already through to the Final, scooped up both.</p>
+      <div class="transaction"><span>Thu, 2:39 PM</span><span><span class="ttype-drop">DROP</span> Kyle Tucker (Desert Rats)</span><span>for Jose Altuve</span></div>
+      <div class="transaction"><span>Sat, 12:00 AM</span><span><span class="ttype-claim">CLAIM</span> Kyle Tucker (Troutdale Cascades)</span><span>$255 bid, won for $1</span></div>
+      <div class="transaction"><span>Sun, 2:04 PM</span><span><span class="ttype-drop">DROP</span> Kyle Tucker (Troutdale Cascades)</span><span>for Chase DeLauter</span></div>
+      <div class="transaction"><span>Thu, 8:34 PM</span><span><span class="ttype-drop">DROP</span> Bo Bichette (Desert Rats)</span><span>for Heriberto Hern&aacute;ndez</span></div>
+      <div class="transaction"><span>Sat, 12:00 AM</span><span><span class="ttype-claim">CLAIM</span> Bo Bichette (Troutdale Cascades)</span><span>$267 bid, won for $1</span></div>
+      <p style="margin-top:10px;">Tucker didn't even last 36 hours on the Cascades' roster before he was flipped again for DeLauter on Sunday afternoon &mdash; a short stopover that still cost Troutdale two separate $1 FAAB wins along the way. Bichette, by contrast, is sticking around for the Final.</p>
+    </div>
+
+    <div class="wire-story">
+      <h4>Big Money Moves the Board</h4>
+      <p>Most of the week's activity ran through the $1 waiver-priority process, but a handful of clubs opened the checkbook for real FAAB dollars ahead of Monday's period reset.</p>
+      <table class="stat-table">
+        <tr><th>Player</th><th>Team</th><th>Bid</th><th>Won For</th></tr>
+        <tr><td>Robbie Ray</td><td>Sidd Finch</td><td class="num">$998</td><td class="num">$17</td></tr>
+        <tr><td>Bryan Baker</td><td>Troutdale Cascades</td><td class="num">$318</td><td class="num">$1</td></tr>
+        <tr><td>Bo Bichette</td><td>Troutdale Cascades</td><td class="num">$267</td><td class="num">$1</td></tr>
+        <tr><td>Kyle Tucker</td><td>Troutdale Cascades</td><td class="num">$255</td><td class="num">$1</td></tr>
+        <tr><td>Taj Bradley</td><td>Troutdale Gales</td><td class="num">$250</td><td class="num">$17</td></tr>
+        <tr><td>Nick Sogard</td><td>Goldy Goldy Gone</td><td class="num">$17</td><td class="num">$1</td></tr>
+      </table>
+      <p style="margin-top:10px;">Sidd Finch's $998 max bid on Robbie Ray &mdash; won for a comparatively modest $17 &mdash; was the outlier of the week, a signal of just how much value the front office still saw in Ray even with the season on the brink. Ray delivered 24.67 points in the loss to BANK.</p>
+    </div>
+
+    <div class="wire-story">
+      <h4>Desert Rats Rebuild the Bullpen on the Fly</h4>
+      <p>With their semi-final against Tempe still in the balance, the Desert Rats ran through six separate priority-waiver bullpen moves during the week, cycling through arms almost daily: Craig Kimbrel out for Adrian Morejon, Morejon out for Nate Pearson, Garrett Cleavinger in and out twice, Jordan Romano in, Elvis Alvarado in and out, and finally Orion Kerkering claimed twice in the same 24-hour window. The RP streaming approach paid off &mdash; Morejon (21.5) and Alvarez (23.5) both delivered in the win over Tempe before being flipped for the next wave of matchups.</p>
+    </div>
+
+    <div class="wire-story">
+      <h4>Goldy Goldy Gone Stayed Busiest of All &mdash; Even in Defeat</h4>
+      <p>No team touched the wire more than Goldy Goldy Gone, which made more than 30 separate claim/drop moves during the week despite ultimately falling to Troutdale Cascades in the semis. The club cycled through catchers (Ruiz, Murphy, Herrera), relievers (Cleavinger, Minter, Gaddis, Pagan) and multi-position bats (Sogard, Tim Tawa, Edmundo Sosa) almost daily, seemingly auditioning next season's roster in real time even as the current one was being eliminated.</p>
+    </div>
+  </div>
+
+  <!-- THE COLUMNISTS -->
+  <div id="columnists" class="tabcontent">
+    <h2 class="section-title">The Columnists</h2>
+
+    <div class="columnist">
+      <div class="columnist-head">
+        <div class="columnist-badge">JF</div>
+        <div>
+          <p class="columnist-name">Joe Falls</p>
+          <p class="columnist-title">Longball Gazette Columnist</p>
+        </div>
+      </div>
+      <div class="col-headline">A Championship Final Worthy of the Name</div>
+      <div class="col-body">
+        <p>There is a particular flavor of fantasy baseball drama that only shows up once a year, and we got a full dose of it this week. Two rounds down, one team's whole season riding on the next two, and the two survivors of the Championship bracket are exactly who you'd want standing at the end &mdash; a pitching-rich Troutdale Cascades club and a lineup-deep Desert Rats squad that has now beaten the same team twice this month, first in the standings and then in the bracket.</p>
+        <p>I keep coming back to that Logan Webb non-start for Arizona. In a matchup decided by 65 points, a 16-point unforced error like that should have been the difference. It wasn't, and that tells you something about the gap between these two rosters and the rest of the field. The Rats can survive their own mistakes right now. Not every team left standing after Week 12 could say the same.</p>
+        <p>As for Troutdale, Parker Messick's 48-point week is the kind of individual performance that swings a two-week Final before it even starts. If he gives them even half of that in Week 22, Goldy Goldy Gone's late charge will look like a footnote instead of a warning sign.</p>
+      </div>
+    </div>
+
+    <div class="columnist">
+      <div class="columnist-head">
+        <div class="columnist-badge">MA</div>
+        <div>
+          <p class="columnist-name">Mitch Albom</p>
+          <p class="columnist-title">Longball Gazette Columnist</p>
+        </div>
+      </div>
+      <div class="col-headline">The Ones Who Almost Made It</div>
+      <div class="col-body">
+        <p>Every playoff round has a team that goes down swinging, and this week it was Goldy Goldy Gone. Down the stretch of a semi-final they'd eventually lose, Goldy's front office didn't stop working &mdash; more than thirty waiver moves in a single week, most of them made after the outcome was functionally decided. There's something almost admirable in that. You don't have to like the results to respect the refusal to just let the week play out.</p>
+        <p>And credit where it's due to Jac Caglianone and Otto Lopez, who combined for 64.5 points and gave Goldy a hitting lead deep into the week before Troutdale's pitching staff simply buried them. Sons of Pitches and Sidd Finch went out quieter, but Jeremy Pe&ntilde;a's three-homer week and Pete Crow-Armstrong's four-homer, seven-RBI eruption deserve to be remembered even in a loss. Sometimes the box score from an elimination game is the best one a player puts up all year.</p>
+        <p>The bracket doesn't care about any of that now. But somebody should.</p>
+      </div>
+    </div>
+
+    <div class="columnist">
+      <div class="columnist-head">
+        <div class="columnist-badge">BL</div>
+        <div>
+          <p class="columnist-name">Big Lou Palmieri</p>
+          <p class="columnist-title">Longball Gazette Columnist</p>
+        </div>
+      </div>
+      <div class="col-headline">Somebody Tell the Cascades Kyle Tucker Isn't a Rental Car</div>
+      <div class="col-body">
+        <p>I need somebody in Troutdale's front office to explain this to me slowly. You win a $255 FAAB bid on Kyle Tucker &mdash; a legitimate, quality outfielder &mdash; on Saturday morning. You already clinched your spot in the Championship Final. And by Sunday afternoon, you've flipped him for Chase DeLauter. Thirty-six hours. That's not a roster move, that's a layover.</p>
+        <p>Meanwhile, over in the Draft-Position bracket, Sidd Finch dropped $998 in fake money to win Robbie Ray for seventeen real dollars, in a week where the season was already circling the drain. Ray went out and put up 24.67 points in a loss. Somewhere, a version of this league exists where that bid gets made in Week 3 instead of Week 21, and Sidd is playing for something other than pride right now.</p>
+        <p>Say this for the Desert Rats, though &mdash; while everyone else was making headlines, they were quietly running six bullpen moves through the priority wire and getting 45 combined points out of Morejon and Alvarez in a semi-final win. No fireworks. Just production. That's usually how you end up in the last two teams standing.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="masthead-foot">
+    The Longball Gazette &middot; MLBLONGBALL Season 19 &middot; Week 21 &middot; The Final Round Begins Aug 31
+  </footer>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('.tablink');
+  const tabs = document.querySelectorAll('.tabcontent');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      tabs.forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      window.scrollTo({top: document.querySelector('.paper').offsetTop - 10, behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
