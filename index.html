@@ -75,7 +75,12 @@
             );
 
             // Sort: Newest files first (Week 3 -> Week 2 -> Week 1)
-            reports.sort((a, b) => b.name.localeCompare(a.name));
+            reports.sort((a, b) =>
+  b.name.localeCompare(a.name, undefined, {
+    numeric: true,
+    sensitivity: 'base'
+  })
+);
 
             if (reports.length === 0) {
                 container.innerHTML = '<p>No reports found in the bullpen yet.</p>';
