@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Longball Gazette — Championship Final: Cascades Crowned, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{--ink:#1a1008;--paper:#f7f2e4;--paper-dark:#ede6cf;--paper-mid:#f2ecdb;--red:#8b1a1a;--gold:#b8860b;--rule:#2a1f0e;--muted:#5a4e3a}
+        body{background:#c8b89a;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(0,0,0,.03) 40px,rgba(0,0,0,.03) 80px);font-family:"Libre Baskerville",Georgia,serif;color:var(--ink);padding:24px 16px;min-height:100vh}
+        .newspaper{max-width:1140px;margin:0 auto;background:var(--paper);box-shadow:0 20px 60px rgba(0,0,0,.45);border:2px solid var(--rule);outline:6px solid var(--paper-dark);outline-offset:-10px;position:relative;overflow:hidden}
+        .newspaper::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+        .inner{position:relative;z-index:1}
+        .masthead{padding:20px 40px 0;border-bottom:4px double var(--rule)}
+        .masthead-top{display:flex;justify-content:space-between;align-items:center;font-family:"Courier Prime",monospace;font-size:.78em;letter-spacing:.5px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:10px;color:var(--muted)}
+        .paper-name{font-family:"Playfair Display",serif;font-size:clamp(2.4em,5vw,4.2em);font-weight:900;letter-spacing:3px;text-transform:uppercase;text-align:center;line-height:1;color:var(--ink);padding:8px 0 4px}
+        .paper-rule-red{height:4px;background:var(--red);margin:6px 0}
+        .paper-tagline{text-align:center;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:12px}
+        .ticker-wrap{background:var(--ink);color:var(--paper);overflow:hidden;padding:6px 0;font-family:"Courier Prime",monospace;font-size:.82em;letter-spacing:.5px}
+        .ticker-inner{display:flex;white-space:nowrap;animation:ticker 80s linear infinite}
+        .ticker-inner span{padding:0 30px}
+        .ticker-inner .sep{color:var(--gold);font-weight:700}
+        @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .nav-tabs{display:flex;justify-content:center;padding:0 40px;background:var(--paper-dark);border-bottom:3px solid var(--rule);flex-wrap:wrap}
+        .nav-tab{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;cursor:pointer;border-right:1px solid #c0b090;transition:all .2s;color:var(--muted);position:relative;user-select:none}
+        .nav-tab:first-child{border-left:1px solid #c0b090}
+        .nav-tab:hover{background:var(--paper);color:var(--ink)}
+        .nav-tab.active{background:var(--paper);color:var(--red);font-weight:700}
+        .nav-tab.active::after{content:"";position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--red)}
+        .page{display:none;padding:30px 40px 40px;animation:fadeIn .4s ease}
+        .page.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        .section-label{font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:4px;margin-bottom:10px}
+        .headline-xl{font-family:"Playfair Display",serif;font-size:clamp(1.8em,3.5vw,2.8em);font-weight:900;line-height:1.1;margin-bottom:8px}
+        .headline-lg{font-family:"Playfair Display",serif;font-size:1.7em;font-weight:700;line-height:1.15;margin-bottom:6px}
+        .headline-md{font-family:"Playfair Display",serif;font-size:1.25em;font-weight:700;line-height:1.2;margin-bottom:5px}
+        .deck{font-family:"Libre Baskerville",serif;font-style:italic;font-size:1.05em;color:var(--muted);line-height:1.5;margin-bottom:14px}
+        .byline{font-family:"Courier Prime",monospace;font-size:.78em;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+        .dateline{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted);margin-bottom:12px}
+        p.body{text-align:justify;margin-bottom:12px;font-size:.95em;line-height:1.75}
+        p.body:first-of-type::first-letter{font-family:"Playfair Display",serif;font-size:3.2em;font-weight:900;float:left;line-height:.85;margin:4px 8px 0 0;color:var(--red)}
+        p.body-sm{font-size:.88em;line-height:1.7;margin-bottom:10px;text-align:justify}
+        .col-2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .col-2-1{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .rule-h{border:none;border-top:1px solid #b0a080;margin:20px 0}
+        .rule-h-dbl{border:none;border-top:3px double var(--rule);margin:24px 0}
+        .rule-h-thick{border:none;border-top:2px solid var(--rule);margin:20px 0}
+        .col-rule{border-left:1px solid #b0a080;padding-left:30px}
+        .info-box{border:2px solid var(--rule);padding:16px 18px;background:#fffef8;margin-bottom:20px}
+        .info-box-title{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-align:center;border-bottom:2px solid var(--rule);padding-bottom:8px;margin-bottom:12px}
+        .column-box{border:3px double var(--rule);padding:20px 22px;background:#fffef8;margin-bottom:20px}
+        .column-box-title{font-family:"Playfair Display",serif;font-size:1.3em;font-weight:700;text-align:center;text-transform:uppercase;margin-bottom:4px}
+        .column-box-byline{font-family:"Courier Prime",monospace;font-size:.78em;text-align:center;font-style:italic;color:var(--muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #c0b080}
+        .alert-box{border-left:5px solid var(--red);background:#fff8f8;padding:12px 16px;margin-bottom:16px}
+        .alert-box-title{font-family:"Oswald",sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-bottom:4px}
+        .gold-box{border:2px solid var(--gold);background:#fffbef;padding:14px 16px;margin-bottom:16px}
+        .editors-note{border:2px solid var(--muted);background:#f5f0e8;padding:10px 14px;margin:10px 0;font-family:"Courier Prime",monospace;font-size:.8em;font-style:italic;color:var(--muted)}
+        .editors-note strong{color:var(--ink);font-style:normal}
+        .extras-box{border:4px solid var(--ink);background:var(--ink);color:var(--paper);padding:16px 20px;margin-bottom:20px}
+        .extras-title{font-family:"Playfair Display",serif;font-size:1.4em;font-weight:900;text-align:center;color:var(--gold);margin-bottom:6px;letter-spacing:2px;text-transform:uppercase}
+        .extras-sub{font-family:"Courier Prime",monospace;font-size:.8em;text-align:center;color:rgba(247,242,228,.7);margin-bottom:12px;letter-spacing:1px}
+        .extras-body{font-size:.88em;line-height:1.65}
+        table.data{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:.82em}
+        table.data th{font-family:"Oswald",sans-serif;font-size:.78em;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--rule);border-top:1px solid var(--rule);padding:6px 8px;text-align:left;background:var(--paper-dark)}
+        table.data td{padding:5px 8px;border-bottom:1px solid #d4c89a}
+        table.data tr:last-child td{border-bottom:none}
+        table.data tr.highlight{background:#fff9e0;font-weight:700}
+        table.data tr.danger{background:#fff0f0}
+        table.data tr.warning{background:#fff8ee}
+        table.data .num{text-align:right;font-weight:700}
+        table.data .rk{text-align:center;width:30px;color:var(--muted)}
+        .recap-card{border:2px solid var(--rule);margin-bottom:24px;overflow:hidden}
+        .recap-header{display:flex;justify-content:space-between;align-items:stretch;background:var(--ink);color:var(--paper)}
+        .recap-team{flex:1;padding:10px 14px}
+        .recap-team.away{border-right:1px solid #555}
+        .recap-team-name{font-family:"Oswald",sans-serif;font-size:.85em;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.8}
+        .recap-score{font-family:"Courier Prime",monospace;font-size:1.5em;font-weight:700;line-height:1}
+        .recap-score.leading{color:var(--gold)}
+        .recap-vs{padding:10px 12px;font-family:"Courier Prime",monospace;font-size:.75em;text-align:center;opacity:.6;display:flex;align-items:center}
+        .recap-status{background:var(--red);color:white;font-family:"Courier Prime",monospace;font-size:.72em;text-align:center;padding:4px 10px;font-weight:700;letter-spacing:.5px}
+        .recap-status.green{background:#1a5a1a}
+        .recap-body{padding:14px 16px}
+        .recap-body p{font-size:.88em;line-height:1.65;margin-bottom:8px}
+        .recap-stat{background:var(--paper-dark);border-left:4px solid var(--gold);padding:8px 12px;font-family:"Courier Prime",monospace;font-size:.8em;margin-top:8px}
+        .recap-stat strong{color:var(--red)}
+        .pr-item{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid #d4c89a}
+        .pr-item:last-child{border-bottom:none}
+        .pr-rank{font-family:"Playfair Display",serif;font-size:2em;font-weight:900;color:var(--paper-dark);-webkit-text-stroke:1.5px var(--rule);min-width:44px;text-align:center;line-height:1;padding-top:2px}
+        .pr-rank.top3{color:var(--gold);-webkit-text-stroke:1px var(--gold)}
+        .pr-team{font-family:"Oswald",sans-serif;font-size:1.05em;font-weight:700}
+        .pr-pts{font-family:"Courier Prime",monospace;font-size:.85em;color:var(--muted)}
+        .pr-note{font-size:.83em;color:var(--muted);font-style:italic;line-height:1.4;margin-top:2px}
+        .up{color:#2a7a2a;font-weight:700}
+        .dn{color:var(--red);font-weight:700}
+        .same{color:var(--gold);font-weight:700}
+        .wk5-card{border:2px solid var(--rule);margin-bottom:14px;overflow:hidden}
+        .wk5-hdr{background:var(--paper-dark);padding:6px 12px;font-family:"Oswald",sans-serif;font-size:.75em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+        .wk5-body{display:flex;justify-content:space-between;align-items:center;padding:10px 14px}
+        .wk5-team{font-family:"Oswald",sans-serif;font-size:.95em;font-weight:700}
+        .wk5-rec{font-family:"Courier Prime",monospace;font-size:.75em;color:var(--muted)}
+        .wk5-vs{font-family:"Courier Prime",monospace;font-size:.8em;color:var(--muted);padding:0 10px}
+        .wk5-look{padding:8px 14px;font-size:.82em;font-style:italic;color:var(--muted);background:#fffef8;border-top:1px solid #d4c89a;line-height:1.5}
+        .badge{display:inline-block;font-family:"Courier Prime",monospace;font-size:.65em;font-weight:700;padding:2px 7px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+        .badge-hot{background:var(--red);color:white}
+        .badge-toss{background:var(--gold);color:var(--ink)}
+        .badge-must{background:#1a5a1a;color:white}
+        .fa-block{margin-bottom:18px}
+        .fa-name{font-family:"Oswald",sans-serif;font-size:.9em;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:4px 10px}
+        .fa-row{display:flex;gap:8px;align-items:baseline;padding:4px 10px;border-bottom:1px solid #e0d4b0;font-size:.82em;flex-wrap:wrap}
+        .fa-row:last-child{border-bottom:none}
+        .fa-lbl{font-weight:700;font-family:"Courier Prime",monospace;font-size:.85em;min-width:75px;color:var(--muted)}
+        .page-footer{text-align:center;font-family:"Courier Prime",monospace;font-size:.78em;color:var(--muted);padding-top:20px;border-top:2px double var(--rule);margin-top:30px}
+        @media(max-width:760px){.newspaper{outline:none}.page{padding:20px}.col-2,.col-2-1{grid-template-columns:1fr}.col-rule{border-left:none;padding-left:0;border-top:1px solid #b0a080;padding-top:20px;margin-top:4px}.paper-name{font-size:2em;letter-spacing:1px}.nav-tab{padding:8px 10px;font-size:.72em}}
+        .hero-photo{border:4px solid var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.35);margin-bottom:6px}
+        .hero-photo img{width:100%;display:block}
+        .hero-caption{font-family:"Courier Prime",monospace;font-size:.75em;text-align:center;color:var(--muted);margin-bottom:18px;letter-spacing:.5px}
+    </style>
+</head>
+<body>
+<div class="newspaper"><div class="inner">
+
+<!-- MASTHEAD -->
+<div class="masthead">
+    <div class="masthead-top">
+        <span>Championship Final &nbsp;|&nbsp; Two-Week Series, Aug 31&ndash;Sep 13</span>
+        <span>Sunday, September 13, 2026</span>
+        <span>MLBLONGBALL League &nbsp;|&nbsp; Est. 2008</span>
+    </div>
+    <div class="paper-name">The Longball Gazette</div>
+    <div class="paper-rule-red"></div>
+    <div class="paper-tagline">"The Wait Is Over." &nbsp;&middot;&nbsp; Official Publication of the MLBLONGBALL Fantasy League</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner">
+    <span>&#127942; CASCADES END 18-YEAR TITLE DROUGHT &mdash; beat Desert Rats 935.33&ndash;770.83 in the two-week final</span><span class="sep">&#9670;</span>
+    <span>&#9889; BRYAN WOO named Championship MVP &mdash; 90.50 pts, 20 IP, 21 K, 3 W, 3 QS, 0.45 ERA, 0.70 WHIP</span><span class="sep">&#9670;</span>
+    <span>&#128202; Desert Rats WIN hitting 518.50&ndash;434.00 but LOSE pitching 252.33&ndash;501.33 &mdash; a 249-point gap</span><span class="sep">&#9670;</span>
+    <span>&#127775; Alex Bregman leads all hitters, 73 pts, on the losing side</span><span class="sep">&#9670;</span>
+    <span>&#128204; Unofficial 2027 draft order set &mdash; BANK of Texas picks 1st, pending BANK's choice of pick</span><span class="sep">&#9670;</span>
+    <span>&#9917; Cascades franchise's first title since the league's inaugural 2008 season</span><span class="sep">&#9670;</span>
+</div></div>
+
+<!-- NAV -->
+<div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('front')">Front Page</div>
+    <div class="nav-tab" onclick="showPage('scores')">Scores &amp; Recaps</div>
+    <div class="nav-tab" onclick="showPage('players')">Top Players</div>
+    <div class="nav-tab" onclick="showPage('rankings')">Power Rankings</div>
+    <div class="nav-tab" onclick="showPage('fa')">FA &amp; Wire</div>
+    <div class="nav-tab" onclick="showPage('columns')">The Columnists</div>
+</div>
+
+<!-- ═══════════════ FRONT PAGE ═══════════════ -->
+
+<!-- ═══════════════ FRONT PAGE ═══════════════ -->
+<div class="page active" id="front">
+<div class="section-label">Championship Final &mdash; August 31&ndash;September 13, 2026</div>
+<div class="col-2-1">
+<div>
+    <div class="headline-xl">BACK ON TOP: CASCADES END 18-YEAR TITLE WAIT, BURY DESERT RATS IN PITCHING</div>
+    <div class="deck">Troutdale led the league wire-to-wire, won the Blue Division, and then did it again in the final that mattered most &mdash; overwhelming the Desert Rats' league-best offense with a two-week pitching staff performance that will be discussed in this league for years. Final: Cascades 935.33, Desert Rats 770.83.</div>
+    <div class="byline">By the Longball Gazette Wire Staff</div>
+    <div class="dateline">League Headquarters &mdash; Sunday, September 13, 2026</div>
+
+    <div class="hero-photo"><img src="hero_celebration.png" alt="Troutdale Cascades celebrate the 2026 MLBLONGBALL championship on the mound as the stadium scoreboard reads LONGBALL WORLD CHAMPIONS 2026"></div>
+    <div class="hero-caption">The Troutdale Cascades mob the mound as the scoreboard makes it official &mdash; the franchise's first championship since 2008.</div>
+
+    <p class="body">Eighteen years. That is how long the Troutdale Cascades waited between their first MLBLONGBALL championship, won in the league's inaugural 2008 season, and their second, secured Sunday night in a two-week title match that the Cascades controlled from the opening bell and never seriously relinquished. The final score reads 935.33 to 770.83, a 164.50-point verdict that flatters the competitiveness of a series the Desert Rats clawed back into twice and lost both times to the same opponent: Troutdale's pitching staff.</p>
+
+    <p class="body">This was, on paper, the matchup MLBLONGBALL had been building toward all season. Troutdale finished the year ranked No. 1 and won the Blue Division outright. The Desert Rats finished directly behind them, division runners-up, and arrived at the championship with a lineup that had punished pitching all year. For thirteen days, that lineup did exactly what it was built to do &mdash; the Rats out-hit the Cascades 518.50 to 434.00, an 84.50-point offensive advantage built on more hits, more runs, dramatically more home runs, and more RBI. Alex Bregman alone outscored the entire Cascades bullpen. It was not enough.</p>
+
+    <p class="body">Troutdale's answer was 501.33 pitching points against Desert's 252.33 &mdash; a 249-point gap nearly double the size of the Rats' hitting advantage, and more than enough to erase it twice over. Bryan Woo, the unanimous championship MVP, put up 90.50 points by himself: 20 innings, 21 strikeouts, three wins, three quality starts, a single earned run allowed. His two-start opening week alone (14 IP, 1 ER, 16 K) was, on its own, the best individual week posted by anyone in either playoff bracket this postseason. Payton Tolle, Blake Snell, Noah Cameron and Freddy Peralta backed him up in the rotation; Mason Miller and Cade Smith turned the bullpen into a second forty-point weapon. The Cascades posted a 3.01 team ERA across the series. The Rats posted 5.40.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">Sunday Makes It Official</div>
+    <p class="body-sm">The series' final day left no doubt. Troutdale closed it out 116&ndash;72 on Sunday, winning the pitching split 79&ndash;27 even as the Desert Rats took the day's hitting battle 45&ndash;37. It was the same story that had defined the previous thirteen days in miniature: the Rats' bats did their job, and Troutdale's arms did more. The Cascades pushed the two-week score from 819&ndash;698 at the start of the day to a final 935.33&ndash;770.83, closing the book on a series in which the Rats never had their pitching staff show up when the Cascades' offense went quiet.</p>
+
+    <hr class="rule-h">
+    <div class="headline-md">A Franchise-Defining Two Weeks for Woo</div>
+    <p class="body-sm">Strip away everything else in this series and Bryan Woo's line still stands on its own: 20 innings, 21 strikeouts, three victories, three quality starts, one earned run, a 0.45 ERA and a 0.70 WHIP over a two-week championship. His 90.50 points exceeded the Desert Rats' entire hitting advantage of 84.50 &mdash; meaning one pitcher, on his own, outproduced the full 249-point pitching gap's most direct counterargument. There is no vote to take. Woo is the Championship MVP.</p>
+</div>
+
+<div>
+    <div class="info-box">
+        <div class="info-box-title">Championship Final &mdash; Series Tally</div>
+        <table class="data">
+            <tr><th colspan="3">Two-Week Total (Aug 31&ndash;Sep 13)</th></tr>
+            <tr class="highlight"><td>Troutdale Cascades <span style="background:var(--red);color:white;font-size:.65em;padding:1px 5px;margin-left:4px;font-family:'Courier Prime',monospace">CHAMPS</span></td><td class="num">935.33</td><td class="num" style="color:var(--muted);font-size:.8em">+164.5</td></tr>
+            <tr><td>Desert Rats</td><td class="num">770.83</td><td></td></tr>
+        </table>
+        <table class="data" style="margin-top:10px">
+            <tr><th>Split</th><th class="num">Cascades</th><th class="num">Rats</th></tr>
+            <tr><td>Hitting</td><td class="num">434.00</td><td class="num" style="font-weight:700">518.50</td></tr>
+            <tr><td>Pitching</td><td class="num" style="font-weight:700">501.33</td><td class="num">252.33</td></tr>
+            <tr><td>Team ERA</td><td class="num" style="font-weight:700">3.01</td><td class="num">5.40</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Final. Championship period: Aug 31&ndash;Sep 13, 2026.</p>
+    </div>
+
+    <div class="extras-box">
+        <div class="extras-title">&#127942; CHAMPIONSHIP MVP &#127942;</div>
+        <div class="extras-sub">BRYAN WOO &middot; TROUTDALE CASCADES</div>
+        <div class="extras-body">90.50 points across two starts &mdash; 20 IP, 21 K, 3 W, 3 QS, 1 ER, 9 H, 5 BB. A 0.45 ERA and 0.70 WHIP over a two-week championship. His point total alone exceeded the Desert Rats' entire 84.50-point hitting advantage for the series. There is no other choice.</div>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Championship Records</div>
+        <p style="font-size:.85em">
+        <strong>Champion:</strong> Troutdale Cascades &mdash; first title since 2008<br>
+        <strong>MVP:</strong> Bryan Woo &mdash; 90.50 pts<br>
+        <strong>Top Hitter (either side):</strong> Alex Bregman &mdash; 73 pts (Rats)<br>
+        <strong>Series Sunday Score:</strong> Cascades 116, Rats 72<br>
+        <strong>Series Margin:</strong> 164.50 points<br>
+        <strong>Pitching Gap:</strong> Cascades +249.00
+        </p>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">Also On the Board</div>
+        <table class="data">
+            <tr><th colspan="2">2027 Draft Order (Unofficial)</th></tr>
+            <tr class="highlight"><td>1. The BANK of Texas <span style="font-size:.68em;color:var(--muted)">*</span></td><td></td></tr>
+            <tr><td>2. Troutdale Gales</td><td></td></tr>
+            <tr><td>3. Sidd Finch</td><td></td></tr>
+            <tr><td>4. Sons of Pitches</td><td></td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:6px;font-family:'Courier Prime',monospace">*Unofficial &mdash; the BANK of Texas has the choice of pick. Full order and draft bracket recap inside &rarr; Power Rankings.</p>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Scores &amp; Recaps &rarr; &nbsp;|&nbsp; Top Players &rarr; &nbsp;|&nbsp; Power Rankings &rarr; &nbsp;|&nbsp; FA Activity &rarr; &nbsp;|&nbsp; The Columnists &rarr;</p><p style="margin-top:6px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Championship Final Edition &nbsp;&middot;&nbsp; 2027 season kicks off next spring</p></div>
+</div>
+
+<!-- ═══════════════ SCORES & RECAPS ═══════════════ -->
+<div class="page" id="scores">
+<div class="section-label">Championship Final &mdash; Full Two-Week Ledger</div>
+<div class="headline-lg" style="margin-bottom:4px">Fourteen Days, One Verdict</div>
+<div class="deck">The Desert Rats led three separate times. Troutdale answered every time with pitching. Here is every day of the series, plus full recaps of the six days that decided it.</div>
+<hr class="rule-h-thick">
+
+<div class="info-box">
+<div class="info-box-title">Day-by-Day Ledger</div>
+<table class="data">
+<tr><th>Day</th><th>Date</th><th class="num">Rats</th><th class="num">Cascades</th><th>Day Winner</th><th class="num">Cumulative (Rats&ndash;Cascades)</th></tr>
+<tr class="highlight"><td>1</td><td>Mon 8/31</td><td class="num">100.10</td><td class="num">43.29</td><td>Rats</td><td class="num">100.10&ndash;43.29</td></tr>
+<tr><td>2</td><td>Tue 9/1</td><td class="num">15.00</td><td class="num">51.50</td><td>Cascades</td><td class="num">119&ndash;90 (approx.)</td></tr>
+<tr><td>&mdash;</td><td>Wed 9/2</td><td colspan="4" style="font-style:italic;color:var(--muted)">No games played</td></tr>
+<tr class="highlight"><td>3</td><td>Thu 9/3</td><td class="num">44.17</td><td class="num">18.50</td><td>Rats</td><td class="num">248.67&ndash;140.67</td></tr>
+<tr><td>4</td><td>Fri 9/4</td><td class="num">57.50</td><td class="num">72.00</td><td>Cascades</td><td class="num">306&ndash;212</td></tr>
+<tr class="highlight"><td>5</td><td>Sat 9/5</td><td class="num">55.00</td><td class="num">43.00</td><td>Rats</td><td class="num">361&ndash;255 (Wk 1 final)</td></tr>
+<tr class="danger"><td>6</td><td>Sun 9/6</td><td class="num">24.17</td><td class="num">158.50</td><td>Cascades</td><td class="num">385.33&ndash;414.17</td></tr>
+<tr><td>7</td><td>Mon 9/7</td><td class="num">44.83</td><td class="num">64.50</td><td>Cascades</td><td class="num">~430&ndash;479</td></tr>
+<tr><td>8</td><td>Tue 9/8</td><td class="num">29.00</td><td class="num">90.33</td><td>Cascades</td><td class="num">~459&ndash;569</td></tr>
+<tr class="highlight"><td>9</td><td>Wed 9/9</td><td class="num">53.50</td><td class="num">54.50</td><td>Cascades</td><td class="num">514&ndash;619</td></tr>
+<tr class="highlight"><td>10</td><td>Thu 9/10</td><td class="num">33.50</td><td class="num">6.00</td><td>Rats</td><td class="num">550&ndash;628</td></tr>
+<tr><td>11</td><td>Fri 9/11</td><td class="num">90.17</td><td class="num">118.83</td><td>Cascades</td><td class="num">640&ndash;747</td></tr>
+<tr><td>12</td><td>Sat 9/12</td><td class="num">58.50</td><td class="num">72.00</td><td>Cascades</td><td class="num">698&ndash;819</td></tr>
+<tr class="danger"><td>13</td><td>Sun 9/13</td><td class="num">72.00</td><td class="num">116.00</td><td>Cascades</td><td class="num" style="font-weight:700">770.83&ndash;935.33 FINAL</td></tr>
+</table>
+<p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Rats won 5 of 13 played days. Cascades won 8, including 6 of the final 7. Cumulative totals for the middle stretch (Days 7&ndash;8) are reconstructed from reported running scores; small rounding differences exist across original daily recaps.</p>
+</div>
+
+<hr class="rule-h-dbl">
+<div class="headline-md" style="margin-bottom:14px">The Six Days That Decided It</div>
+
+<!-- DAY 1 -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Away</div><div class="recap-score">43.29</div></div>
+        <div class="recap-vs">DAY 1</div>
+        <div class="recap-team"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">100.10</div></div>
+    </div>
+    <div class="recap-status green">RATS WIN OPENING DAY BY 56.81 &nbsp;&middot;&nbsp; Series begins 100.10&ndash;43.29</div>
+    <div class="recap-body">
+        <p>The championship opened with exactly the script the Desert Rats needed. Alex Bregman erupted for three home runs and four RBI worth 21 points, Ryan Jeffers added two homers and four RBI of his own for 18, and Nico Hoerner chipped in a solo shot as the Rats banged out six home runs and 10 RBI as a team. On the mound, Clay Holmes delivered a gem &mdash; a quality start, eight strikeouts, zero earned runs and the win &mdash; for 30.5 points, the single best pitching line either team would produce for days.</p>
+        <p>Troutdale got a respectable 13 points from Seiya Suzuki and 8 from Chandler Simpson, but Payton Tolle's rough start (6 earned runs over 5.2 innings, 5.82 points) sank the Cascades' day. A 56.81-point margin gave the Rats every reason to believe this series was theirs to lose.</p>
+        <div class="recap-stat"><strong>RATS:</strong> Bregman 21 (3 HR) &middot; Jeffers 18 (2 HR) &middot; Holmes 30.5 (QS, 8K, 0 ER) &nbsp;&middot;&nbsp; <strong>CASCADES:</strong> Suzuki 13 &middot; Simpson 8 &middot; Tolle 5.82 (6 ER)</div>
+    </div>
+</div>
+
+<!-- DAY 6 -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Away</div><div class="recap-score">24.17</div></div>
+        <div class="recap-vs">DAY 6 &middot; WK1 FINALE</div>
+        <div class="recap-team"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">158.50</div></div>
+    </div>
+    <div class="recap-status">CASCADES ERASE A 94-POINT DEFICIT &nbsp;&middot;&nbsp; Week 1 final: Cascades 414.17, Rats 385.33</div>
+    <div class="recap-body">
+        <p>This was the day the series turned. The Desert Rats had controlled Week 1 almost wire to wire, building a 94-point cushion by Friday. Then Sunday arrived and Troutdale's pitching staff went nuclear: +105 points as a unit, while the Rats' arms collapsed to a combined <strong>minus-16</strong>. Cascades hitters Sam Antonacci (15), Bo Bichette (10) and Chandler Simpson (8) provided just enough offense to complement the historic pitching day. The Rats actually won the hitting battle on paper across the week, but a 158.5&ndash;24.17 single-day beatdown flipped a 94-point lead into a 28.84-point deficit in one afternoon.</p>
+        <p>Week 1 closed with Troutdale ahead 414.17&ndash;385.33 &mdash; the first time all series the Cascades held the lead.</p>
+        <div class="recap-stat"><strong>THE FLIP:</strong> 94-pt Rats lead &rarr; 28.84-pt Cascades lead in one day &nbsp;&middot;&nbsp; <strong>CASCADES PITCHING:</strong> +105 as a staff &nbsp;&middot;&nbsp; <strong>RATS PITCHING:</strong> &minus;16 as a staff</div>
+    </div>
+</div>
+
+<!-- DAY 8 -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Away</div><div class="recap-score">29.00</div></div>
+        <div class="recap-vs">DAY 8</div>
+        <div class="recap-team"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Home</div><div class="recap-score leading">90.33</div></div>
+    </div>
+    <div class="recap-status">MISIOROWSKI &amp; PERALTA COMBINE FOR 46.17 &nbsp;&middot;&nbsp; Two quality starts bury the Rats</div>
+    <div class="recap-body">
+        <p>Jacob Misiorowski and Freddy Peralta combined for 46.17 points and two quality starts, while Desert's lone pitching appearance &mdash; one inning from Jose Alvarado &mdash; produced just 4.50. Trea Turner's homer and double led all hitters with 11 points. The three-day stretch spanning the Week 1 finale through this game left the totals almost impossible to read as anything but a rout: over that span, Troutdale out-pitched Desert 211.33 to 23.00 across 43&#8532; innings to 23, with a 60-to-22 strikeout edge and 4 earned runs allowed to the Rats' 17.</p>
+        <div class="recap-stat"><strong>CASCADES:</strong> Misiorowski + Peralta 46.17, 2 QS &nbsp;&middot;&nbsp; <strong>RATS:</strong> Alvarado 4.50 (1 IP) &nbsp;&middot;&nbsp; <strong>3-DAY SPAN PITCHING:</strong> Cascades 211.33 &mdash; Rats 23.00</div>
+    </div>
+</div>
+
+<!-- DAY 11 -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Away</div><div class="recap-score">118.83</div></div>
+        <div class="recap-vs">DAY 11 &middot; "THE FAT LADY"</div>
+        <div class="recap-team"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Home</div><div class="recap-score">90.17</div></div>
+    </div>
+    <div class="recap-status">CASCADES WIN BY 28.66 &nbsp;&middot;&nbsp; Cumulative: 747&ndash;640, a 107-pt Cascades lead</div>
+    <div class="recap-body">
+        <p>Blake Snell delivered 23.33 points &mdash; eight strikeouts over 5&#8532; innings, one earned run, the win. Parker Messick added 12.67. Together with a bullpen led by Mason Miller (8.5), Bryan Baker (8, with a relief win) and Cade Smith (6.5), Troutdale's staff put up 63.83 pitching points to Desert's 41.67. Alex Bregman (14.5) and Cody Bellinger (11.5) kept the Rats competitive at the plate &mdash; Desert actually out-homered Troutdale 2-to-1 and out-drove-in 8-to-6 &mdash; but the Cascades' broader pitching effort carried the day and extended their lead to 107 points.</p>
+        <div class="recap-stat"><strong>CASCADES:</strong> Snell 23.33 &middot; Messick 12.67 &middot; staff 63.83 pitching pts &nbsp;&middot;&nbsp; <strong>RATS:</strong> Bregman 14.5 &middot; Bellinger 11.5 &middot; Imanaga 18.5</div>
+    </div>
+</div>
+
+<!-- DAY 12 -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Away</div><div class="recap-score">72.00</div></div>
+        <div class="recap-vs">DAY 12 &middot; "ONE HAND ON THE TROPHY"</div>
+        <div class="recap-team"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Home</div><div class="recap-score">58.50</div></div>
+    </div>
+    <div class="recap-status">WOO'S MASTERPIECE &nbsp;&middot;&nbsp; Cumulative: 819&ndash;698, a 121-pt Cascades lead entering Sunday</div>
+    <div class="recap-body">
+        <p>Bryan Woo produced the defining single-day performance of the championship: 27 points on six scoreless innings, three hits allowed, two walks, five strikeouts, a win and a quality start in Seattle's 19&ndash;1 rout of Oakland. Woo alone outscored the Desert Rats' entire pitching staff, which managed just 15.5 points on the day. The Rats won the hitting battle 43&ndash;24.5 &mdash; three home runs to Troutdale's one, 8 RBI to 5 &mdash; but it wasn't close to enough against a pitching staff that struck out 11 and allowed one earned run across 10 innings. Troutdale entered the final day needing almost nothing to close out its first championship since 2008.</p>
+        <div class="recap-stat"><strong>WOO:</strong> 27 pts, 6 IP scoreless, 5 K, W, QS &nbsp;&middot;&nbsp; <strong>RATS HITTING:</strong> 43 pts (won the day) &nbsp;&middot;&nbsp; <strong>RATS PITCHING:</strong> 15.5 pts (lost the day)</div>
+    </div>
+</div>
+
+<!-- DAY 13 - FINAL -->
+<div class="recap-card">
+    <div class="recap-header">
+        <div class="recap-team away"><div class="recap-team-name">Troutdale Cascades &nbsp;&middot;&nbsp; Away</div><div class="recap-score leading">116.00</div></div>
+        <div class="recap-vs">DAY 13 &middot; CHAMPIONSHIP CLINCHED</div>
+        <div class="recap-team"><div class="recap-team-name">Desert Rats &nbsp;&middot;&nbsp; Home</div><div class="recap-score">72.00</div></div>
+    </div>
+    <div class="recap-status green">CASCADES WIN THE FINALE &nbsp;&middot;&nbsp; Final series: Cascades 935.33, Rats 770.83</div>
+    <div class="recap-body">
+        <p>Sunday made it official. Troutdale closed out the championship 116&ndash;72, taking the pitching split 79&ndash;27 even as the Desert Rats won the day's hitting battle 45&ndash;37 &mdash; the same pattern that had defined the entire two weeks, playing out one final time. The Rats' offense did not disappear at the finish line. Troutdale's pitching simply never let it matter.</p>
+        <div class="recap-stat"><strong>FINAL DAY:</strong> Cascades 116, Rats 72 &nbsp;&middot;&nbsp; <strong>Pitching:</strong> Cascades 79, Rats 27 &nbsp;&middot;&nbsp; <strong>Hitting:</strong> Rats 45, Cascades 37 &nbsp;&middot;&nbsp; <strong>SERIES FINAL:</strong> Cascades 935.33, Rats 770.83</div>
+    </div>
+</div>
+
+<div class="page-footer"><p>All statistics final. Championship period: August 31&ndash;September 13, 2026.</p></div>
+</div>
+
+<!-- ═══════════════ TOP PLAYERS ═══════════════ -->
+<div class="page" id="players">
+<div class="section-label">Championship Final &mdash; Individual Leaderboards, Two-Week Series</div>
+<div class="headline-lg" style="margin-bottom:4px">The Leaderboard</div>
+<div class="deck">Combined totals across both rosters for the full August 31&ndash;September 13 championship period. Fantasy team names throughout.</div>
+<hr class="rule-h-thick">
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#9918; Top Hitters &mdash; Championship Series</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">HR</th><th class="num">RBI</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Alex Bregman</strong></td><td>Desert Rats</td><td class="num">73.0</td><td class="num">5</td><td class="num">11</td></tr>
+            <tr><td class="rk">2</td><td><strong>Jake McCarthy</strong></td><td>Desert Rats</td><td class="num">67.0</td><td class="num">1</td><td class="num">8</td></tr>
+            <tr><td class="rk">3</td><td><strong>Cody Bellinger</strong></td><td>Desert Rats</td><td class="num">62.0</td><td class="num">3</td><td class="num">10</td></tr>
+            <tr><td class="rk">4</td><td><strong>Corey Seager</strong></td><td>Desert Rats</td><td class="num">58.0</td><td class="num">5</td><td class="num">9</td></tr>
+            <tr><td class="rk">5</td><td><strong>Julio Rodriguez</strong></td><td>Troutdale Cascades</td><td class="num">52.0</td><td class="num">&mdash;</td><td class="num">9</td></tr>
+            <tr><td class="rk">6</td><td><strong>Bo Bichette</strong></td><td>Troutdale Cascades</td><td class="num">48.0</td><td class="num">2</td><td class="num">7</td></tr>
+            <tr><td class="rk">7</td><td><strong>Riley Greene</strong></td><td>Troutdale Cascades</td><td class="num">42.0</td><td class="num">2</td><td class="num">9</td></tr>
+            <tr><td class="rk">8</td><td><strong>Drake Baldwin</strong></td><td>Troutdale Cascades</td><td class="num">40.5</td><td class="num">&mdash;</td><td class="num">8</td></tr>
+            <tr><td class="rk">9</td><td><strong>Trea Turner</strong></td><td>Troutdale Cascades</td><td class="num">39.5</td><td class="num">2</td><td class="num">6</td></tr>
+            <tr><td class="rk">10</td><td><strong>Seiya Suzuki</strong></td><td>Troutdale Cascades</td><td class="num">36.5</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Just outside the top 10: Jeffers 35.5 (Rats), Chandler Simpson 35.0 (Cascades), Harper 34.5 (Rats), Stewart 30.5, Rice 30.0, Antonacci 30.0 (all Cascades). Troutdale had 11 hitters clear 30 points across the series.</p>
+    </div>
+
+    <div class="alert-box" style="border-left-color:var(--gold);background:#fffbef">
+        <div class="alert-box-title" style="color:var(--gold)">&#11088; Bregman Leads Everyone &mdash; On the Losing Side</div>
+        <p style="font-size:.85em"><strong>Alex Bregman</strong>: 73 pts, 17-for-46, 5 HR, 10 R, 11 RBI, just 3 strikeouts across the series. The single best individual offensive performance of the championship belonged to a player on the team that lost. Bregman and Seager alone out-homered the Cascades' entire lineup, 10 to 15 &mdash; and it still wasn't enough.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; Troutdale's Depth Advantage</div>
+        <p style="font-size:.85em">Eleven Troutdale hitters reached at least 30 points across the series &mdash; nobody on the roster needed to be a hero. The Cascades also out-walked (56&ndash;46) and out-stole (14&ndash;9) the Rats, and grounded into far fewer double plays (8 to Desert's 19). Depth, not star power, was the offensive story on the championship side.</p>
+    </div>
+</div>
+
+<div class="col-rule">
+    <div class="info-box">
+        <div class="info-box-title">&#9889; Top Pitchers &mdash; Championship Series</div>
+        <table class="data">
+            <tr><th class="rk">Rk</th><th>Player</th><th>Fantasy Team</th><th class="num">FPts</th><th class="num">IP</th><th class="num">ERA</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td><strong>Bryan Woo</strong> &#127942;</td><td>Troutdale Cascades</td><td class="num">90.50</td><td class="num">20.0</td><td class="num">0.45</td></tr>
+            <tr><td class="rk">2</td><td><strong>Payton Tolle</strong></td><td>Troutdale Cascades</td><td class="num">65.33</td><td class="num">17.2</td><td class="num">2.55</td></tr>
+            <tr><td class="rk">3</td><td><strong>Dylan Cease</strong></td><td>Desert Rats</td><td class="num">54.00</td><td class="num">16.0</td><td class="num">&mdash;</td></tr>
+            <tr><td class="rk">4</td><td><strong>Mason Miller</strong></td><td>Troutdale Cascades</td><td class="num">53.50</td><td class="num">6.0</td><td class="num">0.00</td></tr>
+            <tr><td class="rk">5</td><td><strong>Blake Snell</strong></td><td>Troutdale Cascades</td><td class="num">52.33</td><td class="num">11.2</td><td class="num">0.77</td></tr>
+            <tr><td class="rk">6</td><td><strong>Noah Cameron</strong></td><td>Troutdale Cascades</td><td class="num">47.00</td><td class="num">17.0</td><td class="num">2.65</td></tr>
+            <tr><td class="rk">7</td><td><strong>Shota Imanaga</strong></td><td>Desert Rats</td><td class="num">43.00</td><td class="num">12.0</td><td class="num">2.25</td></tr>
+            <tr><td class="rk">8</td><td><strong>Sonny Gray</strong></td><td>Desert Rats</td><td class="num">41.00</td><td class="num">&mdash;</td><td class="num">&mdash;</td></tr>
+            <tr><td class="rk">9</td><td><strong>Freddy Peralta</strong></td><td>Troutdale Cascades</td><td class="num">39.50</td><td class="num">11.0</td><td class="num">0.82</td></tr>
+            <tr><td class="rk">9</td><td><strong>Logan Henderson</strong></td><td>Desert Rats</td><td class="num">39.50</td><td class="num">12.0</td><td class="num">1.50</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">Cascades: 6 of the top 9. Woo, Tolle, Snell, Cameron and Peralta combined for 294.66 points &mdash; more than the Desert Rats' entire pitching staff. Cade Smith (36.0) and David Bednar (28.0) rounded out Troutdale's bullpen behind Miller.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; Woo's 90.50 vs. the Rats' Whole Advantage</div>
+        <p style="font-size:.85em">Bryan Woo's series total exceeded the Desert Rats' entire 84.50-point hitting edge for the two weeks. One pitcher, on his own, was worth more than everything the Rats' offense built up on Troutdale. That is the entire series in one number.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; Where the Rats' Staff Broke</div>
+        <p style="font-size:.85em">Logan Webb allowed 16 earned runs in 13 innings for 4.50 points. Logan Gilbert struck out 21 but allowed 10 earned runs and 5 home runs for 22.33. Jakob Junis finished at <strong>&minus;20.50</strong> and Adrian Morejon at <strong>&minus;9.67</strong>. Against a Cascades staff that rarely let up, those innings were the difference between a competitive series and a decisive one.</p>
+    </div>
+
+    <div class="info-box">
+        <div class="info-box-title">Team Pitching Totals &mdash; Full Series</div>
+        <table class="data">
+            <tr><th>Category</th><th class="num">Cascades</th><th class="num">Rats</th></tr>
+            <tr><td>Innings Pitched</td><td class="num">155.2</td><td class="num">151.2</td></tr>
+            <tr><td>Strikeouts</td><td class="num" style="font-weight:700">189</td><td class="num">154</td></tr>
+            <tr><td>Earned Runs</td><td class="num" style="font-weight:700">52</td><td class="num">91</td></tr>
+            <tr><td>Wins&ndash;Losses</td><td class="num">13&ndash;4</td><td class="num">10&ndash;10</td></tr>
+            <tr><td>Quality Starts</td><td class="num">11</td><td class="num">11</td></tr>
+            <tr><td>Saves/Holds</td><td class="num" style="font-weight:700">9</td><td class="num">4</td></tr>
+            <tr><td>Team ERA</td><td class="num" style="font-weight:700">3.01</td><td class="num">5.40</td></tr>
+        </table>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>All statistics final for the championship period, August 31&ndash;September 13, 2026.</p></div>
+</div>
+
+<!-- ═══════════════ POWER RANKINGS ═══════════════ -->
+<div class="page" id="rankings">
+<div class="section-label">Season's Final Word &mdash; Championship &amp; Draft Bracket Results</div>
+<div class="headline-lg" style="margin-bottom:4px">Where the Season Ends</div>
+<div class="deck">One bracket crowned a champion. The other set next year's draft order. Here is how both finished.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <div class="info-box">
+        <div class="info-box-title">&#127942; Money Bracket &mdash; Final</div>
+        <table class="data">
+            <tr><th colspan="2">Championship Result</th></tr>
+            <tr class="highlight"><td>Troutdale Cascades (1)</td><td class="num">935.33</td></tr>
+            <tr><td>Desert Rats (2)</td><td class="num">770.83</td></tr>
+        </table>
+        <p style="font-size:.85em;margin-top:10px">Troutdale entered the postseason as the No. 1 seed after leading the league wire-to-wire and winning the Blue Division; the Desert Rats entered as the No. 2 seed, their division runner-up. Both clubs earned first-round byes into Round 2 of the money bracket. The two top seeds meeting in the final, exactly as regular-season form predicted, is a rare and clean result for a 12-team league &mdash; and it still took a 249-point pitching advantage for the favorite to actually close it out.</p>
+    </div>
+
+    <div class="pr-item"><div class="pr-rank top3">&#127942;</div><div>
+        <div class="pr-team">Troutdale Cascades <span class="up">&#9650; CHAMPIONS &mdash; first title since 2008</span></div>
+        <div class="pr-pts">935.33&ndash;770.83 over Desert Rats &nbsp;&middot;&nbsp; Pitching: 501.33 to 252.33</div>
+        <div class="pr-note">No. 1 seed all season, Blue Division champion, now league champion. The 2026 Cascades won this title with pitching depth rather than a single ace &mdash; five starters over 39.5 points apiece, plus a bullpen (Miller, Smith, Bednar) that alone outscored several full pitching staffs around the league this year. Eighteen years is a long wait. This roster made the wait look worth it.</div>
+    </div></div>
+
+    <div class="pr-item"><div class="pr-rank top3">2</div><div>
+        <div class="pr-team">Desert Rats <span class="dn">&#9660; RUNNER-UP</span></div>
+        <div class="pr-pts">770.83, lost the final &nbsp;&middot;&nbsp; Hitting: 518.50 to 434.00 (won)</div>
+        <div class="pr-note">The Rats built the best offense of the championship &mdash; Bregman, McCarthy, Bellinger and Seager combined for 260 points &mdash; and it was not enough because the pitching staff finished with a 5.40 series ERA against Troutdale's 3.01. Commish's team goes home with the No. 11 pick in 2027 and a clear offseason mandate: fix the rotation before fixing anything else.</div>
+    </div></div>
+</div>
+
+<div class="col-rule">
+    <div class="info-box">
+        <div class="info-box-title">&#128203; 2027 Draft Order (Unofficial)</div>
+        <table class="data">
+            <tr><th class="rk">Pick</th><th>Team</th></tr>
+            <tr class="highlight"><td class="rk">1</td><td>The BANK of Texas <span class="badge badge-hot">*</span></td></tr>
+            <tr><td class="rk">2</td><td>Troutdale Gales</td></tr>
+            <tr><td class="rk">3</td><td>Sidd Finch</td></tr>
+            <tr><td class="rk">4</td><td>Sons of Pitches</td></tr>
+            <tr><td class="rk">5</td><td>Houston Gamblers</td></tr>
+            <tr><td class="rk">6</td><td>Ithaca Spartans</td></tr>
+            <tr><td class="rk">7</td><td>Newberry Indians</td></tr>
+            <tr><td class="rk">8</td><td>Midland Red Weasel Dogs</td></tr>
+            <tr><td class="rk">9</td><td>Goldy Goldy Gone</td></tr>
+            <tr><td class="rk">10</td><td>Tempe Scorpions</td></tr>
+            <tr class="danger"><td class="rk">11</td><td>Desert Rats</td></tr>
+            <tr class="danger"><td class="rk">12</td><td>Troutdale Cascades</td></tr>
+        </table>
+        <p style="font-size:.72em;font-style:italic;color:var(--muted);margin-top:8px;font-family:'Courier Prime',monospace">*Unofficial. The BANK of Texas holds the No. 1 pick but retains the choice of pick &mdash; the order above is not final until the BANK exercises or waives that right.</p>
+    </div>
+
+    <div class="alert-box">
+        <div class="alert-box-title">&#128680; The BANK Holds the Keys</div>
+        <p style="font-size:.85em">The draft bracket produced a clean unofficial order, but nothing is final until The BANK of Texas exercises its choice of pick. Every team from No. 2 down is, technically, waiting on a decision they don't control. This is the league's last unresolved storyline of the 2026 season.</p>
+    </div>
+
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Bracket Logic, In Brief</div>
+        <p style="font-size:.85em">Champion and runner-up pick last (12th and 11th) &mdash; the standard reward for winning. The draft bracket's own bottom finishers pick highest, led by the BANK of Texas at No. 1. A clean, symmetrical finish to a season that, on the field, was anything but.</p>
+    </div>
+</div>
+</div>
+
+<hr class="rule-h-dbl">
+<div class="section-label">Looking Ahead</div>
+<div class="headline-md" style="margin-bottom:16px">What's Next for MLBLONGBALL</div>
+<div class="col-2">
+<div>
+    <div class="wk5-card">
+        <div class="wk5-hdr">&#127942; THE OFFSEASON BEGINS</div>
+        <div class="wk5-body">
+            <div><div class="wk5-team">Season-Wide Stats Wrap <span class="badge badge-toss">COMING</span></div><div class="wk5-rec">Full 2026 season statistical review, planned for after the playoffs conclude</div></div>
+        </div>
+        <div class="wk5-look">With the championship decided, the next Gazette project is the season-wide statistics wrap &mdash; cumulative leaders, biggest surprises, and a full look back at 2026 before attention turns to keepers and the 2027 draft.</div>
+    </div>
+</div>
+<div class="col-rule">
+    <div class="wk5-card">
+        <div class="wk5-hdr">&#128203; DRAFT ORDER RATIFICATION</div>
+        <div class="wk5-body">
+            <div><div class="wk5-team">The BANK's Choice <span class="badge badge-must">PENDING</span></div><div class="wk5-rec">2027 draft order remains unofficial until resolved</div></div>
+        </div>
+        <div class="wk5-look">Until the BANK of Texas exercises its choice of pick, every team's 2027 draft slot is provisional. Expect this to be the league's first offseason storyline.</div>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>Championship and draft bracket results as reported. 2027 draft order unofficial pending the BANK of Texas.</p></div>
+</div>
+
+<!-- ═══════════════ FA & WIRE ═══════════════ -->
+<div class="page" id="fa">
+<div class="section-label">Wire Intelligence &mdash; Championship Final</div>
+<div class="headline-lg" style="margin-bottom:4px">The Wire Goes Quiet</div>
+<div class="deck">No waiver activity moves a championship roster in its final two weeks. Here's what that means, and what's coming once the wire reopens.</div>
+<hr class="rule-h-thick">
+
+<div class="col-2">
+<div>
+    <p class="body">By the time a team reaches the final, its roster is its roster. Whatever moves were going to matter &mdash; the streaming pickups, the deadline waiver claims, the late-summer bullpen additions &mdash; were made weeks ago, and the two rosters that played out this championship did so with the players they'd already assembled. That's as it should be. A title decided by a $2 FAAB claim on Championship Sunday would be a strange way to end an 18-year wait.</p>
+    <p class="body-sm">What the two-week final did confirm is which roster construction philosophy held up under playoff pressure. The Desert Rats built around top-of-roster power &mdash; Bregman, Seager, Bellinger, McCarthy &mdash; and that group delivered almost exactly as advertised, combining for 260 points. Troutdale built pitching depth deliberately, five starters plus a three-man bullpen core all capable of double-digit points on a given day, and that depth is what actually decided the series. Neither team won or lost this because of a waiver-wire secret weapon. They won and lost because of decisions made months ago.</p>
+</div>
+<div>
+    <div class="gold-box">
+        <div style="font-family:'Oswald',sans-serif;font-size:.8em;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px">The Wire Reopens</div>
+        <p style="font-size:.85em">With the championship decided, offseason business begins: keeper decisions, the 2027 draft order (pending the BANK's choice), and eventually a fresh wire once spring approaches. The Gazette's FA &amp; Wire desk will be back covering live transactions when 2027 activity begins.</p>
+    </div>
+    <div class="info-box">
+        <div class="info-box-title">On the Offseason Docket</div>
+        <table class="data">
+            <tr><th>Item</th><th>Status</th></tr>
+            <tr><td>2027 Draft Order</td><td>Unofficial &mdash; pending BANK</td></tr>
+            <tr><td>Season Stats Wrap</td><td>Planned</td></tr>
+            <tr><td>Keeper Decisions</td><td>Ahead of 2027 draft</td></tr>
+        </table>
+    </div>
+</div>
+</div>
+<div class="page-footer"><p>No transaction activity to report during the championship period. Wire coverage resumes with 2027 offseason activity.</p></div>
+</div>
+
+<!-- ═══════════════ THE COLUMNISTS ═══════════════ -->
+<div class="page" id="columns">
+<div class="section-label">Opinion &amp; Commentary &mdash; Championship Final</div>
+<div class="headline-lg" style="margin-bottom:4px">The Columnists</div>
+<div class="deck">Duke Falcone. Marty Aldrich. Big Lou Palmieri. Three final takes on an 18-year wait, a 249-point pitching gap, and the offseason drama already brewing.</div>
+<hr class="rule-h-thick">
+
+<div class="column-box">
+    <div class="column-box-title">Receipts</div>
+    <div class="column-box-byline">By Duke Falcone &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+    <div>
+        <p class="body">Here's the whole series in one sentence: the Desert Rats won the part of the game everyone watches and lost the part that actually decides championships. Hitting, 518.50 to 434.00, Rats by 84.50. Pitching, 501.33 to 252.33, Cascades by 249. Do that math and the pitching gap isn't just bigger &mdash; it's nearly three times bigger. You don't win a fantasy title by winning the fun category. You win it by not getting run over in the other one. The Rats got run over.</p>
+        <p class="body-sm">I want receipts, so here are receipts. Bryan Woo: 90.50 points, 20 innings, 21 strikeouts, three wins, one earned run allowed across the entire series. Payton Tolle: 65.33. Blake Snell: 52.33. Noah Cameron: 47. Freddy Peralta: 39.50. That's five starters averaging almost 59 points apiece, and I haven't even gotten to Mason Miller's 53.50 out of the bullpen. Add it up and Woo-Tolle-Snell-Cameron-Peralta alone &mdash; five guys &mdash; beat the Rats' entire pitching staff by more than 42 points. Entire staff. Not their worst five arms. All of them.</p>
+        <p class="body-sm">Now the other side of the ledger. Jakob Junis: minus-20.50. Adrian Morejon: minus-9.67. Logan Webb: 4.50 points on 16 earned runs allowed in 13 innings. That's not bad luck, that's a rotation that couldn't get outs when it mattered against a team that never stopped getting them. Bregman went off. Seager went off. McCarthy and Bellinger went off. Didn't matter. You can't out-hit a 3.01 team ERA when yours is 5.40.</p>
+    </div>
+    <div>
+        <p class="body-sm">Give Troutdale full credit here, because this wasn't luck stacked on luck. This is a franchise that finished No. 1 in the league all season, won the Blue Division running away, and then went out and beat the team chasing it hardest using the exact same formula that got them there: pitching depth so deep it doesn't have a hole in it. Eleven hitters over 30 points is nice. It's not why they won. They won because five different starters and a shutdown bullpen core made sure the Rats' 84-point hitting edge never had a chance to matter.</p>
+        <p class="body-sm">Eighteen years since the first Cascades title. I wasn't covering this league in 2008, but I don't need to have been there to tell you that kind of wait changes how a franchise thinks about itself. This year it stopped being a story about waiting and started being a story about how they finally did it &mdash; not with one signature ace, but with five guys who all showed up when it counted. That's a formula other franchises should be taking notes on this offseason. Starting, probably, with the team that just lost to it.</p>
+    </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Eighteen Years, One Number</div>
+    <div class="column-box-byline">By Marty Aldrich &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+    <div>
+        <p class="body">Somewhere in the record books of this league there is a line from 2008 &mdash; the inaugural season, the first champion this league ever crowned &mdash; and it says Troutdale Cascades. For eighteen years that line sat there alone, a first chapter with no second one, while other franchises rose and won titles and the Cascades did what good franchises do when they're not winning: they stayed competitive, they stayed relevant, and they waited for a season like this one.</p>
+        <p class="body-sm">There is something almost unfair about how clean this year's version of the story turned out. No. 1 ranking wire to wire. The Blue Division crown. And then, in the final that mattered most, a matchup against the only team that had chased them all season without ever quite catching them &mdash; their own division runner-up, the Desert Rats. Sports doesn't usually hand you a narrative this tidy. This year it did, and Troutdale finished the job.</p>
+        <p class="body-sm">I keep coming back to Bryan Woo's line, not because the numbers are staggering &mdash; though they are, 90.50 points and a 0.45 ERA across two weeks is the kind of stretch a pitcher remembers for the rest of his career, real or fantastic &mdash; but because of what it represents. A franchise that waited eighteen years for a second championship didn't get it from a single miracle month. They got it from a pitcher who simply refused to have a bad start when his team needed him not to. That is what patience looks like when it finally pays off.</p>
+    </div>
+    <div>
+        <p class="body-sm">And I don't want to let the Desert Rats' half of this story go unwritten, because there is real substance in a loss like this one. Alex Bregman's 73 points, five home runs, seventeen hits in forty-six at-bats, three strikeouts in two weeks of playoff baseball &mdash; that is a career-caliber stretch from a player on a team that came up short. Jake McCarthy, Cody Bellinger, Corey Seager, all of them delivered exactly what a contender needs from its lineup. The Rats did not lose this because their plan failed. They lost because someone else's plan, on the same field, over the same two weeks, was simply built to survive a bad night, and theirs wasn't.</p>
+        <p class="body-sm">Eighteen years is a long time to carry a single number in a franchise's history. Tonight, Troutdale gets to add a second one next to it. Somewhere down the road, in some future September, another team in this league is going to be carrying its own long wait, hoping for a season that ends the way this one did for Troutdale. That's what makes a moment like this worth writing down.</p>
+    </div>
+    </div>
+</div>
+
+<hr class="rule-h">
+
+<div class="column-box">
+    <div class="column-box-title">Big Lou's Corner: The Rats' Pitching Staff Owes Everybody an Apology</div>
+    <div class="column-box-byline">By Big Lou Palmieri, Baseball Lifer &nbsp;&middot;&nbsp; The Longball Gazette</div>
+    <div class="col-2">
+    <div>
+        <p class="body">FIVE HUNDRED AND ONE POINT THREE THREE. That's what Troutdale's pitching staff put up over two weeks and I need everybody to sit with that number because I have been sitting with it since Sunday night and I still don't fully believe it. Woo. Tolle. Snell. Cameron. Peralta. Miller. Smith. Bednar. Eight names, one staff, five hundred and one points, and a team ERA of THREE POINT OH ONE in a two-week fantasy playoff. I've seen good pitching staffs in this league. I have never seen one do that on this stage with the title on the line.</p>
+        <p class="body-sm">Meanwhile &mdash; and I say this as someone who genuinely likes the Desert Rats, genuinely believes in this roster, and is going to say it anyway because it needs saying &mdash; Jakob Junis finished the series at MINUS TWENTY POINT FIVE. Not zero. Not a rough week. NEGATIVE. Adrian Morejon: minus nine point six seven. Logan Webb allowed SIXTEEN earned runs in THIRTEEN innings and somehow that only cost the Rats four and a half points, which tells you how bad the rest of the staff was that Webb's disaster start barely moved the needle. This isn't a pitching staff. This is a group of guys who agreed to show up and see what happens.</p>
+        <p class="body-sm">And through ALL of that &mdash; through Junis, through Morejon, through Webb &mdash; Alex Bregman put up SEVENTY-THREE POINTS. Seventeen hits. Five home runs. Eleven RBI. THREE strikeouts in two weeks of championship baseball. Bregman did his job so completely, so thoroughly, that he nearly dragged an entire broken pitching staff to a championship by himself. He didn't get there. Nobody was getting there with that pitching. But I want it on the record: Bregman showed up. The rotation did not.</p>
+    </div>
+    <div>
+        <p class="body-sm">Now let's talk about BRYAN WOO because somebody has to and it might as well be me. Ninety point five points. TWENTY innings. TWENTY-ONE strikeouts. THREE wins. ONE earned run allowed in the ENTIRE championship. A zero-point-four-five ERA. I have watched this league since it started and I don't know that I've seen a two-week stretch like that from anybody, in any bracket, in any year. The MVP conversation lasted about four seconds. It's Woo. It was always going to be Woo. Congratulations to Troutdale, eighteen years is a long time, go enjoy it, you earned every bit of it.</p>
+        <p class="body-sm">Last thing and then I'm done: THE BANK OF TEXAS HAS THE NUMBER ONE PICK IN THE UNOFFICIAL 2027 DRAFT ORDER AND ALSO GETS THE CHOICE OF PICK. Do you understand what that means? It means the BANK is sitting there right now with more offseason leverage than anyone else in this entire league and hasn't even had to win anything extra to get it. Troutdale Gales at two, Sidd Finch at three, Sons of Pitches at four &mdash; every single one of those teams is waiting on a decision from a franchise that hasn't said a word yet. That's the last mystery of the 2026 season and I, for one, cannot wait to find out how it plays out. Congratulations to the champs. Rest up, Desert Rats. And somebody please, please find that pitching staff a therapist before next April.</p>
+    </div>
+    </div>
+</div>
+
+<div class="page-footer">
+    <p>The opinions expressed in The Columnists section represent those of each writer and do not reflect the official positions of the MLBLONGBALL league office or its commissioner.</p>
+    <p style="margin-top:8px">The Longball Gazette &mdash; Est. 2008 &nbsp;&middot;&nbsp; Championship Final Edition &nbsp;&middot;&nbsp; Troutdale Cascades, 2026 MLBLONGBALL Champions</p>
+</div>
+</div>
+
+</div></div>
+<script>
+function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
